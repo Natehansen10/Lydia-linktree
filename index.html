@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lydia Hansen</title>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX'); 
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* THE VISUAL STYLE */
+        body {
+            background-color: #FAF5EF;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #1e1e1e;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Profile Section */
+        .profile-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-pic {
+            /* SIZE: Displayed as 96px, but loads high-res for 4K sharpness */
+            width: 96px;
+            height: 96px;
+            
+            /* SHAPE & CROP */
+            border-radius: 50%;
+            object-fit: cover;
+            
+            /* CENTERING */
+            display: block; 
+            margin: 0 auto 16px auto; 
+            
+            /* POLISH */
+            border: 2px solid #ffffff; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        }
+
+        .handle {
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0;
+            margin-bottom: 8px;
+        }
+
+        .bio {
+            font-size: 14px;
+            margin: 0;
+            color: #1e1e1e;
+        }
+
+        /* Social Icons Row */
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 35px;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            color: #1e1e1e;
+            font-size: 24px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Links / Buttons */
+        .links-container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-card {
+            background-color: #FDFBF7; 
+            border: 1px solid #D6CDC6; 
+            border-radius: 40px; 
+            
+            /* PADDING: Extra space on left (60px) for the thumbnail */
+            padding: 16px 20px 16px 60px; 
+            
+            text-decoration: none;
+            color: #1e1e1e;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .link-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* --- Thumbnail Image Styling --- */
+        .thumbnail {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px; 
+            object-fit: cover; /* Default: Fills the square, good for photos */
+            position: absolute;
+            left: 10px;
+        }
+
+        /* --- NEW CLASS FOR LOGOS --- */
+        /* Add the class 'squeeze' to logo images so they fit inside the box */
+        .thumbnail.squeeze {
+             object-fit: contain; /* Ensures the whole logo is visible */
+             background-color: white; /* Optional: helps transparent logos pop */
+             padding: 2px; /* Optional: Tiny bit of breathing room */
+        }
+        
+        /* The three dots on the right (decorative) */
+        .dots {
+            position: absolute;
+            right: 20px;
+            color: #999;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <img src="profile.jpg" alt="Lydia Hansen" class="profile-pic"> 
+        
+        <h1 class="handle">@LydiaHansen</h1>
+        <p class="bio">Only recs that im OBSESSED with</p>
+
+        <div class="social-icons">
+            <a href="https://www.tiktok.com/@lydiaclarkhansen"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/lydiaclarkhansen"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@LydiaClarkHansen"><i class="fa-brands fa-youtube"></i></a>
+            <a href="mailto:Lydiaclarkhansen@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.lydsskinbar.com/"><i class="fa-solid fa-globe"></i></a>
+        </div>
+    </div>
+
+    <div class="links-container">
+        
+        <a href="https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3" class="link-card">
+            <img src="shed.jpg" class="thumbnail" alt="Shed">
+            SHED 30% OFF WEIGHT LOSS
+            <span class="dots"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+        </a>
+
+        <a href="https://www.shopltk.com/explore/LYDIA_HANSEN?utm_campaign=creator_shop_share_template_flow&utm_source=ioscreatorapp" class="link-card">
+            <img src="LTK.jpg" class="thumbnail squeeze" alt="LTK">
+            LTK
+            <span class="dots"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+        </a>
+
+        <a href="https://www.amazon.com/shop/lydsskinbar/list/2OON894XK1184?linkCode=spc&tag=lydiaclark-20&domainId=influencer&asc_contentid=amzn1.ideas.2OON894XK1184&ccs_id=0b33d465-10fc-4956-9c35-98710ce2c636" class="link-card">
+            <img src="Amazon.jpg" class="thumbnail squeeze" alt="Amazon">
+            Amazon
+            <span class="dots"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+        </a>
+
+        <a href="https://www.lydsskinbar.com/shop/facereality/7" class="link-card">
+            <img src="FaceReality.jpg" class="thumbnail squeeze" alt="Face Reality">
+            Face Reality
+            <span class="dots"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+        </a>
+
+    </div>
+
+</body>
+</html>
