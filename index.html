@@ -143,6 +143,16 @@
             color: #999;
             font-size: 12px;
         }
+        /* --- NEW CLASS FOR LOGOS --- */
+        /* Add the class 'squeeze' to logo images so they fit inside the box */
+        .thumbnail.squeeze {
+             object-fit: contain; /* Ensures the whole logo is visible */
+             
+             /* THE MAGIC TRICK for JPEGs: 
+                This makes white backgrounds turn transparent against 
+                the cream button color. */
+             mix-blend-mode: multiply; 
+        }
 
     </style>
 </head>
