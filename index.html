@@ -122,16 +122,38 @@
                     setNewsletterStatus({ loading: false, success: false, error: "Database not connected." });
                     return;
                 }
+                
                 setNewsletterStatus({ loading: true, success: false, error: null });
+
                 try {
-                    await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('subscribers').add({
+                    const subsRef = db.collection('artifacts').doc(appId).collection('public').doc('data').collection('subscribers');
+                    
+                    // 1. Check if the email already exists in the collection
+                    const snapshot = await subsRef.where("email", "==", email).get();
+
+                    if (!snapshot.empty) {
+                        // 2. If it exists, stop and tell the user they are already subscribed
+                        setNewsletterStatus({ 
+                            loading: false, 
+                            success: true, 
+                            error: null 
+                        });
+                        // We set success to true so the UI still shows "You're on the list"
+                        setEmail("");
+                        return;
+                    }
+
+                    // 3. If it doesn't exist, add it as a new entry
+                    await subsRef.add({
                         email: email,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                         source: 'landing_page'
                     });
+                    
                     setNewsletterStatus({ loading: false, success: true, error: null });
                     setEmail("");
                 } catch (err) {
+                    console.error("Query error:", err);
                     setNewsletterStatus({ loading: false, success: false, error: "Submission failed." });
                 }
             };
