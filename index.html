@@ -5,29 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lydia Hansen</title>
     
-    <!-- SEO & Social Sharing -->
     <meta property="og:title" content="Lydia Hansen | Intentional Living">
     <meta property="og:description" content="Essentials for skincare, style, and intentional living">
     <meta property="og:image" content="https://lydiaclarkhansen.com/profile.jpg">
     <meta property="og:url" content="https://lydiaclarkhansen.com">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Styles & Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- React, ReactDOM, and Babel -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore-compat.js"></script>
 
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LP9L9WTTMS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -57,12 +52,29 @@
     <script type="text/babel">
         /**
          * FIREBASE CONFIGURATION
+         * Linked to your project: lydia-hansen-site
          */
-        const localFirebaseConfig = null; 
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : localFirebaseConfig;
+        const localFirebaseConfig = {
+            apiKey: "AIzaSyDA5Lh5dYhZIJd71UeMRRn_w1fSvFjUu74",
+            authDomain: "lydia-hansen-site.firebaseapp.com",
+            projectId: "lydia-hansen-site",
+            storageBucket: "lydia-hansen-site.firebasestorage.app",
+            messagingSenderId: "662144331668",
+            appId: "1:662144331668:web:08bc0f54cfe8f42a8f6981",
+            measurementId: "G-T12VE0W604"
+        };
+
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : localFirebaseConfig;
+
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'lydia-hansen-brand';
         
-        if (firebaseConfig) { firebase.initializeApp(firebaseConfig); }
+        // Initialize Firebase
+        if (firebaseConfig) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        
         const auth = firebaseConfig ? firebase.auth() : null;
         const db = firebaseConfig ? firebase.firestore() : null;
 
@@ -76,6 +88,7 @@
             const [isEmailMenuOpen, setIsEmailMenuOpen] = React.useState(false);
             const [copyFeedback, setCopyFeedback] = React.useState(false);
 
+            // Auth logic
             React.useEffect(() => {
                 const initAuth = async () => {
                     if (!auth) return;
@@ -85,7 +98,9 @@
                         } else {
                             await auth.signInAnonymously();
                         }
-                    } catch (e) { console.warn("Firebase Auth bypassed:", e.message); }
+                    } catch (e) {
+                        console.warn("Firebase Auth bypassed or failed.");
+                    }
                 };
                 initAuth();
                 const unsubscribe = auth ? auth.onAuthStateChanged(setUser) : () => {};
@@ -93,12 +108,7 @@
             }, []);
 
             const copyEmail = () => {
-                const el = document.createElement('textarea');
-                el.value = 'Lydiaclarkhansen@gmail.com';
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                document.body.removeChild(el);
+                navigator.clipboard.writeText('Lydiaclarkhansen@gmail.com');
                 setCopyFeedback(true);
                 setTimeout(() => {
                     setCopyFeedback(false);
@@ -108,34 +118,41 @@
 
             const handleNewsletterSubmit = async (e) => {
                 e.preventDefault();
-                setNewsletterStatus({ loading: true, success: false, error: null });
                 if (!db || !user) {
-                    setTimeout(() => { setNewsletterStatus({ loading: false, success: true, error: null }); setEmail(""); }, 800);
+                    setNewsletterStatus({ loading: false, success: false, error: "Database not connected." });
                     return;
                 }
+                setNewsletterStatus({ loading: true, success: false, error: null });
                 try {
                     await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('subscribers').add({
-                        email: email, timestamp: firebase.firestore.FieldValue.serverTimestamp(), source: 'landing_page'
+                        email: email,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        source: 'landing_page'
                     });
                     setNewsletterStatus({ loading: false, success: true, error: null });
                     setEmail("");
-                } catch (err) { setNewsletterStatus({ loading: false, success: false, error: "Submission failed." }); }
+                } catch (err) {
+                    setNewsletterStatus({ loading: false, success: false, error: "Submission failed." });
+                }
             };
 
             const handleContactSubmit = async (e) => {
                 e.preventDefault();
-                setContactStatus({ loading: true, success: false, error: null });
                 if (!db || !user) {
-                    setTimeout(() => { setContactStatus({ loading: false, success: true, error: null }); setContactData({ name: "", email: "", niche: "Skincare", message: "" }); }, 800);
+                    setContactStatus({ loading: true, success: false, error: "Database not connected." });
                     return;
                 }
+                setContactStatus({ loading: true, success: false, error: null });
                 try {
                     await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('brand_inquiries').add({
-                        ...contactData, timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        ...contactData,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     });
                     setContactStatus({ loading: false, success: true, error: null });
                     setContactData({ name: "", email: "", niche: "Skincare", message: "" });
-                } catch (err) { setContactStatus({ loading: false, success: false, error: "Could not send." }); }
+                } catch (err) {
+                    setContactStatus({ loading: false, success: false, error: "Could not send." });
+                }
             };
 
             const affiliateLinks = [
@@ -168,12 +185,11 @@
                         <h1 className="text-2xl font-bold tracking-tight mb-2 uppercase text-[#1E1E1E]">Lydia Hansen</h1>
                         <p className="text-sm italic text-[#666] mb-8 font-serif">"Only recs that I'm OBSESSED with"</p>
                         
-                        <div className="flex justify-center gap-8 mb-4 relative">
+                        <div className="flex justify-center gap-8 mb-4">
                             <a href="https://www.tiktok.com/@lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-tiktok"></i></a>
                             <a href="https://www.instagram.com/lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-instagram"></i></a>
                             <a href="https://www.youtube.com/@LydiaClarkHansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-youtube"></i></a>
                             
-                            {/* Email Options Menu */}
                             <div className="relative">
                                 <button onClick={(e) => { e.stopPropagation(); setIsEmailMenuOpen(!isEmailMenuOpen); }} className={`transition-colors text-xl ${isEmailMenuOpen ? 'text-[#8DA399]' : 'text-[#1E1E1E] hover:text-[#8DA399]'}`}>
                                     <i className="fa-solid fa-envelope"></i>
@@ -188,7 +204,7 @@
                                             <i className="fa-solid fa-paper-plane text-blue-500"></i>
                                             <span className="text-xs font-semibold">Default Mail App</span>
                                         </a>
-                                        <button onClick={copyEmail} className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[#FAF5EF] transition-colors">
+                                        <button onClick={copyEmail} className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[#FAF5EF] transition-colors text-left">
                                             <i className={`fa-solid ${copyFeedback ? 'fa-check text-green-500' : 'fa-copy text-gray-400'}`}></i>
                                             <span className="text-xs font-semibold">{copyFeedback ? 'Copied!' : 'Copy Email'}</span>
                                         </button>
@@ -225,7 +241,7 @@
                             </div>
                         </section>
 
-                        {/* Newsweek Section */}
+                        {/* Press Section */}
                         <section className="mb-24">
                             <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">In the Press</h2>
                             <div className="max-w-xl mx-auto">
@@ -236,7 +252,7 @@
                             </div>
                         </section>
 
-                        {/* Community & Partnerships */}
+                        {/* Forms Grid */}
                         <div className="grid md:grid-cols-2 gap-8 items-stretch mb-24">
                             <div className="bg-[#8DA399] text-white p-12 rounded-[2rem] flex flex-col justify-center">
                                 <div className="mb-6 opacity-40 text-3xl"><i className="fa-solid fa-envelope"></i></div>
@@ -246,8 +262,9 @@
                                     <div className="flex items-center gap-3 py-4 text-white font-medium bg-white/10 rounded-xl justify-center border border-white/20"><i className="fa-solid fa-check-circle"></i> You're on the list</div>
                                 ) : (
                                     <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                                        <input type="email" placeholder="Your email address" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all text-sm" required />
+                                        <input type="email" placeholder="Your email address" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all text-sm font-sans" required />
                                         <button className="w-full py-4 bg-white text-[#8DA399] font-bold rounded-xl hover:bg-[#FDFBF7] transition-all text-sm shadow-sm disabled:opacity-50">{newsletterStatus.loading ? "Joining..." : "Subscribe"}</button>
+                                        {newsletterStatus.error && <p className="text-[10px] text-red-100 mt-2 text-center">{newsletterStatus.error}</p>}
                                     </form>
                                 )}
                             </div>
@@ -261,18 +278,19 @@
                                     </div>
                                 ) : (
                                     <form onSubmit={handleContactSubmit} className="space-y-4">
-                                        <div className="space-y-4">
+                                        <div className="space-y-4 font-sans">
                                             <input type="text" placeholder="Name" required value={contactData.name} onChange={(e) => setContactData({...contactData, name: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
                                             <input type="email" placeholder="Brand Email" required value={contactData.email} onChange={(e) => setContactData({...contactData, email: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
                                             <textarea placeholder="Tell me about your brand vision..." required rows="4" value={contactData.message} onChange={(e) => setContactData({...contactData, message: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm resize-none"></textarea>
                                         </div>
                                         <button className="w-full py-4 bg-[#1E1E1E] text-white font-bold rounded-xl hover:bg-black transition-all flex items-center justify-center gap-2 text-sm shadow-md disabled:opacity-50"><i className="fa-solid fa-paper-plane text-xs"></i> {contactStatus.loading ? "Sending..." : "Send Inquiry"}</button>
+                                        {contactStatus.error && <p className="text-[10px] text-red-500 mt-2 text-center">{contactStatus.error}</p>}
                                     </form>
                                 )}
                             </div>
                         </div>
 
-                        {/* Lifestyle Tips Section */}
+                        {/* Tips Section */}
                         <section className="mb-24">
                             <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-12 font-bold leading-relaxed">Tips for Maintaining a <br className="md:hidden" /> Minimalist Lifestyle</h2>
                             <div className="space-y-6 max-w-2xl mx-auto">
