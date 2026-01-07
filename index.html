@@ -59,17 +59,10 @@
          * FIREBASE CONFIGURATION
          */
         const localFirebaseConfig = null; 
-
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
-            : localFirebaseConfig;
-
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : localFirebaseConfig;
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'lydia-hansen-brand';
         
-        if (firebaseConfig) {
-            firebase.initializeApp(firebaseConfig);
-        }
-        
+        if (firebaseConfig) { firebase.initializeApp(firebaseConfig); }
         const auth = firebaseConfig ? firebase.auth() : null;
         const db = firebaseConfig ? firebase.firestore() : null;
 
@@ -79,6 +72,9 @@
             const [newsletterStatus, setNewsletterStatus] = React.useState({ loading: false, success: false, error: null });
             const [contactData, setContactData] = React.useState({ name: "", email: "", niche: "Skincare", message: "" });
             const [contactStatus, setContactStatus] = React.useState({ loading: false, success: false, error: null });
+            
+            const [isEmailMenuOpen, setIsEmailMenuOpen] = React.useState(false);
+            const [copyFeedback, setCopyFeedback] = React.useState(false);
 
             React.useEffect(() => {
                 const initAuth = async () => {
@@ -89,183 +85,131 @@
                         } else {
                             await auth.signInAnonymously();
                         }
-                    } catch (e) {
-                        console.warn("Firebase Auth bypassed or failed:", e.message);
-                    }
+                    } catch (e) { console.warn("Firebase Auth bypassed:", e.message); }
                 };
                 initAuth();
                 const unsubscribe = auth ? auth.onAuthStateChanged(setUser) : () => {};
                 return () => unsubscribe();
             }, []);
 
+            const copyEmail = () => {
+                const el = document.createElement('textarea');
+                el.value = 'Lydiaclarkhansen@gmail.com';
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                setCopyFeedback(true);
+                setTimeout(() => {
+                    setCopyFeedback(false);
+                    setIsEmailMenuOpen(false);
+                }, 2000);
+            };
+
             const handleNewsletterSubmit = async (e) => {
                 e.preventDefault();
                 setNewsletterStatus({ loading: true, success: false, error: null });
-
                 if (!db || !user) {
-                    setTimeout(() => {
-                        setNewsletterStatus({ loading: false, success: true, error: null });
-                        setEmail("");
-                    }, 800);
+                    setTimeout(() => { setNewsletterStatus({ loading: false, success: true, error: null }); setEmail(""); }, 800);
                     return;
                 }
-
                 try {
                     await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('subscribers').add({
-                        email: email,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                        source: 'landing_page'
+                        email: email, timestamp: firebase.firestore.FieldValue.serverTimestamp(), source: 'landing_page'
                     });
                     setNewsletterStatus({ loading: false, success: true, error: null });
                     setEmail("");
-                } catch (err) {
-                    setNewsletterStatus({ loading: false, success: false, error: "Submission failed." });
-                }
+                } catch (err) { setNewsletterStatus({ loading: false, success: false, error: "Submission failed." }); }
             };
 
             const handleContactSubmit = async (e) => {
                 e.preventDefault();
                 setContactStatus({ loading: true, success: false, error: null });
-
                 if (!db || !user) {
-                    setTimeout(() => {
-                        setContactStatus({ loading: false, success: true, error: null });
-                        setContactData({ name: "", email: "", niche: "Skincare", message: "" });
-                    }, 800);
+                    setTimeout(() => { setContactStatus({ loading: false, success: true, error: null }); setContactData({ name: "", email: "", niche: "Skincare", message: "" }); }, 800);
                     return;
                 }
-
                 try {
                     await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('brand_inquiries').add({
-                        ...contactData,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                        ...contactData, timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     });
                     setContactStatus({ loading: false, success: true, error: null });
                     setContactData({ name: "", email: "", niche: "Skincare", message: "" });
-                } catch (err) {
-                    setContactStatus({ loading: false, success: false, error: "Could not send." });
-                }
+                } catch (err) { setContactStatus({ loading: false, success: false, error: "Could not send." }); }
             };
 
             const affiliateLinks = [
-                { 
-                    title: "SHED 30% OFF WEIGHT LOSS", 
-                    url: "https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3", 
-                    label: "Special Offer",
-                    img: "shed.jpg",
-                    fit: "cover"
-                },
-                { 
-                    title: "LTK", 
-                    url: "https://www.shopltk.com/explore/LYDIA_HANSEN?utm_campaign=creator_shop_share_template_flow&utm_source=ioscreatorapp", 
-                    label: "My Style",
-                    img: "LTK.jpg",
-                    fit: "contain"
-                },
-                { 
-                    title: "AMAZON", 
-                    url: "https://www.amazon.com/shop/lydsskinbar/list/2OON894XK1184?linkCode=spc&tag=lydiaclark-20&domainId=influencer&asc_contentid=amzn1.ideas.2OON894XK1184&ccs_id=0b33d465-10fc-4956-9c35-98710ce2c636", 
-                    label: "Essentials",
-                    img: "Amazon.jpg",
-                    fit: "contain"
-                },
-                { 
-                    title: "FACE REALITY", 
-                    url: "https://www.lydsskinbar.com/shop/facereality/7", 
-                    label: "Beauty",
-                    img: "FaceReality.jpg",
-                    fit: "contain"
-                },
-                { 
-                    title: "LYDS SKIN BAR", 
-                    url: "https://www.lydsskinbar.com/", 
-                    label: "Official Website",
-                    img: "lsb.png",
-                    fit: "cover"
-                }
+                { title: "SHED 30% OFF WEIGHT LOSS", url: "https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3", label: "Special Offer", img: "shed.jpg", fit: "cover" },
+                { title: "LTK", url: "https://www.shopltk.com/explore/LYDIA_HANSEN?utm_campaign=creator_shop_share_template_flow&utm_source=ioscreatorapp", label: "My Style", img: "LTK.jpg", fit: "contain" },
+                { title: "AMAZON", url: "https://www.amazon.com/shop/lydsskinbar/list/2OON894XK1184?linkCode=spc&tag=lydiaclark-20&domainId=influencer&asc_contentid=amzn1.ideas.2OON894XK1184&ccs_id=0b33d465-10fc-4956-9c35-98710ce2c636", label: "Essentials", img: "Amazon.jpg", fit: "contain" },
+                { title: "FACE REALITY", url: "https://www.lydsskinbar.com/shop/facereality/7", label: "Beauty", img: "FaceReality.jpg", fit: "contain" },
+                { title: "LYDS SKIN BAR", url: "https://www.lydsskinbar.com/", label: "Official Website", img: "lsb.png", fit: "cover" }
             ];
 
             const lifestyleTips = [
-                {
-                    title: "Detach self-worth from items",
-                    description: "Minimalism starts when you stop tying identity to possessions. Letting go of physical clutter often means letting go of a ‘future’ or ‘ideal’ version of yourself that those items were propping up."
-                },
-                {
-                    title: "Use the ‘out of sight’ test",
-                    description: "Gather items you don’t use but feel hesitant to declutter. Put them in a box in the garage or storage for a month. If you forget what’s in there, that's your sign that you can live without it."
-                },
-                {
-                    title: "If it’s collecting dust, it’s not worth keeping",
-                    description: "Items you don’t use regularly shouldn’t take up space in your living area."
-                },
-                {
-                    title: "Ask: Would you buy this at full price today?",
-                    description: "If the answer is no, get rid of it."
-                },
-                {
-                    title: "Keep only ‘10/10 clothes’",
-                    description: "When I wear my clothes I ask, ‘Do I feel amazing in this?’ If it’s not something you’re excited to wear, it’s just taking up hanger space."
-                },
-                {
-                    title: "Delay purchases",
-                    description: "Keep a wish list. Let items sit in your cart for one to two months before buying. Most impulse wants disappear with time."
-                },
-                {
-                    title: "Follow the cost-per-use rule",
-                    description: "If something costs $100, it should get used at least 100 times to justify the purchase."
-                },
-                {
-                    title: "Don’t be extreme",
-                    description: "You don’t need to purge your life overnight. Ease into it. Find your balance. Start with the obvious ‘why do I even own this?’ items and declutter from there."
-                }
+                { title: "Detach self-worth from items", description: "Minimalism starts when you stop tying identity to possessions. Letting go of physical clutter often means letting go of a ‘future’ or ‘ideal’ version of yourself that those items were propping up." },
+                { title: "Use the ‘out of sight’ test", description: "Gather items you don’t use but feel hesitant to declutter. Put them in a box in the garage or storage for a month. If you forget what’s in there, that's your sign that you can live without it." },
+                { title: "If it’s collecting dust, it’s not worth keeping", description: "Items you don’t use regularly shouldn’t take up space in your living area." },
+                { title: "Ask: Would you buy this at full price today?", description: "If the answer is no, get rid of it." },
+                { title: "Keep only ‘10/10 clothes’", description: "When I wear my clothes I ask, ‘Do I feel amazing in this?’ If it’s not something you’re excited to wear, it’s just taking up hanger space." },
+                { title: "Delay purchases", description: "Keep a wish list. Let items sit in your cart for one to two months before buying. Most impulse wants disappear with time." },
+                { title: "Follow the cost-per-use rule", description: "If something costs $100, it should get used at least 100 times to justify the purchase." },
+                { title: "Don’t be extreme", description: "You don’t need to purge your life overnight. Ease into it. Find your balance. Start with the obvious ‘why do I even own this?’ items and declutter from there." }
             ];
 
             return (
-                <div className="min-h-screen bg-[#FAF5EF] text-[#1E1E1E] selection:bg-[#D6CDC6]">
+                <div className="min-h-screen bg-[#FAF5EF] text-[#1E1E1E] selection:bg-[#D6CDC6]" onClick={() => isEmailMenuOpen && setIsEmailMenuOpen(false)}>
                     
                     {/* Profile Header */}
                     <header className="pt-20 pb-12 px-6 text-center max-w-2xl mx-auto">
                         <div className="relative inline-block mb-6">
-                            <img 
-                                src="profile1.jpg" 
-                                alt="Lydia Hansen" 
-                                className="w-24 h-24 rounded-full border-2 border-white shadow-lg object-cover"
-                                onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Lydia+Hansen&background=D6CDC6&color=fff'; }}
-                            />
+                            <img src="profile1.jpg" alt="Lydia Hansen" className="w-24 h-24 rounded-full border-2 border-white shadow-lg object-cover" onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Lydia+Hansen&background=D6CDC6&color=fff'; }} />
                         </div>
                         <h1 className="text-2xl font-bold tracking-tight mb-2 uppercase text-[#1E1E1E]">Lydia Hansen</h1>
                         <p className="text-sm italic text-[#666] mb-8 font-serif">"Only recs that I'm OBSESSED with"</p>
                         
-                        <div className="flex justify-center gap-8 mb-4">
+                        <div className="flex justify-center gap-8 mb-4 relative">
                             <a href="https://www.tiktok.com/@lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-tiktok"></i></a>
                             <a href="https://www.instagram.com/lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-instagram"></i></a>
                             <a href="https://www.youtube.com/@LydiaClarkHansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-youtube"></i></a>
-                            <a href="mailto:Lydiaclarkhansen@gmail.com" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-solid fa-envelope"></i></a>
+                            
+                            {/* Email Options Menu */}
+                            <div className="relative">
+                                <button onClick={(e) => { e.stopPropagation(); setIsEmailMenuOpen(!isEmailMenuOpen); }} className={`transition-colors text-xl ${isEmailMenuOpen ? 'text-[#8DA399]' : 'text-[#1E1E1E] hover:text-[#8DA399]'}`}>
+                                    <i className="fa-solid fa-envelope"></i>
+                                </button>
+                                {isEmailMenuOpen && (
+                                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 bg-white border border-[#D6CDC6] rounded-2xl shadow-xl z-50 overflow-hidden text-left font-sans">
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Lydiaclarkhansen@gmail.com" target="_blank" className="flex items-center gap-3 px-4 py-3 hover:bg-[#FAF5EF] transition-colors border-b border-[#F0F0F0]">
+                                            <i className="fa-brands fa-google text-red-500"></i>
+                                            <span className="text-xs font-semibold">Gmail</span>
+                                        </a>
+                                        <a href="mailto:Lydiaclarkhansen@gmail.com" className="flex items-center gap-3 px-4 py-3 hover:bg-[#FAF5EF] transition-colors border-b border-[#F0F0F0]">
+                                            <i className="fa-solid fa-paper-plane text-blue-500"></i>
+                                            <span className="text-xs font-semibold">Default Mail App</span>
+                                        </a>
+                                        <button onClick={copyEmail} className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[#FAF5EF] transition-colors">
+                                            <i className={`fa-solid ${copyFeedback ? 'fa-check text-green-500' : 'fa-copy text-gray-400'}`}></i>
+                                            <span className="text-xs font-semibold">{copyFeedback ? 'Copied!' : 'Copy Email'}</span>
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+
                             <a href="https://www.lydsskinbar.com/" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-solid fa-globe"></i></a>
                         </div>
                     </header>
 
-                    {/* Main Content */}
                     <main className="max-w-4xl mx-auto px-6 pb-24">
-                        
                         {/* Curation Links */}
                         <section className="mb-24">
                             <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">Intentional Curation</h2>
                             <div className="grid gap-4 max-w-xl mx-auto">
                                 {affiliateLinks.map((link, i) => (
-                                    <a 
-                                        key={i}
-                                        href={link.url}
-                                        className="group flex items-center justify-between p-4 bg-white border border-[#D6CDC6] rounded-full hover:shadow-sm hover:translate-y-[-1px] transition-all relative overflow-hidden"
-                                    >
+                                    <a key={i} href={link.url} className="group flex items-center justify-between p-4 bg-white border border-[#D6CDC6] rounded-full hover:shadow-sm hover:translate-y-[-1px] transition-all relative overflow-hidden">
                                         <div className="flex items-center gap-4 px-2">
                                             <div className="w-10 h-10 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-[#FAF5EF]">
-                                                <img 
-                                                    src={link.img} 
-                                                    alt={link.title} 
-                                                    className={`w-full h-full ${link.fit === 'contain' ? 'object-contain p-1 mix-blend-multiply' : 'object-cover'}`}
-                                                    onError={(e) => { e.target.style.display = 'none'; }}
-                                                />
+                                                <img src={link.img} alt={link.title} className={`w-full h-full ${link.fit === 'contain' ? 'object-contain p-1 mix-blend-multiply' : 'object-cover'}`} onError={(e) => { e.target.style.display = 'none'; }} />
                                             </div>
                                             <div className="flex flex-col text-left">
                                                 <span className="text-[9px] uppercase tracking-widest text-[#8DA399] font-bold mb-0.5">{link.label}</span>
@@ -273,9 +217,7 @@
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-4 mr-6">
-                                            <div className="text-[#D6CDC6] group-hover:text-[#8DA399] group-hover:translate-x-1 transition-all">
-                                                <i className="fa-solid fa-arrow-right"></i>
-                                            </div>
+                                            <div className="text-[#D6CDC6] group-hover:text-[#8DA399] group-hover:translate-x-1 transition-all"><i className="fa-solid fa-arrow-right"></i></div>
                                             <i className="fa-solid fa-ellipsis-vertical text-[#D6CDC6] text-xs"></i>
                                         </div>
                                     </a>
@@ -283,92 +225,48 @@
                             </div>
                         </section>
 
-                        {/* Press Section */}
+                        {/* Newsweek Section */}
                         <section className="mb-24">
                             <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">In the Press</h2>
                             <div className="max-w-xl mx-auto">
-                                <a 
-                                    href="https://www.newsweek.com/shock-woman-minimalist-apartment-decluttering-11285640" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="group block p-10 bg-white border border-[#D6CDC6] rounded-[2.5rem] hover:shadow-md transition-all text-center relative overflow-hidden"
-                                >
-                                    <div className="text-[#1E1E1E] font-serif italic text-2xl md:text-3xl mb-4 leading-tight">
-                                        "Shock at Woman's Minimalist Apartment..."
-                                    </div>
-                                    <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#8DA399] font-bold">
-                                        Read the Feature in Newsweek <i className="fa-solid fa-external-link text-[10px]"></i>
-                                    </div>
+                                <a href="https://www.newsweek.com/shock-woman-minimalist-apartment-decluttering-11285640" target="_blank" rel="noopener noreferrer" className="group block p-10 bg-white border border-[#D6CDC6] rounded-[2.5rem] hover:shadow-md transition-all text-center relative overflow-hidden">
+                                    <div className="text-[#1E1E1E] font-serif italic text-2xl md:text-3xl mb-4 leading-tight">"Shock at Woman's Minimalist Apartment..."</div>
+                                    <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#8DA399] font-bold">Read the Feature in Newsweek <i className="fa-solid fa-external-link text-[10px]"></i></div>
                                 </a>
                             </div>
                         </section>
 
-                        {/* Community & Partnerships Grid */}
+                        {/* Community & Partnerships */}
                         <div className="grid md:grid-cols-2 gap-8 items-stretch mb-24">
-                            
-                            {/* Newsletter Section */}
                             <div className="bg-[#8DA399] text-white p-12 rounded-[2rem] flex flex-col justify-center">
-                                <div className="mb-6 opacity-40 text-3xl">
-                                    <i className="fa-solid fa-envelope"></i>
-                                </div>
+                                <div className="mb-6 opacity-40 text-3xl"><i className="fa-solid fa-envelope"></i></div>
                                 <h3 className="text-3xl font-light mb-4 leading-tight">Join the <br/>Community.</h3>
-                                <p className="text-sm opacity-80 mb-10 leading-relaxed font-light">
-                                    Weekly notes on intentional living, clean beauty discoveries, and finding quiet in the noise.
-                                </p>
-                                
+                                <p className="text-sm opacity-80 mb-10 leading-relaxed font-light">Weekly notes on intentional living, clean beauty discoveries, and finding quiet in the noise.</p>
                                 {newsletterStatus.success ? (
-                                    <div className="flex items-center gap-3 py-4 text-white font-medium bg-white/10 rounded-xl justify-center border border-white/20">
-                                        <i className="fa-solid fa-check-circle"></i> You're on the list
-                                    </div>
+                                    <div className="flex items-center gap-3 py-4 text-white font-medium bg-white/10 rounded-xl justify-center border border-white/20"><i className="fa-solid fa-check-circle"></i> You're on the list</div>
                                 ) : (
                                     <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                                        <input 
-                                            type="email" 
-                                            placeholder="Your email address"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            className="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all text-sm"
-                                            required
-                                        />
-                                        <button className="w-full py-4 bg-white text-[#8DA399] font-bold rounded-xl hover:bg-[#FDFBF7] transition-all text-sm shadow-sm disabled:opacity-50">
-                                            {newsletterStatus.loading ? "Joining..." : "Subscribe"}
-                                        </button>
+                                        <input type="email" placeholder="Your email address" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all text-sm" required />
+                                        <button className="w-full py-4 bg-white text-[#8DA399] font-bold rounded-xl hover:bg-[#FDFBF7] transition-all text-sm shadow-sm disabled:opacity-50">{newsletterStatus.loading ? "Joining..." : "Subscribe"}</button>
                                     </form>
                                 )}
                             </div>
 
-                            {/* Contact Section */}
                             <div className="bg-white border border-[#D6CDC6] p-12 rounded-[2rem] shadow-sm">
                                 <h3 className="text-2xl font-light mb-8">Partnerships</h3>
                                 {contactStatus.success ? (
                                     <div className="py-16 text-center">
-                                        <div className="w-12 h-12 bg-[#FDFBF7] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#D6CDC6]">
-                                            <i className="fa-solid fa-check-circle text-[#8DA399] text-xl"></i>
-                                        </div>
+                                        <div className="w-12 h-12 bg-[#FDFBF7] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#D6CDC6]"><i className="fa-solid fa-check-circle text-[#8DA399] text-xl"></i></div>
                                         <p className="text-sm text-[#666]">Inquiry received. Let's create something meaningful.</p>
                                     </div>
                                 ) : (
                                     <form onSubmit={handleContactSubmit} className="space-y-4">
                                         <div className="space-y-4">
-                                            <input 
-                                                type="text" placeholder="Name" required 
-                                                value={contactData.name} onChange={(e) => setContactData({...contactData, name: e.target.value})}
-                                                className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm"
-                                            />
-                                            <input 
-                                                type="email" placeholder="Brand Email" required 
-                                                value={contactData.email} onChange={(e) => setContactData({...contactData, email: e.target.value})}
-                                                className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm"
-                                            />
-                                            <textarea 
-                                                placeholder="Tell me about your brand vision..." required rows="4"
-                                                value={contactData.message} onChange={(e) => setContactData({...contactData, message: e.target.value})}
-                                                className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm resize-none"
-                                            ></textarea>
+                                            <input type="text" placeholder="Name" required value={contactData.name} onChange={(e) => setContactData({...contactData, name: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
+                                            <input type="email" placeholder="Brand Email" required value={contactData.email} onChange={(e) => setContactData({...contactData, email: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
+                                            <textarea placeholder="Tell me about your brand vision..." required rows="4" value={contactData.message} onChange={(e) => setContactData({...contactData, message: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm resize-none"></textarea>
                                         </div>
-                                        <button className="w-full py-4 bg-[#1E1E1E] text-white font-bold rounded-xl hover:bg-black transition-all flex items-center justify-center gap-2 text-sm shadow-md disabled:opacity-50">
-                                            <i className="fa-solid fa-paper-plane text-xs"></i> {contactStatus.loading ? "Sending..." : "Send Inquiry"}
-                                        </button>
+                                        <button className="w-full py-4 bg-[#1E1E1E] text-white font-bold rounded-xl hover:bg-black transition-all flex items-center justify-center gap-2 text-sm shadow-md disabled:opacity-50"><i className="fa-solid fa-paper-plane text-xs"></i> {contactStatus.loading ? "Sending..." : "Send Inquiry"}</button>
                                     </form>
                                 )}
                             </div>
@@ -376,21 +274,16 @@
 
                         {/* Lifestyle Tips Section */}
                         <section className="mb-24">
-                            <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-12 font-bold leading-relaxed">
-                                Tips for Maintaining a <br className="md:hidden" /> Minimalist Lifestyle
-                            </h2>
+                            <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-12 font-bold leading-relaxed">Tips for Maintaining a <br className="md:hidden" /> Minimalist Lifestyle</h2>
                             <div className="space-y-6 max-w-2xl mx-auto">
                                 {lifestyleTips.map((tip, i) => (
                                     <div key={i} className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-[#D6CDC6] shadow-sm hover:shadow-md transition-shadow">
                                         <h3 className="text-lg font-bold mb-4 tracking-tight">{tip.title}</h3>
-                                        <p className="text-sm md:text-base leading-relaxed text-[#666] font-serif italic">
-                                            {tip.description}
-                                        </p>
+                                        <p className="text-sm md:text-base leading-relaxed text-[#666] font-serif italic">{tip.description}</p>
                                     </div>
                                 ))}
                             </div>
                         </section>
-
                     </main>
 
                     <footer className="py-16 text-center border-t border-[#D6CDC6]">
