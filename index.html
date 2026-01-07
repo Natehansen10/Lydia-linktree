@@ -3,212 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lydia Hansen</title>
+    
+    <!-- SEO & Social Sharing -->
     <meta property="og:title" content="Lydia Hansen | Intentional Living">
     <meta property="og:description" content="Essentials for skincare, style, and intentional living">
     <meta property="og:image" content="https://lydiaclarkhansen.com/profile.jpg">
     <meta property="og:url" content="https://lydiaclarkhansen.com">
     <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Styles & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <title>Lydia Hansen</title>
+    <!-- React, ReactDOM, and Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore-compat.js"></script>
+
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LP9L9WTTMS"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-LP9L9WTTMS');
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* THE VISUAL STYLE */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap');
+        
         body {
+            font-family: 'Inter', sans-serif;
             background-color: #FAF5EF;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: #1e1e1e;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-
-        /* Profile Section */
-        .profile-container {
-            text-align: center;
-            margin-bottom: 30px;
+        .font-serif {
+            font-family: 'Playfair Display', serif;
         }
-        
-        .profile-pic {
-            /* SIZE: Displayed as 96px, but loads high-res for 4K sharpness */
-            width: 96px;
-            height: 96px;
-            
-            /* SHAPE & CROP */
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: 20% 50%;
-
-            /* CENTERING */
-            display: block; 
-            margin: 0 auto 16px auto;
-            
-            
-            /* POLISH */
-            border: 2px solid #ffffff; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        .mix-blend-multiply {
+            mix-blend-mode: multiply;
         }
-
-        .handle {
-            font-weight: 700;
-            font-size: 20px;
-            margin: 0;
-            margin-bottom: 8px;
-        }
-
-        .bio {
-            font-size: 14px;
-            margin: 0;
-            color: #1e1e1e;
-        }
-
-        /* Social Icons Row */
-        .social-icons {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-            margin-bottom: 35px;
-            justify-content: center;
-        }
-
-        .social-icons a {
-            color: #1e1e1e;
-            font-size: 24px;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-        .social-icons a:hover {
-            transform: scale(1.1);
-        }
-
-        /* Links / Buttons */
-        .links-container {
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .link-card {
-            background-color: #FDFBF7; 
-            border: 1px solid #D6CDC6; 
-            border-radius: 40px; 
-            
-            /* PADDING: Extra space on left (60px) for the thumbnail */
-            padding: 16px 20px 16px 60px; 
-            
-            text-decoration: none;
-            color: #1e1e1e;
-            font-weight: 600;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .link-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        /* --- Thumbnail Image Styling --- */
-        .thumbnail {
-            width: 40px;
-            height: 40px;
-            border-radius: 4px; 
-            object-fit: cover; /* Default: Fills the square, good for photos */
-            position: absolute;
-            left: 10px;
-        }
-
-        /* --- NEW CLASS FOR LOGOS --- */
-        /* Add the class 'squeeze' to logo images so they fit inside the box */
-        .thumbnail.squeeze {
-             object-fit: contain; /* Ensures the whole logo is visible */
-             background-color: white; /* Optional: helps transparent logos pop */
-             padding: 2px; /* Optional: Tiny bit of breathing room */
-        }
-        
-        /* The three dots on the right (decorative) */
-        .dots {
-            position: absolute;
-            right: 20px;
-            color: #999;
-            font-size: 12px;
-        }
-        /* --- NEW CLASS FOR LOGOS --- */
-        /* Add the class 'squeeze' to logo images so they fit inside the box */
-        .thumbnail.squeeze {
-             object-fit: contain; /* Ensures the whole logo is visible */
-             
-             /* THE MAGIC TRICK for JPEGs: 
-                This makes white backgrounds turn transparent against 
-                the cream button color. */
-             mix-blend-mode: multiply; 
-        }
-
     </style>
 </head>
 <body>
+    <div id="root"></div>
 
-    <div class="profile-container">
-        <img src="profile.jpg" alt="Lydia Hansen" class="profile-pic"> 
+    <script type="text/babel">
+        /**
+         * FIREBASE CONFIGURATION
+         */
+        const localFirebaseConfig = null; 
+
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : localFirebaseConfig;
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'lydia-hansen-brand';
         
-        <h1 class="handle">@LydiaHansen</h1>
-        <p class="bio">Only recs that im OBSESSED with</p>
-
-        <div class="social-icons">
-            <a href="https://www.tiktok.com/@lydiaclarkhansen"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://www.instagram.com/lydiaclarkhansen"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.youtube.com/@LydiaClarkHansen"><i class="fa-brands fa-youtube"></i></a>
-            <a href="mailto:Lydiaclarkhansen@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://www.lydsskinbar.com/"><i class="fa-solid fa-globe"></i></a>
-        </div>
-    </div>
-
-    <div class="links-container">
+        if (firebaseConfig) {
+            firebase.initializeApp(firebaseConfig);
+        }
         
-        <a href="https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3" class="link-card">
-            <img src="shed.jpg" class="thumbnail" alt="Shed">
-            SHED 30% OFF WEIGHT LOSS
-            <span class="dots"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-        </a>
+        const auth = firebaseConfig ? firebase.auth() : null;
+        const db = firebaseConfig ? firebase.firestore() : null;
 
-        <a href="https://www.shopltk.com/explore/LYDIA_HANSEN?utm_campaign=creator_shop_share_template_flow&utm_source=ioscreatorapp" class="link-card">
-            <img src="LTK.jpg" class="thumbnail squeeze" alt="LTK">
-            LTK
-            <span class="dots"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-        </a>
+        function App() {
+            const [user, setUser] = React.useState(null);
+            const [email, setEmail] = React.useState("");
+            const [newsletterStatus, setNewsletterStatus] = React.useState({ loading: false, success: false, error: null });
+            const [contactData, setContactData] = React.useState({ name: "", email: "", niche: "Skincare", message: "" });
+            const [contactStatus, setContactStatus] = React.useState({ loading: false, success: false, error: null });
 
-        <a href="https://www.amazon.com/shop/lydsskinbar/list/2OON894XK1184?linkCode=spc&tag=lydiaclark-20&domainId=influencer&asc_contentid=amzn1.ideas.2OON894XK1184&ccs_id=0b33d465-10fc-4956-9c35-98710ce2c636" class="link-card">
-            <img src="Amazon.jpg" class="thumbnail squeeze" alt="Amazon">
-            Amazon
-            <span class="dots"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-        </a>
+            React.useEffect(() => {
+                const initAuth = async () => {
+                    if (!auth) return;
+                    try {
+                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                            await auth.signInWithCustomToken(__initial_auth_token);
+                        } else {
+                            await auth.signInAnonymously();
+                        }
+                    } catch (e) {
+                        console.warn("Firebase Auth bypassed or failed:", e.message);
+                    }
+                };
+                initAuth();
+                const unsubscribe = auth ? auth.onAuthStateChanged(setUser) : () => {};
+                return () => unsubscribe();
+            }, []);
 
-        <a href="https://www.lydsskinbar.com/shop/facereality/7" class="link-card">
-            <img src="FaceReality.jpg" class="thumbnail squeeze" alt="Face Reality">
-            Face Reality
-            <span class="dots"><i class="fa-solid fa-ellipsis-vertical"></i></span>
-        </a>
+            const handleNewsletterSubmit = async (e) => {
+                e.preventDefault();
+                setNewsletterStatus({ loading: true, success: false, error: null });
 
-    </div>
+                if (!db || !user) {
+                    setTimeout(() => {
+                        setNewsletterStatus({ loading: false, success: true, error: null });
+                        setEmail("");
+                    }, 800);
+                    return;
+                }
 
+                try {
+                    await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('subscribers').add({
+                        email: email,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        source: 'landing_page'
+                    });
+                    setNewsletterStatus({ loading: false, success: true, error: null });
+                    setEmail("");
+                } catch (err) {
+                    setNewsletterStatus({ loading: false, success: false, error: "Submission failed." });
+                }
+            };
+
+            const handleContactSubmit = async (e) => {
+                e.preventDefault();
+                setContactStatus({ loading: true, success: false, error: null });
+
+                if (!db || !user) {
+                    setTimeout(() => {
+                        setContactStatus({ loading: false, success: true, error: null });
+                        setContactData({ name: "", email: "", niche: "Skincare", message: "" });
+                    }, 800);
+                    return;
+                }
+
+                try {
+                    await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('brand_inquiries').add({
+                        ...contactData,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    setContactStatus({ loading: false, success: true, error: null });
+                    setContactData({ name: "", email: "", niche: "Skincare", message: "" });
+                } catch (err) {
+                    setContactStatus({ loading: false, success: false, error: "Could not send." });
+                }
+            };
+
+            const affiliateLinks = [
+                { 
+                    title: "SHED 30% OFF WEIGHT LOSS", 
+                    url: "https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3", 
+                    label: "Special Offer",
+                    img: "shed.jpg",
+                    fit: "cover"
+                },
+                { 
+                    title: "LTK", 
+                    url: "https://www.shopltk.com/explore/LYDIA_HANSEN?utm_campaign=creator_shop_share_template_flow&utm_source=ioscreatorapp", 
+                    label: "My Style",
+                    img: "LTK.jpg",
+                    fit: "contain"
+                },
+                { 
+                    title: "AMAZON", 
+                    url: "https://www.amazon.com/shop/lydsskinbar/list/2OON894XK1184?linkCode=spc&tag=lydiaclark-20&domainId=influencer&asc_contentid=amzn1.ideas.2OON894XK1184&ccs_id=0b33d465-10fc-4956-9c35-98710ce2c636", 
+                    label: "Essentials",
+                    img: "Amazon.jpg",
+                    fit: "contain"
+                },
+                { 
+                    title: "FACE REALITY", 
+                    url: "https://www.lydsskinbar.com/shop/facereality/7", 
+                    label: "Beauty",
+                    img: "FaceReality.jpg",
+                    fit: "contain"
+                },
+                { 
+                    title: "LYDS SKIN BAR", 
+                    url: "https://www.lydsskinbar.com/", 
+                    label: "Official Website",
+                    img: "lsb.png",
+                    fit: "cover"
+                }
+            ];
+
+            const lifestyleTips = [
+                {
+                    title: "Detach self-worth from items",
+                    description: "Minimalism starts when you stop tying identity to possessions. Letting go of physical clutter often means letting go of a ‘future’ or ‘ideal’ version of yourself that those items were propping up."
+                },
+                {
+                    title: "Use the ‘out of sight’ test",
+                    description: "Gather items you don’t use but feel hesitant to declutter. Put them in a box in the garage or storage for a month. If you forget what’s in there, that's your sign that you can live without it."
+                },
+                {
+                    title: "If it’s collecting dust, it’s not worth keeping",
+                    description: "Items you don’t use regularly shouldn’t take up space in your living area."
+                },
+                {
+                    title: "Ask: Would you buy this at full price today?",
+                    description: "If the answer is no, get rid of it."
+                },
+                {
+                    title: "Keep only ‘10/10 clothes’",
+                    description: "When I wear my clothes I ask, ‘Do I feel amazing in this?’ If it’s not something you’re excited to wear, it’s just taking up hanger space."
+                },
+                {
+                    title: "Delay purchases",
+                    description: "Keep a wish list. Let items sit in your cart for one to two months before buying. Most impulse wants disappear with time."
+                },
+                {
+                    title: "Follow the cost-per-use rule",
+                    description: "If something costs $100, it should get used at least 100 times to justify the purchase."
+                },
+                {
+                    title: "Don’t be extreme",
+                    description: "You don’t need to purge your life overnight. Ease into it. Find your balance. Start with the obvious ‘why do I even own this?’ items and declutter from there."
+                }
+            ];
+
+            return (
+                <div className="min-h-screen bg-[#FAF5EF] text-[#1E1E1E] selection:bg-[#D6CDC6]">
+                    
+                    {/* Profile Header */}
+                    <header className="pt-20 pb-12 px-6 text-center max-w-2xl mx-auto">
+                        <div className="relative inline-block mb-6">
+                            <img 
+                                src="profile1.jpg" 
+                                alt="Lydia Hansen" 
+                                className="w-24 h-24 rounded-full border-2 border-white shadow-lg object-cover"
+                                onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Lydia+Hansen&background=D6CDC6&color=fff'; }}
+                            />
+                        </div>
+                        <h1 className="text-2xl font-bold tracking-tight mb-2 uppercase text-[#1E1E1E]">Lydia Hansen</h1>
+                        <p className="text-sm italic text-[#666] mb-8 font-serif">"Only recs that I'm OBSESSED with"</p>
+                        
+                        <div className="flex justify-center gap-8 mb-4">
+                            <a href="https://www.tiktok.com/@lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-tiktok"></i></a>
+                            <a href="https://www.instagram.com/lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@LydiaClarkHansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-youtube"></i></a>
+                            <a href="mailto:Lydiaclarkhansen@gmail.com" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-solid fa-envelope"></i></a>
+                            <a href="https://www.lydsskinbar.com/" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-solid fa-globe"></i></a>
+                        </div>
+                    </header>
+
+                    {/* Main Content */}
+                    <main className="max-w-4xl mx-auto px-6 pb-24">
+                        
+                        {/* Curation Links */}
+                        <section className="mb-24">
+                            <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">Intentional Curation</h2>
+                            <div className="grid gap-4 max-w-xl mx-auto">
+                                {affiliateLinks.map((link, i) => (
+                                    <a 
+                                        key={i}
+                                        href={link.url}
+                                        className="group flex items-center justify-between p-4 bg-white border border-[#D6CDC6] rounded-full hover:shadow-sm hover:translate-y-[-1px] transition-all relative overflow-hidden"
+                                    >
+                                        <div className="flex items-center gap-4 px-2">
+                                            <div className="w-10 h-10 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-[#FAF5EF]">
+                                                <img 
+                                                    src={link.img} 
+                                                    alt={link.title} 
+                                                    className={`w-full h-full ${link.fit === 'contain' ? 'object-contain p-1 mix-blend-multiply' : 'object-cover'}`}
+                                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                                />
+                                            </div>
+                                            <div className="flex flex-col text-left">
+                                                <span className="text-[9px] uppercase tracking-widest text-[#8DA399] font-bold mb-0.5">{link.label}</span>
+                                                <span className="text-sm font-semibold tracking-tight">{link.title}</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-4 mr-6">
+                                            <div className="text-[#D6CDC6] group-hover:text-[#8DA399] group-hover:translate-x-1 transition-all">
+                                                <i className="fa-solid fa-arrow-right"></i>
+                                            </div>
+                                            <i className="fa-solid fa-ellipsis-vertical text-[#D6CDC6] text-xs"></i>
+                                        </div>
+                                    </a>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* Press Section */}
+                        <section className="mb-24">
+                            <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">In the Press</h2>
+                            <div className="max-w-xl mx-auto">
+                                <a 
+                                    href="https://www.newsweek.com/shock-woman-minimalist-apartment-decluttering-11285640" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="group block p-10 bg-white border border-[#D6CDC6] rounded-[2.5rem] hover:shadow-md transition-all text-center relative overflow-hidden"
+                                >
+                                    <div className="text-[#1E1E1E] font-serif italic text-2xl md:text-3xl mb-4 leading-tight">
+                                        "Shock at Woman's Minimalist Apartment..."
+                                    </div>
+                                    <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#8DA399] font-bold">
+                                        Read the Feature in Newsweek <i className="fa-solid fa-external-link text-[10px]"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </section>
+
+                        {/* Community & Partnerships Grid */}
+                        <div className="grid md:grid-cols-2 gap-8 items-stretch mb-24">
+                            
+                            {/* Newsletter Section */}
+                            <div className="bg-[#8DA399] text-white p-12 rounded-[2rem] flex flex-col justify-center">
+                                <div className="mb-6 opacity-40 text-3xl">
+                                    <i className="fa-solid fa-envelope"></i>
+                                </div>
+                                <h3 className="text-3xl font-light mb-4 leading-tight">Join the <br/>Community.</h3>
+                                <p className="text-sm opacity-80 mb-10 leading-relaxed font-light">
+                                    Weekly notes on intentional living, clean beauty discoveries, and finding quiet in the noise.
+                                </p>
+                                
+                                {newsletterStatus.success ? (
+                                    <div className="flex items-center gap-3 py-4 text-white font-medium bg-white/10 rounded-xl justify-center border border-white/20">
+                                        <i className="fa-solid fa-check-circle"></i> You're on the list
+                                    </div>
+                                ) : (
+                                    <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+                                        <input 
+                                            type="email" 
+                                            placeholder="Your email address"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            className="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all text-sm"
+                                            required
+                                        />
+                                        <button className="w-full py-4 bg-white text-[#8DA399] font-bold rounded-xl hover:bg-[#FDFBF7] transition-all text-sm shadow-sm disabled:opacity-50">
+                                            {newsletterStatus.loading ? "Joining..." : "Subscribe"}
+                                        </button>
+                                    </form>
+                                )}
+                            </div>
+
+                            {/* Contact Section */}
+                            <div className="bg-white border border-[#D6CDC6] p-12 rounded-[2rem] shadow-sm">
+                                <h3 className="text-2xl font-light mb-8">Partnerships</h3>
+                                {contactStatus.success ? (
+                                    <div className="py-16 text-center">
+                                        <div className="w-12 h-12 bg-[#FDFBF7] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#D6CDC6]">
+                                            <i className="fa-solid fa-check-circle text-[#8DA399] text-xl"></i>
+                                        </div>
+                                        <p className="text-sm text-[#666]">Inquiry received. Let's create something meaningful.</p>
+                                    </div>
+                                ) : (
+                                    <form onSubmit={handleContactSubmit} className="space-y-4">
+                                        <div className="space-y-4">
+                                            <input 
+                                                type="text" placeholder="Name" required 
+                                                value={contactData.name} onChange={(e) => setContactData({...contactData, name: e.target.value})}
+                                                className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm"
+                                            />
+                                            <input 
+                                                type="email" placeholder="Brand Email" required 
+                                                value={contactData.email} onChange={(e) => setContactData({...contactData, email: e.target.value})}
+                                                className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm"
+                                            />
+                                            <textarea 
+                                                placeholder="Tell me about your brand vision..." required rows="4"
+                                                value={contactData.message} onChange={(e) => setContactData({...contactData, message: e.target.value})}
+                                                className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm resize-none"
+                                            ></textarea>
+                                        </div>
+                                        <button className="w-full py-4 bg-[#1E1E1E] text-white font-bold rounded-xl hover:bg-black transition-all flex items-center justify-center gap-2 text-sm shadow-md disabled:opacity-50">
+                                            <i className="fa-solid fa-paper-plane text-xs"></i> {contactStatus.loading ? "Sending..." : "Send Inquiry"}
+                                        </button>
+                                    </form>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Lifestyle Tips Section */}
+                        <section className="mb-24">
+                            <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-12 font-bold leading-relaxed">
+                                Tips for Maintaining a <br className="md:hidden" /> Minimalist Lifestyle
+                            </h2>
+                            <div className="space-y-6 max-w-2xl mx-auto">
+                                {lifestyleTips.map((tip, i) => (
+                                    <div key={i} className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-[#D6CDC6] shadow-sm hover:shadow-md transition-shadow">
+                                        <h3 className="text-lg font-bold mb-4 tracking-tight">{tip.title}</h3>
+                                        <p className="text-sm md:text-base leading-relaxed text-[#666] font-serif italic">
+                                            {tip.description}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                    </main>
+
+                    <footer className="py-16 text-center border-t border-[#D6CDC6]">
+                        <p className="text-[9px] uppercase tracking-[0.5em] text-[#999]">© 2026 LYDIA HANSEN. FIND PEACE IN THE SIMPLE.</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
