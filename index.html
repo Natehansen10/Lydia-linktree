@@ -178,11 +178,11 @@
             };
 
             const affiliateLinks = [
-                { title: "SHED 30% OFF WEIGHT LOSS", url: "https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3", label: "Special Offer", img: "shed.jpg", fit: "cover" },
-                { title: "LTK", url: "https://www.shopltk.com/explore/LYDIA_HANSEN?utm_campaign=creator_shop_share_template_flow&utm_source=ioscreatorapp", label: "My Style", img: "LTK.jpg", fit: "contain" },
-                { title: "AMAZON", url: "https://www.amazon.com/shop/lydsskinbar/list/2OON894XK1184?linkCode=spc&tag=lydiaclark-20&domainId=influencer&asc_contentid=amzn1.ideas.2OON894XK1184&ccs_id=0b33d465-10fc-4956-9c35-98710ce2c636", label: "Essentials", img: "Amazon.jpg", fit: "contain" },
-                { title: "FACE REALITY SKINCARE", url: "https://www.lydsskinbar.com/shop/facereality/7", label: "Beauty", img: "FaceReality.jpg", fit: "contain" },
-                { title: "LYDS SKIN BAR", url: "https://www.lydsskinbar.com/", label: "Official Website", img: "lsb.png", fit: "cover" }
+                { name: "Shed_Offer", title: "SHED 30% OFF WEIGHT LOSS", url: "https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3", label: "Special Offer", img: "shed.jpg", fit: "cover" },
+                { name: "LTK_Shop", title: "LTK", url: "https://www.shopltk.com/explore/LYDIA_HANSEN?utm_campaign=creator_shop_share_template_flow&utm_source=ioscreatorapp", label: "My Style", img: "LTK.jpg", fit: "contain" },
+                { name: "Amazon_Storefront", title: "AMAZON", url: "https://www.amazon.com/shop/lydsskinbar/list/2OON894XK1184?linkCode=spc&tag=lydiaclark-20&domainId=influencer&asc_contentid=amzn1.ideas.2OON894XK1184&ccs_id=0b33d465-10fc-4956-9c35-98710ce2c636", label: "Essentials", img: "Amazon.jpg", fit: "contain" },
+                { name: "Face_Reality", title: "FACE REALITY", url: "https://www.lydsskinbar.com/shop/facereality/7", label: "Beauty", img: "FaceReality.jpg", fit: "contain" },
+                { name: "Lyds_Skin_Bar", title: "LYDS SKIN BAR", url: "https://www.lydsskinbar.com/", label: "Official Website", img: "lsb.png", fit: "cover" }
             ];
 
             const lifestyleTips = [
@@ -244,10 +244,29 @@
                             <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">Intentional Curation</h2>
                             <div className="grid gap-4 max-w-xl mx-auto">
                                 {affiliateLinks.map((link, i) => (
-                                    <a key={i} href={link.url} className="group flex items-center justify-between p-4 bg-white border border-[#D6CDC6] rounded-full hover:shadow-sm hover:translate-y-[-1px] transition-all relative overflow-hidden">
+                                    <a 
+                                        key={i} 
+                                        href={link.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => {
+                                            if (typeof gtag !== 'undefined') {
+                                                gtag('event', 'click_affiliate_link', {
+                                                    'link_name': link.name,
+                                                    'link_url': link.url
+                                                });
+                                            }
+                                        }}
+                                        className="group flex items-center justify-between p-4 bg-white border border-[#D6CDC6] rounded-full hover:shadow-sm hover:translate-y-[-1px] transition-all relative overflow-hidden"
+                                    >
                                         <div className="flex items-center gap-4 px-2">
                                             <div className="w-10 h-10 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-[#FAF5EF]">
-                                                <img src={link.img} alt={link.title} className={`w-full h-full ${link.fit === 'contain' ? 'object-contain p-1 mix-blend-multiply' : 'object-cover'}`} onError={(e) => { e.target.style.display = 'none'; }} />
+                                                <img 
+                                                    src={link.img} 
+                                                    alt={link.title} 
+                                                    className={`w-full h-full ${link.fit === 'contain' ? 'object-contain p-1 mix-blend-multiply' : 'object-cover'}`} 
+                                                    onError={(e) => { e.target.style.display = 'none'; }} 
+                                                />
                                             </div>
                                             <div className="flex flex-col text-left">
                                                 <span className="text-[9px] uppercase tracking-widest text-[#8DA399] font-bold mb-0.5">{link.label}</span>
@@ -255,7 +274,9 @@
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-4 mr-6">
-                                            <div className="text-[#D6CDC6] group-hover:text-[#8DA399] group-hover:translate-x-1 transition-all"><i className="fa-solid fa-arrow-right"></i></div>
+                                            <div className="text-[#D6CDC6] group-hover:text-[#8DA399] group-hover:translate-x-1 transition-all">
+                                                <i className="fa-solid fa-arrow-right"></i>
+                                            </div>
                                             <i className="fa-solid fa-ellipsis-vertical text-[#D6CDC6] text-xs"></i>
                                         </div>
                                     </a>
