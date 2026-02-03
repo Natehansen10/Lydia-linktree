@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lydia Hansen</title>
-    
+
     <meta property="og:title" content="Lydia Hansen | Intentional Living">
     <meta property="og:description" content="Essentials for skincare, style, and intentional living">
     <meta property="og:image" content="https://lydiaclarkhansen.com/profile.jpg">
@@ -18,34 +19,37 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
+
     <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore-compat.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LP9L9WTTMS"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LP9L9WTTMS');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-LP9L9WTTMS');
     </script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap');
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #FAF5EF;
         }
+
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
+
         .mix-blend-multiply {
             mix-blend-mode: multiply;
         }
     </style>
 </head>
+
 <body>
     <div id="root"></div>
 
@@ -64,17 +68,17 @@
             measurementId: "G-T12VE0W604"
         };
 
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
+        const firebaseConfig = typeof __firebase_config !== 'undefined'
+            ? JSON.parse(__firebase_config)
             : localFirebaseConfig;
 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'lydia-hansen-brand';
-        
+
         // Initialize Firebase
         if (firebaseConfig) {
             firebase.initializeApp(firebaseConfig);
         }
-        
+
         const auth = firebaseConfig ? firebase.auth() : null;
         const db = firebaseConfig ? firebase.firestore() : null;
 
@@ -84,7 +88,7 @@
             const [newsletterStatus, setNewsletterStatus] = React.useState({ loading: false, success: false, error: null });
             const [contactData, setContactData] = React.useState({ name: "", email: "", niche: "Skincare", message: "" });
             const [contactStatus, setContactStatus] = React.useState({ loading: false, success: false, error: null });
-            
+
             const [isEmailMenuOpen, setIsEmailMenuOpen] = React.useState(false);
             const [copyFeedback, setCopyFeedback] = React.useState(false);
 
@@ -103,7 +107,7 @@
                     }
                 };
                 initAuth();
-                const unsubscribe = auth ? auth.onAuthStateChanged(setUser) : () => {};
+                const unsubscribe = auth ? auth.onAuthStateChanged(setUser) : () => { };
                 return () => unsubscribe();
             }, []);
 
@@ -122,29 +126,16 @@
                     setNewsletterStatus({ loading: false, success: false, error: "Database not connected." });
                     return;
                 }
-                
+
                 setNewsletterStatus({ loading: true, success: false, error: null });
 
                 try {
                     const subsRef = db.collection('artifacts').doc(appId).collection('public').doc('data').collection('subscribers');
-                    
-                    // 1. Check if the email already exists in the collection
-                    const snapshot = await subsRef.where("email", "==", email).get();
 
-                    if (!snapshot.empty) {
-                        // 2. If it exists, stop and tell the user they are already subscribed
-                        setNewsletterStatus({ 
-                            loading: false, 
-                            success: true, 
-                            error: null 
-                        });
-                        // We set success to true so the UI still shows "You're on the list"
-                        setEmail("");
-                        return;
-                    }
-
-                    // 3. If it doesn't exist, add it as a new entry
-                    await subsRef.add({
+                    // SECURE UPDATE: Use .doc(email).set() instead of .add()
+                    // This automatically handles duplicates. If the email exists, it just updates the timestamp.
+                    // This allows us to disable "Read" permissions in the database rules for maximum security.
+                    await subsRef.doc(email).set({
                         email: email,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                         source: 'landing_page'
@@ -153,7 +144,7 @@
                     setNewsletterStatus({ loading: false, success: true, error: null });
                     setEmail("");
                 } catch (err) {
-                    console.error("Query error:", err);
+                    console.error("Submission Error:", err);
                     setNewsletterStatus({ loading: false, success: false, error: "Submission failed." });
                 }
             };
@@ -173,6 +164,7 @@
                     setContactStatus({ loading: false, success: true, error: null });
                     setContactData({ name: "", email: "", niche: "Skincare", message: "" });
                 } catch (err) {
+                    console.error("Contact Error:", err);
                     setContactStatus({ loading: false, success: false, error: "Could not send." });
                 }
             };
@@ -198,7 +190,7 @@
 
             return (
                 <div className="min-h-screen bg-[#FAF5EF] text-[#1E1E1E] selection:bg-[#D6CDC6]" onClick={() => isEmailMenuOpen && setIsEmailMenuOpen(false)}>
-                    
+
                     {/* Profile Header */}
                     <header className="pt-20 pb-12 px-6 text-center max-w-2xl mx-auto">
                         <div className="relative inline-block mb-6">
@@ -206,12 +198,12 @@
                         </div>
                         <h1 className="text-2xl font-bold tracking-tight mb-2 uppercase text-[#1E1E1E]">Lydia Hansen</h1>
                         <p className="text-sm italic text-[#666] mb-8 font-serif">"Only recs that I'm OBSESSED with"</p>
-                        
+
                         <div className="flex justify-center gap-8 mb-4">
                             <a href="https://www.tiktok.com/@lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-tiktok"></i></a>
                             <a href="https://www.instagram.com/lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-instagram"></i></a>
                             <a href="https://www.youtube.com/@LydiaClarkHansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-youtube"></i></a>
-                            
+
                             <div className="relative">
                                 <button onClick={(e) => { e.stopPropagation(); setIsEmailMenuOpen(!isEmailMenuOpen); }} className={`transition-colors text-xl ${isEmailMenuOpen ? 'text-[#8DA399]' : 'text-[#1E1E1E] hover:text-[#8DA399]'}`}>
                                     <i className="fa-solid fa-envelope"></i>
@@ -244,8 +236,8 @@
                             <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">Intentional Curation</h2>
                             <div className="grid gap-4 max-w-xl mx-auto">
                                 {affiliateLinks.map((link, i) => (
-                                    <a 
-                                        key={i} 
+                                    <a
+                                        key={i}
                                         href={link.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -261,11 +253,11 @@
                                     >
                                         <div className="flex items-center gap-4 px-2">
                                             <div className="w-10 h-10 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-[#FAF5EF]">
-                                                <img 
-                                                    src={link.img} 
-                                                    alt={link.title} 
-                                                    className={`w-full h-full ${link.fit === 'contain' ? 'object-contain p-1 mix-blend-multiply' : 'object-cover'}`} 
-                                                    onError={(e) => { e.target.style.display = 'none'; }} 
+                                                <img
+                                                    src={link.img}
+                                                    alt={link.title}
+                                                    className={`w-full h-full ${link.fit === 'contain' ? 'object-contain p-1 mix-blend-multiply' : 'object-cover'}`}
+                                                    onError={(e) => { e.target.style.display = 'none'; }}
                                                 />
                                             </div>
                                             <div className="flex flex-col text-left">
@@ -299,7 +291,7 @@
                         <div className="grid md:grid-cols-2 gap-8 items-stretch mb-24">
                             <div className="bg-[#8DA399] text-white p-12 rounded-[2rem] flex flex-col justify-center">
                                 <div className="mb-6 opacity-40 text-3xl"><i className="fa-solid fa-envelope"></i></div>
-                                <h3 className="text-3xl font-light mb-4 leading-tight">Join the <br/>Community.</h3>
+                                <h3 className="text-3xl font-light mb-4 leading-tight">Join the <br />Community.</h3>
                                 <p className="text-sm opacity-80 mb-10 leading-relaxed font-light">Weekly notes on intentional living, healthy products, and finding quiet in the noise.</p>
                                 {newsletterStatus.success ? (
                                     <div className="flex items-center gap-3 py-4 text-white font-medium bg-white/10 rounded-xl justify-center border border-white/20"><i className="fa-solid fa-check-circle"></i> You're on the list</div>
@@ -322,9 +314,9 @@
                                 ) : (
                                     <form onSubmit={handleContactSubmit} className="space-y-4">
                                         <div className="space-y-4 font-sans">
-                                            <input type="text" placeholder="Name" required value={contactData.name} onChange={(e) => setContactData({...contactData, name: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
-                                            <input type="email" placeholder="Brand Email" required value={contactData.email} onChange={(e) => setContactData({...contactData, email: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
-                                            <textarea placeholder="Tell me about your brand vision..." required rows="4" value={contactData.message} onChange={(e) => setContactData({...contactData, message: e.target.value})} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm resize-none"></textarea>
+                                            <input type="text" placeholder="Name" required value={contactData.name} onChange={(e) => setContactData({ ...contactData, name: e.target.value })} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
+                                            <input type="email" placeholder="Brand Email" required value={contactData.email} onChange={(e) => setContactData({ ...contactData, email: e.target.value })} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
+                                            <textarea placeholder="Tell me about your brand vision..." required rows="4" value={contactData.message} onChange={(e) => setContactData({ ...contactData, message: e.target.value })} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm resize-none"></textarea>
                                         </div>
                                         <button className="w-full py-4 bg-[#8DA399] text-white font-bold rounded-xl border-2 border-[#8DA399] hover:bg-white hover:text-[#8DA399] transition-all duration-300 flex items-center justify-center gap-2 text-sm shadow-md disabled:opacity-50 group"><i className="fa-solid fa-paper-plane text-xs transition-colors group-hover:text-[#8DA399]"></i> {contactStatus.loading ? "Sending..." : "Send Inquiry"}</button>
                                         {contactStatus.error && <p className="text-[10px] text-red-500 mt-2 text-center">{contactStatus.error}</p>}
@@ -358,4 +350,5 @@
         root.render(<App />);
     </script>
 </body>
-</html>a
+
+</html>
