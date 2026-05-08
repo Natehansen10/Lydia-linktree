@@ -1,0 +1,7250 @@
+{
+  "generatedAt": "2026-05-07T20:32:59",
+  "overview": [
+    {
+      "date": "2025-05-06",
+      "videoViews": 969,
+      "profileViews": 15,
+      "likes": 40,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-07",
+      "videoViews": 1527,
+      "profileViews": 21,
+      "likes": 54,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-08",
+      "videoViews": 1578,
+      "profileViews": 11,
+      "likes": 74,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-09",
+      "videoViews": 2147,
+      "profileViews": 31,
+      "likes": 106,
+      "comments": 6,
+      "shares": 1
+    },
+    {
+      "date": "2025-05-10",
+      "videoViews": 1122,
+      "profileViews": 19,
+      "likes": 46,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-11",
+      "videoViews": 743,
+      "profileViews": 14,
+      "likes": 31,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-05-12",
+      "videoViews": 659,
+      "profileViews": 14,
+      "likes": 25,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-13",
+      "videoViews": 1636,
+      "profileViews": 19,
+      "likes": 96,
+      "comments": 2,
+      "shares": 1
+    },
+    {
+      "date": "2025-05-14",
+      "videoViews": 745,
+      "profileViews": 12,
+      "likes": 40,
+      "comments": 0,
+      "shares": 3
+    },
+    {
+      "date": "2025-05-15",
+      "videoViews": 638,
+      "profileViews": 9,
+      "likes": 30,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-16",
+      "videoViews": 764,
+      "profileViews": 8,
+      "likes": 24,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-17",
+      "videoViews": 858,
+      "profileViews": 12,
+      "likes": 31,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-18",
+      "videoViews": 1496,
+      "profileViews": 15,
+      "likes": 50,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-19",
+      "videoViews": 1031,
+      "profileViews": 6,
+      "likes": 36,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-20",
+      "videoViews": 820,
+      "profileViews": 18,
+      "likes": 30,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-05-21",
+      "videoViews": 994,
+      "profileViews": 16,
+      "likes": 40,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-22",
+      "videoViews": 1157,
+      "profileViews": 21,
+      "likes": 53,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-23",
+      "videoViews": 657,
+      "profileViews": 13,
+      "likes": 24,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-05-24",
+      "videoViews": 1681,
+      "profileViews": 12,
+      "likes": 76,
+      "comments": 3,
+      "shares": 2
+    },
+    {
+      "date": "2025-05-25",
+      "videoViews": 921,
+      "profileViews": 12,
+      "likes": 39,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-05-26",
+      "videoViews": 853,
+      "profileViews": 14,
+      "likes": 33,
+      "comments": 1,
+      "shares": 3
+    },
+    {
+      "date": "2025-05-27",
+      "videoViews": 784,
+      "profileViews": 9,
+      "likes": 37,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-05-28",
+      "videoViews": 1274,
+      "profileViews": 19,
+      "likes": 38,
+      "comments": 1,
+      "shares": 1
+    },
+    {
+      "date": "2025-05-29",
+      "videoViews": 1397,
+      "profileViews": 12,
+      "likes": 73,
+      "comments": 3,
+      "shares": 2
+    },
+    {
+      "date": "2025-05-30",
+      "videoViews": 2145,
+      "profileViews": 25,
+      "likes": 135,
+      "comments": 1,
+      "shares": 1
+    },
+    {
+      "date": "2025-05-31",
+      "videoViews": 3810,
+      "profileViews": 43,
+      "likes": 373,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-01",
+      "videoViews": 862,
+      "profileViews": 21,
+      "likes": 38,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-02",
+      "videoViews": 739,
+      "profileViews": 13,
+      "likes": 24,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-03",
+      "videoViews": 5815,
+      "profileViews": 21,
+      "likes": 253,
+      "comments": 2,
+      "shares": 3
+    },
+    {
+      "date": "2025-06-04",
+      "videoViews": 1051,
+      "profileViews": 14,
+      "likes": 61,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-05",
+      "videoViews": 1100,
+      "profileViews": 23,
+      "likes": 56,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-06",
+      "videoViews": 1031,
+      "profileViews": 12,
+      "likes": 44,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-07",
+      "videoViews": 1939,
+      "profileViews": 30,
+      "likes": 134,
+      "comments": 3,
+      "shares": 3
+    },
+    {
+      "date": "2025-06-08",
+      "videoViews": 1903,
+      "profileViews": 27,
+      "likes": 67,
+      "comments": 1,
+      "shares": 4
+    },
+    {
+      "date": "2025-06-09",
+      "videoViews": 1613,
+      "profileViews": 37,
+      "likes": 59,
+      "comments": 0,
+      "shares": 4
+    },
+    {
+      "date": "2025-06-10",
+      "videoViews": 1522,
+      "profileViews": 35,
+      "likes": 89,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-11",
+      "videoViews": 807,
+      "profileViews": 13,
+      "likes": 43,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-12",
+      "videoViews": 726,
+      "profileViews": 10,
+      "likes": 39,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-13",
+      "videoViews": 613,
+      "profileViews": 9,
+      "likes": 23,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-14",
+      "videoViews": 621,
+      "profileViews": 8,
+      "likes": 29,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-15",
+      "videoViews": 687,
+      "profileViews": 3,
+      "likes": 32,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-16",
+      "videoViews": 663,
+      "profileViews": 6,
+      "likes": 24,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-17",
+      "videoViews": 782,
+      "profileViews": 8,
+      "likes": 49,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-18",
+      "videoViews": 4085,
+      "profileViews": 8,
+      "likes": 127,
+      "comments": 1,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-19",
+      "videoViews": 8735,
+      "profileViews": 28,
+      "likes": 271,
+      "comments": 1,
+      "shares": 10
+    },
+    {
+      "date": "2025-06-20",
+      "videoViews": 4433,
+      "profileViews": 11,
+      "likes": 192,
+      "comments": 2,
+      "shares": 6
+    },
+    {
+      "date": "2025-06-21",
+      "videoViews": 1620,
+      "profileViews": 11,
+      "likes": 73,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-22",
+      "videoViews": 980,
+      "profileViews": 6,
+      "likes": 34,
+      "comments": 1,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-23",
+      "videoViews": 692,
+      "profileViews": 8,
+      "likes": 32,
+      "comments": 1,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-24",
+      "videoViews": 1125,
+      "profileViews": 19,
+      "likes": 47,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-06-25",
+      "videoViews": 1009,
+      "profileViews": 10,
+      "likes": 67,
+      "comments": 0,
+      "shares": 2
+    },
+    {
+      "date": "2025-06-26",
+      "videoViews": 747,
+      "profileViews": 18,
+      "likes": 38,
+      "comments": 0,
+      "shares": 2
+    },
+    {
+      "date": "2025-06-27",
+      "videoViews": 695,
+      "profileViews": 6,
+      "likes": 36,
+      "comments": 0,
+      "shares": 3
+    },
+    {
+      "date": "2025-06-28",
+      "videoViews": 523,
+      "profileViews": 3,
+      "likes": 28,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-06-29",
+      "videoViews": 1610,
+      "profileViews": 12,
+      "likes": 122,
+      "comments": 4,
+      "shares": 4
+    },
+    {
+      "date": "2025-06-30",
+      "videoViews": 991,
+      "profileViews": 10,
+      "likes": 59,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-07-01",
+      "videoViews": 1306,
+      "profileViews": 13,
+      "likes": 78,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-07-02",
+      "videoViews": 1095,
+      "profileViews": 20,
+      "likes": 50,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-07-03",
+      "videoViews": 919,
+      "profileViews": 10,
+      "likes": 41,
+      "comments": 0,
+      "shares": 3
+    },
+    {
+      "date": "2025-07-04",
+      "videoViews": 876,
+      "profileViews": 9,
+      "likes": 42,
+      "comments": 1,
+      "shares": 3
+    },
+    {
+      "date": "2025-07-05",
+      "videoViews": 748,
+      "profileViews": 2,
+      "likes": 39,
+      "comments": 1,
+      "shares": 2
+    },
+    {
+      "date": "2025-07-06",
+      "videoViews": 823,
+      "profileViews": 7,
+      "likes": 54,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-07-07",
+      "videoViews": 938,
+      "profileViews": 10,
+      "likes": 54,
+      "comments": 1,
+      "shares": 1
+    },
+    {
+      "date": "2025-07-08",
+      "videoViews": 1225,
+      "profileViews": 7,
+      "likes": 58,
+      "comments": 0,
+      "shares": 0
+    },
+    {
+      "date": "2025-07-09",
+      "videoViews": 1201,
+      "profileViews": 7,
+      "likes": 50,
+      "comments": 0,
+      "shares": 3
+    },
+    {
+      "date": "2025-07-10",
+      "videoViews": 1724,
+      "profileViews": 24,
+      "likes": 84,
+      "comments": 1,
+      "shares": 1
+    },
+    {
+      "date": "2025-07-11",
+      "videoViews": 1660,
+      "profileViews": 17,
+      "likes": 93,
+      "comments": 0,
+      "shares": 1
+    },
+    {
+      "date": "2025-07-12",
+      "videoViews": 8473,
+      "profileViews": 18,
+      "likes": 300,
+      "comments": 1,
+      "shares": 8
+    },
+    {
+      "date": "2025-07-13",
+      "videoViews": 7590,
+      "profileViews": 7,
+      "likes": 276,
+      "comments": 2,
+      "shares": 1
+    },
+    {
+      "date": "2025-07-14",
+      "videoViews": 4209,
+      "profileViews": 14,
+      "likes": 193,
+      "comments": 0,
+      "shares": 3
+    },
+    {
+      "date": "2025-07-15",
+      "videoViews": 5369,
+      "profileViews": 19,
+      "likes": 247,
+      "comments": 1,
+      "shares": 11
+    },
+    {
+      "date": "2025-07-16",
+      "videoViews": 8893,
+      "profileViews": 21,
+      "likes": 391,
+      "comments": 1,
+      "shares": 9
+    },
+    {
+      "date": "2025-07-17",
+      "videoViews": 13424,
+      "profileViews": 37,
+      "likes": 730,
+      "comments": 3,
+      "shares": 10
+    },
+    {
+      "date": "2025-07-18",
+      "videoViews": 10373,
+      "profileViews": 26,
+      "likes": 608,
+      "comments": 0,
+      "shares": 13
+    },
+    {
+      "date": "2025-07-19",
+      "videoViews": 10688,
+      "profileViews": 22,
+      "likes": 596,
+      "comments": 3,
+      "shares": 21
+    },
+    {
+      "date": "2025-07-20",
+      "videoViews": 17317,
+      "profileViews": 40,
+      "likes": 887,
+      "comments": 0,
+      "shares": 13
+    },
+    {
+      "date": "2025-07-21",
+      "videoViews": 11491,
+      "profileViews": 34,
+      "likes": 650,
+      "comments": 3,
+      "shares": 11
+    },
+    {
+      "date": "2025-07-22",
+      "videoViews": 3928,
+      "profileViews": 9,
+      "likes": 233,
+      "comments": 1,
+      "shares": 2
+    },
+    {
+      "date": "2025-07-23",
+      "videoViews": 2853,
+      "profileViews": 10,
+      "likes": 210,
+      "comments": 1,
+      "shares": 0
+    },
+    {
+      "date": "2025-07-24",
+      "videoViews": 4225,
+      "profileViews": 32,
+      "likes": 290,
+      "comments": 0,
+      "shares": 4
+    },
+    {
+      "date": "2025-07-25",
+      "videoViews": 3825,
+      "profileViews": 12,
+      "likes": 229,
+      "comments": 1,
+      "shares": 1
+    },
+    {
+      "date": "2025-07-26",
+      "videoViews": 4723,
+      "profileViews": 17,
+      "likes": 307,
+      "comments": 7,
+      "shares": 20
+    },
+    {
+      "date": "2025-07-27",
+      "videoViews": 5350,
+      "profileViews": 26,
+      "likes": 329,
+      "comments": 3,
+      "shares": 5
+    },
+    {
+      "date": "2025-07-28",
+      "videoViews": 3450,
+      "profileViews": 20,
+      "likes": 192,
+      "comments": 2,
+      "shares": 3
+    },
+    {
+      "date": "2025-07-29",
+      "videoViews": 2592,
+      "profileViews": 16,
+      "likes": 158,
+      "comments": 1,
+      "shares": 4
+    },
+    {
+      "date": "2025-07-30",
+      "videoViews": 3059,
+      "profileViews": 18,
+      "likes": 206,
+      "comments": 2,
+      "shares": 2
+    },
+    {
+      "date": "2025-07-31",
+      "videoViews": 3501,
+      "profileViews": 20,
+      "likes": 227,
+      "comments": 1,
+      "shares": 5
+    },
+    {
+      "date": "2025-08-01",
+      "videoViews": 3605,
+      "profileViews": 15,
+      "likes": 206,
+      "comments": 1,
+      "shares": 4
+    },
+    {
+      "date": "2025-08-02",
+      "videoViews": 5464,
+      "profileViews": 24,
+      "likes": 325,
+      "comments": 4,
+      "shares": 3
+    },
+    {
+      "date": "2025-08-03",
+      "videoViews": 7436,
+      "profileViews": 19,
+      "likes": 442,
+      "comments": 1,
+      "shares": 4
+    },
+    {
+      "date": "2025-08-04",
+      "videoViews": 4442,
+      "profileViews": 19,
+      "likes": 299,
+      "comments": 2,
+      "shares": 5
+    },
+    {
+      "date": "2025-08-05",
+      "videoViews": 3616,
+      "profileViews": 19,
+      "likes": 236,
+      "comments": 1,
+      "shares": 4
+    },
+    {
+      "date": "2025-08-06",
+      "videoViews": 3481,
+      "profileViews": 11,
+      "likes": 234,
+      "comments": 6,
+      "shares": 3
+    },
+    {
+      "date": "2025-08-07",
+      "videoViews": 5357,
+      "profileViews": 18,
+      "likes": 305,
+      "comments": 1,
+      "shares": 8
+    },
+    {
+      "date": "2025-08-08",
+      "videoViews": 7892,
+      "profileViews": 33,
+      "likes": 478,
+      "comments": 5,
+      "shares": 6
+    },
+    {
+      "date": "2025-08-09",
+      "videoViews": 4787,
+      "profileViews": 20,
+      "likes": 278,
+      "comments": 4,
+      "shares": 3
+    },
+    {
+      "date": "2025-08-10",
+      "videoViews": 3939,
+      "profileViews": 17,
+      "likes": 239,
+      "comments": 1,
+      "shares": 2
+    },
+    {
+      "date": "2025-08-11",
+      "videoViews": 3687,
+      "profileViews": 11,
+      "likes": 229,
+      "comments": 3,
+      "shares": 7
+    },
+    {
+      "date": "2025-08-12",
+      "videoViews": 2110,
+      "profileViews": 9,
+      "likes": 123,
+      "comments": 5,
+      "shares": 2
+    },
+    {
+      "date": "2025-08-13",
+      "videoViews": 264363,
+      "profileViews": 16454,
+      "likes": 20039,
+      "comments": 625,
+      "shares": 1490
+    },
+    {
+      "date": "2025-08-14",
+      "videoViews": 655811,
+      "profileViews": 39209,
+      "likes": 87077,
+      "comments": 1224,
+      "shares": 4404
+    },
+    {
+      "date": "2025-08-15",
+      "videoViews": 884800,
+      "profileViews": 43699,
+      "likes": 114529,
+      "comments": 1074,
+      "shares": 4361
+    },
+    {
+      "date": "2025-08-16",
+      "videoViews": 451291,
+      "profileViews": 20623,
+      "likes": 54507,
+      "comments": 616,
+      "shares": 1423
+    },
+    {
+      "date": "2025-08-17",
+      "videoViews": 428137,
+      "profileViews": 18204,
+      "likes": 45576,
+      "comments": 248,
+      "shares": 854
+    },
+    {
+      "date": "2025-08-18",
+      "videoViews": 706549,
+      "profileViews": 27339,
+      "likes": 70176,
+      "comments": 496,
+      "shares": 1204
+    },
+    {
+      "date": "2025-08-19",
+      "videoViews": 389755,
+      "profileViews": 14532,
+      "likes": 34790,
+      "comments": 329,
+      "shares": 716
+    },
+    {
+      "date": "2025-08-20",
+      "videoViews": 283931,
+      "profileViews": 9582,
+      "likes": 19318,
+      "comments": 231,
+      "shares": 372
+    },
+    {
+      "date": "2025-08-21",
+      "videoViews": 224264,
+      "profileViews": 8264,
+      "likes": 16157,
+      "comments": 111,
+      "shares": 260
+    },
+    {
+      "date": "2025-08-22",
+      "videoViews": 134896,
+      "profileViews": 4860,
+      "likes": 9293,
+      "comments": 82,
+      "shares": 198
+    },
+    {
+      "date": "2025-08-23",
+      "videoViews": 221844,
+      "profileViews": 8189,
+      "likes": 17341,
+      "comments": 183,
+      "shares": 261
+    },
+    {
+      "date": "2025-08-24",
+      "videoViews": 218438,
+      "profileViews": 7648,
+      "likes": 13618,
+      "comments": 124,
+      "shares": 229
+    },
+    {
+      "date": "2025-08-25",
+      "videoViews": 222260,
+      "profileViews": 8137,
+      "likes": 14472,
+      "comments": 171,
+      "shares": 313
+    },
+    {
+      "date": "2025-08-26",
+      "videoViews": 174766,
+      "profileViews": 6256,
+      "likes": 14331,
+      "comments": 103,
+      "shares": 427
+    },
+    {
+      "date": "2025-08-27",
+      "videoViews": 279786,
+      "profileViews": 10191,
+      "likes": 19050,
+      "comments": 235,
+      "shares": 412
+    },
+    {
+      "date": "2025-08-28",
+      "videoViews": 355396,
+      "profileViews": 11707,
+      "likes": 24518,
+      "comments": 297,
+      "shares": 466
+    },
+    {
+      "date": "2025-08-29",
+      "videoViews": 388827,
+      "profileViews": 13033,
+      "likes": 25943,
+      "comments": 271,
+      "shares": 389
+    },
+    {
+      "date": "2025-08-30",
+      "videoViews": 613734,
+      "profileViews": 17319,
+      "likes": 34840,
+      "comments": 347,
+      "shares": 1307
+    },
+    {
+      "date": "2025-08-31",
+      "videoViews": 746444,
+      "profileViews": 22836,
+      "likes": 38893,
+      "comments": 267,
+      "shares": 2214
+    },
+    {
+      "date": "2025-09-01",
+      "videoViews": 443395,
+      "profileViews": 13436,
+      "likes": 27893,
+      "comments": 246,
+      "shares": 1160
+    },
+    {
+      "date": "2025-09-02",
+      "videoViews": 298626,
+      "profileViews": 8845,
+      "likes": 19620,
+      "comments": 196,
+      "shares": 346
+    },
+    {
+      "date": "2025-09-03",
+      "videoViews": 156512,
+      "profileViews": 5406,
+      "likes": 10099,
+      "comments": 126,
+      "shares": 209
+    },
+    {
+      "date": "2025-09-04",
+      "videoViews": 139897,
+      "profileViews": 6023,
+      "likes": 7294,
+      "comments": 178,
+      "shares": 148
+    },
+    {
+      "date": "2025-09-05",
+      "videoViews": 251525,
+      "profileViews": 12060,
+      "likes": 12898,
+      "comments": 139,
+      "shares": 165
+    },
+    {
+      "date": "2025-09-06",
+      "videoViews": 309960,
+      "profileViews": 17036,
+      "likes": 21223,
+      "comments": 175,
+      "shares": 258
+    },
+    {
+      "date": "2025-09-07",
+      "videoViews": 296642,
+      "profileViews": 15555,
+      "likes": 18465,
+      "comments": 129,
+      "shares": 196
+    },
+    {
+      "date": "2025-09-08",
+      "videoViews": 154398,
+      "profileViews": 7482,
+      "likes": 8027,
+      "comments": 111,
+      "shares": 107
+    },
+    {
+      "date": "2025-09-09",
+      "videoViews": 99050,
+      "profileViews": 3674,
+      "likes": 5364,
+      "comments": 102,
+      "shares": 59
+    },
+    {
+      "date": "2025-09-10",
+      "videoViews": 105295,
+      "profileViews": 6936,
+      "likes": 5387,
+      "comments": 259,
+      "shares": 86
+    },
+    {
+      "date": "2025-09-11",
+      "videoViews": 57276,
+      "profileViews": 2938,
+      "likes": 3113,
+      "comments": 59,
+      "shares": 26
+    },
+    {
+      "date": "2025-09-12",
+      "videoViews": 53131,
+      "profileViews": 2721,
+      "likes": 2471,
+      "comments": 56,
+      "shares": 17
+    },
+    {
+      "date": "2025-09-13",
+      "videoViews": 96788,
+      "profileViews": 4790,
+      "likes": 4314,
+      "comments": 112,
+      "shares": 62
+    },
+    {
+      "date": "2025-09-14",
+      "videoViews": 201837,
+      "profileViews": 7756,
+      "likes": 11799,
+      "comments": 123,
+      "shares": 96
+    },
+    {
+      "date": "2025-09-15",
+      "videoViews": 299488,
+      "profileViews": 11392,
+      "likes": 23193,
+      "comments": 124,
+      "shares": 150
+    },
+    {
+      "date": "2025-09-16",
+      "videoViews": 245294,
+      "profileViews": 8952,
+      "likes": 20855,
+      "comments": 129,
+      "shares": 204
+    },
+    {
+      "date": "2025-09-17",
+      "videoViews": 205025,
+      "profileViews": 9240,
+      "likes": 15939,
+      "comments": 191,
+      "shares": 107
+    },
+    {
+      "date": "2025-09-18",
+      "videoViews": 658544,
+      "profileViews": 44714,
+      "likes": 37364,
+      "comments": 205,
+      "shares": 352
+    },
+    {
+      "date": "2025-09-19",
+      "videoViews": 860300,
+      "profileViews": 53962,
+      "likes": 49006,
+      "comments": 300,
+      "shares": 508
+    },
+    {
+      "date": "2025-09-20",
+      "videoViews": 553064,
+      "profileViews": 28253,
+      "likes": 30922,
+      "comments": 181,
+      "shares": 284
+    },
+    {
+      "date": "2025-09-21",
+      "videoViews": 324397,
+      "profileViews": 14036,
+      "likes": 19743,
+      "comments": 118,
+      "shares": 200
+    },
+    {
+      "date": "2025-09-22",
+      "videoViews": 249653,
+      "profileViews": 11313,
+      "likes": 16045,
+      "comments": 104,
+      "shares": 122
+    },
+    {
+      "date": "2025-09-23",
+      "videoViews": 151949,
+      "profileViews": 7228,
+      "likes": 8578,
+      "comments": 46,
+      "shares": 104
+    },
+    {
+      "date": "2025-09-24",
+      "videoViews": 128805,
+      "profileViews": 6083,
+      "likes": 7040,
+      "comments": 123,
+      "shares": 61
+    },
+    {
+      "date": "2025-09-25",
+      "videoViews": 104374,
+      "profileViews": 5273,
+      "likes": 5676,
+      "comments": 115,
+      "shares": 86
+    },
+    {
+      "date": "2025-09-26",
+      "videoViews": 104324,
+      "profileViews": 6600,
+      "likes": 5357,
+      "comments": 78,
+      "shares": 78
+    },
+    {
+      "date": "2025-09-27",
+      "videoViews": 114388,
+      "profileViews": 6947,
+      "likes": 6023,
+      "comments": 112,
+      "shares": 86
+    },
+    {
+      "date": "2025-09-28",
+      "videoViews": 313058,
+      "profileViews": 19115,
+      "likes": 21669,
+      "comments": 174,
+      "shares": 697
+    },
+    {
+      "date": "2025-09-29",
+      "videoViews": 242338,
+      "profileViews": 15024,
+      "likes": 18981,
+      "comments": 161,
+      "shares": 692
+    },
+    {
+      "date": "2025-09-30",
+      "videoViews": 181345,
+      "profileViews": 10508,
+      "likes": 11184,
+      "comments": 152,
+      "shares": 159
+    },
+    {
+      "date": "2025-10-01",
+      "videoViews": 115955,
+      "profileViews": 5413,
+      "likes": 6529,
+      "comments": 108,
+      "shares": 116
+    },
+    {
+      "date": "2025-10-02",
+      "videoViews": 84056,
+      "profileViews": 3753,
+      "likes": 4734,
+      "comments": 76,
+      "shares": 82
+    },
+    {
+      "date": "2025-10-03",
+      "videoViews": 81084,
+      "profileViews": 3530,
+      "likes": 3992,
+      "comments": 150,
+      "shares": 43
+    },
+    {
+      "date": "2025-10-04",
+      "videoViews": 64249,
+      "profileViews": 3090,
+      "likes": 3424,
+      "comments": 49,
+      "shares": 32
+    },
+    {
+      "date": "2025-10-05",
+      "videoViews": 75488,
+      "profileViews": 3637,
+      "likes": 3932,
+      "comments": 44,
+      "shares": 44
+    },
+    {
+      "date": "2025-10-06",
+      "videoViews": 137005,
+      "profileViews": 7951,
+      "likes": 7774,
+      "comments": 119,
+      "shares": 85
+    },
+    {
+      "date": "2025-10-07",
+      "videoViews": 84085,
+      "profileViews": 4318,
+      "likes": 4545,
+      "comments": 91,
+      "shares": 53
+    },
+    {
+      "date": "2025-10-08",
+      "videoViews": 68113,
+      "profileViews": 4283,
+      "likes": 4021,
+      "comments": 62,
+      "shares": 90
+    },
+    {
+      "date": "2025-10-09",
+      "videoViews": 57527,
+      "profileViews": 3308,
+      "likes": 2960,
+      "comments": 75,
+      "shares": 44
+    },
+    {
+      "date": "2025-10-10",
+      "videoViews": 70140,
+      "profileViews": 4292,
+      "likes": 3292,
+      "comments": 96,
+      "shares": 48
+    },
+    {
+      "date": "2025-10-11",
+      "videoViews": 53625,
+      "profileViews": 2700,
+      "likes": 2570,
+      "comments": 59,
+      "shares": 36
+    },
+    {
+      "date": "2025-10-12",
+      "videoViews": 64617,
+      "profileViews": 2892,
+      "likes": 3521,
+      "comments": 97,
+      "shares": 51
+    },
+    {
+      "date": "2025-10-13",
+      "videoViews": 92747,
+      "profileViews": 5079,
+      "likes": 4867,
+      "comments": 96,
+      "shares": 52
+    },
+    {
+      "date": "2025-10-14",
+      "videoViews": 66658,
+      "profileViews": 3601,
+      "likes": 3491,
+      "comments": 46,
+      "shares": 48
+    },
+    {
+      "date": "2025-10-15",
+      "videoViews": 52870,
+      "profileViews": 2487,
+      "likes": 2780,
+      "comments": 56,
+      "shares": 34
+    },
+    {
+      "date": "2025-10-16",
+      "videoViews": 39505,
+      "profileViews": 2010,
+      "likes": 1997,
+      "comments": 25,
+      "shares": 14
+    },
+    {
+      "date": "2025-10-17",
+      "videoViews": 29552,
+      "profileViews": 1430,
+      "likes": 1499,
+      "comments": 14,
+      "shares": 15
+    },
+    {
+      "date": "2025-10-18",
+      "videoViews": 2285950,
+      "profileViews": 52433,
+      "likes": 364992,
+      "comments": 314,
+      "shares": 3106
+    },
+    {
+      "date": "2025-10-19",
+      "videoViews": 4119460,
+      "profileViews": 75848,
+      "likes": 575658,
+      "comments": 667,
+      "shares": 4990
+    },
+    {
+      "date": "2025-10-20",
+      "videoViews": 1699503,
+      "profileViews": 34625,
+      "likes": 211000,
+      "comments": 277,
+      "shares": 1997
+    },
+    {
+      "date": "2025-10-21",
+      "videoViews": 981506,
+      "profileViews": 28253,
+      "likes": 113203,
+      "comments": 236,
+      "shares": 1388
+    },
+    {
+      "date": "2025-10-22",
+      "videoViews": 663313,
+      "profileViews": 13032,
+      "likes": 94748,
+      "comments": 165,
+      "shares": 1164
+    },
+    {
+      "date": "2025-10-23",
+      "videoViews": 460841,
+      "profileViews": 9168,
+      "likes": 63038,
+      "comments": 179,
+      "shares": 940
+    },
+    {
+      "date": "2025-10-24",
+      "videoViews": 443035,
+      "profileViews": 8663,
+      "likes": 57496,
+      "comments": 141,
+      "shares": 977
+    },
+    {
+      "date": "2025-10-25",
+      "videoViews": 294024,
+      "profileViews": 6163,
+      "likes": 27315,
+      "comments": 104,
+      "shares": 628
+    },
+    {
+      "date": "2025-10-26",
+      "videoViews": 208577,
+      "profileViews": 4070,
+      "likes": 17501,
+      "comments": 60,
+      "shares": 403
+    },
+    {
+      "date": "2025-10-27",
+      "videoViews": 140608,
+      "profileViews": 2826,
+      "likes": 10574,
+      "comments": 43,
+      "shares": 290
+    },
+    {
+      "date": "2025-10-28",
+      "videoViews": 145940,
+      "profileViews": 3325,
+      "likes": 12694,
+      "comments": 49,
+      "shares": 324
+    },
+    {
+      "date": "2025-10-29",
+      "videoViews": 167643,
+      "profileViews": 3006,
+      "likes": 18347,
+      "comments": 61,
+      "shares": 270
+    },
+    {
+      "date": "2025-10-30",
+      "videoViews": 147393,
+      "profileViews": 2549,
+      "likes": 16798,
+      "comments": 47,
+      "shares": 268
+    },
+    {
+      "date": "2025-10-31",
+      "videoViews": 330506,
+      "profileViews": 6457,
+      "likes": 27140,
+      "comments": 168,
+      "shares": 983
+    },
+    {
+      "date": "2025-11-01",
+      "videoViews": 607675,
+      "profileViews": 13298,
+      "likes": 59736,
+      "comments": 424,
+      "shares": 2168
+    },
+    {
+      "date": "2025-11-02",
+      "videoViews": 600900,
+      "profileViews": 13601,
+      "likes": 59538,
+      "comments": 381,
+      "shares": 2038
+    },
+    {
+      "date": "2025-11-03",
+      "videoViews": 276135,
+      "profileViews": 7234,
+      "likes": 26049,
+      "comments": 201,
+      "shares": 853
+    },
+    {
+      "date": "2025-11-04",
+      "videoViews": 200436,
+      "profileViews": 4957,
+      "likes": 17169,
+      "comments": 143,
+      "shares": 628
+    },
+    {
+      "date": "2025-11-05",
+      "videoViews": 219295,
+      "profileViews": 4670,
+      "likes": 26412,
+      "comments": 100,
+      "shares": 558
+    },
+    {
+      "date": "2025-11-06",
+      "videoViews": 278272,
+      "profileViews": 5673,
+      "likes": 32636,
+      "comments": 105,
+      "shares": 673
+    },
+    {
+      "date": "2025-11-07",
+      "videoViews": 201615,
+      "profileViews": 3780,
+      "likes": 23515,
+      "comments": 50,
+      "shares": 411
+    },
+    {
+      "date": "2025-11-08",
+      "videoViews": 204952,
+      "profileViews": 3820,
+      "likes": 22356,
+      "comments": 79,
+      "shares": 416
+    },
+    {
+      "date": "2025-11-09",
+      "videoViews": 203958,
+      "profileViews": 3955,
+      "likes": 19641,
+      "comments": 123,
+      "shares": 349
+    },
+    {
+      "date": "2025-11-10",
+      "videoViews": 243534,
+      "profileViews": 5377,
+      "likes": 24121,
+      "comments": 152,
+      "shares": 572
+    },
+    {
+      "date": "2025-11-11",
+      "videoViews": 221904,
+      "profileViews": 4690,
+      "likes": 24256,
+      "comments": 66,
+      "shares": 485
+    },
+    {
+      "date": "2025-11-12",
+      "videoViews": 157610,
+      "profileViews": 3390,
+      "likes": 17652,
+      "comments": 56,
+      "shares": 410
+    },
+    {
+      "date": "2025-11-13",
+      "videoViews": 135379,
+      "profileViews": 3113,
+      "likes": 14217,
+      "comments": 37,
+      "shares": 252
+    },
+    {
+      "date": "2025-11-14",
+      "videoViews": 246346,
+      "profileViews": 5655,
+      "likes": 29877,
+      "comments": 102,
+      "shares": 356
+    },
+    {
+      "date": "2025-11-15",
+      "videoViews": 224062,
+      "profileViews": 4687,
+      "likes": 26184,
+      "comments": 77,
+      "shares": 496
+    },
+    {
+      "date": "2025-11-16",
+      "videoViews": 206647,
+      "profileViews": 3882,
+      "likes": 20730,
+      "comments": 59,
+      "shares": 349
+    },
+    {
+      "date": "2025-11-17",
+      "videoViews": 149487,
+      "profileViews": 3163,
+      "likes": 14541,
+      "comments": 80,
+      "shares": 308
+    },
+    {
+      "date": "2025-11-18",
+      "videoViews": 172150,
+      "profileViews": 3154,
+      "likes": 20314,
+      "comments": 57,
+      "shares": 345
+    },
+    {
+      "date": "2025-11-19",
+      "videoViews": 131733,
+      "profileViews": 2608,
+      "likes": 14344,
+      "comments": 56,
+      "shares": 299
+    },
+    {
+      "date": "2025-11-20",
+      "videoViews": 108619,
+      "profileViews": 2254,
+      "likes": 11934,
+      "comments": 32,
+      "shares": 219
+    },
+    {
+      "date": "2025-11-21",
+      "videoViews": 110894,
+      "profileViews": 2317,
+      "likes": 11994,
+      "comments": 63,
+      "shares": 255
+    },
+    {
+      "date": "2025-11-22",
+      "videoViews": 159089,
+      "profileViews": 3191,
+      "likes": 19444,
+      "comments": 34,
+      "shares": 303
+    },
+    {
+      "date": "2025-11-23",
+      "videoViews": 179932,
+      "profileViews": 3839,
+      "likes": 20029,
+      "comments": 81,
+      "shares": 310
+    },
+    {
+      "date": "2025-11-24",
+      "videoViews": 219396,
+      "profileViews": 5114,
+      "likes": 26142,
+      "comments": 101,
+      "shares": 407
+    },
+    {
+      "date": "2025-11-25",
+      "videoViews": 324110,
+      "profileViews": 6248,
+      "likes": 40895,
+      "comments": 68,
+      "shares": 627
+    },
+    {
+      "date": "2025-11-26",
+      "videoViews": 176065,
+      "profileViews": 3337,
+      "likes": 20556,
+      "comments": 49,
+      "shares": 354
+    },
+    {
+      "date": "2025-11-27",
+      "videoViews": 96126,
+      "profileViews": 1904,
+      "likes": 10697,
+      "comments": 19,
+      "shares": 209
+    },
+    {
+      "date": "2025-11-28",
+      "videoViews": 110226,
+      "profileViews": 2147,
+      "likes": 13055,
+      "comments": 26,
+      "shares": 191
+    },
+    {
+      "date": "2025-11-29",
+      "videoViews": 122271,
+      "profileViews": 2651,
+      "likes": 12136,
+      "comments": 47,
+      "shares": 257
+    },
+    {
+      "date": "2025-11-30",
+      "videoViews": 154897,
+      "profileViews": 3377,
+      "likes": 13738,
+      "comments": 53,
+      "shares": 314
+    },
+    {
+      "date": "2025-12-01",
+      "videoViews": 89759,
+      "profileViews": 2171,
+      "likes": 8186,
+      "comments": 40,
+      "shares": 169
+    },
+    {
+      "date": "2025-12-02",
+      "videoViews": 92809,
+      "profileViews": 2105,
+      "likes": 10224,
+      "comments": 37,
+      "shares": 208
+    },
+    {
+      "date": "2025-12-03",
+      "videoViews": 90102,
+      "profileViews": 2088,
+      "likes": 8212,
+      "comments": 50,
+      "shares": 216
+    },
+    {
+      "date": "2025-12-04",
+      "videoViews": 74808,
+      "profileViews": 1602,
+      "likes": 7106,
+      "comments": 43,
+      "shares": 152
+    },
+    {
+      "date": "2025-12-05",
+      "videoViews": 65231,
+      "profileViews": 1412,
+      "likes": 5689,
+      "comments": 22,
+      "shares": 162
+    },
+    {
+      "date": "2025-12-06",
+      "videoViews": 73859,
+      "profileViews": 1490,
+      "likes": 6595,
+      "comments": 28,
+      "shares": 164
+    },
+    {
+      "date": "2025-12-07",
+      "videoViews": 99824,
+      "profileViews": 2130,
+      "likes": 9663,
+      "comments": 32,
+      "shares": 170
+    },
+    {
+      "date": "2025-12-08",
+      "videoViews": 108549,
+      "profileViews": 2551,
+      "likes": 11439,
+      "comments": 82,
+      "shares": 298
+    },
+    {
+      "date": "2025-12-09",
+      "videoViews": 71811,
+      "profileViews": 1833,
+      "likes": 6987,
+      "comments": 43,
+      "shares": 135
+    },
+    {
+      "date": "2025-12-10",
+      "videoViews": 58988,
+      "profileViews": 1418,
+      "likes": 5013,
+      "comments": 36,
+      "shares": 101
+    },
+    {
+      "date": "2025-12-11",
+      "videoViews": 173930,
+      "profileViews": 3373,
+      "likes": 17995,
+      "comments": 220,
+      "shares": 625
+    },
+    {
+      "date": "2025-12-12",
+      "videoViews": 276234,
+      "profileViews": 4128,
+      "likes": 32940,
+      "comments": 174,
+      "shares": 996
+    },
+    {
+      "date": "2025-12-13",
+      "videoViews": 235742,
+      "profileViews": 3153,
+      "likes": 28622,
+      "comments": 100,
+      "shares": 673
+    },
+    {
+      "date": "2025-12-14",
+      "videoViews": 229275,
+      "profileViews": 3890,
+      "likes": 23895,
+      "comments": 117,
+      "shares": 568
+    },
+    {
+      "date": "2025-12-15",
+      "videoViews": 240329,
+      "profileViews": 4260,
+      "likes": 28826,
+      "comments": 115,
+      "shares": 663
+    },
+    {
+      "date": "2025-12-16",
+      "videoViews": 155396,
+      "profileViews": 3139,
+      "likes": 18292,
+      "comments": 93,
+      "shares": 424
+    },
+    {
+      "date": "2025-12-17",
+      "videoViews": 128826,
+      "profileViews": 2720,
+      "likes": 14800,
+      "comments": 88,
+      "shares": 358
+    },
+    {
+      "date": "2025-12-18",
+      "videoViews": 84166,
+      "profileViews": 1840,
+      "likes": 8161,
+      "comments": 42,
+      "shares": 212
+    },
+    {
+      "date": "2025-12-19",
+      "videoViews": 123929,
+      "profileViews": 2125,
+      "likes": 12712,
+      "comments": 40,
+      "shares": 351
+    },
+    {
+      "date": "2025-12-20",
+      "videoViews": 125562,
+      "profileViews": 2228,
+      "likes": 12700,
+      "comments": 59,
+      "shares": 314
+    },
+    {
+      "date": "2025-12-21",
+      "videoViews": 203156,
+      "profileViews": 3730,
+      "likes": 18921,
+      "comments": 60,
+      "shares": 398
+    },
+    {
+      "date": "2025-12-22",
+      "videoViews": 173182,
+      "profileViews": 3860,
+      "likes": 16755,
+      "comments": 50,
+      "shares": 279
+    },
+    {
+      "date": "2025-12-23",
+      "videoViews": 98698,
+      "profileViews": 2166,
+      "likes": 9222,
+      "comments": 32,
+      "shares": 176
+    },
+    {
+      "date": "2025-12-24",
+      "videoViews": 67197,
+      "profileViews": 1357,
+      "likes": 6149,
+      "comments": 36,
+      "shares": 103
+    },
+    {
+      "date": "2025-12-25",
+      "videoViews": 94660,
+      "profileViews": 1512,
+      "likes": 10191,
+      "comments": 29,
+      "shares": 129
+    },
+    {
+      "date": "2025-12-26",
+      "videoViews": 179119,
+      "profileViews": 2937,
+      "likes": 19402,
+      "comments": 53,
+      "shares": 399
+    },
+    {
+      "date": "2025-12-27",
+      "videoViews": 169635,
+      "profileViews": 3148,
+      "likes": 17964,
+      "comments": 54,
+      "shares": 380
+    },
+    {
+      "date": "2025-12-28",
+      "videoViews": 224612,
+      "profileViews": 4076,
+      "likes": 21375,
+      "comments": 88,
+      "shares": 596
+    },
+    {
+      "date": "2025-12-29",
+      "videoViews": 216645,
+      "profileViews": 3533,
+      "likes": 19985,
+      "comments": 80,
+      "shares": 613
+    },
+    {
+      "date": "2025-12-30",
+      "videoViews": 155306,
+      "profileViews": 2717,
+      "likes": 15169,
+      "comments": 125,
+      "shares": 451
+    },
+    {
+      "date": "2025-12-31",
+      "videoViews": 112899,
+      "profileViews": 2282,
+      "likes": 10176,
+      "comments": 53,
+      "shares": 249
+    },
+    {
+      "date": "2026-01-01",
+      "videoViews": 146937,
+      "profileViews": 3054,
+      "likes": 13772,
+      "comments": 58,
+      "shares": 288
+    },
+    {
+      "date": "2026-01-02",
+      "videoViews": 285757,
+      "profileViews": 10377,
+      "likes": 18457,
+      "comments": 289,
+      "shares": 912
+    },
+    {
+      "date": "2026-01-03",
+      "videoViews": 640303,
+      "profileViews": 32487,
+      "likes": 43335,
+      "comments": 1058,
+      "shares": 3427
+    },
+    {
+      "date": "2026-01-04",
+      "videoViews": 619570,
+      "profileViews": 36881,
+      "likes": 43289,
+      "comments": 1155,
+      "shares": 3266
+    },
+    {
+      "date": "2026-01-05",
+      "videoViews": 249222,
+      "profileViews": 13438,
+      "likes": 16131,
+      "comments": 236,
+      "shares": 863
+    },
+    {
+      "date": "2026-01-06",
+      "videoViews": 102934,
+      "profileViews": 4710,
+      "likes": 6218,
+      "comments": 64,
+      "shares": 261
+    },
+    {
+      "date": "2026-01-07",
+      "videoViews": 53445,
+      "profileViews": 1668,
+      "likes": 4000,
+      "comments": 39,
+      "shares": 140
+    },
+    {
+      "date": "2026-01-08",
+      "videoViews": 61639,
+      "profileViews": 1493,
+      "likes": 4120,
+      "comments": 51,
+      "shares": 127
+    },
+    {
+      "date": "2026-01-09",
+      "videoViews": 48221,
+      "profileViews": 1295,
+      "likes": 3746,
+      "comments": 17,
+      "shares": 120
+    },
+    {
+      "date": "2026-01-10",
+      "videoViews": 47823,
+      "profileViews": 1225,
+      "likes": 3727,
+      "comments": 35,
+      "shares": 72
+    },
+    {
+      "date": "2026-01-11",
+      "videoViews": 59459,
+      "profileViews": 1532,
+      "likes": 4604,
+      "comments": 24,
+      "shares": 121
+    },
+    {
+      "date": "2026-01-12",
+      "videoViews": 51692,
+      "profileViews": 1554,
+      "likes": 3843,
+      "comments": 23,
+      "shares": 125
+    },
+    {
+      "date": "2026-01-13",
+      "videoViews": 41580,
+      "profileViews": 1232,
+      "likes": 2864,
+      "comments": 9,
+      "shares": 84
+    },
+    {
+      "date": "2026-01-14",
+      "videoViews": 37363,
+      "profileViews": 1010,
+      "likes": 2853,
+      "comments": 31,
+      "shares": 68
+    },
+    {
+      "date": "2026-01-15",
+      "videoViews": 30518,
+      "profileViews": 807,
+      "likes": 2417,
+      "comments": 4,
+      "shares": 78
+    },
+    {
+      "date": "2026-01-16",
+      "videoViews": 28994,
+      "profileViews": 745,
+      "likes": 2032,
+      "comments": 19,
+      "shares": 64
+    },
+    {
+      "date": "2026-01-17",
+      "videoViews": 29012,
+      "profileViews": 840,
+      "likes": 1898,
+      "comments": 4,
+      "shares": 49
+    },
+    {
+      "date": "2026-01-18",
+      "videoViews": 36295,
+      "profileViews": 877,
+      "likes": 2639,
+      "comments": 15,
+      "shares": 71
+    },
+    {
+      "date": "2026-01-19",
+      "videoViews": 35754,
+      "profileViews": 983,
+      "likes": 2735,
+      "comments": 7,
+      "shares": 68
+    },
+    {
+      "date": "2026-01-20",
+      "videoViews": 29342,
+      "profileViews": 755,
+      "likes": 2347,
+      "comments": 19,
+      "shares": 78
+    },
+    {
+      "date": "2026-01-21",
+      "videoViews": 31854,
+      "profileViews": 1081,
+      "likes": 2321,
+      "comments": 50,
+      "shares": 77
+    },
+    {
+      "date": "2026-01-22",
+      "videoViews": 32583,
+      "profileViews": 1009,
+      "likes": 2352,
+      "comments": 61,
+      "shares": 49
+    },
+    {
+      "date": "2026-01-23",
+      "videoViews": 32097,
+      "profileViews": 899,
+      "likes": 2205,
+      "comments": 19,
+      "shares": 44
+    },
+    {
+      "date": "2026-01-24",
+      "videoViews": 31568,
+      "profileViews": 786,
+      "likes": 2164,
+      "comments": 20,
+      "shares": 46
+    },
+    {
+      "date": "2026-01-25",
+      "videoViews": 36980,
+      "profileViews": 863,
+      "likes": 2334,
+      "comments": 5,
+      "shares": 64
+    },
+    {
+      "date": "2026-01-26",
+      "videoViews": 40210,
+      "profileViews": 939,
+      "likes": 2709,
+      "comments": 25,
+      "shares": 71
+    },
+    {
+      "date": "2026-01-27",
+      "videoViews": 35589,
+      "profileViews": 1199,
+      "likes": 2515,
+      "comments": 10,
+      "shares": 79
+    },
+    {
+      "date": "2026-01-28",
+      "videoViews": 44699,
+      "profileViews": 1653,
+      "likes": 3012,
+      "comments": 44,
+      "shares": 83
+    },
+    {
+      "date": "2026-01-29",
+      "videoViews": 248307,
+      "profileViews": 11938,
+      "likes": 26373,
+      "comments": 133,
+      "shares": 902
+    },
+    {
+      "date": "2026-01-30",
+      "videoViews": 1064452,
+      "profileViews": 65572,
+      "likes": 136134,
+      "comments": 1189,
+      "shares": 6335
+    },
+    {
+      "date": "2026-01-31",
+      "videoViews": 707534,
+      "profileViews": 40687,
+      "likes": 85719,
+      "comments": 777,
+      "shares": 3795
+    },
+    {
+      "date": "2026-02-01",
+      "videoViews": 362693,
+      "profileViews": 19117,
+      "likes": 41357,
+      "comments": 281,
+      "shares": 1613
+    },
+    {
+      "date": "2026-02-02",
+      "videoViews": 308155,
+      "profileViews": 18153,
+      "likes": 37309,
+      "comments": 280,
+      "shares": 1611
+    },
+    {
+      "date": "2026-02-03",
+      "videoViews": 192938,
+      "profileViews": 11396,
+      "likes": 23159,
+      "comments": 158,
+      "shares": 1022
+    },
+    {
+      "date": "2026-02-04",
+      "videoViews": 179337,
+      "profileViews": 10462,
+      "likes": 21062,
+      "comments": 150,
+      "shares": 982
+    },
+    {
+      "date": "2026-02-05",
+      "videoViews": 147391,
+      "profileViews": 7777,
+      "likes": 15968,
+      "comments": 113,
+      "shares": 728
+    },
+    {
+      "date": "2026-02-06",
+      "videoViews": 150591,
+      "profileViews": 7535,
+      "likes": 14505,
+      "comments": 240,
+      "shares": 414
+    },
+    {
+      "date": "2026-02-07",
+      "videoViews": 125467,
+      "profileViews": 6114,
+      "likes": 12895,
+      "comments": 101,
+      "shares": 412
+    },
+    {
+      "date": "2026-02-08",
+      "videoViews": 129624,
+      "profileViews": 6143,
+      "likes": 14089,
+      "comments": 72,
+      "shares": 471
+    },
+    {
+      "date": "2026-02-09",
+      "videoViews": 92175,
+      "profileViews": 4171,
+      "likes": 9158,
+      "comments": 52,
+      "shares": 274
+    },
+    {
+      "date": "2026-02-10",
+      "videoViews": 88349,
+      "profileViews": 4252,
+      "likes": 9276,
+      "comments": 56,
+      "shares": 312
+    },
+    {
+      "date": "2026-02-11",
+      "videoViews": 116724,
+      "profileViews": 5786,
+      "likes": 11922,
+      "comments": 81,
+      "shares": 417
+    },
+    {
+      "date": "2026-02-12",
+      "videoViews": 140256,
+      "profileViews": 7214,
+      "likes": 14462,
+      "comments": 127,
+      "shares": 616
+    },
+    {
+      "date": "2026-02-13",
+      "videoViews": 268834,
+      "profileViews": 11704,
+      "likes": 24063,
+      "comments": 299,
+      "shares": 1108
+    },
+    {
+      "date": "2026-02-14",
+      "videoViews": 248652,
+      "profileViews": 9642,
+      "likes": 18474,
+      "comments": 350,
+      "shares": 1015
+    },
+    {
+      "date": "2026-02-15",
+      "videoViews": 269879,
+      "profileViews": 11090,
+      "likes": 22571,
+      "comments": 328,
+      "shares": 964
+    },
+    {
+      "date": "2026-02-16",
+      "videoViews": 202675,
+      "profileViews": 9224,
+      "likes": 19779,
+      "comments": 182,
+      "shares": 809
+    },
+    {
+      "date": "2026-02-17",
+      "videoViews": 202594,
+      "profileViews": 9521,
+      "likes": 18528,
+      "comments": 178,
+      "shares": 741
+    },
+    {
+      "date": "2026-02-18",
+      "videoViews": 130672,
+      "profileViews": 6423,
+      "likes": 12466,
+      "comments": 139,
+      "shares": 500
+    },
+    {
+      "date": "2026-02-19",
+      "videoViews": 79814,
+      "profileViews": 4163,
+      "likes": 7569,
+      "comments": 95,
+      "shares": 369
+    },
+    {
+      "date": "2026-02-20",
+      "videoViews": 100261,
+      "profileViews": 5727,
+      "likes": 9980,
+      "comments": 152,
+      "shares": 445
+    },
+    {
+      "date": "2026-02-21",
+      "videoViews": 100340,
+      "profileViews": 5657,
+      "likes": 10379,
+      "comments": 107,
+      "shares": 395
+    },
+    {
+      "date": "2026-02-22",
+      "videoViews": 190008,
+      "profileViews": 10145,
+      "likes": 20159,
+      "comments": 182,
+      "shares": 624
+    },
+    {
+      "date": "2026-02-23",
+      "videoViews": 223162,
+      "profileViews": 12782,
+      "likes": 25005,
+      "comments": 238,
+      "shares": 1007
+    },
+    {
+      "date": "2026-02-24",
+      "videoViews": 123869,
+      "profileViews": 7466,
+      "likes": 12495,
+      "comments": 170,
+      "shares": 637
+    },
+    {
+      "date": "2026-02-25",
+      "videoViews": 137189,
+      "profileViews": 8775,
+      "likes": 13470,
+      "comments": 169,
+      "shares": 914
+    },
+    {
+      "date": "2026-02-26",
+      "videoViews": 126310,
+      "profileViews": 7841,
+      "likes": 12851,
+      "comments": 209,
+      "shares": 828
+    },
+    {
+      "date": "2026-02-27",
+      "videoViews": 120693,
+      "profileViews": 6276,
+      "likes": 11669,
+      "comments": 124,
+      "shares": 471
+    },
+    {
+      "date": "2026-02-28",
+      "videoViews": 102703,
+      "profileViews": 5756,
+      "likes": 10117,
+      "comments": 124,
+      "shares": 498
+    },
+    {
+      "date": "2026-03-01",
+      "videoViews": 126435,
+      "profileViews": 7643,
+      "likes": 13072,
+      "comments": 150,
+      "shares": 652
+    },
+    {
+      "date": "2026-03-02",
+      "videoViews": 127890,
+      "profileViews": 8886,
+      "likes": 12967,
+      "comments": 192,
+      "shares": 685
+    },
+    {
+      "date": "2026-03-03",
+      "videoViews": 107714,
+      "profileViews": 6915,
+      "likes": 11903,
+      "comments": 94,
+      "shares": 537
+    },
+    {
+      "date": "2026-03-04",
+      "videoViews": 141430,
+      "profileViews": 9767,
+      "likes": 15310,
+      "comments": 193,
+      "shares": 823
+    },
+    {
+      "date": "2026-03-05",
+      "videoViews": 100717,
+      "profileViews": 7465,
+      "likes": 10031,
+      "comments": 130,
+      "shares": 584
+    },
+    {
+      "date": "2026-03-06",
+      "videoViews": 91418,
+      "profileViews": 5694,
+      "likes": 8493,
+      "comments": 153,
+      "shares": 428
+    },
+    {
+      "date": "2026-03-07",
+      "videoViews": 62733,
+      "profileViews": 3528,
+      "likes": 5674,
+      "comments": 46,
+      "shares": 241
+    },
+    {
+      "date": "2026-03-08",
+      "videoViews": 58059,
+      "profileViews": 3428,
+      "likes": 5628,
+      "comments": 46,
+      "shares": 262
+    },
+    {
+      "date": "2026-03-09",
+      "videoViews": 52253,
+      "profileViews": 3214,
+      "likes": 5362,
+      "comments": 47,
+      "shares": 286
+    },
+    {
+      "date": "2026-03-10",
+      "videoViews": 96023,
+      "profileViews": 5582,
+      "likes": 7598,
+      "comments": 93,
+      "shares": 270
+    },
+    {
+      "date": "2026-03-11",
+      "videoViews": 134616,
+      "profileViews": 6985,
+      "likes": 8944,
+      "comments": 117,
+      "shares": 394
+    },
+    {
+      "date": "2026-03-12",
+      "videoViews": 121715,
+      "profileViews": 5700,
+      "likes": 7846,
+      "comments": 122,
+      "shares": 461
+    },
+    {
+      "date": "2026-03-13",
+      "videoViews": 91900,
+      "profileViews": 5008,
+      "likes": 7089,
+      "comments": 108,
+      "shares": 345
+    },
+    {
+      "date": "2026-03-14",
+      "videoViews": 146036,
+      "profileViews": 6721,
+      "likes": 11069,
+      "comments": 147,
+      "shares": 528
+    },
+    {
+      "date": "2026-03-15",
+      "videoViews": 287455,
+      "profileViews": 13142,
+      "likes": 25638,
+      "comments": 312,
+      "shares": 1400
+    },
+    {
+      "date": "2026-03-16",
+      "videoViews": 351204,
+      "profileViews": 16395,
+      "likes": 33657,
+      "comments": 377,
+      "shares": 1629
+    },
+    {
+      "date": "2026-03-17",
+      "videoViews": 229888,
+      "profileViews": 10566,
+      "likes": 21812,
+      "comments": 256,
+      "shares": 1129
+    },
+    {
+      "date": "2026-03-18",
+      "videoViews": 620174,
+      "profileViews": 37492,
+      "likes": 51099,
+      "comments": 748,
+      "shares": 3323
+    },
+    {
+      "date": "2026-03-19",
+      "videoViews": 836147,
+      "profileViews": 52615,
+      "likes": 78485,
+      "comments": 915,
+      "shares": 4235
+    },
+    {
+      "date": "2026-03-20",
+      "videoViews": 688087,
+      "profileViews": 44088,
+      "likes": 69532,
+      "comments": 663,
+      "shares": 2760
+    },
+    {
+      "date": "2026-03-21",
+      "videoViews": 1673215,
+      "profileViews": 131162,
+      "likes": 217562,
+      "comments": 1397,
+      "shares": 3313
+    },
+    {
+      "date": "2026-03-22",
+      "videoViews": 1073824,
+      "profileViews": 73178,
+      "likes": 123032,
+      "comments": 670,
+      "shares": 2235
+    },
+    {
+      "date": "2026-03-23",
+      "videoViews": 503497,
+      "profileViews": 31427,
+      "likes": 54632,
+      "comments": 307,
+      "shares": 1128
+    },
+    {
+      "date": "2026-03-24",
+      "videoViews": 280559,
+      "profileViews": 16559,
+      "likes": 30438,
+      "comments": 159,
+      "shares": 650
+    },
+    {
+      "date": "2026-03-25",
+      "videoViews": 161923,
+      "profileViews": 10266,
+      "likes": 18130,
+      "comments": 123,
+      "shares": 324
+    },
+    {
+      "date": "2026-03-26",
+      "videoViews": 142618,
+      "profileViews": 8565,
+      "likes": 15903,
+      "comments": 141,
+      "shares": 400
+    },
+    {
+      "date": "2026-03-27",
+      "videoViews": 134314,
+      "profileViews": 7920,
+      "likes": 14877,
+      "comments": 235,
+      "shares": 391
+    },
+    {
+      "date": "2026-03-28",
+      "videoViews": 151019,
+      "profileViews": 8608,
+      "likes": 16569,
+      "comments": 146,
+      "shares": 422
+    },
+    {
+      "date": "2026-03-29",
+      "videoViews": 230677,
+      "profileViews": 12711,
+      "likes": 24537,
+      "comments": 162,
+      "shares": 744
+    },
+    {
+      "date": "2026-03-30",
+      "videoViews": 217504,
+      "profileViews": 13436,
+      "likes": 24789,
+      "comments": 214,
+      "shares": 442
+    },
+    {
+      "date": "2026-03-31",
+      "videoViews": 311104,
+      "profileViews": 20262,
+      "likes": 43611,
+      "comments": 187,
+      "shares": 353
+    },
+    {
+      "date": "2026-04-01",
+      "videoViews": 168461,
+      "profileViews": 11945,
+      "likes": 17862,
+      "comments": 80,
+      "shares": 271
+    },
+    {
+      "date": "2026-04-02",
+      "videoViews": 196296,
+      "profileViews": 11859,
+      "likes": 19688,
+      "comments": 105,
+      "shares": 409
+    },
+    {
+      "date": "2026-04-03",
+      "videoViews": 237980,
+      "profileViews": 13116,
+      "likes": 25632,
+      "comments": 147,
+      "shares": 621
+    },
+    {
+      "date": "2026-04-04",
+      "videoViews": 191977,
+      "profileViews": 11014,
+      "likes": 21719,
+      "comments": 115,
+      "shares": 401
+    },
+    {
+      "date": "2026-04-05",
+      "videoViews": 117255,
+      "profileViews": 6327,
+      "likes": 12894,
+      "comments": 37,
+      "shares": 236
+    },
+    {
+      "date": "2026-04-06",
+      "videoViews": 134955,
+      "profileViews": 7356,
+      "likes": 14470,
+      "comments": 74,
+      "shares": 331
+    },
+    {
+      "date": "2026-04-07",
+      "videoViews": 172326,
+      "profileViews": 9933,
+      "likes": 20181,
+      "comments": 111,
+      "shares": 457
+    },
+    {
+      "date": "2026-04-08",
+      "videoViews": 168914,
+      "profileViews": 10689,
+      "likes": 18480,
+      "comments": 164,
+      "shares": 455
+    },
+    {
+      "date": "2026-04-09",
+      "videoViews": 359109,
+      "profileViews": 27104,
+      "likes": 43918,
+      "comments": 379,
+      "shares": 1204
+    },
+    {
+      "date": "2026-04-10",
+      "videoViews": 263700,
+      "profileViews": 15492,
+      "likes": 32514,
+      "comments": -424,
+      "shares": 811
+    },
+    {
+      "date": "2026-04-11",
+      "videoViews": 352697,
+      "profileViews": 16989,
+      "likes": 46707,
+      "comments": 211,
+      "shares": 953
+    },
+    {
+      "date": "2026-04-12",
+      "videoViews": 171570,
+      "profileViews": 8804,
+      "likes": 20160,
+      "comments": 98,
+      "shares": 325
+    },
+    {
+      "date": "2026-04-13",
+      "videoViews": 163244,
+      "profileViews": 8512,
+      "likes": 20134,
+      "comments": 90,
+      "shares": 332
+    },
+    {
+      "date": "2026-04-14",
+      "videoViews": 101364,
+      "profileViews": 5742,
+      "likes": 11601,
+      "comments": 43,
+      "shares": 256
+    },
+    {
+      "date": "2026-04-15",
+      "videoViews": 108194,
+      "profileViews": 6828,
+      "likes": 12279,
+      "comments": 63,
+      "shares": 234
+    },
+    {
+      "date": "2026-04-16",
+      "videoViews": 139520,
+      "profileViews": 9031,
+      "likes": 16688,
+      "comments": 75,
+      "shares": 369
+    },
+    {
+      "date": "2026-04-17",
+      "videoViews": 136847,
+      "profileViews": 9008,
+      "likes": 15419,
+      "comments": 115,
+      "shares": 343
+    },
+    {
+      "date": "2026-04-18",
+      "videoViews": 123807,
+      "profileViews": 8452,
+      "likes": 11710,
+      "comments": 65,
+      "shares": 192
+    },
+    {
+      "date": "2026-04-19",
+      "videoViews": 132225,
+      "profileViews": 8820,
+      "likes": 12220,
+      "comments": 82,
+      "shares": 271
+    },
+    {
+      "date": "2026-04-20",
+      "videoViews": 102876,
+      "profileViews": 6744,
+      "likes": 9181,
+      "comments": 70,
+      "shares": 220
+    },
+    {
+      "date": "2026-04-21",
+      "videoViews": 104102,
+      "profileViews": 6612,
+      "likes": 10108,
+      "comments": 74,
+      "shares": 200
+    },
+    {
+      "date": "2026-04-22",
+      "videoViews": 111496,
+      "profileViews": 6878,
+      "likes": 11042,
+      "comments": 62,
+      "shares": 208
+    },
+    {
+      "date": "2026-04-23",
+      "videoViews": 82892,
+      "profileViews": 5127,
+      "likes": 7794,
+      "comments": 27,
+      "shares": 190
+    },
+    {
+      "date": "2026-04-24",
+      "videoViews": 71180,
+      "profileViews": 4778,
+      "likes": 6419,
+      "comments": 78,
+      "shares": 128
+    },
+    {
+      "date": "2026-04-25",
+      "videoViews": 114650,
+      "profileViews": 7690,
+      "likes": 10235,
+      "comments": 88,
+      "shares": 181
+    },
+    {
+      "date": "2026-04-26",
+      "videoViews": 126472,
+      "profileViews": 7903,
+      "likes": 11956,
+      "comments": 95,
+      "shares": 226
+    },
+    {
+      "date": "2026-04-27",
+      "videoViews": 100825,
+      "profileViews": 6140,
+      "likes": 9082,
+      "comments": 30,
+      "shares": 216
+    },
+    {
+      "date": "2026-04-28",
+      "videoViews": 91229,
+      "profileViews": 5878,
+      "likes": 8556,
+      "comments": 41,
+      "shares": 238
+    },
+    {
+      "date": "2026-04-29",
+      "videoViews": 77454,
+      "profileViews": 5174,
+      "likes": 7118,
+      "comments": 32,
+      "shares": 171
+    },
+    {
+      "date": "2026-04-30",
+      "videoViews": 62352,
+      "profileViews": 4248,
+      "likes": 5200,
+      "comments": 21,
+      "shares": 152
+    },
+    {
+      "date": "2026-05-01",
+      "videoViews": 96912,
+      "profileViews": 7179,
+      "likes": 7882,
+      "comments": 99,
+      "shares": 240
+    },
+    {
+      "date": "2026-05-02",
+      "videoViews": 144268,
+      "profileViews": 11418,
+      "likes": 10435,
+      "comments": 133,
+      "shares": 347
+    },
+    {
+      "date": "2026-05-03",
+      "videoViews": 116555,
+      "profileViews": 8311,
+      "likes": 9782,
+      "comments": 107,
+      "shares": 193
+    },
+    {
+      "date": "2026-05-04",
+      "videoViews": 91300,
+      "profileViews": 6668,
+      "likes": 7973,
+      "comments": 63,
+      "shares": 208
+    },
+    {
+      "date": "2026-05-05",
+      "videoViews": 65463,
+      "profileViews": 4514,
+      "likes": 5757,
+      "comments": 42,
+      "shares": 143
+    }
+  ],
+  "viewers": [
+    {
+      "date": "2025-05-07",
+      "totalViewers": 1263,
+      "newViewers": 1050,
+      "returningViewers": 213
+    },
+    {
+      "date": "2025-05-08",
+      "totalViewers": 1224,
+      "newViewers": 970,
+      "returningViewers": 254
+    },
+    {
+      "date": "2025-05-09",
+      "totalViewers": 1666,
+      "newViewers": 1290,
+      "returningViewers": 376
+    },
+    {
+      "date": "2025-05-10",
+      "totalViewers": 835,
+      "newViewers": 682,
+      "returningViewers": 153
+    },
+    {
+      "date": "2025-05-11",
+      "totalViewers": 600,
+      "newViewers": 472,
+      "returningViewers": 128
+    },
+    {
+      "date": "2025-05-12",
+      "totalViewers": 506,
+      "newViewers": 389,
+      "returningViewers": 117
+    },
+    {
+      "date": "2025-05-13",
+      "totalViewers": 1099,
+      "newViewers": 767,
+      "returningViewers": 332
+    },
+    {
+      "date": "2025-05-14",
+      "totalViewers": 536,
+      "newViewers": 379,
+      "returningViewers": 157
+    },
+    {
+      "date": "2025-05-15",
+      "totalViewers": 530,
+      "newViewers": 420,
+      "returningViewers": 110
+    },
+    {
+      "date": "2025-05-16",
+      "totalViewers": 571,
+      "newViewers": 473,
+      "returningViewers": 98
+    },
+    {
+      "date": "2025-05-17",
+      "totalViewers": 733,
+      "newViewers": 642,
+      "returningViewers": 91
+    },
+    {
+      "date": "2025-05-18",
+      "totalViewers": 1259,
+      "newViewers": 1141,
+      "returningViewers": 118
+    },
+    {
+      "date": "2025-05-19",
+      "totalViewers": 889,
+      "newViewers": 781,
+      "returningViewers": 108
+    },
+    {
+      "date": "2025-05-20",
+      "totalViewers": 593,
+      "newViewers": 493,
+      "returningViewers": 100
+    },
+    {
+      "date": "2025-05-21",
+      "totalViewers": 785,
+      "newViewers": 575,
+      "returningViewers": 210
+    },
+    {
+      "date": "2025-05-22",
+      "totalViewers": 793,
+      "newViewers": 535,
+      "returningViewers": 258
+    },
+    {
+      "date": "2025-05-23",
+      "totalViewers": 493,
+      "newViewers": 369,
+      "returningViewers": 124
+    },
+    {
+      "date": "2025-05-24",
+      "totalViewers": 610,
+      "newViewers": 452,
+      "returningViewers": 158
+    },
+    {
+      "date": "2025-05-25",
+      "totalViewers": 712,
+      "newViewers": 559,
+      "returningViewers": 153
+    },
+    {
+      "date": "2025-05-26",
+      "totalViewers": 686,
+      "newViewers": 569,
+      "returningViewers": 117
+    },
+    {
+      "date": "2025-05-27",
+      "totalViewers": 567,
+      "newViewers": 457,
+      "returningViewers": 110
+    },
+    {
+      "date": "2025-05-28",
+      "totalViewers": 934,
+      "newViewers": 695,
+      "returningViewers": 239
+    },
+    {
+      "date": "2025-05-29",
+      "totalViewers": 1160,
+      "newViewers": 783,
+      "returningViewers": 377
+    },
+    {
+      "date": "2025-05-30",
+      "totalViewers": 1762,
+      "newViewers": 1375,
+      "returningViewers": 387
+    },
+    {
+      "date": "2025-05-31",
+      "totalViewers": 3107,
+      "newViewers": 2375,
+      "returningViewers": 732
+    },
+    {
+      "date": "2025-06-01",
+      "totalViewers": 668,
+      "newViewers": 492,
+      "returningViewers": 176
+    },
+    {
+      "date": "2025-06-02",
+      "totalViewers": 559,
+      "newViewers": 445,
+      "returningViewers": 114
+    },
+    {
+      "date": "2025-06-03",
+      "totalViewers": 5290,
+      "newViewers": 4795,
+      "returningViewers": 495
+    },
+    {
+      "date": "2025-06-04",
+      "totalViewers": 853,
+      "newViewers": 558,
+      "returningViewers": 295
+    },
+    {
+      "date": "2025-06-05",
+      "totalViewers": 846,
+      "newViewers": 542,
+      "returningViewers": 304
+    },
+    {
+      "date": "2025-06-06",
+      "totalViewers": 827,
+      "newViewers": 589,
+      "returningViewers": 238
+    },
+    {
+      "date": "2025-06-07",
+      "totalViewers": 1452,
+      "newViewers": 821,
+      "returningViewers": 631
+    },
+    {
+      "date": "2025-06-08",
+      "totalViewers": 1362,
+      "newViewers": 662,
+      "returningViewers": 700
+    },
+    {
+      "date": "2025-06-09",
+      "totalViewers": 991,
+      "newViewers": 531,
+      "returningViewers": 460
+    },
+    {
+      "date": "2025-06-10",
+      "totalViewers": 1066,
+      "newViewers": 547,
+      "returningViewers": 519
+    },
+    {
+      "date": "2025-06-11",
+      "totalViewers": 616,
+      "newViewers": 427,
+      "returningViewers": 189
+    },
+    {
+      "date": "2025-06-12",
+      "totalViewers": 574,
+      "newViewers": 442,
+      "returningViewers": 132
+    },
+    {
+      "date": "2025-06-13",
+      "totalViewers": 523,
+      "newViewers": 413,
+      "returningViewers": 110
+    },
+    {
+      "date": "2025-06-14",
+      "totalViewers": 539,
+      "newViewers": 428,
+      "returningViewers": 111
+    },
+    {
+      "date": "2025-06-15",
+      "totalViewers": 565,
+      "newViewers": 440,
+      "returningViewers": 125
+    },
+    {
+      "date": "2025-06-16",
+      "totalViewers": 574,
+      "newViewers": 485,
+      "returningViewers": 89
+    },
+    {
+      "date": "2025-06-17",
+      "totalViewers": 654,
+      "newViewers": 539,
+      "returningViewers": 115
+    },
+    {
+      "date": "2025-06-18",
+      "totalViewers": 3846,
+      "newViewers": 3636,
+      "returningViewers": 210
+    },
+    {
+      "date": "2025-06-19",
+      "totalViewers": 8111,
+      "newViewers": 7756,
+      "returningViewers": 355
+    },
+    {
+      "date": "2025-06-20",
+      "totalViewers": 4061,
+      "newViewers": 3755,
+      "returningViewers": 306
+    },
+    {
+      "date": "2025-06-21",
+      "totalViewers": 1435,
+      "newViewers": 1312,
+      "returningViewers": 123
+    },
+    {
+      "date": "2025-06-22",
+      "totalViewers": 857,
+      "newViewers": 744,
+      "returningViewers": 113
+    },
+    {
+      "date": "2025-06-23",
+      "totalViewers": 563,
+      "newViewers": 462,
+      "returningViewers": 101
+    },
+    {
+      "date": "2025-06-24",
+      "totalViewers": 848,
+      "newViewers": 615,
+      "returningViewers": 233
+    },
+    {
+      "date": "2025-06-25",
+      "totalViewers": 833,
+      "newViewers": 598,
+      "returningViewers": 235
+    },
+    {
+      "date": "2025-06-26",
+      "totalViewers": 571,
+      "newViewers": 469,
+      "returningViewers": 102
+    },
+    {
+      "date": "2025-06-27",
+      "totalViewers": 459,
+      "newViewers": 359,
+      "returningViewers": 100
+    },
+    {
+      "date": "2025-06-28",
+      "totalViewers": 453,
+      "newViewers": 366,
+      "returningViewers": 87
+    },
+    {
+      "date": "2025-06-29",
+      "totalViewers": 1259,
+      "newViewers": 971,
+      "returningViewers": 288
+    },
+    {
+      "date": "2025-06-30",
+      "totalViewers": 791,
+      "newViewers": 612,
+      "returningViewers": 179
+    },
+    {
+      "date": "2025-07-01",
+      "totalViewers": 1102,
+      "newViewers": 817,
+      "returningViewers": 285
+    },
+    {
+      "date": "2025-07-02",
+      "totalViewers": 876,
+      "newViewers": 705,
+      "returningViewers": 171
+    },
+    {
+      "date": "2025-07-03",
+      "totalViewers": 770,
+      "newViewers": 665,
+      "returningViewers": 105
+    },
+    {
+      "date": "2025-07-04",
+      "totalViewers": 697,
+      "newViewers": 595,
+      "returningViewers": 102
+    },
+    {
+      "date": "2025-07-05",
+      "totalViewers": 657,
+      "newViewers": 566,
+      "returningViewers": 91
+    },
+    {
+      "date": "2025-07-06",
+      "totalViewers": 719,
+      "newViewers": 612,
+      "returningViewers": 107
+    },
+    {
+      "date": "2025-07-07",
+      "totalViewers": 750,
+      "newViewers": 630,
+      "returningViewers": 120
+    },
+    {
+      "date": "2025-07-08",
+      "totalViewers": 1079,
+      "newViewers": 947,
+      "returningViewers": 132
+    },
+    {
+      "date": "2025-07-09",
+      "totalViewers": 1021,
+      "newViewers": 912,
+      "returningViewers": 109
+    },
+    {
+      "date": "2025-07-10",
+      "totalViewers": 1473,
+      "newViewers": 1253,
+      "returningViewers": 220
+    },
+    {
+      "date": "2025-07-11",
+      "totalViewers": 1475,
+      "newViewers": 1340,
+      "returningViewers": 135
+    },
+    {
+      "date": "2025-07-12",
+      "totalViewers": 7745,
+      "newViewers": 7433,
+      "returningViewers": 312
+    },
+    {
+      "date": "2025-07-13",
+      "totalViewers": 6901,
+      "newViewers": 6601,
+      "returningViewers": 300
+    },
+    {
+      "date": "2025-07-14",
+      "totalViewers": 3776,
+      "newViewers": 3546,
+      "returningViewers": 230
+    },
+    {
+      "date": "2025-07-15",
+      "totalViewers": 4765,
+      "newViewers": 4505,
+      "returningViewers": 260
+    },
+    {
+      "date": "2025-07-16",
+      "totalViewers": 8192,
+      "newViewers": 7776,
+      "returningViewers": 416
+    },
+    {
+      "date": "2025-07-17",
+      "totalViewers": 12372,
+      "newViewers": 11967,
+      "returningViewers": 405
+    },
+    {
+      "date": "2025-07-18",
+      "totalViewers": 9478,
+      "newViewers": 9188,
+      "returningViewers": 290
+    },
+    {
+      "date": "2025-07-19",
+      "totalViewers": 9902,
+      "newViewers": 9545,
+      "returningViewers": 357
+    },
+    {
+      "date": "2025-07-20",
+      "totalViewers": 10407,
+      "newViewers": 9884,
+      "returningViewers": 523
+    },
+    {
+      "date": "2025-07-21",
+      "totalViewers": 3789,
+      "newViewers": 3555,
+      "returningViewers": 234
+    },
+    {
+      "date": "2025-07-22",
+      "totalViewers": 2594,
+      "newViewers": 2405,
+      "returningViewers": 189
+    },
+    {
+      "date": "2025-07-23",
+      "totalViewers": 3653,
+      "newViewers": 3316,
+      "returningViewers": 337
+    },
+    {
+      "date": "2025-07-24",
+      "totalViewers": 3566,
+      "newViewers": 3386,
+      "returningViewers": 180
+    },
+    {
+      "date": "2025-07-25",
+      "totalViewers": 4185,
+      "newViewers": 3822,
+      "returningViewers": 363
+    },
+    {
+      "date": "2025-07-26",
+      "totalViewers": 4693,
+      "newViewers": 4422,
+      "returningViewers": 271
+    },
+    {
+      "date": "2025-07-27",
+      "totalViewers": 3040,
+      "newViewers": 2836,
+      "returningViewers": 204
+    },
+    {
+      "date": "2025-07-28",
+      "totalViewers": 2231,
+      "newViewers": 2029,
+      "returningViewers": 202
+    },
+    {
+      "date": "2025-07-29",
+      "totalViewers": 2851,
+      "newViewers": 2633,
+      "returningViewers": 218
+    },
+    {
+      "date": "2025-07-30",
+      "totalViewers": 3079,
+      "newViewers": 2731,
+      "returningViewers": 348
+    },
+    {
+      "date": "2025-07-31",
+      "totalViewers": 3154,
+      "newViewers": 2827,
+      "returningViewers": 327
+    },
+    {
+      "date": "2025-08-01",
+      "totalViewers": 3258,
+      "newViewers": 2993,
+      "returningViewers": 265
+    },
+    {
+      "date": "2025-08-02",
+      "totalViewers": 4940,
+      "newViewers": 4527,
+      "returningViewers": 413
+    },
+    {
+      "date": "2025-08-03",
+      "totalViewers": 6917,
+      "newViewers": 6483,
+      "returningViewers": 434
+    },
+    {
+      "date": "2025-08-04",
+      "totalViewers": 4042,
+      "newViewers": 3740,
+      "returningViewers": 302
+    },
+    {
+      "date": "2025-08-05",
+      "totalViewers": 3256,
+      "newViewers": 2955,
+      "returningViewers": 301
+    },
+    {
+      "date": "2025-08-06",
+      "totalViewers": 3194,
+      "newViewers": 2918,
+      "returningViewers": 276
+    },
+    {
+      "date": "2025-08-07",
+      "totalViewers": 4685,
+      "newViewers": 4416,
+      "returningViewers": 269
+    },
+    {
+      "date": "2025-08-08",
+      "totalViewers": 7260,
+      "newViewers": 6802,
+      "returningViewers": 458
+    },
+    {
+      "date": "2025-08-09",
+      "totalViewers": 4363,
+      "newViewers": 4087,
+      "returningViewers": 276
+    },
+    {
+      "date": "2025-08-10",
+      "totalViewers": 3545,
+      "newViewers": 3322,
+      "returningViewers": 223
+    },
+    {
+      "date": "2025-08-11",
+      "totalViewers": 3388,
+      "newViewers": 3170,
+      "returningViewers": 218
+    },
+    {
+      "date": "2025-08-12",
+      "totalViewers": 1889,
+      "newViewers": 1723,
+      "returningViewers": 166
+    },
+    {
+      "date": "2025-08-13",
+      "totalViewers": 158944,
+      "newViewers": 135052,
+      "returningViewers": 23892
+    },
+    {
+      "date": "2025-08-14",
+      "totalViewers": 406325,
+      "newViewers": 363663,
+      "returningViewers": 42662
+    },
+    {
+      "date": "2025-08-15",
+      "totalViewers": 566428,
+      "newViewers": 522641,
+      "returningViewers": 43787
+    },
+    {
+      "date": "2025-08-16",
+      "totalViewers": 288054,
+      "newViewers": 244720,
+      "returningViewers": 43334
+    },
+    {
+      "date": "2025-08-17",
+      "totalViewers": 286605,
+      "newViewers": 237034,
+      "returningViewers": 49571
+    },
+    {
+      "date": "2025-08-18",
+      "totalViewers": 470940,
+      "newViewers": 364108,
+      "returningViewers": 106832
+    },
+    {
+      "date": "2025-08-19",
+      "totalViewers": 256960,
+      "newViewers": 201444,
+      "returningViewers": 55516
+    },
+    {
+      "date": "2025-08-20",
+      "totalViewers": 184122,
+      "newViewers": 140714,
+      "returningViewers": 43408
+    },
+    {
+      "date": "2025-08-21",
+      "totalViewers": 142741,
+      "newViewers": 103919,
+      "returningViewers": 38822
+    },
+    {
+      "date": "2025-08-22",
+      "totalViewers": 95503,
+      "newViewers": 64459,
+      "returningViewers": 31044
+    },
+    {
+      "date": "2025-08-23",
+      "totalViewers": 137538,
+      "newViewers": 92252,
+      "returningViewers": 45286
+    },
+    {
+      "date": "2025-08-24",
+      "totalViewers": 138387,
+      "newViewers": 82289,
+      "returningViewers": 56098
+    },
+    {
+      "date": "2025-08-25",
+      "totalViewers": 130915,
+      "newViewers": 83166,
+      "returningViewers": 47749
+    },
+    {
+      "date": "2025-08-26",
+      "totalViewers": 110629,
+      "newViewers": 78297,
+      "returningViewers": 32332
+    },
+    {
+      "date": "2025-08-27",
+      "totalViewers": 176406,
+      "newViewers": 110602,
+      "returningViewers": 65804
+    },
+    {
+      "date": "2025-08-28",
+      "totalViewers": 217683,
+      "newViewers": 132051,
+      "returningViewers": 85632
+    },
+    {
+      "date": "2025-08-29",
+      "totalViewers": 206819,
+      "newViewers": 117063,
+      "returningViewers": 89756
+    },
+    {
+      "date": "2025-08-30",
+      "totalViewers": 371341,
+      "newViewers": 222932,
+      "returningViewers": 148409
+    },
+    {
+      "date": "2025-08-31",
+      "totalViewers": 401697,
+      "newViewers": 207443,
+      "returningViewers": 194254
+    },
+    {
+      "date": "2025-09-01",
+      "totalViewers": 223069,
+      "newViewers": 92650,
+      "returningViewers": 130419
+    },
+    {
+      "date": "2025-09-02",
+      "totalViewers": 143252,
+      "newViewers": 48594,
+      "returningViewers": 94658
+    },
+    {
+      "date": "2025-09-03",
+      "totalViewers": 76692,
+      "newViewers": 25284,
+      "returningViewers": 51408
+    },
+    {
+      "date": "2025-09-04",
+      "totalViewers": 56330,
+      "newViewers": 12422,
+      "returningViewers": 43908
+    },
+    {
+      "date": "2025-09-05",
+      "totalViewers": 118321,
+      "newViewers": 42262,
+      "returningViewers": 76059
+    },
+    {
+      "date": "2025-09-06",
+      "totalViewers": 143965,
+      "newViewers": 59322,
+      "returningViewers": 84643
+    },
+    {
+      "date": "2025-09-07",
+      "totalViewers": 135259,
+      "newViewers": 51612,
+      "returningViewers": 83647
+    },
+    {
+      "date": "2025-09-08",
+      "totalViewers": 56409,
+      "newViewers": 16125,
+      "returningViewers": 40284
+    },
+    {
+      "date": "2025-09-09",
+      "totalViewers": 43028,
+      "newViewers": 8912,
+      "returningViewers": 34116
+    },
+    {
+      "date": "2025-09-10",
+      "totalViewers": 36690,
+      "newViewers": 7171,
+      "returningViewers": 29519
+    },
+    {
+      "date": "2025-09-11",
+      "totalViewers": 24056,
+      "newViewers": 5579,
+      "returningViewers": 18477
+    },
+    {
+      "date": "2025-09-12",
+      "totalViewers": 20194,
+      "newViewers": 5162,
+      "returningViewers": 15032
+    },
+    {
+      "date": "2025-09-13",
+      "totalViewers": 35793,
+      "newViewers": 8947,
+      "returningViewers": 26846
+    },
+    {
+      "date": "2025-09-14",
+      "totalViewers": 90005,
+      "newViewers": 23727,
+      "returningViewers": 66278
+    },
+    {
+      "date": "2025-09-15",
+      "totalViewers": 149929,
+      "newViewers": 51120,
+      "returningViewers": 98809
+    },
+    {
+      "date": "2025-09-16",
+      "totalViewers": 118679,
+      "newViewers": 37209,
+      "returningViewers": 81470
+    },
+    {
+      "date": "2025-09-17",
+      "totalViewers": 87871,
+      "newViewers": 21110,
+      "returningViewers": 66761
+    },
+    {
+      "date": "2025-09-18",
+      "totalViewers": 358697,
+      "newViewers": 131563,
+      "returningViewers": 227134
+    },
+    {
+      "date": "2025-09-19",
+      "totalViewers": 427958,
+      "newViewers": 190051,
+      "returningViewers": 237907
+    },
+    {
+      "date": "2025-09-20",
+      "totalViewers": 263082,
+      "newViewers": 112157,
+      "returningViewers": 150925
+    },
+    {
+      "date": "2025-09-21",
+      "totalViewers": 143625,
+      "newViewers": 48535,
+      "returningViewers": 95090
+    },
+    {
+      "date": "2025-09-22",
+      "totalViewers": 112325,
+      "newViewers": 41137,
+      "returningViewers": 71188
+    },
+    {
+      "date": "2025-09-23",
+      "totalViewers": 68297,
+      "newViewers": 24408,
+      "returningViewers": 43889
+    },
+    {
+      "date": "2025-09-24",
+      "totalViewers": 52175,
+      "newViewers": 14481,
+      "returningViewers": 37694
+    },
+    {
+      "date": "2025-09-25",
+      "totalViewers": 43906,
+      "newViewers": 12897,
+      "returningViewers": 31009
+    },
+    {
+      "date": "2025-09-26",
+      "totalViewers": 69840,
+      "newViewers": 19180,
+      "returningViewers": 50660
+    },
+    {
+      "date": "2025-09-27",
+      "totalViewers": 72025,
+      "newViewers": 19539,
+      "returningViewers": 52486
+    },
+    {
+      "date": "2025-09-28",
+      "totalViewers": 148200,
+      "newViewers": 45823,
+      "returningViewers": 102377
+    },
+    {
+      "date": "2025-09-29",
+      "totalViewers": 122279,
+      "newViewers": 48992,
+      "returningViewers": 73287
+    },
+    {
+      "date": "2025-09-30",
+      "totalViewers": 88838,
+      "newViewers": 21674,
+      "returningViewers": 67164
+    },
+    {
+      "date": "2025-10-01",
+      "totalViewers": 48056,
+      "newViewers": 10875,
+      "returningViewers": 37181
+    },
+    {
+      "date": "2025-10-02",
+      "totalViewers": 36009,
+      "newViewers": 9437,
+      "returningViewers": 26572
+    },
+    {
+      "date": "2025-10-03",
+      "totalViewers": 29698,
+      "newViewers": 6949,
+      "returningViewers": 22749
+    },
+    {
+      "date": "2025-10-04",
+      "totalViewers": 27170,
+      "newViewers": 7656,
+      "returningViewers": 19514
+    },
+    {
+      "date": "2025-10-05",
+      "totalViewers": 34045,
+      "newViewers": 9636,
+      "returningViewers": 24409
+    },
+    {
+      "date": "2025-10-06",
+      "totalViewers": 56247,
+      "newViewers": 12142,
+      "returningViewers": 44105
+    },
+    {
+      "date": "2025-10-07",
+      "totalViewers": 37394,
+      "newViewers": 8291,
+      "returningViewers": 29103
+    },
+    {
+      "date": "2025-10-08",
+      "totalViewers": 31444,
+      "newViewers": 7774,
+      "returningViewers": 23670
+    },
+    {
+      "date": "2025-10-09",
+      "totalViewers": 27020,
+      "newViewers": 7140,
+      "returningViewers": 19880
+    },
+    {
+      "date": "2025-10-10",
+      "totalViewers": 31525,
+      "newViewers": 9102,
+      "returningViewers": 22423
+    },
+    {
+      "date": "2025-10-11",
+      "totalViewers": 25925,
+      "newViewers": 8881,
+      "returningViewers": 17044
+    },
+    {
+      "date": "2025-10-12",
+      "totalViewers": 31057,
+      "newViewers": 9088,
+      "returningViewers": 21969
+    },
+    {
+      "date": "2025-10-13",
+      "totalViewers": 48736,
+      "newViewers": 13827,
+      "returningViewers": 34909
+    },
+    {
+      "date": "2025-10-14",
+      "totalViewers": 33844,
+      "newViewers": 10432,
+      "returningViewers": 23412
+    },
+    {
+      "date": "2025-10-15",
+      "totalViewers": 25213,
+      "newViewers": 6586,
+      "returningViewers": 18627
+    },
+    {
+      "date": "2025-10-16",
+      "totalViewers": 19558,
+      "newViewers": 5824,
+      "returningViewers": 13734
+    },
+    {
+      "date": "2025-10-17",
+      "totalViewers": 14894,
+      "newViewers": 5232,
+      "returningViewers": 9662
+    },
+    {
+      "date": "2025-10-18",
+      "totalViewers": 1894345,
+      "newViewers": 1454034,
+      "returningViewers": 440311
+    },
+    {
+      "date": "2025-10-19",
+      "totalViewers": 3418531,
+      "newViewers": 2798252,
+      "returningViewers": 620279
+    },
+    {
+      "date": "2025-10-20",
+      "totalViewers": 1371346,
+      "newViewers": 1103349,
+      "returningViewers": 267997
+    },
+    {
+      "date": "2025-10-21",
+      "totalViewers": 759333,
+      "newViewers": 609715,
+      "returningViewers": 149618
+    },
+    {
+      "date": "2025-10-22",
+      "totalViewers": 510824,
+      "newViewers": 400363,
+      "returningViewers": 110461
+    },
+    {
+      "date": "2025-10-23",
+      "totalViewers": 345052,
+      "newViewers": 259568,
+      "returningViewers": 85484
+    },
+    {
+      "date": "2025-10-24",
+      "totalViewers": 327999,
+      "newViewers": 249183,
+      "returningViewers": 78816
+    },
+    {
+      "date": "2025-10-25",
+      "totalViewers": 200901,
+      "newViewers": 128637,
+      "returningViewers": 72264
+    },
+    {
+      "date": "2025-10-26",
+      "totalViewers": 144812,
+      "newViewers": 96684,
+      "returningViewers": 48128
+    },
+    {
+      "date": "2025-10-27",
+      "totalViewers": 94859,
+      "newViewers": 57666,
+      "returningViewers": 37193
+    },
+    {
+      "date": "2025-10-28",
+      "totalViewers": 96301,
+      "newViewers": 54883,
+      "returningViewers": 41418
+    },
+    {
+      "date": "2025-10-29",
+      "totalViewers": 120483,
+      "newViewers": 81695,
+      "returningViewers": 38788
+    },
+    {
+      "date": "2025-10-30",
+      "totalViewers": 109004,
+      "newViewers": 74580,
+      "returningViewers": 34424
+    },
+    {
+      "date": "2025-10-31",
+      "totalViewers": 257332,
+      "newViewers": 131112,
+      "returningViewers": 126220
+    },
+    {
+      "date": "2025-11-01",
+      "totalViewers": 496811,
+      "newViewers": 253482,
+      "returningViewers": 243329
+    },
+    {
+      "date": "2025-11-02",
+      "totalViewers": 487096,
+      "newViewers": 272366,
+      "returningViewers": 214730
+    },
+    {
+      "date": "2025-11-03",
+      "totalViewers": 207050,
+      "newViewers": 102108,
+      "returningViewers": 104942
+    },
+    {
+      "date": "2025-11-04",
+      "totalViewers": 147168,
+      "newViewers": 74799,
+      "returningViewers": 72369
+    },
+    {
+      "date": "2025-11-05",
+      "totalViewers": 168495,
+      "newViewers": 111471,
+      "returningViewers": 57024
+    },
+    {
+      "date": "2025-11-06",
+      "totalViewers": 217963,
+      "newViewers": 145437,
+      "returningViewers": 72526
+    },
+    {
+      "date": "2025-11-07",
+      "totalViewers": 158169,
+      "newViewers": 112604,
+      "returningViewers": 45565
+    },
+    {
+      "date": "2025-11-08",
+      "totalViewers": 156230,
+      "newViewers": 108392,
+      "returningViewers": 47838
+    },
+    {
+      "date": "2025-11-09",
+      "totalViewers": 155299,
+      "newViewers": 99584,
+      "returningViewers": 55715
+    },
+    {
+      "date": "2025-11-10",
+      "totalViewers": 186642,
+      "newViewers": 114208,
+      "returningViewers": 72434
+    },
+    {
+      "date": "2025-11-11",
+      "totalViewers": 169431,
+      "newViewers": 113175,
+      "returningViewers": 56256
+    },
+    {
+      "date": "2025-11-12",
+      "totalViewers": 117196,
+      "newViewers": 75950,
+      "returningViewers": 41246
+    },
+    {
+      "date": "2025-11-13",
+      "totalViewers": 96843,
+      "newViewers": 59848,
+      "returningViewers": 36995
+    },
+    {
+      "date": "2025-11-14",
+      "totalViewers": 177583,
+      "newViewers": 122324,
+      "returningViewers": 55259
+    },
+    {
+      "date": "2025-11-15",
+      "totalViewers": 164051,
+      "newViewers": 118928,
+      "returningViewers": 45123
+    },
+    {
+      "date": "2025-11-16",
+      "totalViewers": 152213,
+      "newViewers": 98111,
+      "returningViewers": 54102
+    },
+    {
+      "date": "2025-11-17",
+      "totalViewers": 106778,
+      "newViewers": 61674,
+      "returningViewers": 45104
+    },
+    {
+      "date": "2025-11-18",
+      "totalViewers": 131047,
+      "newViewers": 88197,
+      "returningViewers": 42850
+    },
+    {
+      "date": "2025-11-19",
+      "totalViewers": 94179,
+      "newViewers": 58717,
+      "returningViewers": 35462
+    },
+    {
+      "date": "2025-11-20",
+      "totalViewers": 76916,
+      "newViewers": 50328,
+      "returningViewers": 26588
+    },
+    {
+      "date": "2025-11-21",
+      "totalViewers": 79520,
+      "newViewers": 49121,
+      "returningViewers": 30399
+    },
+    {
+      "date": "2025-11-22",
+      "totalViewers": 118233,
+      "newViewers": 83200,
+      "returningViewers": 35033
+    },
+    {
+      "date": "2025-11-23",
+      "totalViewers": 132688,
+      "newViewers": 84862,
+      "returningViewers": 47826
+    },
+    {
+      "date": "2025-11-24",
+      "totalViewers": 171168,
+      "newViewers": 113478,
+      "returningViewers": 57690
+    },
+    {
+      "date": "2025-11-25",
+      "totalViewers": 266476,
+      "newViewers": 201840,
+      "returningViewers": 64636
+    },
+    {
+      "date": "2025-11-26",
+      "totalViewers": 139242,
+      "newViewers": 103963,
+      "returningViewers": 35279
+    },
+    {
+      "date": "2025-11-27",
+      "totalViewers": 73001,
+      "newViewers": 51060,
+      "returningViewers": 21941
+    },
+    {
+      "date": "2025-11-28",
+      "totalViewers": 85778,
+      "newViewers": 60690,
+      "returningViewers": 25088
+    },
+    {
+      "date": "2025-11-29",
+      "totalViewers": 95060,
+      "newViewers": 57418,
+      "returningViewers": 37642
+    },
+    {
+      "date": "2025-11-30",
+      "totalViewers": 121140,
+      "newViewers": 67537,
+      "returningViewers": 53603
+    },
+    {
+      "date": "2025-12-01",
+      "totalViewers": 67951,
+      "newViewers": 36826,
+      "returningViewers": 31125
+    },
+    {
+      "date": "2025-12-02",
+      "totalViewers": 71731,
+      "newViewers": 47271,
+      "returningViewers": 24460
+    },
+    {
+      "date": "2025-12-03",
+      "totalViewers": 68672,
+      "newViewers": 39531,
+      "returningViewers": 29141
+    },
+    {
+      "date": "2025-12-04",
+      "totalViewers": 56606,
+      "newViewers": 33783,
+      "returningViewers": 22823
+    },
+    {
+      "date": "2025-12-05",
+      "totalViewers": 48943,
+      "newViewers": 30545,
+      "returningViewers": 18398
+    },
+    {
+      "date": "2025-12-06",
+      "totalViewers": 56527,
+      "newViewers": 34347,
+      "returningViewers": 22180
+    },
+    {
+      "date": "2025-12-07",
+      "totalViewers": 78347,
+      "newViewers": 46261,
+      "returningViewers": 32086
+    },
+    {
+      "date": "2025-12-08",
+      "totalViewers": 86237,
+      "newViewers": 48720,
+      "returningViewers": 37517
+    },
+    {
+      "date": "2025-12-09",
+      "totalViewers": 55032,
+      "newViewers": 33019,
+      "returningViewers": 22013
+    },
+    {
+      "date": "2025-12-10",
+      "totalViewers": 42685,
+      "newViewers": 23017,
+      "returningViewers": 19668
+    },
+    {
+      "date": "2025-12-11",
+      "totalViewers": 132489,
+      "newViewers": 42795,
+      "returningViewers": 89694
+    },
+    {
+      "date": "2025-12-12",
+      "totalViewers": 225972,
+      "newViewers": 80385,
+      "returningViewers": 145587
+    },
+    {
+      "date": "2025-12-13",
+      "totalViewers": 192827,
+      "newViewers": 67610,
+      "returningViewers": 125217
+    },
+    {
+      "date": "2025-12-14",
+      "totalViewers": 179064,
+      "newViewers": 60834,
+      "returningViewers": 118230
+    },
+    {
+      "date": "2025-12-15",
+      "totalViewers": 192658,
+      "newViewers": 81767,
+      "returningViewers": 110891
+    },
+    {
+      "date": "2025-12-16",
+      "totalViewers": 122211,
+      "newViewers": 57858,
+      "returningViewers": 64353
+    },
+    {
+      "date": "2025-12-17",
+      "totalViewers": 99939,
+      "newViewers": 47816,
+      "returningViewers": 52123
+    },
+    {
+      "date": "2025-12-18",
+      "totalViewers": 61011,
+      "newViewers": 25577,
+      "returningViewers": 35434
+    },
+    {
+      "date": "2025-12-19",
+      "totalViewers": 98294,
+      "newViewers": 39648,
+      "returningViewers": 58646
+    },
+    {
+      "date": "2025-12-20",
+      "totalViewers": 98500,
+      "newViewers": 45416,
+      "returningViewers": 53084
+    },
+    {
+      "date": "2025-12-21",
+      "totalViewers": 163481,
+      "newViewers": 69883,
+      "returningViewers": 93598
+    },
+    {
+      "date": "2025-12-22",
+      "totalViewers": 133867,
+      "newViewers": 53185,
+      "returningViewers": 80682
+    },
+    {
+      "date": "2025-12-23",
+      "totalViewers": 72590,
+      "newViewers": 28108,
+      "returningViewers": 44482
+    },
+    {
+      "date": "2025-12-24",
+      "totalViewers": 48072,
+      "newViewers": 17912,
+      "returningViewers": 30160
+    },
+    {
+      "date": "2025-12-25",
+      "totalViewers": 72257,
+      "newViewers": 28558,
+      "returningViewers": 43699
+    },
+    {
+      "date": "2025-12-26",
+      "totalViewers": 141081,
+      "newViewers": 61184,
+      "returningViewers": 79897
+    },
+    {
+      "date": "2025-12-27",
+      "totalViewers": 129092,
+      "newViewers": 57495,
+      "returningViewers": 71597
+    },
+    {
+      "date": "2025-12-28",
+      "totalViewers": 171683,
+      "newViewers": 65968,
+      "returningViewers": 105715
+    },
+    {
+      "date": "2025-12-29",
+      "totalViewers": 168460,
+      "newViewers": 70648,
+      "returningViewers": 97812
+    },
+    {
+      "date": "2025-12-30",
+      "totalViewers": 114750,
+      "newViewers": 41869,
+      "returningViewers": 72881
+    },
+    {
+      "date": "2025-12-31",
+      "totalViewers": 82959,
+      "newViewers": 32184,
+      "returningViewers": 50775
+    },
+    {
+      "date": "2026-01-01",
+      "totalViewers": 111583,
+      "newViewers": 47519,
+      "returningViewers": 64064
+    },
+    {
+      "date": "2026-01-02",
+      "totalViewers": 198400,
+      "newViewers": 63992,
+      "returningViewers": 134408
+    },
+    {
+      "date": "2026-01-03",
+      "totalViewers": 429421,
+      "newViewers": 146228,
+      "returningViewers": 283193
+    },
+    {
+      "date": "2026-01-04",
+      "totalViewers": 396686,
+      "newViewers": 150794,
+      "returningViewers": 245892
+    },
+    {
+      "date": "2026-01-05",
+      "totalViewers": 161765,
+      "newViewers": 53240,
+      "returningViewers": 108525
+    },
+    {
+      "date": "2026-01-06",
+      "totalViewers": 66833,
+      "newViewers": 23755,
+      "returningViewers": 43078
+    },
+    {
+      "date": "2026-01-07",
+      "totalViewers": 36916,
+      "newViewers": 14385,
+      "returningViewers": 22531
+    },
+    {
+      "date": "2026-01-08",
+      "totalViewers": 42153,
+      "newViewers": 12778,
+      "returningViewers": 29375
+    },
+    {
+      "date": "2026-01-09",
+      "totalViewers": 33152,
+      "newViewers": 13261,
+      "returningViewers": 19891
+    },
+    {
+      "date": "2026-01-10",
+      "totalViewers": 33193,
+      "newViewers": 14313,
+      "returningViewers": 18880
+    },
+    {
+      "date": "2026-01-11",
+      "totalViewers": 41615,
+      "newViewers": 16429,
+      "returningViewers": 25186
+    },
+    {
+      "date": "2026-01-12",
+      "totalViewers": 36056,
+      "newViewers": 13541,
+      "returningViewers": 22515
+    },
+    {
+      "date": "2026-01-13",
+      "totalViewers": 28892,
+      "newViewers": 11700,
+      "returningViewers": 17192
+    },
+    {
+      "date": "2026-01-14",
+      "totalViewers": 25704,
+      "newViewers": 11192,
+      "returningViewers": 14512
+    },
+    {
+      "date": "2026-01-15",
+      "totalViewers": 21499,
+      "newViewers": 10286,
+      "returningViewers": 11213
+    },
+    {
+      "date": "2026-01-16",
+      "totalViewers": 20210,
+      "newViewers": 8588,
+      "returningViewers": 11622
+    },
+    {
+      "date": "2026-01-17",
+      "totalViewers": 19876,
+      "newViewers": 8627,
+      "returningViewers": 11249
+    },
+    {
+      "date": "2026-01-18",
+      "totalViewers": 25248,
+      "newViewers": 10827,
+      "returningViewers": 14421
+    },
+    {
+      "date": "2026-01-19",
+      "totalViewers": 24193,
+      "newViewers": 9843,
+      "returningViewers": 14350
+    },
+    {
+      "date": "2026-01-20",
+      "totalViewers": 20149,
+      "newViewers": 8659,
+      "returningViewers": 11490
+    },
+    {
+      "date": "2026-01-21",
+      "totalViewers": 21075,
+      "newViewers": 7788,
+      "returningViewers": 13287
+    },
+    {
+      "date": "2026-01-22",
+      "totalViewers": 20593,
+      "newViewers": 6982,
+      "returningViewers": 13611
+    },
+    {
+      "date": "2026-01-23",
+      "totalViewers": 21636,
+      "newViewers": 6763,
+      "returningViewers": 14873
+    },
+    {
+      "date": "2026-01-24",
+      "totalViewers": 21246,
+      "newViewers": 7879,
+      "returningViewers": 13367
+    },
+    {
+      "date": "2026-01-25",
+      "totalViewers": 25711,
+      "newViewers": 9639,
+      "returningViewers": 16072
+    },
+    {
+      "date": "2026-01-26",
+      "totalViewers": 27740,
+      "newViewers": 10401,
+      "returningViewers": 17339
+    },
+    {
+      "date": "2026-01-27",
+      "totalViewers": 25699,
+      "newViewers": 8615,
+      "returningViewers": 17084
+    },
+    {
+      "date": "2026-01-28",
+      "totalViewers": 28916,
+      "newViewers": 8529,
+      "returningViewers": 20387
+    },
+    {
+      "date": "2026-01-29",
+      "totalViewers": 164387,
+      "newViewers": 33859,
+      "returningViewers": 130528
+    },
+    {
+      "date": "2026-01-30",
+      "totalViewers": 651554,
+      "newViewers": 232080,
+      "returningViewers": 419474
+    },
+    {
+      "date": "2026-01-31",
+      "totalViewers": 432965,
+      "newViewers": 169629,
+      "returningViewers": 263336
+    },
+    {
+      "date": "2026-02-01",
+      "totalViewers": 225841,
+      "newViewers": 85074,
+      "returningViewers": 140767
+    },
+    {
+      "date": "2026-02-02",
+      "totalViewers": 183666,
+      "newViewers": 71440,
+      "returningViewers": 112226
+    },
+    {
+      "date": "2026-02-03",
+      "totalViewers": 114901,
+      "newViewers": 44826,
+      "returningViewers": 70075
+    },
+    {
+      "date": "2026-02-04",
+      "totalViewers": 105138,
+      "newViewers": 43601,
+      "returningViewers": 61537
+    },
+    {
+      "date": "2026-02-05",
+      "totalViewers": 92287,
+      "newViewers": 42026,
+      "returningViewers": 50261
+    },
+    {
+      "date": "2026-02-06",
+      "totalViewers": 102297,
+      "newViewers": 35598,
+      "returningViewers": 66699
+    },
+    {
+      "date": "2026-02-07",
+      "totalViewers": 84631,
+      "newViewers": 37105,
+      "returningViewers": 47526
+    },
+    {
+      "date": "2026-02-08",
+      "totalViewers": 83481,
+      "newViewers": 37840,
+      "returningViewers": 45641
+    },
+    {
+      "date": "2026-02-09",
+      "totalViewers": 62504,
+      "newViewers": 32113,
+      "returningViewers": 30391
+    },
+    {
+      "date": "2026-02-10",
+      "totalViewers": 58569,
+      "newViewers": 28571,
+      "returningViewers": 29998
+    },
+    {
+      "date": "2026-02-11",
+      "totalViewers": 76257,
+      "newViewers": 33382,
+      "returningViewers": 42875
+    },
+    {
+      "date": "2026-02-12",
+      "totalViewers": 90457,
+      "newViewers": 31284,
+      "returningViewers": 59173
+    },
+    {
+      "date": "2026-02-13",
+      "totalViewers": 181319,
+      "newViewers": 52346,
+      "returningViewers": 128973
+    },
+    {
+      "date": "2026-02-14",
+      "totalViewers": 179707,
+      "newViewers": 63021,
+      "returningViewers": 116686
+    },
+    {
+      "date": "2026-02-15",
+      "totalViewers": 187708,
+      "newViewers": 62077,
+      "returningViewers": 125631
+    },
+    {
+      "date": "2026-02-16",
+      "totalViewers": 134429,
+      "newViewers": 52128,
+      "returningViewers": 82301
+    },
+    {
+      "date": "2026-02-17",
+      "totalViewers": 129225,
+      "newViewers": 46795,
+      "returningViewers": 82430
+    },
+    {
+      "date": "2026-02-18",
+      "totalViewers": 81568,
+      "newViewers": 29767,
+      "returningViewers": 51801
+    },
+    {
+      "date": "2026-02-19",
+      "totalViewers": 46918,
+      "newViewers": 17708,
+      "returningViewers": 29210
+    },
+    {
+      "date": "2026-02-20",
+      "totalViewers": 60570,
+      "newViewers": 22977,
+      "returningViewers": 37593
+    },
+    {
+      "date": "2026-02-21",
+      "totalViewers": 59850,
+      "newViewers": 23679,
+      "returningViewers": 36171
+    },
+    {
+      "date": "2026-02-22",
+      "totalViewers": 120821,
+      "newViewers": 41900,
+      "returningViewers": 78921
+    },
+    {
+      "date": "2026-02-23",
+      "totalViewers": 138485,
+      "newViewers": 50315,
+      "returningViewers": 88170
+    },
+    {
+      "date": "2026-02-24",
+      "totalViewers": 74764,
+      "newViewers": 24694,
+      "returningViewers": 50070
+    },
+    {
+      "date": "2026-02-25",
+      "totalViewers": 83434,
+      "newViewers": 28833,
+      "returningViewers": 54601
+    },
+    {
+      "date": "2026-02-26",
+      "totalViewers": 74979,
+      "newViewers": 27313,
+      "returningViewers": 47666
+    },
+    {
+      "date": "2026-02-27",
+      "totalViewers": 76016,
+      "newViewers": 19258,
+      "returningViewers": 56758
+    },
+    {
+      "date": "2026-02-28",
+      "totalViewers": 60501,
+      "newViewers": 20999,
+      "returningViewers": 39502
+    },
+    {
+      "date": "2026-03-01",
+      "totalViewers": 75983,
+      "newViewers": 28615,
+      "returningViewers": 47368
+    },
+    {
+      "date": "2026-03-02",
+      "totalViewers": 74503,
+      "newViewers": 23664,
+      "returningViewers": 50839
+    },
+    {
+      "date": "2026-03-03",
+      "totalViewers": 62533,
+      "newViewers": 21319,
+      "returningViewers": 41214
+    },
+    {
+      "date": "2026-03-04",
+      "totalViewers": 82396,
+      "newViewers": 24185,
+      "returningViewers": 58211
+    },
+    {
+      "date": "2026-03-05",
+      "totalViewers": 55985,
+      "newViewers": 17718,
+      "returningViewers": 38267
+    },
+    {
+      "date": "2026-03-06",
+      "totalViewers": 52416,
+      "newViewers": 18610,
+      "returningViewers": 33806
+    },
+    {
+      "date": "2026-03-07",
+      "totalViewers": 35879,
+      "newViewers": 15321,
+      "returningViewers": 20558
+    },
+    {
+      "date": "2026-03-08",
+      "totalViewers": 34592,
+      "newViewers": 15139,
+      "returningViewers": 19453
+    },
+    {
+      "date": "2026-03-09",
+      "totalViewers": 31474,
+      "newViewers": 13113,
+      "returningViewers": 18361
+    },
+    {
+      "date": "2026-03-10",
+      "totalViewers": 60774,
+      "newViewers": 15076,
+      "returningViewers": 45698
+    },
+    {
+      "date": "2026-03-11",
+      "totalViewers": 90284,
+      "newViewers": 25122,
+      "returningViewers": 65162
+    },
+    {
+      "date": "2026-03-12",
+      "totalViewers": 83925,
+      "newViewers": 29836,
+      "returningViewers": 54089
+    },
+    {
+      "date": "2026-03-13",
+      "totalViewers": 57558,
+      "newViewers": 20211,
+      "returningViewers": 37347
+    },
+    {
+      "date": "2026-03-14",
+      "totalViewers": 99839,
+      "newViewers": 34838,
+      "returningViewers": 65001
+    },
+    {
+      "date": "2026-03-15",
+      "totalViewers": 197204,
+      "newViewers": 74656,
+      "returningViewers": 122548
+    },
+    {
+      "date": "2026-03-16",
+      "totalViewers": 236117,
+      "newViewers": 79352,
+      "returningViewers": 156765
+    },
+    {
+      "date": "2026-03-17",
+      "totalViewers": 156787,
+      "newViewers": 56923,
+      "returningViewers": 99864
+    },
+    {
+      "date": "2026-03-18",
+      "totalViewers": 377036,
+      "newViewers": 59861,
+      "returningViewers": 317175
+    },
+    {
+      "date": "2026-03-19",
+      "totalViewers": 483286,
+      "newViewers": 82728,
+      "returningViewers": 400558
+    },
+    {
+      "date": "2026-03-20",
+      "totalViewers": 383307,
+      "newViewers": 70952,
+      "returningViewers": 312355
+    },
+    {
+      "date": "2026-03-21",
+      "totalViewers": 907158,
+      "newViewers": 155185,
+      "returningViewers": 751973
+    },
+    {
+      "date": "2026-03-22",
+      "totalViewers": 607634,
+      "newViewers": 136776,
+      "returningViewers": 470858
+    },
+    {
+      "date": "2026-03-23",
+      "totalViewers": 292441,
+      "newViewers": 69240,
+      "returningViewers": 223201
+    },
+    {
+      "date": "2026-03-24",
+      "totalViewers": 165909,
+      "newViewers": 34820,
+      "returningViewers": 131089
+    },
+    {
+      "date": "2026-03-25",
+      "totalViewers": 92767,
+      "newViewers": 20027,
+      "returningViewers": 72740
+    },
+    {
+      "date": "2026-03-26",
+      "totalViewers": 83384,
+      "newViewers": 20344,
+      "returningViewers": 63040
+    },
+    {
+      "date": "2026-03-27",
+      "totalViewers": 77996,
+      "newViewers": 18925,
+      "returningViewers": 59071
+    },
+    {
+      "date": "2026-03-28",
+      "totalViewers": 87895,
+      "newViewers": 23512,
+      "returningViewers": 64383
+    },
+    {
+      "date": "2026-03-29",
+      "totalViewers": 133822,
+      "newViewers": 37561,
+      "returningViewers": 96261
+    },
+    {
+      "date": "2026-03-30",
+      "totalViewers": 124096,
+      "newViewers": 23543,
+      "returningViewers": 100553
+    },
+    {
+      "date": "2026-03-31",
+      "totalViewers": 186249,
+      "newViewers": 17891,
+      "returningViewers": 168358
+    },
+    {
+      "date": "2026-04-01",
+      "totalViewers": 87941,
+      "newViewers": 13895,
+      "returningViewers": 74046
+    },
+    {
+      "date": "2026-04-02",
+      "totalViewers": 105997,
+      "newViewers": 20814,
+      "returningViewers": 85183
+    },
+    {
+      "date": "2026-04-03",
+      "totalViewers": 135814,
+      "newViewers": 30838,
+      "returningViewers": 104976
+    },
+    {
+      "date": "2026-04-04",
+      "totalViewers": 106765,
+      "newViewers": 24046,
+      "returningViewers": 82719
+    },
+    {
+      "date": "2026-04-05",
+      "totalViewers": 65107,
+      "newViewers": 14295,
+      "returningViewers": 50812
+    },
+    {
+      "date": "2026-04-06",
+      "totalViewers": 73535,
+      "newViewers": 18493,
+      "returningViewers": 55042
+    },
+    {
+      "date": "2026-04-07",
+      "totalViewers": 96184,
+      "newViewers": 25550,
+      "returningViewers": 70634
+    },
+    {
+      "date": "2026-04-08",
+      "totalViewers": 93179,
+      "newViewers": 21281,
+      "returningViewers": 71898
+    },
+    {
+      "date": "2026-04-09",
+      "totalViewers": 254347,
+      "newViewers": 56873,
+      "returningViewers": 197474
+    },
+    {
+      "date": "2026-04-10",
+      "totalViewers": 193324,
+      "newViewers": 54125,
+      "returningViewers": 139199
+    },
+    {
+      "date": "2026-04-11",
+      "totalViewers": 272623,
+      "newViewers": 84717,
+      "returningViewers": 187906
+    },
+    {
+      "date": "2026-04-12",
+      "totalViewers": 116765,
+      "newViewers": 35901,
+      "returningViewers": 80864
+    },
+    {
+      "date": "2026-04-13",
+      "totalViewers": 111167,
+      "newViewers": 31766,
+      "returningViewers": 79401
+    },
+    {
+      "date": "2026-04-14",
+      "totalViewers": 60816,
+      "newViewers": 16015,
+      "returningViewers": 44801
+    },
+    {
+      "date": "2026-04-15",
+      "totalViewers": 61555,
+      "newViewers": 16191,
+      "returningViewers": 45364
+    },
+    {
+      "date": "2026-04-16",
+      "totalViewers": 80580,
+      "newViewers": 21937,
+      "returningViewers": 58643
+    },
+    {
+      "date": "2026-04-17",
+      "totalViewers": 77162,
+      "newViewers": 19857,
+      "returningViewers": 57305
+    },
+    {
+      "date": "2026-04-18",
+      "totalViewers": 58324,
+      "newViewers": 16052,
+      "returningViewers": 42272
+    },
+    {
+      "date": "2026-04-19",
+      "totalViewers": 62709,
+      "newViewers": 17326,
+      "returningViewers": 45383
+    },
+    {
+      "date": "2026-04-20",
+      "totalViewers": 50038,
+      "newViewers": 13656,
+      "returningViewers": 36382
+    },
+    {
+      "date": "2026-04-21",
+      "totalViewers": 55865,
+      "newViewers": 12837,
+      "returningViewers": 43028
+    },
+    {
+      "date": "2026-04-22",
+      "totalViewers": 63142,
+      "newViewers": 13112,
+      "returningViewers": 50030
+    },
+    {
+      "date": "2026-04-23",
+      "totalViewers": 45510,
+      "newViewers": 10487,
+      "returningViewers": 35023
+    },
+    {
+      "date": "2026-04-24",
+      "totalViewers": 38239,
+      "newViewers": 8677,
+      "returningViewers": 29562
+    },
+    {
+      "date": "2026-04-25",
+      "totalViewers": 67254,
+      "newViewers": 11359,
+      "returningViewers": 55895
+    },
+    {
+      "date": "2026-04-26",
+      "totalViewers": 71041,
+      "newViewers": 14800,
+      "returningViewers": 56241
+    },
+    {
+      "date": "2026-04-27",
+      "totalViewers": 52726,
+      "newViewers": 13784,
+      "returningViewers": 38942
+    },
+    {
+      "date": "2026-04-28",
+      "totalViewers": 49534,
+      "newViewers": 11981,
+      "returningViewers": 37553
+    },
+    {
+      "date": "2026-04-29",
+      "totalViewers": 43302,
+      "newViewers": 9118,
+      "returningViewers": 34184
+    },
+    {
+      "date": "2026-04-30",
+      "totalViewers": 33310,
+      "newViewers": 8509,
+      "returningViewers": 24801
+    },
+    {
+      "date": "2026-05-01",
+      "totalViewers": 54781,
+      "newViewers": 12182,
+      "returningViewers": 42599
+    },
+    {
+      "date": "2026-05-02",
+      "totalViewers": 77741,
+      "newViewers": 13337,
+      "returningViewers": 64404
+    },
+    {
+      "date": "2026-05-03",
+      "totalViewers": 66296,
+      "newViewers": 10822,
+      "returningViewers": 55474
+    },
+    {
+      "date": "2026-05-04",
+      "totalViewers": 51794,
+      "newViewers": 9039,
+      "returningViewers": 42755
+    },
+    {
+      "date": "2026-05-05",
+      "totalViewers": 0,
+      "newViewers": 0,
+      "returningViewers": 0
+    },
+    {
+      "date": "2026-05-06",
+      "totalViewers": 0,
+      "newViewers": 0,
+      "returningViewers": 0
+    }
+  ],
+  "followerHistory": [
+    {
+      "date": "2025-05-06",
+      "followers": 1860,
+      "delta": 1
+    },
+    {
+      "date": "2025-05-07",
+      "followers": 1861,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-08",
+      "followers": 1861,
+      "delta": -2
+    },
+    {
+      "date": "2025-05-09",
+      "followers": 1859,
+      "delta": 1
+    },
+    {
+      "date": "2025-05-10",
+      "followers": 1860,
+      "delta": -1
+    },
+    {
+      "date": "2025-05-11",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-12",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-13",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-14",
+      "followers": 1859,
+      "delta": 1
+    },
+    {
+      "date": "2025-05-15",
+      "followers": 1860,
+      "delta": -1
+    },
+    {
+      "date": "2025-05-16",
+      "followers": 1859,
+      "delta": -1
+    },
+    {
+      "date": "2025-05-17",
+      "followers": 1858,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-18",
+      "followers": 1858,
+      "delta": 2
+    },
+    {
+      "date": "2025-05-19",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-20",
+      "followers": 1860,
+      "delta": -1
+    },
+    {
+      "date": "2025-05-21",
+      "followers": 1859,
+      "delta": 1
+    },
+    {
+      "date": "2025-05-22",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-23",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-24",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-25",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-26",
+      "followers": 1860,
+      "delta": 1
+    },
+    {
+      "date": "2025-05-27",
+      "followers": 1861,
+      "delta": -1
+    },
+    {
+      "date": "2025-05-28",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-29",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-30",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-05-31",
+      "followers": 1860,
+      "delta": -1
+    },
+    {
+      "date": "2025-06-01",
+      "followers": 1859,
+      "delta": 1
+    },
+    {
+      "date": "2025-06-02",
+      "followers": 1860,
+      "delta": -1
+    },
+    {
+      "date": "2025-06-03",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-04",
+      "followers": 1859,
+      "delta": 2
+    },
+    {
+      "date": "2025-06-05",
+      "followers": 1861,
+      "delta": -1
+    },
+    {
+      "date": "2025-06-06",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-07",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-08",
+      "followers": 1860,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-09",
+      "followers": 1860,
+      "delta": -2
+    },
+    {
+      "date": "2025-06-10",
+      "followers": 1858,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-11",
+      "followers": 1858,
+      "delta": 1
+    },
+    {
+      "date": "2025-06-12",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-13",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-14",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-15",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-16",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-17",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-18",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-19",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-20",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-21",
+      "followers": 1859,
+      "delta": -1
+    },
+    {
+      "date": "2025-06-22",
+      "followers": 1858,
+      "delta": 1
+    },
+    {
+      "date": "2025-06-23",
+      "followers": 1859,
+      "delta": -1
+    },
+    {
+      "date": "2025-06-24",
+      "followers": 1858,
+      "delta": 0
+    },
+    {
+      "date": "2025-06-25",
+      "followers": 1858,
+      "delta": -1
+    },
+    {
+      "date": "2025-06-26",
+      "followers": 1857,
+      "delta": 1
+    },
+    {
+      "date": "2025-06-27",
+      "followers": 1858,
+      "delta": -1
+    },
+    {
+      "date": "2025-06-28",
+      "followers": 1857,
+      "delta": 1
+    },
+    {
+      "date": "2025-06-29",
+      "followers": 1858,
+      "delta": -1
+    },
+    {
+      "date": "2025-06-30",
+      "followers": 1857,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-01",
+      "followers": 1858,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-02",
+      "followers": 1858,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-03",
+      "followers": 1859,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-04",
+      "followers": 1860,
+      "delta": -1
+    },
+    {
+      "date": "2025-07-05",
+      "followers": 1859,
+      "delta": -1
+    },
+    {
+      "date": "2025-07-06",
+      "followers": 1858,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-07",
+      "followers": 1858,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-08",
+      "followers": 1859,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-09",
+      "followers": 1859,
+      "delta": 2
+    },
+    {
+      "date": "2025-07-10",
+      "followers": 1861,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-11",
+      "followers": 1861,
+      "delta": 2
+    },
+    {
+      "date": "2025-07-12",
+      "followers": 1863,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-13",
+      "followers": 1864,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-14",
+      "followers": 1864,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-15",
+      "followers": 1864,
+      "delta": 3
+    },
+    {
+      "date": "2025-07-16",
+      "followers": 1867,
+      "delta": 3
+    },
+    {
+      "date": "2025-07-17",
+      "followers": 1870,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-18",
+      "followers": 1871,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-19",
+      "followers": 1872,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-20",
+      "followers": 1872,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-21",
+      "followers": 1873,
+      "delta": -1
+    },
+    {
+      "date": "2025-07-22",
+      "followers": 1872,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-23",
+      "followers": 1872,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-24",
+      "followers": 1872,
+      "delta": 2
+    },
+    {
+      "date": "2025-07-25",
+      "followers": 1874,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-26",
+      "followers": 1874,
+      "delta": 1
+    },
+    {
+      "date": "2025-07-27",
+      "followers": 1875,
+      "delta": -1
+    },
+    {
+      "date": "2025-07-28",
+      "followers": 1874,
+      "delta": -1
+    },
+    {
+      "date": "2025-07-29",
+      "followers": 1873,
+      "delta": 0
+    },
+    {
+      "date": "2025-07-30",
+      "followers": 1873,
+      "delta": -1
+    },
+    {
+      "date": "2025-07-31",
+      "followers": 1872,
+      "delta": 0
+    },
+    {
+      "date": "2025-08-01",
+      "followers": 1872,
+      "delta": 1
+    },
+    {
+      "date": "2025-08-02",
+      "followers": 1873,
+      "delta": 0
+    },
+    {
+      "date": "2025-08-03",
+      "followers": 1873,
+      "delta": 1
+    },
+    {
+      "date": "2025-08-04",
+      "followers": 1874,
+      "delta": 4
+    },
+    {
+      "date": "2025-08-05",
+      "followers": 1878,
+      "delta": 1
+    },
+    {
+      "date": "2025-08-06",
+      "followers": 1879,
+      "delta": 0
+    },
+    {
+      "date": "2025-08-07",
+      "followers": 1879,
+      "delta": 2
+    },
+    {
+      "date": "2025-08-08",
+      "followers": 1881,
+      "delta": 2
+    },
+    {
+      "date": "2025-08-09",
+      "followers": 1883,
+      "delta": 2
+    },
+    {
+      "date": "2025-08-10",
+      "followers": 1885,
+      "delta": 0
+    },
+    {
+      "date": "2025-08-11",
+      "followers": 1885,
+      "delta": 2
+    },
+    {
+      "date": "2025-08-12",
+      "followers": 1887,
+      "delta": 619
+    },
+    {
+      "date": "2025-08-13",
+      "followers": 2506,
+      "delta": 1213
+    },
+    {
+      "date": "2025-08-14",
+      "followers": 3719,
+      "delta": 1849
+    },
+    {
+      "date": "2025-08-15",
+      "followers": 5568,
+      "delta": 1390
+    },
+    {
+      "date": "2025-08-16",
+      "followers": 6958,
+      "delta": 1001
+    },
+    {
+      "date": "2025-08-17",
+      "followers": 7959,
+      "delta": 1730
+    },
+    {
+      "date": "2025-08-18",
+      "followers": 9689,
+      "delta": 795
+    },
+    {
+      "date": "2025-08-19",
+      "followers": 10484,
+      "delta": 534
+    },
+    {
+      "date": "2025-08-20",
+      "followers": 11018,
+      "delta": 407
+    },
+    {
+      "date": "2025-08-21",
+      "followers": 11425,
+      "delta": 262
+    },
+    {
+      "date": "2025-08-22",
+      "followers": 11687,
+      "delta": 505
+    },
+    {
+      "date": "2025-08-23",
+      "followers": 12192,
+      "delta": 484
+    },
+    {
+      "date": "2025-08-24",
+      "followers": 12676,
+      "delta": 564
+    },
+    {
+      "date": "2025-08-25",
+      "followers": 13240,
+      "delta": 347
+    },
+    {
+      "date": "2025-08-26",
+      "followers": 13587,
+      "delta": 583
+    },
+    {
+      "date": "2025-08-27",
+      "followers": 14170,
+      "delta": 1003
+    },
+    {
+      "date": "2025-08-28",
+      "followers": 15173,
+      "delta": 924
+    },
+    {
+      "date": "2025-08-29",
+      "followers": 16097,
+      "delta": 835
+    },
+    {
+      "date": "2025-08-30",
+      "followers": 16932,
+      "delta": 1009
+    },
+    {
+      "date": "2025-08-31",
+      "followers": 17941,
+      "delta": 781
+    },
+    {
+      "date": "2025-09-01",
+      "followers": 18722,
+      "delta": 616
+    },
+    {
+      "date": "2025-09-02",
+      "followers": 19338,
+      "delta": 319
+    },
+    {
+      "date": "2025-09-03",
+      "followers": 19657,
+      "delta": 255
+    },
+    {
+      "date": "2025-09-04",
+      "followers": 19912,
+      "delta": 259
+    },
+    {
+      "date": "2025-09-05",
+      "followers": 20171,
+      "delta": 269
+    },
+    {
+      "date": "2025-09-06",
+      "followers": 20440,
+      "delta": 479
+    },
+    {
+      "date": "2025-09-07",
+      "followers": 20919,
+      "delta": 580
+    },
+    {
+      "date": "2025-09-08",
+      "followers": 21499,
+      "delta": 169
+    },
+    {
+      "date": "2025-09-09",
+      "followers": 21668,
+      "delta": 85
+    },
+    {
+      "date": "2025-09-10",
+      "followers": 21753,
+      "delta": 47
+    },
+    {
+      "date": "2025-09-11",
+      "followers": 21800,
+      "delta": 123
+    },
+    {
+      "date": "2025-09-12",
+      "followers": 21923,
+      "delta": 370
+    },
+    {
+      "date": "2025-09-13",
+      "followers": 22293,
+      "delta": 541
+    },
+    {
+      "date": "2025-09-14",
+      "followers": 22834,
+      "delta": 755
+    },
+    {
+      "date": "2025-09-15",
+      "followers": 23589,
+      "delta": 535
+    },
+    {
+      "date": "2025-09-16",
+      "followers": 24124,
+      "delta": 496
+    },
+    {
+      "date": "2025-09-17",
+      "followers": 24620,
+      "delta": 876
+    },
+    {
+      "date": "2025-09-18",
+      "followers": 25496,
+      "delta": 997
+    },
+    {
+      "date": "2025-09-19",
+      "followers": 26493,
+      "delta": 678
+    },
+    {
+      "date": "2025-09-20",
+      "followers": 27171,
+      "delta": 440
+    },
+    {
+      "date": "2025-09-21",
+      "followers": 27611,
+      "delta": 347
+    },
+    {
+      "date": "2025-09-22",
+      "followers": 27958,
+      "delta": 251
+    },
+    {
+      "date": "2025-09-23",
+      "followers": 28209,
+      "delta": 180
+    },
+    {
+      "date": "2025-09-24",
+      "followers": 28389,
+      "delta": 160
+    },
+    {
+      "date": "2025-09-25",
+      "followers": 28549,
+      "delta": 91
+    },
+    {
+      "date": "2025-09-26",
+      "followers": 28640,
+      "delta": 80
+    },
+    {
+      "date": "2025-09-27",
+      "followers": 28720,
+      "delta": 220
+    },
+    {
+      "date": "2025-09-28",
+      "followers": 28940,
+      "delta": 280
+    },
+    {
+      "date": "2025-09-29",
+      "followers": 29220,
+      "delta": 168
+    },
+    {
+      "date": "2025-09-30",
+      "followers": 29388,
+      "delta": 117
+    },
+    {
+      "date": "2025-10-01",
+      "followers": 29505,
+      "delta": 102
+    },
+    {
+      "date": "2025-10-02",
+      "followers": 29607,
+      "delta": 48
+    },
+    {
+      "date": "2025-10-03",
+      "followers": 29655,
+      "delta": 35
+    },
+    {
+      "date": "2025-10-04",
+      "followers": 29690,
+      "delta": 83
+    },
+    {
+      "date": "2025-10-05",
+      "followers": 29773,
+      "delta": 3
+    },
+    {
+      "date": "2025-10-06",
+      "followers": 29776,
+      "delta": 66
+    },
+    {
+      "date": "2025-10-07",
+      "followers": 29842,
+      "delta": 78
+    },
+    {
+      "date": "2025-10-08",
+      "followers": 29920,
+      "delta": 46
+    },
+    {
+      "date": "2025-10-09",
+      "followers": 29966,
+      "delta": 7
+    },
+    {
+      "date": "2025-10-10",
+      "followers": 29973,
+      "delta": 41
+    },
+    {
+      "date": "2025-10-11",
+      "followers": 30014,
+      "delta": 71
+    },
+    {
+      "date": "2025-10-12",
+      "followers": 30085,
+      "delta": 145
+    },
+    {
+      "date": "2025-10-13",
+      "followers": 30230,
+      "delta": 99
+    },
+    {
+      "date": "2025-10-14",
+      "followers": 30329,
+      "delta": 43
+    },
+    {
+      "date": "2025-10-15",
+      "followers": 30372,
+      "delta": 20
+    },
+    {
+      "date": "2025-10-16",
+      "followers": 30392,
+      "delta": 18
+    },
+    {
+      "date": "2025-10-17",
+      "followers": 30410,
+      "delta": 859
+    },
+    {
+      "date": "2025-10-18",
+      "followers": 31269,
+      "delta": 1516
+    },
+    {
+      "date": "2025-10-19",
+      "followers": 32785,
+      "delta": 785
+    },
+    {
+      "date": "2025-10-20",
+      "followers": 33570,
+      "delta": 484
+    },
+    {
+      "date": "2025-10-21",
+      "followers": 34054,
+      "delta": 286
+    },
+    {
+      "date": "2025-10-22",
+      "followers": 34340,
+      "delta": 183
+    },
+    {
+      "date": "2025-10-23",
+      "followers": 34523,
+      "delta": 209
+    },
+    {
+      "date": "2025-10-24",
+      "followers": 34732,
+      "delta": 59
+    },
+    {
+      "date": "2025-10-25",
+      "followers": 34791,
+      "delta": 56
+    },
+    {
+      "date": "2025-10-26",
+      "followers": 34847,
+      "delta": 12
+    },
+    {
+      "date": "2025-10-27",
+      "followers": 34859,
+      "delta": -31
+    },
+    {
+      "date": "2025-10-28",
+      "followers": 34828,
+      "delta": 59
+    },
+    {
+      "date": "2025-10-29",
+      "followers": 34887,
+      "delta": 41
+    },
+    {
+      "date": "2025-10-30",
+      "followers": 34928,
+      "delta": 192
+    },
+    {
+      "date": "2025-10-31",
+      "followers": 35120,
+      "delta": 466
+    },
+    {
+      "date": "2025-11-01",
+      "followers": 35586,
+      "delta": 496
+    },
+    {
+      "date": "2025-11-02",
+      "followers": 36082,
+      "delta": 291
+    },
+    {
+      "date": "2025-11-03",
+      "followers": 36373,
+      "delta": 168
+    },
+    {
+      "date": "2025-11-04",
+      "followers": 36541,
+      "delta": 169
+    },
+    {
+      "date": "2025-11-05",
+      "followers": 36710,
+      "delta": 177
+    },
+    {
+      "date": "2025-11-06",
+      "followers": 36887,
+      "delta": 104
+    },
+    {
+      "date": "2025-11-07",
+      "followers": 36991,
+      "delta": 110
+    },
+    {
+      "date": "2025-11-08",
+      "followers": 37101,
+      "delta": 107
+    },
+    {
+      "date": "2025-11-09",
+      "followers": 37208,
+      "delta": 158
+    },
+    {
+      "date": "2025-11-10",
+      "followers": 37366,
+      "delta": 151
+    },
+    {
+      "date": "2025-11-11",
+      "followers": 37517,
+      "delta": 106
+    },
+    {
+      "date": "2025-11-12",
+      "followers": 37623,
+      "delta": 58
+    },
+    {
+      "date": "2025-11-13",
+      "followers": 37681,
+      "delta": 128
+    },
+    {
+      "date": "2025-11-14",
+      "followers": 37809,
+      "delta": 126
+    },
+    {
+      "date": "2025-11-15",
+      "followers": 37935,
+      "delta": 115
+    },
+    {
+      "date": "2025-11-16",
+      "followers": 38050,
+      "delta": 111
+    },
+    {
+      "date": "2025-11-17",
+      "followers": 38161,
+      "delta": 82
+    },
+    {
+      "date": "2025-11-18",
+      "followers": 38243,
+      "delta": 68
+    },
+    {
+      "date": "2025-11-19",
+      "followers": 38311,
+      "delta": 42
+    },
+    {
+      "date": "2025-11-20",
+      "followers": 38353,
+      "delta": 42
+    },
+    {
+      "date": "2025-11-21",
+      "followers": 38395,
+      "delta": 60
+    },
+    {
+      "date": "2025-11-22",
+      "followers": 38455,
+      "delta": 113
+    },
+    {
+      "date": "2025-11-23",
+      "followers": 38568,
+      "delta": 139
+    },
+    {
+      "date": "2025-11-24",
+      "followers": 38707,
+      "delta": 157
+    },
+    {
+      "date": "2025-11-25",
+      "followers": 38864,
+      "delta": 65
+    },
+    {
+      "date": "2025-11-26",
+      "followers": 38929,
+      "delta": 41
+    },
+    {
+      "date": "2025-11-27",
+      "followers": 38970,
+      "delta": 61
+    },
+    {
+      "date": "2025-11-28",
+      "followers": 39031,
+      "delta": 49
+    },
+    {
+      "date": "2025-11-29",
+      "followers": 39080,
+      "delta": 103
+    },
+    {
+      "date": "2025-11-30",
+      "followers": 39183,
+      "delta": 45
+    },
+    {
+      "date": "2025-12-01",
+      "followers": 39228,
+      "delta": 45
+    },
+    {
+      "date": "2025-12-02",
+      "followers": 39273,
+      "delta": 54
+    },
+    {
+      "date": "2025-12-03",
+      "followers": 39327,
+      "delta": 37
+    },
+    {
+      "date": "2025-12-04",
+      "followers": 39364,
+      "delta": 23
+    },
+    {
+      "date": "2025-12-05",
+      "followers": 39387,
+      "delta": 28
+    },
+    {
+      "date": "2025-12-06",
+      "followers": 39415,
+      "delta": 66
+    },
+    {
+      "date": "2025-12-07",
+      "followers": 39481,
+      "delta": 95
+    },
+    {
+      "date": "2025-12-08",
+      "followers": 39576,
+      "delta": 52
+    },
+    {
+      "date": "2025-12-09",
+      "followers": 39628,
+      "delta": 39
+    },
+    {
+      "date": "2025-12-10",
+      "followers": 39667,
+      "delta": 110
+    },
+    {
+      "date": "2025-12-11",
+      "followers": 39777,
+      "delta": 180
+    },
+    {
+      "date": "2025-12-12",
+      "followers": 39957,
+      "delta": 146
+    },
+    {
+      "date": "2025-12-13",
+      "followers": 40103,
+      "delta": 220
+    },
+    {
+      "date": "2025-12-14",
+      "followers": 40323,
+      "delta": 251
+    },
+    {
+      "date": "2025-12-15",
+      "followers": 40574,
+      "delta": 171
+    },
+    {
+      "date": "2025-12-16",
+      "followers": 40745,
+      "delta": 100
+    },
+    {
+      "date": "2025-12-17",
+      "followers": 40845,
+      "delta": 74
+    },
+    {
+      "date": "2025-12-18",
+      "followers": 40919,
+      "delta": 107
+    },
+    {
+      "date": "2025-12-19",
+      "followers": 41026,
+      "delta": 83
+    },
+    {
+      "date": "2025-12-20",
+      "followers": 41109,
+      "delta": 115
+    },
+    {
+      "date": "2025-12-21",
+      "followers": 41224,
+      "delta": 95
+    },
+    {
+      "date": "2025-12-22",
+      "followers": 41319,
+      "delta": 79
+    },
+    {
+      "date": "2025-12-23",
+      "followers": 41398,
+      "delta": 55
+    },
+    {
+      "date": "2025-12-24",
+      "followers": 41453,
+      "delta": 58
+    },
+    {
+      "date": "2025-12-25",
+      "followers": 41511,
+      "delta": 127
+    },
+    {
+      "date": "2025-12-26",
+      "followers": 41638,
+      "delta": 143
+    },
+    {
+      "date": "2025-12-27",
+      "followers": 41781,
+      "delta": 198
+    },
+    {
+      "date": "2025-12-28",
+      "followers": 41979,
+      "delta": 160
+    },
+    {
+      "date": "2025-12-29",
+      "followers": 42139,
+      "delta": 219
+    },
+    {
+      "date": "2025-12-30",
+      "followers": 42358,
+      "delta": 196
+    },
+    {
+      "date": "2025-12-31",
+      "followers": 42554,
+      "delta": 212
+    },
+    {
+      "date": "2026-01-01",
+      "followers": 42766,
+      "delta": 274
+    },
+    {
+      "date": "2026-01-02",
+      "followers": 43040,
+      "delta": 480
+    },
+    {
+      "date": "2026-01-03",
+      "followers": 43520,
+      "delta": 487
+    },
+    {
+      "date": "2026-01-04",
+      "followers": 44007,
+      "delta": 192
+    },
+    {
+      "date": "2026-01-05",
+      "followers": 44199,
+      "delta": 93
+    },
+    {
+      "date": "2026-01-06",
+      "followers": 44292,
+      "delta": 29
+    },
+    {
+      "date": "2026-01-07",
+      "followers": 44321,
+      "delta": 38
+    },
+    {
+      "date": "2026-01-08",
+      "followers": 44359,
+      "delta": 37
+    },
+    {
+      "date": "2026-01-09",
+      "followers": 44396,
+      "delta": 44
+    },
+    {
+      "date": "2026-01-10",
+      "followers": 44440,
+      "delta": 42
+    },
+    {
+      "date": "2026-01-11",
+      "followers": 44482,
+      "delta": 13
+    },
+    {
+      "date": "2026-01-12",
+      "followers": 44495,
+      "delta": 20
+    },
+    {
+      "date": "2026-01-13",
+      "followers": 44515,
+      "delta": 26
+    },
+    {
+      "date": "2026-01-14",
+      "followers": 44541,
+      "delta": 22
+    },
+    {
+      "date": "2026-01-15",
+      "followers": 44563,
+      "delta": 19
+    },
+    {
+      "date": "2026-01-16",
+      "followers": 44582,
+      "delta": 18
+    },
+    {
+      "date": "2026-01-17",
+      "followers": 44600,
+      "delta": 13
+    },
+    {
+      "date": "2026-01-18",
+      "followers": 44613,
+      "delta": 38
+    },
+    {
+      "date": "2026-01-19",
+      "followers": 44651,
+      "delta": 40
+    },
+    {
+      "date": "2026-01-20",
+      "followers": 44691,
+      "delta": 6
+    },
+    {
+      "date": "2026-01-21",
+      "followers": 44697,
+      "delta": 5
+    },
+    {
+      "date": "2026-01-22",
+      "followers": 44702,
+      "delta": 14
+    },
+    {
+      "date": "2026-01-23",
+      "followers": 44716,
+      "delta": 2
+    },
+    {
+      "date": "2026-01-24",
+      "followers": 44718,
+      "delta": 5
+    },
+    {
+      "date": "2026-01-25",
+      "followers": 44723,
+      "delta": 10
+    },
+    {
+      "date": "2026-01-26",
+      "followers": 44733,
+      "delta": 23
+    },
+    {
+      "date": "2026-01-27",
+      "followers": 44756,
+      "delta": 28
+    },
+    {
+      "date": "2026-01-28",
+      "followers": 44784,
+      "delta": 357
+    },
+    {
+      "date": "2026-01-29",
+      "followers": 45141,
+      "delta": 1274
+    },
+    {
+      "date": "2026-01-30",
+      "followers": 46415,
+      "delta": 789
+    },
+    {
+      "date": "2026-01-31",
+      "followers": 47204,
+      "delta": 439
+    },
+    {
+      "date": "2026-02-01",
+      "followers": 47643,
+      "delta": 355
+    },
+    {
+      "date": "2026-02-02",
+      "followers": 47998,
+      "delta": 224
+    },
+    {
+      "date": "2026-02-03",
+      "followers": 48222,
+      "delta": 190
+    },
+    {
+      "date": "2026-02-04",
+      "followers": 48412,
+      "delta": 162
+    },
+    {
+      "date": "2026-02-05",
+      "followers": 48574,
+      "delta": 203
+    },
+    {
+      "date": "2026-02-06",
+      "followers": 48777,
+      "delta": 184
+    },
+    {
+      "date": "2026-02-07",
+      "followers": 48961,
+      "delta": 167
+    },
+    {
+      "date": "2026-02-08",
+      "followers": 49128,
+      "delta": 76
+    },
+    {
+      "date": "2026-02-09",
+      "followers": 49204,
+      "delta": 104
+    },
+    {
+      "date": "2026-02-10",
+      "followers": 49308,
+      "delta": 91
+    },
+    {
+      "date": "2026-02-11",
+      "followers": 49399,
+      "delta": 102
+    },
+    {
+      "date": "2026-02-12",
+      "followers": 49501,
+      "delta": 194
+    },
+    {
+      "date": "2026-02-13",
+      "followers": 49695,
+      "delta": 195
+    },
+    {
+      "date": "2026-02-14",
+      "followers": 49890,
+      "delta": 207
+    },
+    {
+      "date": "2026-02-15",
+      "followers": 50097,
+      "delta": 182
+    },
+    {
+      "date": "2026-02-16",
+      "followers": 50279,
+      "delta": 191
+    },
+    {
+      "date": "2026-02-17",
+      "followers": 50470,
+      "delta": 140
+    },
+    {
+      "date": "2026-02-18",
+      "followers": 50610,
+      "delta": 84
+    },
+    {
+      "date": "2026-02-19",
+      "followers": 50694,
+      "delta": 99
+    },
+    {
+      "date": "2026-02-20",
+      "followers": 50793,
+      "delta": 112
+    },
+    {
+      "date": "2026-02-21",
+      "followers": 50905,
+      "delta": 253
+    },
+    {
+      "date": "2026-02-22",
+      "followers": 51158,
+      "delta": 271
+    },
+    {
+      "date": "2026-02-23",
+      "followers": 51429,
+      "delta": 129
+    },
+    {
+      "date": "2026-02-24",
+      "followers": 51558,
+      "delta": 156
+    },
+    {
+      "date": "2026-02-25",
+      "followers": 51714,
+      "delta": 154
+    },
+    {
+      "date": "2026-02-26",
+      "followers": 51868,
+      "delta": 78
+    },
+    {
+      "date": "2026-02-27",
+      "followers": 51946,
+      "delta": 112
+    },
+    {
+      "date": "2026-02-28",
+      "followers": 52058,
+      "delta": 114
+    },
+    {
+      "date": "2026-03-01",
+      "followers": 52172,
+      "delta": 155
+    },
+    {
+      "date": "2026-03-02",
+      "followers": 52327,
+      "delta": 194
+    },
+    {
+      "date": "2026-03-03",
+      "followers": 52521,
+      "delta": 60
+    },
+    {
+      "date": "2026-03-04",
+      "followers": 52581,
+      "delta": 105
+    },
+    {
+      "date": "2026-03-05",
+      "followers": 52686,
+      "delta": 80
+    },
+    {
+      "date": "2026-03-06",
+      "followers": 52766,
+      "delta": 50
+    },
+    {
+      "date": "2026-03-07",
+      "followers": 52816,
+      "delta": 46
+    },
+    {
+      "date": "2026-03-08",
+      "followers": 52862,
+      "delta": 42
+    },
+    {
+      "date": "2026-03-09",
+      "followers": 52904,
+      "delta": 40
+    },
+    {
+      "date": "2026-03-10",
+      "followers": 52944,
+      "delta": 116
+    },
+    {
+      "date": "2026-03-11",
+      "followers": 53060,
+      "delta": 98
+    },
+    {
+      "date": "2026-03-12",
+      "followers": 53158,
+      "delta": 96
+    },
+    {
+      "date": "2026-03-13",
+      "followers": 53254,
+      "delta": 149
+    },
+    {
+      "date": "2026-03-14",
+      "followers": 53403,
+      "delta": 282
+    },
+    {
+      "date": "2026-03-15",
+      "followers": 53685,
+      "delta": 325
+    },
+    {
+      "date": "2026-03-16",
+      "followers": 54010,
+      "delta": 221
+    },
+    {
+      "date": "2026-03-17",
+      "followers": 54231,
+      "delta": 667
+    },
+    {
+      "date": "2026-03-18",
+      "followers": 54898,
+      "delta": 1264
+    },
+    {
+      "date": "2026-03-19",
+      "followers": 56162,
+      "delta": 1178
+    },
+    {
+      "date": "2026-03-20",
+      "followers": 57340,
+      "delta": 5329
+    },
+    {
+      "date": "2026-03-21",
+      "followers": 62669,
+      "delta": 2802
+    },
+    {
+      "date": "2026-03-22",
+      "followers": 65471,
+      "delta": 1168
+    },
+    {
+      "date": "2026-03-23",
+      "followers": 66639,
+      "delta": 607
+    },
+    {
+      "date": "2026-03-24",
+      "followers": 67246,
+      "delta": 325
+    },
+    {
+      "date": "2026-03-25",
+      "followers": 67571,
+      "delta": 321
+    },
+    {
+      "date": "2026-03-26",
+      "followers": 67892,
+      "delta": 251
+    },
+    {
+      "date": "2026-03-27",
+      "followers": 68143,
+      "delta": 279
+    },
+    {
+      "date": "2026-03-28",
+      "followers": 68422,
+      "delta": 411
+    },
+    {
+      "date": "2026-03-29",
+      "followers": 68833,
+      "delta": 695
+    },
+    {
+      "date": "2026-03-30",
+      "followers": 69528,
+      "delta": 521
+    },
+    {
+      "date": "2026-03-31",
+      "followers": 70049,
+      "delta": 429
+    },
+    {
+      "date": "2026-04-01",
+      "followers": 70478,
+      "delta": 377
+    },
+    {
+      "date": "2026-04-02",
+      "followers": 70855,
+      "delta": 391
+    },
+    {
+      "date": "2026-04-03",
+      "followers": 71246,
+      "delta": 368
+    },
+    {
+      "date": "2026-04-04",
+      "followers": 71614,
+      "delta": 224
+    },
+    {
+      "date": "2026-04-05",
+      "followers": 71838,
+      "delta": 229
+    },
+    {
+      "date": "2026-04-06",
+      "followers": 72067,
+      "delta": 376
+    },
+    {
+      "date": "2026-04-07",
+      "followers": 72443,
+      "delta": 337
+    },
+    {
+      "date": "2026-04-08",
+      "followers": 72780,
+      "delta": 595
+    },
+    {
+      "date": "2026-04-09",
+      "followers": 73375,
+      "delta": 438
+    },
+    {
+      "date": "2026-04-10",
+      "followers": 73813,
+      "delta": 511
+    },
+    {
+      "date": "2026-04-11",
+      "followers": 74324,
+      "delta": 249
+    },
+    {
+      "date": "2026-04-12",
+      "followers": 74573,
+      "delta": 204
+    },
+    {
+      "date": "2026-04-13",
+      "followers": 74777,
+      "delta": 164
+    },
+    {
+      "date": "2026-04-14",
+      "followers": 74941,
+      "delta": 215
+    },
+    {
+      "date": "2026-04-15",
+      "followers": 75156,
+      "delta": 284
+    },
+    {
+      "date": "2026-04-16",
+      "followers": 75440,
+      "delta": 260
+    },
+    {
+      "date": "2026-04-17",
+      "followers": 75700,
+      "delta": 224
+    },
+    {
+      "date": "2026-04-18",
+      "followers": 75924,
+      "delta": 246
+    },
+    {
+      "date": "2026-04-19",
+      "followers": 76170,
+      "delta": 195
+    },
+    {
+      "date": "2026-04-20",
+      "followers": 76365,
+      "delta": 146
+    },
+    {
+      "date": "2026-04-21",
+      "followers": 76511,
+      "delta": 191
+    },
+    {
+      "date": "2026-04-22",
+      "followers": 76702,
+      "delta": 143
+    },
+    {
+      "date": "2026-04-23",
+      "followers": 76845,
+      "delta": 93
+    },
+    {
+      "date": "2026-04-24",
+      "followers": 76938,
+      "delta": 229
+    },
+    {
+      "date": "2026-04-25",
+      "followers": 77167,
+      "delta": 231
+    },
+    {
+      "date": "2026-04-26",
+      "followers": 77398,
+      "delta": 183
+    },
+    {
+      "date": "2026-04-27",
+      "followers": 77581,
+      "delta": 153
+    },
+    {
+      "date": "2026-04-28",
+      "followers": 77734,
+      "delta": 138
+    },
+    {
+      "date": "2026-04-29",
+      "followers": 77872,
+      "delta": 105
+    },
+    {
+      "date": "2026-04-30",
+      "followers": 77977,
+      "delta": 91
+    },
+    {
+      "date": "2026-05-01",
+      "followers": 78068,
+      "delta": 151
+    },
+    {
+      "date": "2026-05-02",
+      "followers": 78219,
+      "delta": 176
+    },
+    {
+      "date": "2026-05-03",
+      "followers": 78395,
+      "delta": 102
+    },
+    {
+      "date": "2026-05-04",
+      "followers": 78497,
+      "delta": 114
+    },
+    {
+      "date": "2026-05-05",
+      "followers": 78611,
+      "delta": 0
+    }
+  ],
+  "followerActivity": [
+    {
+      "hour": 0,
+      "active": 14732
+    },
+    {
+      "hour": 1,
+      "active": 13898
+    },
+    {
+      "hour": 2,
+      "active": 13320
+    },
+    {
+      "hour": 3,
+      "active": 14026
+    },
+    {
+      "hour": 4,
+      "active": 16451
+    },
+    {
+      "hour": 5,
+      "active": 19946
+    },
+    {
+      "hour": 6,
+      "active": 22378
+    },
+    {
+      "hour": 7,
+      "active": 24005
+    },
+    {
+      "hour": 8,
+      "active": 25637
+    },
+    {
+      "hour": 9,
+      "active": 26547
+    },
+    {
+      "hour": 10,
+      "active": 27306
+    },
+    {
+      "hour": 11,
+      "active": 27841
+    },
+    {
+      "hour": 12,
+      "active": 28523
+    },
+    {
+      "hour": 13,
+      "active": 29665
+    },
+    {
+      "hour": 14,
+      "active": 30536
+    },
+    {
+      "hour": 15,
+      "active": 30188
+    },
+    {
+      "hour": 16,
+      "active": 28243
+    },
+    {
+      "hour": 17,
+      "active": 26040
+    },
+    {
+      "hour": 18,
+      "active": 20821
+    },
+    {
+      "hour": 19,
+      "active": 20586
+    },
+    {
+      "hour": 20,
+      "active": 19900
+    },
+    {
+      "hour": 21,
+      "active": 17834
+    },
+    {
+      "hour": 22,
+      "active": 15172
+    },
+    {
+      "hour": 23,
+      "active": 13203
+    }
+  ],
+  "followerGender": [
+    {
+      "label": "Female",
+      "value": 90.0
+    },
+    {
+      "label": "Male",
+      "value": 10.0
+    },
+    {
+      "label": "Other",
+      "value": 0.0
+    }
+  ],
+  "followerTerritories": [
+    {
+      "code": "US",
+      "label": "United States",
+      "value": 46.6
+    },
+    {
+      "code": "GB",
+      "label": "United Kingdom",
+      "value": 9.7
+    },
+    {
+      "code": "CA",
+      "label": "Canada",
+      "value": 5.9
+    },
+    {
+      "code": "AU",
+      "label": "Australia",
+      "value": 4.6
+    },
+    {
+      "code": "NL",
+      "label": "Netherlands",
+      "value": 1.8
+    },
+    {
+      "code": "DE",
+      "label": "Germany",
+      "value": 1.7
+    },
+    {
+      "code": "IE",
+      "label": "Ireland",
+      "value": 1.0
+    },
+    {
+      "code": "SE",
+      "label": "Sweden",
+      "value": 1.0
+    },
+    {
+      "code": "NZ",
+      "label": "New Zealand",
+      "value": 0.9
+    },
+    {
+      "code": "PL",
+      "label": "Poland",
+      "value": 0.9
+    },
+    {
+      "code": "Others",
+      "label": "Others",
+      "value": 25.9
+    }
+  ],
+  "trafficSource": [
+    {
+      "label": "For You",
+      "value": 55.2
+    },
+    {
+      "label": "Personal profile",
+      "value": 28.4
+    },
+    {
+      "label": "Search",
+      "value": 15.2
+    },
+    {
+      "label": "Following",
+      "value": 0.8
+    },
+    {
+      "label": "Sound",
+      "value": 0.4
+    }
+  ],
+  "viewerGender": [
+    {
+      "label": "Female",
+      "value": 92
+    },
+    {
+      "label": "Male",
+      "value": 6
+    },
+    {
+      "label": "Other",
+      "value": 2
+    }
+  ],
+  "viewerAge": [
+    {
+      "label": "18-24",
+      "value": 45.2
+    },
+    {
+      "label": "25-34",
+      "value": 39.7
+    },
+    {
+      "label": "35-44",
+      "value": 9.1
+    },
+    {
+      "label": "45-54",
+      "value": 4.2
+    },
+    {
+      "label": "55+",
+      "value": 1.8
+    }
+  ],
+  "viewerLocations": [
+    {
+      "code": "US",
+      "label": "United States",
+      "value": 50.8
+    },
+    {
+      "code": "CA",
+      "label": "Canada",
+      "value": 14.0
+    },
+    {
+      "code": "AU",
+      "label": "Australia",
+      "value": 8.5
+    },
+    {
+      "code": "GB",
+      "label": "United Kingdom",
+      "value": 5.7
+    },
+    {
+      "code": "NZ",
+      "label": "New Zealand",
+      "value": 2.1
+    },
+    {
+      "code": "IE",
+      "label": "Ireland",
+      "value": 1.9
+    },
+    {
+      "code": "ZA",
+      "label": "South Africa",
+      "value": 1.7
+    },
+    {
+      "code": "NL",
+      "label": "Netherlands",
+      "value": 1.5
+    },
+    {
+      "code": "FI",
+      "label": "Finland",
+      "value": 1.1
+    },
+    {
+      "code": "NO",
+      "label": "Norway",
+      "value": 0.9
+    },
+    {
+      "code": "Others",
+      "label": "Others",
+      "value": 11.8
+    }
+  ],
+  "followerAge": [
+    {
+      "label": "18-24",
+      "value": 30.6
+    },
+    {
+      "label": "25-34",
+      "value": 44.6
+    },
+    {
+      "label": "35-44",
+      "value": 16.5
+    },
+    {
+      "label": "45-54",
+      "value": 5.9
+    },
+    {
+      "label": "55+",
+      "value": 2.4
+    }
+  ]
+}
