@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lydia Hansen</title>
 
-    <meta property="og:title" content="Lydia Hansen | Intentional Living">
-    <meta property="og:description" content="Essentials for skincare, style, and intentional living">
+    <meta property="og:title" content="Lydia Hansen | All My Favorite Things">
+    <meta property="og:description" content="All my favorite things — style, wellness, and intentional living.">
     <meta property="og:image" content="https://lydiaclarkhansen.com/profile.jpg">
     <meta property="og:url" content="https://lydiaclarkhansen.com">
     <meta name="twitter:card" content="summary_large_image">
@@ -15,14 +15,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore-compat.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LP9L9WTTMS"></script>
     <script>
@@ -32,323 +24,509 @@
         gtag('config', 'G-LP9L9WTTMS');
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap');
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --cream: #FAF5EF;
+            --stone: #D6CDC6;
+            --sage: #8DA399;
+            --ink: #1E1E1E;
+            --muted: #888;
+            --white: #FFFFFF;
+        }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #FAF5EF;
+            background-color: var(--cream);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
         }
 
-        .font-serif {
-            font-family: 'Playfair Display', serif;
+        .font-editorial {
+            font-family: 'Cormorant Garamond', serif;
         }
 
-        .mix-blend-multiply {
+        /* ── Divider ── */
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: var(--stone);
+            margin: 0 auto;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 72px 24px 56px;
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .avatar-ring {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--stone), var(--sage));
+            margin-bottom: 28px;
+            flex-shrink: 0;
+        }
+
+        .avatar-ring img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--cream);
+        }
+
+        .hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            line-height: 1;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+
+        .hero-tagline {
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* ── Social icons ── */
+        .socials {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 0;
+        }
+
+        .social-link {
+            color: var(--ink);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-link:hover {
+            color: var(--sage);
+            transform: translateY(-1px);
+        }
+
+        /* Email popover */
+        .email-wrap { position: relative; }
+
+        .email-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--ink);
+            font-size: 1.1rem;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .email-btn:hover, .email-btn.open {
+            color: var(--sage);
+            transform: translateY(-1px);
+        }
+
+        .email-popover {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            background: var(--white);
+            border: 1px solid var(--stone);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.09);
+            overflow: hidden;
+            z-index: 100;
+            animation: fadeUp 0.15s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+            to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        .email-popover a,
+        .email-popover button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+            background: none;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-family: 'Inter', sans-serif;
+            border-bottom: 1px solid #F3EFEB;
+        }
+
+        .email-popover a:last-child,
+        .email-popover button:last-child { border-bottom: none; }
+
+        .email-popover a:hover,
+        .email-popover button:hover { background: var(--cream); }
+
+        /* ── Section label ── */
+        .section-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+            text-align: center;
+            display: block;
+            margin-bottom: 32px;
+        }
+
+        /* ── Link cards ── */
+        .links-section {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 64px 24px 0;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            background: var(--white);
+            border: 1px solid var(--stone);
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--ink);
+            transition: box-shadow 0.2s, transform 0.2s;
+            margin-bottom: 12px;
+        }
+
+        .link-card:hover {
+            box-shadow: 0 6px 24px rgba(141,163,153,0.18);
+            transform: translateY(-2px);
+        }
+
+        .link-card-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .link-thumb {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--cream);
+            border: 1px solid #F0EAE3;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-thumb img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .link-thumb img.contain {
+            object-fit: contain;
+            padding: 6px;
             mix-blend-mode: multiply;
+        }
+
+        .link-thumb img.cover { object-fit: cover; }
+
+        .link-meta { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+
+        .link-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--sage);
+            font-weight: 700;
+        }
+
+        .link-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            color: var(--ink);
+        }
+
+        .link-arrow {
+            color: var(--stone);
+            font-size: 0.85rem;
+            transition: color 0.2s, transform 0.2s;
+            margin-right: 4px;
+        }
+
+        .link-card:hover .link-arrow {
+            color: var(--sage);
+            transform: translateX(3px);
+        }
+
+        /* ── Press ── */
+        .press-section {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 72px 24px 0;
+        }
+
+        .press-card {
+            display: block;
+            text-decoration: none;
+            background: var(--white);
+            border: 1px solid var(--stone);
+            border-radius: 28px;
+            padding: 40px 36px;
+            text-align: center;
+            transition: box-shadow 0.25s, transform 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .press-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(141,163,153,0.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .press-card:hover {
+            box-shadow: 0 12px 48px rgba(141,163,153,0.15);
+            transform: translateY(-3px);
+        }
+
+        .press-outlet {
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--sage);
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .press-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .press-cta {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .press-card:hover .press-cta { color: var(--sage); }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 80px;
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--stone);
+        }
+
+        .footer-text {
+            font-size: 0.58rem;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: var(--muted);
         }
     </style>
 </head>
 
 <body>
-    <div id="root"></div>
 
-    <script type="text/babel">
-        /**
-         * FIREBASE CONFIGURATION
-         * Linked to your project: lydia-hansen-site
-         */
-        const localFirebaseConfig = {
-            apiKey: "AIzaSyDA5Lh5dYhZIJd71UeMRRn_w1fSvFjUu74",
-            authDomain: "lydia-hansen-site.firebaseapp.com",
-            projectId: "lydia-hansen-site",
-            storageBucket: "lydia-hansen-site.firebasestorage.app",
-            messagingSenderId: "662144331668",
-            appId: "1:662144331668:web:08bc0f54cfe8f42a8f6981",
-            measurementId: "G-T12VE0W604"
-        };
+    <div id="app">
 
-        const firebaseConfig = typeof __firebase_config !== 'undefined'
-            ? JSON.parse(__firebase_config)
-            : localFirebaseConfig;
+        <!-- Hero -->
+        <div class="hero">
+            <div class="avatar-ring">
+                <img src="profile1.jpg" alt="Lydia Hansen" onerror="this.src='https://ui-avatars.com/api/?name=Lydia+Hansen&background=D6CDC6&color=fff'">
+            </div>
 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'lydia-hansen-brand';
+            <h1 class="hero-name">Lydia Hansen</h1>
+            <p class="hero-tagline">All My Favorite Things</p>
 
-        // Initialize Firebase
-        if (firebaseConfig) {
-            firebase.initializeApp(firebaseConfig);
-        }
+            <div class="socials">
+                <a href="https://www.tiktok.com/@lydiaclarkhansen" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/lydiaclarkhansen" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@LydiaClarkHansen" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
 
-        const auth = firebaseConfig ? firebase.auth() : null;
-        const db = firebaseConfig ? firebase.firestore() : null;
-
-        function App() {
-            const [user, setUser] = React.useState(null);
-            const [email, setEmail] = React.useState("");
-            const [newsletterStatus, setNewsletterStatus] = React.useState({ loading: false, success: false, error: null });
-            const [contactData, setContactData] = React.useState({ name: "", email: "", niche: "Skincare", message: "" });
-            const [contactStatus, setContactStatus] = React.useState({ loading: false, success: false, error: null });
-
-            const [isEmailMenuOpen, setIsEmailMenuOpen] = React.useState(false);
-            const [copyFeedback, setCopyFeedback] = React.useState(false);
-
-            // Auth logic
-            React.useEffect(() => {
-                const initAuth = async () => {
-                    if (!auth) return;
-                    try {
-                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                            await auth.signInWithCustomToken(__initial_auth_token);
-                        } else {
-                            await auth.signInAnonymously();
-                        }
-                    } catch (e) {
-                        console.warn("Firebase Auth bypassed or failed.");
-                    }
-                };
-                initAuth();
-                const unsubscribe = auth ? auth.onAuthStateChanged(setUser) : () => { };
-                return () => unsubscribe();
-            }, []);
-
-            const copyEmail = () => {
-                navigator.clipboard.writeText('Lydiaclarkhansen@gmail.com');
-                setCopyFeedback(true);
-                setTimeout(() => {
-                    setCopyFeedback(false);
-                    setIsEmailMenuOpen(false);
-                }, 2000);
-            };
-
-            const handleNewsletterSubmit = async (e) => {
-                e.preventDefault();
-                if (!db || !user) {
-                    setNewsletterStatus({ loading: false, success: false, error: "Database not connected." });
-                    return;
-                }
-
-                setNewsletterStatus({ loading: true, success: false, error: null });
-
-                try {
-                    const subsRef = db.collection('artifacts').doc(appId).collection('public').doc('data').collection('subscribers');
-
-                    // SECURE UPDATE: Use .doc(email).set() instead of .add()
-                    // This automatically handles duplicates. If the email exists, it just updates the timestamp.
-                    // This allows us to disable "Read" permissions in the database rules for maximum security.
-                    await subsRef.doc(email).set({
-                        email: email,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                        source: 'landing_page'
-                    });
-                    
-                    setNewsletterStatus({ loading: false, success: true, error: null });
-                    setEmail("");
-                } catch (err) {
-                    console.error("Submission Error:", err);
-                    setNewsletterStatus({ loading: false, success: false, error: "Submission failed." });
-                }
-            };
-
-            const handleContactSubmit = async (e) => {
-                e.preventDefault();
-                if (!db || !user) {
-                    setContactStatus({ loading: true, success: false, error: "Database not connected." });
-                    return;
-                }
-                setContactStatus({ loading: true, success: false, error: null });
-                try {
-                    await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('brand_inquiries').add({
-                        ...contactData,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                    setContactStatus({ loading: false, success: true, error: null });
-                    setContactData({ name: "", email: "", niche: "Skincare", message: "" });
-                } catch (err) {
-                    console.error("Contact Error:", err);
-                    setContactStatus({ loading: false, success: false, error: "Could not send." });
-                }
-            };
-
-            const affiliateLinks = [
-                { name: "Shed_Offer", title: "$100 OFF WEIGHT LOSS", url: "https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3", label: "Special Offer", img: "shed.jpg", fit: "cover" },
-                {name: "Shop_My", title: "SHOP MY", url:"https://shopmy.us/shop/lydiaclarkhansen?Section_id=1971346&tab=collections",label: "Links", img: "Shopmy.jpg", fit: "contain"},
-                { name: "Face_Reality", title: "FACE REALITY", url: "https://www.lydsskinbar.com/shop/facereality/7", label: "Skin Care", img: "FaceReality.jpg", fit: "contain" },
-                { name: "Lyds_Skin_Bar", title: "LYDS SKIN BAR", url: "https://www.lydsskinbar.com/", label: "Official Website", img: "lsb.png", fit: "cover" },
-                
-            ];
-
-            const lifestyleTips = [
-                { title: "Detach self-worth from items", description: "Minimalism starts when you stop tying identity to possessions. Letting go of physical clutter often means letting go of a ‘future’ or ‘ideal’ version of yourself that those items were propping up." },
-                { title: "Use the ‘out of sight’ test", description: "Gather items you don’t use but feel hesitant to declutter. Put them in a box in the garage or storage for a month. If you forget what’s in there, that's your sign that you can live without it." },
-                { title: "If it’s collecting dust, it’s not worth keeping", description: "Items you don’t use regularly shouldn’t take up space in your living area." },
-                { title: "Ask: Would you buy this at full price today?", description: "If the answer is no, get rid of it." },
-                { title: "Keep only ‘10/10 clothes’", description: "When I wear my clothes I ask, ‘Do I feel amazing in this?’ If it’s not something you’re excited to wear, it’s just taking up hanger space." },
-                { title: "Delay purchases", description: "Keep a wish list. Let items sit in your cart for one to two months before buying. Most impulse wants disappear with time." },
-                { title: "Follow the cost-per-use rule", description: "If something costs $100, it should get used at least 100 times to justify the purchase." },
-                { title: "Don’t be extreme", description: "You don’t need to purge your life overnight. Ease into it. Find your balance. Start with the obvious ‘why do I even own this?’ items and declutter from there." }
-            ];
-
-            return (
-                <div className="min-h-screen bg-[#FAF5EF] text-[#1E1E1E] selection:bg-[#D6CDC6]" onClick={() => isEmailMenuOpen && setIsEmailMenuOpen(false)}>
-
-                    {/* Profile Header */}
-                    <header className="pt-20 pb-12 px-6 text-center max-w-2xl mx-auto">
-                        <div className="relative inline-block mb-6">
-                            <img src="profile1.jpg" alt="Lydia Hansen" className="w-24 h-24 rounded-full border-2 border-white shadow-lg object-cover" onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Lydia+Hansen&background=D6CDC6&color=fff'; }} />
-                        </div>
-                        <h1 className="text-2xl font-bold tracking-tight mb-2 uppercase text-[#1E1E1E]">Lydia Hansen</h1>
-                        <p className="text-sm italic text-[#666] mb-8 font-serif">All MY FAVORITE THINGS</p>
-
-                        <div className="flex justify-center gap-8 mb-4">
-                            <a href="https://www.tiktok.com/@lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-tiktok"></i></a>
-                            <a href="https://www.instagram.com/lydiaclarkhansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-instagram"></i></a>
-                            <a href="https://www.youtube.com/@LydiaClarkHansen" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-brands fa-youtube"></i></a>
-
-                            <div className="relative">
-                                <button onClick={(e) => { e.stopPropagation(); setIsEmailMenuOpen(!isEmailMenuOpen); }} className={`transition-colors text-xl ${isEmailMenuOpen ? 'text-[#8DA399]' : 'text-[#1E1E1E] hover:text-[#8DA399]'}`}>
-                                    <i className="fa-solid fa-envelope"></i>
-                                </button>
-                                {isEmailMenuOpen && (
-                                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 bg-white border border-[#D6CDC6] rounded-2xl shadow-xl z-50 overflow-hidden text-left font-sans">
-                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Lydiaclarkhansen@gmail.com" target="_blank" className="flex items-center gap-3 px-4 py-3 hover:bg-[#FAF5EF] transition-colors border-b border-[#F0F0F0]">
-                                            <i className="fa-brands fa-google text-red-500"></i>
-                                            <span className="text-xs font-semibold">Gmail</span>
-                                        </a>
-                                        <a href="mailto:Lydiaclarkhansen@gmail.com" className="flex items-center gap-3 px-4 py-3 hover:bg-[#FAF5EF] transition-colors border-b border-[#F0F0F0]">
-                                            <i className="fa-solid fa-paper-plane text-blue-500"></i>
-                                            <span className="text-xs font-semibold">Default Mail App</span>
-                                        </a>
-                                        <button onClick={copyEmail} className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[#FAF5EF] transition-colors text-left">
-                                            <i className={`fa-solid ${copyFeedback ? 'fa-check text-green-500' : 'fa-copy text-gray-400'}`}></i>
-                                            <span className="text-xs font-semibold">{copyFeedback ? 'Copied!' : 'Copy Email'}</span>
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-
-                            <a href="https://www.lydsskinbar.com/" className="text-[#1E1E1E] hover:text-[#8DA399] transition-colors text-xl"><i className="fa-solid fa-globe"></i></a>
-                        </div>
-                    </header>
-
-                    <main className="max-w-4xl mx-auto px-6 pb-24">
-                        {/* Curation Links */}
-                        <section className="mb-24">
-                            <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">Intentional Curation</h2>
-                            <div className="grid gap-4 max-w-xl mx-auto">
-                                {affiliateLinks.map((link, i) => (
-                                    <a
-                                        key={i}
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        onClick={() => {
-                                            if (typeof gtag !== 'undefined') {
-                                                gtag('event', 'click_affiliate_link', {
-                                                    'link_name': link.name,
-                                                    'link_url': link.url
-                                                });
-                                            }
-                                        }}
-                                        className="group flex items-center justify-between p-4 bg-white border border-[#D6CDC6] rounded-full hover:shadow-sm hover:translate-y-[-1px] transition-all relative overflow-hidden"
-                                    >
-                                        <div className="flex items-center gap-4 px-2">
-                                            <div className="w-10 h-10 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-[#FAF5EF]">
-                                                <img
-                                                    src={link.img}
-                                                    alt={link.title}
-                                                    className={`w-full h-full ${link.fit === 'contain' ? 'object-contain p-1 mix-blend-multiply' : 'object-cover'}`}
-                                                    onError={(e) => { e.target.style.display = 'none'; }}
-                                                />
-                                            </div>
-                                            <div className="flex flex-col text-left">
-                                                <span className="text-[9px] uppercase tracking-widest text-[#8DA399] font-bold mb-0.5">{link.label}</span>
-                                                <span className="text-sm font-semibold tracking-tight">{link.title}</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-4 mr-6">
-                                            <div className="text-[#D6CDC6] group-hover:text-[#8DA399] group-hover:translate-x-1 transition-all">
-                                                <i className="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                            <i className="fa-solid fa-ellipsis-vertical text-[#D6CDC6] text-xs"></i>
-                                        </div>
-                                    </a>
-                                ))}
-                            </div>
-                        </section>
-
-                        {/* Press Section */}
-                        <section className="mb-24">
-                            <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-10 font-bold">Lydiaclarkhansen In the Press</h2>
-                            <div className="max-w-xl mx-auto">
-                                <a href="https://www.newsweek.com/shock-woman-minimalist-apartment-decluttering-11285640" target="_blank" rel="noopener noreferrer" className="group block p-10 bg-white border border-[#D6CDC6] rounded-[2.5rem] hover:shadow-md transition-all text-center relative overflow-hidden">
-                                    <div className="text-[#1E1E1E] font-serif italic text-2xl md:text-3xl mb-4 leading-tight">"Shocking Minimalist Apartment..."</div>
-                                    <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#8DA399] font-bold">Read the Feature in Newsweek <i className="fa-solid fa-external-link text-[10px]"></i></div>
-                                </a>
-                            </div>
-                        </section>
-
-                        {/* Forms Grid */}
-                        <div className="grid md:grid-cols-2 gap-8 items-stretch mb-24">
-                            <div className="bg-[#8DA399] text-white p-12 rounded-[2rem] flex flex-col justify-center">
-                                <div className="mb-6 opacity-40 text-3xl"><i className="fa-solid fa-envelope"></i></div>
-                                <h3 className="text-3xl font-light mb-4 leading-tight">Join the <br />Community.</h3>
-                                <p className="text-sm opacity-80 mb-10 leading-relaxed font-light">Weekly notes on intentional living, healthy products, and finding quiet in the noise.</p>
-                                {newsletterStatus.success ? (
-                                    <div className="flex items-center gap-3 py-4 text-white font-medium bg-white/10 rounded-xl justify-center border border-white/20"><i className="fa-solid fa-check-circle"></i> You're on the list</div>
-                                ) : (
-                                    <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-                                        <input type="email" placeholder="Your email address" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:bg-white/20 transition-all text-sm font-sans" required />
-                                        <button className="w-full py-4 bg-white text-[#8DA399] font-bold rounded-xl hover:bg-[#FDFBF7] transition-all text-sm shadow-sm disabled:opacity-50">{newsletterStatus.loading ? "Joining..." : "Subscribe"}</button>
-                                        {newsletterStatus.error && <p className="text-[10px] text-red-100 mt-2 text-center">{newsletterStatus.error}</p>}
-                                    </form>
-                                )}
-                            </div>
-
-                            <div className="bg-white border border-[#D6CDC6] p-12 rounded-[2rem] shadow-sm">
-                                <h3 className="text-2xl font-light mb-8">Partnerships</h3>
-                                {contactStatus.success ? (
-                                    <div className="py-16 text-center">
-                                        <div className="w-12 h-12 bg-[#FDFBF7] rounded-full flex items-center justify-center mx-auto mb-4 border border-[#D6CDC6]"><i className="fa-solid fa-check-circle text-[#8DA399] text-xl"></i></div>
-                                        <p className="text-sm text-[#666]">Inquiry received. Let's create something meaningful.</p>
-                                    </div>
-                                ) : (
-                                    <form onSubmit={handleContactSubmit} className="space-y-4">
-                                        <div className="space-y-4 font-sans">
-                                            <input type="text" placeholder="Name" required value={contactData.name} onChange={(e) => setContactData({ ...contactData, name: e.target.value })} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
-                                            <input type="email" placeholder="Brand Email" required value={contactData.email} onChange={(e) => setContactData({ ...contactData, email: e.target.value })} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm" />
-                                            <textarea placeholder="Tell me about your brand vision..." required rows="4" value={contactData.message} onChange={(e) => setContactData({ ...contactData, message: e.target.value })} className="w-full p-4 bg-[#FAF5EF] border border-transparent rounded-xl focus:bg-white focus:border-[#D6CDC6] outline-none transition-all text-sm resize-none"></textarea>
-                                        </div>
-                                        <button className="w-full py-4 bg-[#8DA399] text-white font-bold rounded-xl border-2 border-[#8DA399] hover:bg-white hover:text-[#8DA399] transition-all duration-300 flex items-center justify-center gap-2 text-sm shadow-md disabled:opacity-50 group"><i className="fa-solid fa-paper-plane text-xs transition-colors group-hover:text-[#8DA399]"></i> {contactStatus.loading ? "Sending..." : "Send Inquiry"}</button>
-                                        {contactStatus.error && <p className="text-[10px] text-red-500 mt-2 text-center">{contactStatus.error}</p>}
-                                    </form>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Tips Section */}
-                        <section className="mb-24">
-                            <h2 className="text-center text-[10px] uppercase tracking-[0.4em] text-[#999] mb-12 font-bold leading-relaxed">Tips for Maintaining a <br className="md:hidden" /> Minimalist Lifestyle</h2>
-                            <div className="space-y-6 max-w-2xl mx-auto">
-                                {lifestyleTips.map((tip, i) => (
-                                    <div key={i} className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-[#D6CDC6] shadow-sm hover:shadow-md transition-shadow">
-                                        <h3 className="text-lg font-bold mb-4 tracking-tight">{tip.title}</h3>
-                                        <p className="text-sm md:text-base leading-relaxed text-[#666] font-serif italic">{tip.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                    </main>
-
-                    <footer className="py-16 text-center border-t border-[#D6CDC6]">
-                        <p className="text-[9px] uppercase tracking-[0.5em] text-[#999]">© 2026 LYDIA HANSEN. FIND PEACE IN THE SIMPLE.</p>
-                    </footer>
+                <div class="email-wrap" id="emailWrap">
+                    <button class="email-btn" id="emailBtn" aria-label="Email" aria-expanded="false">
+                        <i class="fa-solid fa-envelope"></i>
+                    </button>
+                    <div class="email-popover" id="emailPopover" hidden>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lydia@idolsandicons.co" target="_blank">
+                            <i class="fa-brands fa-google" style="color:#EA4335"></i> Gmail
+                        </a>
+                        <a href="mailto:lydia@idolsandicons.co">
+                            <i class="fa-solid fa-paper-plane" style="color:#4A90D9"></i> Default Mail App
+                        </a>
+                        <button id="copyEmailBtn">
+                            <i class="fa-solid fa-copy" style="color:#aaa" id="copyIcon"></i>
+                            <span id="copyLabel">Copy Email</span>
+                        </button>
+                    </div>
                 </div>
-            );
-        }
+            </div>
+        </div>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        <!-- Links -->
+        <section class="links-section">
+            <span class="section-label">Curated For You</span>
+
+            <a href="https://portal.tryshed.com/alp?partner=leaddyno&utm_medium=affiliate&infAmt=%2450&medPromo=&afmc=LydiaBF30&utm_campaign=LydiaBF30&utm_source=leaddyno&utm_medium=affiliate&utm_content=4n3"
+               class="link-card"
+               target="_blank"
+               rel="noopener noreferrer"
+               onclick="gtag('event','click_affiliate_link',{link_name:'Shed_Offer',link_url:this.href})">
+                <div class="link-card-left">
+                    <div class="link-thumb">
+                        <img src="shed.jpg" alt="Shed" class="cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="link-meta">
+                        <span class="link-label">Special Offer</span>
+                        <span class="link-title">$100 OFF WEIGHT LOSS</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right link-arrow"></i>
+            </a>
+
+            <a href="https://shopmy.us/shop/lydiaclarkhansen?Section_id=1971346&tab=collections"
+               class="link-card"
+               target="_blank"
+               rel="noopener noreferrer"
+               onclick="gtag('event','click_affiliate_link',{link_name:'Shop_My',link_url:this.href})">
+                <div class="link-card-left">
+                    <div class="link-thumb">
+                        <img src="Shopmy.jpg" alt="Shop My" class="contain" onerror="this.style.display='none'">
+                    </div>
+                    <div class="link-meta">
+                        <span class="link-label">Links</span>
+                        <span class="link-title">SHOP MY</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right link-arrow"></i>
+            </a>
+        </section>
+
+        <!-- Press -->
+        <section class="press-section">
+            <span class="section-label">In the Press</span>
+
+            <a href="https://www.newsweek.com/shock-woman-minimalist-apartment-decluttering-11285640"
+               class="press-card"
+               target="_blank"
+               rel="noopener noreferrer">
+                <div class="press-outlet">
+                    <i class="fa-solid fa-newspaper" style="font-size:0.55rem"></i> Newsweek
+                </div>
+                <p class="press-quote">"Shocking Minimalist Apartment..."</p>
+                <span class="press-cta">Read the Feature <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.55rem"></i></span>
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">&copy; 2026 Lydia Hansen</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Email popover
+        const emailBtn = document.getElementById('emailBtn');
+        const emailPopover = document.getElementById('emailPopover');
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const copyIcon = document.getElementById('copyIcon');
+        const copyLabel = document.getElementById('copyLabel');
+
+        emailBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = !emailPopover.hidden;
+            emailPopover.hidden = isOpen;
+            emailBtn.classList.toggle('open', !isOpen);
+            emailBtn.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!document.getElementById('emailWrap').contains(e.target)) {
+                emailPopover.hidden = true;
+                emailBtn.classList.remove('open');
+                emailBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        copyEmailBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText('lydia@idolsandicons.co').then(() => {
+                copyIcon.className = 'fa-solid fa-check';
+                copyIcon.style.color = '#4CAF50';
+                copyLabel.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyIcon.className = 'fa-solid fa-copy';
+                    copyIcon.style.color = '#aaa';
+                    copyLabel.textContent = 'Copy Email';
+                    emailPopover.hidden = true;
+                    emailBtn.classList.remove('open');
+                }, 2000);
+            });
+        });
     </script>
-</body>
 
+</body>
 </html>
