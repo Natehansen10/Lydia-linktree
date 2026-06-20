@@ -32,5 +32,12 @@ id = "bbf68377f2d14b5dac3f6c22c75f8b2d"
 pattern = "api.lydiaclarkhansen.com"
 custom_domain = true
 
+# --- Scheduled pipeline run (Step 5) ------------------------------------
+# Daily at 09:00 UTC. Keeps tiktok:data fresh and naturally exercises the
+# 24h access-token refresh so it never goes stale. Run on demand via
+# POST /run (PIPELINE_TOKEN-protected) any time.
+[triggers]
+crons = ["0 9 * * *"]
+
 [observability]
 enabled = true
