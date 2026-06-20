@@ -2,9 +2,15 @@
  * Lydia Hansen Creator Analytics — Cloudflare Worker
  * Single-user, internal tool. TikTok Login Kit (OAuth 2.0) + Display API.
  *
- * Step -1 scaffold: placeholder handler only. OAuth (/login, /callback),
- * token refresh, and the data pipeline are added in later steps.
+ * Routes:
+ *   GET /            health check
+ *   GET /login       start OAuth — redirect to TikTok
+ *   GET /callback    OAuth redirect target — verify state, exchange code
+ *
+ * Added in later steps: /run (pipeline), /data (output JSON).
  */
+
+import { handleLogin, handleCallback } from "./oauth";
 
 export interface Env {
   /** KV namespace holding OAuth tokens (fixed key) and pipeline output JSON. */
@@ -15,16 +21,25 @@ export interface Env {
 }
 
 export default {
-  async fetch(request: Request, _env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.pathname === "/" || url.pathname === "/health") {
-      return new Response("Hello World — Lydia analytics worker is live.", {
-        status: 200,
-        headers: { "content-type": "text/plain; charset=utf-8" },
-      });
-    }
+    switch (url.pathname) {
+      case "/":
+      case "/health":
+        return new Response("Hello World — Lydia analytics worker is live.", {
+          status: 200,
+          headers: { "content-type": "text/plain; charset=utf-8" },
+        });
 
-    return new Response("Not found", { status: 404 });
+      case "/login":
+        return handleLogin(env);
+
+      case "/callback":
+        return handleCallback(request, env);
+
+      default:
+        return new Response("Not found", { status: 404 });
+    }
   },
 } satisfies ExportedHandler<Env>;
