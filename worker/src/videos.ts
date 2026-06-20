@@ -8,6 +8,7 @@
 import type { Env } from "./index";
 import { TIKTOK } from "./config";
 import { getValidAccessToken } from "./tokens";
+import { fetchWithRetry } from "./http";
 
 // Fields requested per video (passed as the `fields` query param).
 const VIDEO_FIELDS = [
@@ -79,14 +80,18 @@ async function fetchVideoPage(
   const reqBody: Record<string, unknown> = { max_count: MAX_COUNT };
   if (cursor !== undefined) reqBody.cursor = cursor;
 
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
+  const res = await fetchWithRetry(
+    url,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reqBody),
     },
-    body: JSON.stringify(reqBody),
-  });
+    "video/list",
+  );
 
   const body = (await res.json()) as VideoListResponse;
   if (body.error && body.error.code && body.error.code !== "ok") {
@@ -103,24 +108,46 @@ async function fetchVideoPage(
   };
 }
 
+export interface VideoListResult {
+  videos: VideoStat[];
+  /** True if pagination stopped early due to a page error (data incomplete). */
+  partial: boolean;
+}
+
 /**
  * Fetch ALL of the creator's videos, paginating until has_more is false.
- * Throws on an API error from any page.
+ *
+ * Resilience: fetchVideoPage already retries transient HTTP errors (429/5xx)
+ * via fetchWithRetry. If a page STILL fails after that, we don't discard the
+ * whole run — we log it, mark the result partial, and return the videos
+ * gathered so far. The pipeline persists partial data rather than nothing.
  */
-export async function fetchAllVideos(env: Env): Promise<VideoStat[]> {
+export async function fetchAllVideos(env: Env): Promise<VideoListResult> {
   const accessToken = await getValidAccessToken(env);
   const all: VideoStat[] = [];
   let cursor: number | undefined = undefined;
+  let partial = false;
 
   for (let page = 0; page < MAX_PAGES; page++) {
-    const { videos, cursor: nextCursor, hasMore } = await fetchVideoPage(accessToken, cursor);
-    all.push(...videos);
-    console.log(`[videos] page ${page + 1}: +${videos.length} (total ${all.length}), has_more=${hasMore}`);
+    let result: Awaited<ReturnType<typeof fetchVideoPage>>;
+    try {
+      result = await fetchVideoPage(accessToken, cursor);
+    } catch (err) {
+      // Page failed even after retries — keep what we have, flag partial.
+      console.error(`[videos] page ${page + 1} failed, stopping with partial data:`, err);
+      partial = true;
+      break;
+    }
 
-    if (!hasMore || videos.length === 0) break;
-    cursor = nextCursor;
+    all.push(...result.videos);
+    console.log(
+      `[videos] page ${page + 1}: +${result.videos.length} (total ${all.length}), has_more=${result.hasMore}`,
+    );
+
+    if (!result.hasMore || result.videos.length === 0) break;
+    cursor = result.cursor;
   }
 
-  console.log(`[videos] done — ${all.length} videos`);
-  return all;
+  console.log(`[videos] done — ${all.length} videos${partial ? " (PARTIAL)" : ""}`);
+  return { videos: all, partial };
 }

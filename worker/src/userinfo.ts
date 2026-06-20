@@ -7,6 +7,7 @@
 import type { Env } from "./index";
 import { TIKTOK } from "./config";
 import { getValidAccessToken } from "./tokens";
+import { fetchWithRetry } from "./http";
 
 // Fields we request — basic profile + stats. Comma-joined in the query.
 const USER_FIELDS = [
@@ -49,10 +50,11 @@ export async function fetchUserInfo(env: Env): Promise<AccountStats> {
   const url = `${TIKTOK.USER_INFO_URL}?fields=${USER_FIELDS.join(",")}`;
 
   console.log("[userinfo] fetching account stats…");
-  const res = await fetch(url, {
-    method: "GET",
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
+  const res = await fetchWithRetry(
+    url,
+    { method: "GET", headers: { Authorization: `Bearer ${accessToken}` } },
+    "user/info",
+  );
 
   const body = (await res.json()) as UserInfoResponse;
 

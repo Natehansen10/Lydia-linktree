@@ -13,6 +13,8 @@ import { fetchAllVideos, type VideoStat } from "./videos";
 export interface AnalyticsSnapshot {
   /** ISO timestamp of when this snapshot was generated. */
   generated_at: string;
+  /** True if the video list is incomplete (a page failed mid-pagination). */
+  partial: boolean;
   account: AccountStats;
   video_count: number;
   videos: VideoStat[];
@@ -31,10 +33,11 @@ export async function runPipeline(env: Env): Promise<AnalyticsSnapshot> {
   const account = await fetchUserInfo(env);
 
   console.log("[pipeline] step 2/2: video list");
-  const videos = await fetchAllVideos(env);
+  const { videos, partial } = await fetchAllVideos(env);
 
   const snapshot: AnalyticsSnapshot = {
     generated_at: new Date().toISOString(),
+    partial,
     account,
     video_count: videos.length,
     videos,
@@ -42,7 +45,7 @@ export async function runPipeline(env: Env): Promise<AnalyticsSnapshot> {
 
   await env.TOKENS.put(KV_KEYS.DATA, JSON.stringify(snapshot));
   console.log(
-    `[pipeline] done — ${account.display_name}, ${account.follower_count} followers, ${videos.length} videos written to KV`,
+    `[pipeline] done — ${account.display_name}, ${account.follower_count} followers, ${videos.length} videos written to KV${partial ? " (PARTIAL)" : ""}`,
   );
   return snapshot;
 }

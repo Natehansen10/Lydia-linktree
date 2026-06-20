@@ -97,6 +97,7 @@ async function runAndReport(env: Env): Promise<Response> {
     const s = await runPipeline(env);
     return json({
       ok: true,
+      partial: s.partial,
       generated_at: s.generated_at,
       account: {
         display_name: s.account.display_name,
