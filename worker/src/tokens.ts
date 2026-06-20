@@ -6,6 +6,21 @@
 import type { Env } from "./index";
 import { TIKTOK, REDIRECT_URI, KV_KEYS } from "./config";
 
+/** Refresh the access token when fewer than this many ms remain. */
+const REFRESH_MARGIN_MS = 5 * 60 * 1000; // 5 minutes
+
+/**
+ * Thrown when we cannot produce a valid access token without the user
+ * re-authorizing (no tokens stored, or the refresh token itself expired/
+ * invalid). Callers should surface a "visit /login" message, not crash.
+ */
+export class ReauthRequiredError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "ReauthRequiredError";
+  }
+}
+
 export interface StoredTokens {
   access_token: string;
   refresh_token: string;
@@ -114,4 +129,44 @@ export async function refreshTokens(env: Env, current: StoredTokens): Promise<St
   const tokens = toStored(data, current);
   await saveTokens(env, tokens);
   return tokens;
+}
+
+/**
+ * Return a valid access token, refreshing automatically if the stored one
+ * is expired or within the refresh margin. This is the single entry point
+ * the data pipeline uses — it never returns a stale token.
+ *
+ * Throws {@link ReauthRequiredError} if there are no tokens, or if the
+ * refresh token is expired or rejected by TikTok (re-auth needed).
+ */
+export async function getValidAccessToken(env: Env): Promise<string> {
+  const current = await getStoredTokens(env);
+  if (!current) {
+    throw new ReauthRequiredError("No tokens stored — visit /login to authorize.");
+  }
+
+  const now = Date.now();
+  if (now < current.expires_at - REFRESH_MARGIN_MS) {
+    return current.access_token; // still good
+  }
+
+  // Access token expired/near-expiry. If the refresh token is also dead,
+  // there's no recovery without re-authorization.
+  if (now >= current.refresh_expires_at) {
+    throw new ReauthRequiredError(
+      "Refresh token expired — visit /login to re-authorize.",
+    );
+  }
+
+  console.log("[tokens] access token expired/near-expiry, refreshing…");
+  try {
+    const refreshed = await refreshTokens(env, current);
+    console.log("[tokens] refresh OK");
+    return refreshed.access_token;
+  } catch (err) {
+    // TikTok rejected the refresh token (revoked/invalid) — needs re-auth.
+    throw new ReauthRequiredError(
+      `Token refresh rejected by TikTok (${(err as Error).message}) — visit /login to re-authorize.`,
+    );
+  }
 }
