@@ -17,7 +17,7 @@ compatibility_date = "2025-06-01"
 # Step -1 with `wrangler kv namespace create TOKENS`.
 [[kv_namespaces]]
 binding = "TOKENS"
-id = "REPLACE_AFTER_KV_CREATE"
+id = "bbf68377f2d14b5dac3f6c22c75f8b2d"
 
 # --- Custom domain (Step 0 routing) -------------------------------------
 # We deploy under api.lydiaclarkhansen.com so the static GitHub Pages site
