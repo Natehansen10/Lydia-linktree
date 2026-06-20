@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# Local secrets — NEVER commit (Client Key / Secret live here for `wrangler dev`)
+.dev.vars
+
+# Wrangler local state / build cache
+.wrangler/
+dist/
+
+# Logs
+*.log

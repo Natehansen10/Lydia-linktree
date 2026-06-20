@@ -1,0 +1,33 @@
+# Cloudflare Worker config — Lydia Hansen Creator Analytics
+# Single-user internal tool. OAuth + TikTok Display API data pipeline.
+#
+# Secrets (set via `wrangler secret put`, NEVER committed):
+#   TIKTOK_CLIENT_KEY
+#   TIKTOK_CLIENT_SECRET
+#
+# For local dev these live in worker/.dev.vars (gitignored).
+
+name = "lydia-analytics"
+main = "src/index.ts"
+compatibility_date = "2025-06-01"
+
+# --- KV: token + data storage -------------------------------------------
+# A single namespace holds the OAuth tokens (fixed key) and the pipeline
+# output JSON. The `id` is filled in after we create the namespace in
+# Step -1 with `wrangler kv namespace create TOKENS`.
+[[kv_namespaces]]
+binding = "TOKENS"
+id = "REPLACE_AFTER_KV_CREATE"
+
+# --- Custom domain (Step 0 routing) -------------------------------------
+# We deploy under api.lydiaclarkhansen.com so the static GitHub Pages site
+# on lydiaclarkhansen.com stays completely untouched. Uncommented once the
+# domain is confirmed on Cloudflare. Redirect URI for TikTok will be
+# https://api.lydiaclarkhansen.com/callback
+#
+# [[routes]]
+# pattern = "api.lydiaclarkhansen.com"
+# custom_domain = true
+
+[observability]
+enabled = true
