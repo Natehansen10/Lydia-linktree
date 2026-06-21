@@ -1,0 +1,9 @@
+# Copy this file to `.dev.vars` (which is gitignored) and fill in real values
+# from the TikTok for Developers dashboard for local `wrangler dev`.
+#
+# In production these are set as encrypted secrets instead:
+#   wrangler secret put TIKTOK_CLIENT_KEY
+#   wrangler secret put TIKTOK_CLIENT_SECRET
+
+TIKTOK_CLIENT_KEY="your-sandbox-client-key"
+TIKTOK_CLIENT_SECRET="your-sandbox-client-secret"

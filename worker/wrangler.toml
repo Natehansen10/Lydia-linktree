@@ -1,0 +1,43 @@
+# Cloudflare Worker config — Lydia Hansen Creator Analytics
+# Single-user internal tool. OAuth + TikTok Display API data pipeline.
+#
+# Secrets (set via `wrangler secret put`, NEVER committed):
+#   TIKTOK_CLIENT_KEY
+#   TIKTOK_CLIENT_SECRET
+#
+# For local dev these live in worker/.dev.vars (gitignored).
+
+name = "lydia-analytics"
+main = "src/index.ts"
+compatibility_date = "2025-06-01"
+
+# Keep the workers.dev URL live alongside the custom domain as a testing
+# fallback (lydia-analytics.lydiaclarkhansen.workers.dev). Production OAuth
+# uses the custom domain below.
+workers_dev = true
+
+# --- KV: token + data storage -------------------------------------------
+# A single namespace holds the OAuth tokens (fixed key) and the pipeline
+# output JSON. The `id` is filled in after we create the namespace in
+# Step -1 with `wrangler kv namespace create TOKENS`.
+[[kv_namespaces]]
+binding = "TOKENS"
+id = "bbf68377f2d14b5dac3f6c22c75f8b2d"
+
+# --- Custom domain (Step 0 routing) -------------------------------------
+# We deploy under api.lydiaclarkhansen.com so the static GitHub Pages site
+# on lydiaclarkhansen.com stays completely untouched. Redirect URI for
+# TikTok is https://api.lydiaclarkhansen.com/callback
+[[routes]]
+pattern = "api.lydiaclarkhansen.com"
+custom_domain = true
+
+# --- Scheduled pipeline run (Step 5) ------------------------------------
+# Daily at 09:00 UTC. Keeps tiktok:data fresh and naturally exercises the
+# 24h access-token refresh so it never goes stale. Run on demand via
+# POST /run (PIPELINE_TOKEN-protected) any time.
+[triggers]
+crons = ["0 9 * * *"]
+
+[observability]
+enabled = true
