@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creator Analytics | Lydia Hansen</title>
+
+<meta property="og:title" content="Lydia Hansen | Creator Analytics">
+<meta property="og:description" content="Live TikTok performance — followers, views, and video metrics.">
+<meta property="og:url" content="https://lydiaclarkhansen.com/analytics-app/dashboard.html">
+
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF5EF;
+    --stone: #D6CDC6;
+    --sage: #8DA399;
+    --ink: #1E1E1E;
+    --muted: #888;
+    --white: #FFFFFF;
+    --hairline: #F0EAE3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    overflow-x: hidden; /* safety net against any wide child */
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Shared micro-label ── */
+  .eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+  }
+
+  /* ── States ── */
+  .state { text-align: center; padding: 120px 24px; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.02em; }
+  .state.error { color: #B4554B; }
+  .state .spinner {
+    width: 28px; height: 28px; margin: 0 auto 20px;
+    border: 2px solid var(--stone); border-top-color: var(--sage);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Hero ── */
+  .hero {
+    text-align: center;
+    padding: 72px 24px 8px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .avatar-ring {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--stone), var(--sage));
+    margin: 0 auto 24px;
+  }
+  .avatar-ring img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cream);
+    display: block;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    /* fluid: shrinks on narrow screens so long display names never overflow */
+    font-size: clamp(1.6rem, 9vw, 2.6rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.05;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+  }
+  .hero-handle {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .hero-updated {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.8;
+  }
+
+  /* ── Stat block (the brand-credibility surface) ── */
+  .stat-block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-width: 760px;
+    margin: 40px auto 0;
+    border-top: 1px solid var(--stone);
+    border-bottom: 1px solid var(--stone);
+    padding: 32px 0;
+  }
+  .stat { text-align: center; padding: 0 8px; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  /* ── Section header ── */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    max-width: 1080px;
+    margin: 64px auto 28px;
+    padding: 0 24px;
+  }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.7rem;
+    letter-spacing: 0.02em;
+  }
+  .section-head .head-right {
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Sort control ── */
+  .sort {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .sort-btn {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 0 4px;
+    border-bottom: 1px solid transparent;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .sort-btn:hover { color: var(--ink); }
+  .sort-btn.active { color: var(--sage); border-bottom-color: var(--sage); }
+
+  /* ── Video grid ── */
+  .video-grid {
+    display: grid;
+    /* minmax(0,1fr) lets tracks shrink below content size — prevents the
+       grid from forcing horizontal overflow on narrow screens. */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px 18px;
+    padding-bottom: 8px;
+  }
+
+  .video-card {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.2s;
+  }
+  .video-card:hover { transform: translateY(-3px); }
+
+  .cover {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--stone);
+    border: 1px solid var(--hairline);
+  }
+  .cover img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .video-card:hover .cover img { transform: scale(1.04); }
+
+  /* photo-post badge (filled in Step 4) + duration */
+  .cover-tag {
+    position: absolute;
+    bottom: 8px; right: 8px;
+    background: rgba(30,30,30,0.72);
+    color: #fff;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 7px;
+    border-radius: 6px;
+    backdrop-filter: blur(2px);
+  }
+
+  .video-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.35;
+    margin: 12px 2px 8px;
+    /* graceful 2-line truncation */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.1em;
+  }
+  .video-date {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 2px 10px;
+  }
+
+  .video-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 12px;
+    padding: 0 2px;
+  }
+  .metric { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--ink); }
+  .metric .m-ico { color: var(--sage); width: 13px; text-align: center; font-size: 0.72rem; }
+  .metric .m-val { font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 80px;
+    padding: 36px 24px;
+    text-align: center;
+    border-top: 1px solid var(--stone);
+  }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--stone); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+  footer a:hover { color: var(--sage); border-color: var(--sage); }
+  .footer-text { font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--muted); margin-top: 14px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 880px) {
+    .video-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .hero { padding-top: 52px; }
+    .hero-handle { letter-spacing: 0.18em; }
+    .stat-block { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; padding: 26px 0; }
+    .stat { padding: 0; }
+    .stat-num { font-size: 1.75rem; }
+    .stat-label { font-size: 0.55rem; letter-spacing: 0.15em; }
+    .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 14px; }
+    .section-head { margin-top: 48px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- States: only one of these is visible at a time -->
+  <div id="loading" class="state"><div class="spinner"></div>Loading live data…</div>
+  <div id="error" class="state error" hidden></div>
+
+  <!-- Content -->
+  <main id="content" hidden>
+
+    <!-- Hero + stat block -->
+    <header class="hero">
+      <div class="avatar-ring">
+        <img id="avatar" src="" alt="" referrerpolicy="no-referrer"
+             onerror="this.src='https://ui-avatars.com/api/?name=Lydia+Hansen&background=D6CDC6&color=fff'">
+      </div>
+      <h1 class="hero-name" id="name">Lydia Hansen</h1>
+      <div class="hero-handle" id="handle"></div>
+      <div class="hero-updated" id="updated"></div>
+
+      <div class="stat-block" id="statBlock"></div>
+    </header>
+
+    <!-- Videos -->
+    <section>
+      <div class="section-head">
+        <h2>Videos</h2>
+        <div class="head-right">
+          <div class="sort" id="sortControls" role="group" aria-label="Sort videos">
+            <button class="sort-btn active" data-sort="newest">Newest</button>
+            <button class="sort-btn" data-sort="views">Most Views</button>
+            <button class="sort-btn" data-sort="likes">Most Likes</button>
+            <button class="sort-btn" data-sort="comments">Most Comments</button>
+          </div>
+          <span class="eyebrow" id="videoCount"></span>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="video-grid" id="videoGrid"></div>
+      </div>
+    </section>
+
+    <footer>
+      <a href="https://www.tiktok.com/@lydiaclarkhansen" target="_blank" rel="noopener noreferrer">View on TikTok</a>
+      <p class="footer-text">&copy; 2026 Lydia Hansen</p>
+    </footer>
+  </main>
+
+  <!-- Font Awesome for metric icons (matches homepage icon usage) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    'use strict';
+
+    const DATA_URL = 'https://api.lydiaclarkhansen.com/data';
+
+    /* ── Data layer ──────────────────────────────────────────── */
+    async function loadData() {
+      const res = await fetch(DATA_URL, { cache: 'no-store' });
+      if (!res.ok) {
+        throw new Error(
+          res.status === 404
+            ? 'No data yet — the analytics pipeline has not run. Please check back shortly.'
+            : `Could not load data (HTTP ${res.status}).`
+        );
+      }
+      return res.json();
+    }
+
+    /* ── Format helpers ──────────────────────────────────────── */
+    // Compact: 1234 -> "1,234"; 15567 -> "15.6K"; 6056109 -> "6.1M".
+    // Keeps small numbers exact (comments/shares often < 1000), abbreviates
+    // large ones with one decimal, dropping a trailing ".0".
+    function fmtCompact(n) {
+      n = n ?? 0;
+      if (n < 1000) return String(n);
+      // One decimal, but drop it when it rounds to a whole (1022 -> "1K",
+      // 1234 -> "1.2K", 15567997 -> "15.6M").
+      const trim = (val, suffix) => {
+        const r = Math.round(val * 10) / 10;
+        return (r % 1 === 0 ? r.toFixed(0) : r.toFixed(1)) + suffix;
+      };
+      if (n < 1_000_000) return trim(n / 1000, 'K');
+      if (n < 1_000_000_000) return trim(n / 1_000_000, 'M');
+      return trim(n / 1_000_000_000, 'B');
+    }
+    const fmtFull = (n) => (n ?? 0).toLocaleString();
+    // Seconds -> "m:ss" (e.g. 135 -> "2:15").
+    const fmtDuration = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${m}:${String(s).padStart(2, '0')}`;
+    };
+    const fmtDate = (unixSec) =>
+      new Date(unixSec * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    const fmtLongDate = (iso) =>
+      new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const escapeHtml = (s) =>
+      String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    /* ── Render: hero + stat block ───────────────────────────── */
+    function renderHero(account, videos, generatedAt) {
+      document.getElementById('avatar').src = account.avatar_url || '';
+      document.getElementById('avatar').alt = account.display_name || 'Lydia Hansen';
+      document.getElementById('name').textContent = account.display_name || 'Lydia Hansen';
+      document.getElementById('handle').textContent = '@' + (account.display_name || 'lydiaclarkhansen');
+      document.getElementById('updated').textContent = 'Updated ' + fmtLongDate(generatedAt);
+
+      const totalViews = videos.reduce((s, v) => s + (v.view_count || 0), 0);
+      const stats = [
+        ['Followers', account.follower_count],
+        ['Total Views', totalViews],
+        ['Total Likes', account.likes_count],
+        ['Videos', account.video_count],
+      ];
+      document.getElementById('statBlock').innerHTML = stats
+        .map(([label, num]) => `
+          <div class="stat">
+            <div class="stat-num" title="${fmtFull(num)}">${fmtCompact(num)}</div>
+            <div class="stat-label">${label}</div>
+          </div>`)
+        .join('');
+    }
+
+    /* ── Sorting ─────────────────────────────────────────────── */
+    const SORTERS = {
+      newest:   (a, b) => b.create_time - a.create_time,
+      views:    (a, b) => b.view_count - a.view_count,
+      likes:    (a, b) => b.like_count - a.like_count,
+      comments: (a, b) => b.comment_count - a.comment_count,
+    };
+
+    // Videos held in scope so re-sorting doesn't re-fetch.
+    let allVideos = [];
+
+    /* ── Render: video grid ──────────────────────────────────── */
+    function renderVideos(sortKey = 'newest') {
+      const rows = [...allVideos].sort(SORTERS[sortKey] || SORTERS.newest);
+      document.getElementById('videoCount').textContent = rows.length + ' Posts';
+
+      document.getElementById('videoGrid').innerHTML = rows.map((v) => {
+        // duration === 0 means a photo-mode post (carousel/slideshow), not a
+        // video — show a "Photo" tag rather than a misleading length.
+        const isPhoto = !v.duration;
+        const tag = isPhoto
+          ? '<span class="cover-tag">Photo</span>'
+          : `<span class="cover-tag">${fmtDuration(v.duration)}</span>`;
+        return `
+        <a class="video-card" href="${escapeHtml(v.share_url || '#')}" target="_blank" rel="noopener noreferrer">
+          <div class="cover">
+            <img src="${escapeHtml(v.cover_image_url || '')}" alt="" loading="lazy" referrerpolicy="no-referrer">
+            ${tag}
+          </div>
+          <div class="video-title">${escapeHtml(v.title || v.video_description || '(untitled)')}</div>
+          <div class="video-date">${fmtDate(v.create_time)}</div>
+          <div class="video-metrics">
+            <span class="metric" title="${fmtFull(v.view_count)} views"><i class="fa-solid fa-play m-ico"></i><span class="m-val">${fmtCompact(v.view_count)}</span></span>
+            <span class="metric" title="${fmtFull(v.like_count)} likes"><i class="fa-solid fa-heart m-ico"></i><span class="m-val">${fmtCompact(v.like_count)}</span></span>
+            <span class="metric" title="${fmtFull(v.comment_count)} comments"><i class="fa-solid fa-comment m-ico"></i><span class="m-val">${fmtCompact(v.comment_count)}</span></span>
+            <span class="metric" title="${fmtFull(v.share_count)} shares"><i class="fa-solid fa-share m-ico"></i><span class="m-val">${fmtCompact(v.share_count)}</span></span>
+          </div>
+        </a>`;
+      }).join('');
+    }
+
+    function showError(msg) {
+      document.getElementById('loading').hidden = true;
+      const el = document.getElementById('error');
+      el.textContent = msg;
+      el.hidden = false;
+    }
+
+    /* ── Sort controls ───────────────────────────────────────── */
+    function wireSortControls() {
+      const controls = document.getElementById('sortControls');
+      controls.addEventListener('click', (e) => {
+        const btn = e.target.closest('.sort-btn');
+        if (!btn) return;
+        controls.querySelectorAll('.sort-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderVideos(btn.dataset.sort);
+      });
+    }
+
+    /* ── Boot ────────────────────────────────────────────────── */
+    (async function init() {
+      try {
+        const data = await loadData();
+        allVideos = data.videos || [];
+        renderHero(data.account, allVideos, data.generated_at);
+        renderVideos('newest');
+        wireSortControls();
+        document.getElementById('loading').hidden = true;
+        document.getElementById('content').hidden = false;
+      } catch (err) {
+        showError(err.message || 'Something went wrong loading the data.');
+      }
+    })();
+  </script>
+</body>
+</html>
