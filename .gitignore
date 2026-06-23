@@ -1,3 +1,10 @@
 # OS / editor cruft
 .DS_Store
 Thumbs.db
+
+# Worker local build state — regenerable, never committed
+worker/node_modules/
+worker/.wrangler/
+worker/dist/
+worker/.dev.vars
+*.log
