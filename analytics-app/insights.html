@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights | Lydia Hansen Creator Analytics</title>
+
+<meta property="og:title" content="Lydia Hansen | Creator Insights">
+<meta property="og:description" content="Posting-pattern intelligence — when to post, how long, what works.">
+<meta property="og:url" content="https://lydiaclarkhansen.com/analytics-app/insights.html">
+
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Palette + type matched exactly to dashboard.html so the two analytics
+     pages read as one product. */
+  :root {
+    --cream: #FAF5EF;
+    --stone: #D6CDC6;
+    --sage: #8DA399;
+    --sage-deep: #6E8479;
+    --ink: #1E1E1E;
+    --muted: #888;
+    --white: #FFFFFF;
+    --hairline: #F0EAE3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+  }
+
+  /* ── Top bar ──────────────────────────────────────────────── */
+  .topbar {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 40px 24px 0;
+    text-align: center;
+  }
+  .topbar h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.05;
+    margin-top: 8px;
+  }
+  .topbar .updated {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 10px;
+    opacity: 0.85;
+  }
+
+  /* ── Tab nav ──────────────────────────────────────────────── */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    margin: 28px auto 0;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--stone);
+  }
+  .tab {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 14px 18px;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s, opacity 0.2s;
+    opacity: 0.55; /* inactive tabs visible but dimmed */
+  }
+  .tab:hover { color: var(--ink); opacity: 0.85; }
+  .tab.active {
+    color: var(--sage-deep);
+    border-bottom-color: var(--sage);
+    opacity: 1;
+  }
+
+  /* ── Panels ───────────────────────────────────────────────── */
+  .panel { display: none; }
+  .panel.active { display: block; animation: fade 0.25s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── States ───────────────────────────────────────────────── */
+  .state { text-align: center; padding: 110px 24px; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.02em; }
+  .state.error { color: #B4554B; }
+  .state .spinner {
+    width: 28px; height: 28px; margin: 0 auto 20px;
+    border: 2px solid var(--stone); border-top-color: var(--sage);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Coming soon placeholder ──────────────────────────────── */
+  .coming-soon {
+    text-align: center;
+    padding: 100px 24px;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .coming-soon i { font-size: 1.6rem; color: var(--stone); margin-bottom: 20px; }
+  .coming-soon h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.8rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+  .coming-soon p { font-size: 0.85rem; color: var(--muted); max-width: 40ch; margin: 0 auto; }
+
+  /* ── Footer ───────────────────────────────────────────────── */
+  footer {
+    margin-top: 80px;
+    padding: 36px 24px;
+    text-align: center;
+    border-top: 1px solid var(--stone);
+  }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--stone); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+  footer a:hover { color: var(--sage); border-color: var(--sage); }
+  .footer-text { font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--muted); margin-top: 14px; }
+
+  /* ── Recency note ─────────────────────────────────────────── */
+  .recency-note {
+    display: flex; align-items: center; gap: 9px;
+    max-width: 760px; margin: 28px auto 0;
+    font-size: 0.66rem; letter-spacing: 0.04em;
+    color: var(--sage-deep);
+    background: rgba(141,163,153,0.10);
+    border: 1px solid rgba(141,163,153,0.30);
+    border-radius: 100px; padding: 9px 18px;
+    justify-content: center; text-align: center;
+  }
+  .recency-note i { font-size: 0.72rem; }
+
+  /* ── Recommendations card (the hero) ──────────────────────── */
+  .reco {
+    max-width: 760px;
+    margin: 28px auto 0;
+    background: var(--white);
+    border: 1px solid var(--stone);
+    border-radius: 24px;
+    padding: 36px 36px 32px;
+    box-shadow: 0 14px 50px rgba(141,163,153,0.16);
+    position: relative;
+    overflow: hidden;
+  }
+  .reco::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(141,163,153,0.07) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .reco-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--sage); font-weight: 700; margin-bottom: 6px;
+  }
+  .reco h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-size: 2rem; letter-spacing: 0.02em;
+    margin-bottom: 26px;
+  }
+  .reco-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 28px;
+  }
+  .reco-item { display: flex; gap: 14px; align-items: flex-start; }
+  .reco-ico {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 11px;
+    background: rgba(141,163,153,0.14); color: var(--sage-deep);
+    display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+  }
+  .reco-label {
+    font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 4px;
+  }
+  .reco-value {
+    font-size: 1.02rem; font-weight: 600; line-height: 1.3; color: var(--ink);
+  }
+  .reco-sub { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── Charts ───────────────────────────────────────────────── */
+  .charts { max-width: 1080px; margin: 0 auto; }
+  .chart-block { margin-top: 56px; }
+  .chart-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; font-style: italic;
+    font-size: 1.4rem; line-height: 1.35; letter-spacing: 0.01em;
+    color: var(--ink); margin-bottom: 4px; max-width: 38ch;
+  }
+  .chart-sub {
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-bottom: 20px;
+  }
+  .chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .bar { fill: var(--sage); transition: fill 0.2s; }
+  .bar.peak { fill: var(--sage-deep); }
+  .bar.dim  { fill: var(--stone); }
+  .bar-label, .bar-value {
+    font-family: 'Inter', sans-serif; fill: var(--muted);
+  }
+  .bar-value { fill: var(--ink); font-weight: 600; }
+
+  .notice {
+    background: var(--white); border: 1px dashed var(--stone);
+    border-radius: 16px; padding: 22px 24px; color: var(--muted);
+    font-size: 0.8rem; text-align: center;
+  }
+
+  /* ── Responsive ───────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .reco { padding: 28px 22px; border-radius: 20px; }
+    .reco h2 { font-size: 1.7rem; }
+    .reco-grid { grid-template-columns: 1fr; gap: 20px; }
+    .chart-headline { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top bar: title + freshness -->
+  <div class="topbar">
+    <div class="eyebrow">Creator Insights</div>
+    <h1>Decision Hub</h1>
+    <div class="updated" id="updated"></div>
+  </div>
+
+  <!-- Tab nav -->
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Insight sections">
+    <button class="tab active" data-tab="patterns"     role="tab" aria-selected="true">Patterns</button>
+    <button class="tab"        data-tab="velocity"     role="tab" aria-selected="false">Velocity</button>
+    <button class="tab"        data-tab="outliers"     role="tab" aria-selected="false">Outliers</button>
+    <button class="tab"        data-tab="partnerships" role="tab" aria-selected="false">Partnerships</button>
+  </nav>
+
+  <!-- ── PATTERNS (tab 1 — the only one built today) ── -->
+  <section class="panel active" id="panel-patterns" role="tabpanel">
+    <div id="loading" class="state"><div class="spinner"></div>Loading your data…</div>
+    <div id="error" class="state error" hidden></div>
+    <div id="patterns" class="wrap" hidden>
+      <!-- Step 2/3 inject recommendations + charts here -->
+    </div>
+  </section>
+
+  <!-- ── Placeholder tabs ── -->
+  <section class="panel" id="panel-velocity" role="tabpanel">
+    <div class="coming-soon">
+      <i class="fa-solid fa-gauge-high"></i>
+      <h2>Velocity</h2>
+      <p>How fast each post accelerates in its first hours — coming soon.</p>
+    </div>
+  </section>
+  <section class="panel" id="panel-outliers" role="tabpanel">
+    <div class="coming-soon">
+      <i class="fa-solid fa-arrow-trend-up"></i>
+      <h2>Outliers</h2>
+      <p>Your breakout posts and what set them apart — coming soon.</p>
+    </div>
+  </section>
+  <section class="panel" id="panel-partnerships" role="tabpanel">
+    <div class="coming-soon">
+      <i class="fa-solid fa-handshake"></i>
+      <h2>Partnerships</h2>
+      <p>Brand-ready performance benchmarks for your media kit — coming soon.</p>
+    </div>
+  </section>
+
+  <footer>
+    <a href="dashboard.html">Back to dashboard</a>
+    <p class="footer-text">&copy; 2026 Lydia Hansen</p>
+  </footer>
+
+  <script>
+    'use strict';
+
+    /* ════════════════════════════════════════════════════════════
+       CONFIG — the single source of every tunable number.
+       Nothing downstream hardcodes a threshold; the analysis engine
+       (Steps 2–3) reads exclusively from here so behaviour stays
+       correct as the dataset grows from 300 → 1000+ videos.
+       ════════════════════════════════════════════════════════════ */
+    const CONFIG = {
+      DATA_URL: 'https://api.lydiaclarkhansen.com/data',
+
+      // Display + grouping timezone. All create_time values are UTC;
+      // everything shown to Lydia is converted to this zone via Intl.
+      TIMEZONE: 'America/Denver',   // US Mountain Time (handles MST/MDT)
+
+      // Below this many total videos we can't say anything meaningful —
+      // show a graceful "not enough data" state instead of charts.
+      minVideosRequired: 12,
+
+      // A single hour/day bucket needs at least this many videos before
+      // we trust its average. Smaller buckets are suppressed as
+      // "not enough data" rather than shown as a misleading spike.
+      minSampleSize: 4,
+
+      // Recency: the last N days count RECENCY_MULTIPLIER× toward
+      // recommendations, because the algorithm shifts and recent
+      // behaviour predicts the future better than year-old posts.
+      recencyWindowDays: 60,
+      recencyMultiplier: 2,
+
+      // How many top hours / days the recommendations surface.
+      topHours: 3,
+      topDays: 2,
+
+      // Frequency verdict deadband: high- vs low-volume weeks must differ
+      // by more than this fraction before we claim more/less posting helps.
+      // Inside the band we report "no clear effect" rather than overclaim.
+      frequencyDeadband: 0.1,
+
+      // Duration buckets (seconds), [min, max) — upper bound exclusive.
+      // duration is a real field in the /data payload (sample: 576s).
+      durationBuckets: [
+        { label: 'Under 15s', min: 0,   max: 15 },
+        { label: '15–30s',    min: 15,  max: 30 },
+        { label: '30–60s',    min: 30,  max: 60 },
+        { label: '1–3 min',   min: 60,  max: 180 },
+        { label: '3 min+',    min: 180, max: Infinity },
+      ],
+    };
+
+    const DATA_URL = CONFIG.DATA_URL; // back-compat alias used below
+
+    /* ════════════════════════════════════════════════════════════
+       ANALYSIS ENGINE
+       ──────────────────────────────────────────────────────────────
+       Pure functions: (videos, cfg, now) → results. No DOM, no globals,
+       no absolute dates — every window is relative to `now` (defaults to
+       Date.now()) and every threshold comes from `cfg` (defaults CONFIG).
+       This keeps the engine correct as the dataset grows and lets the
+       Node harness import + unit-test it directly.
+       ════════════════════════════════════════════════════════════ */
+
+    // Mountain-Time field extractor. create_time is UTC seconds; we read
+    // its hour (0–23) and weekday (0=Sun…6=Sat) AS OBSERVED IN MT via the
+    // Intl API, so MST/MDT is handled automatically — never manual offsets.
+    const _mtHourFmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: CONFIG.TIMEZONE, hour: 'numeric', hour12: false,
+    });
+    const _mtDayFmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: CONFIG.TIMEZONE, weekday: 'short',
+    });
+    const _DAY_INDEX = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    function mtHour(createTimeSec) {
+      // "24" can appear for midnight in some engines — normalise to 0.
+      const h = Number(_mtHourFmt.format(new Date(createTimeSec * 1000)));
+      return h === 24 ? 0 : h;
+    }
+    function mtDay(createTimeSec) {
+      return _DAY_INDEX[_mtDayFmt.format(new Date(createTimeSec * 1000))];
+    }
+
+    const _avg = (arr) => arr.reduce((s, n) => s + n, 0) / arr.length;
+    // Only videos usable for time analysis: finite create_time + view_count.
+    const _validTimed = (videos) =>
+      videos.filter((v) => Number.isFinite(v.create_time) && Number.isFinite(v.view_count));
+
+    /**
+     * Generic bucketed-average builder. Returns one row per key with the
+     * average view_count, sample size, and a `suppressed` flag when the
+     * bucket has fewer than cfg.minSampleSize videos (so the UI can show
+     * "not enough data" instead of a misleading spike).
+     */
+    function bucketAverages(videos, keyFn, cfg) {
+      const buckets = new Map();
+      for (const v of _validTimed(videos)) {
+        const k = keyFn(v);
+        if (k === undefined || k === null) continue;
+        if (!buckets.has(k)) buckets.set(k, []);
+        buckets.get(k).push(v.view_count);
+      }
+      return [...buckets.entries()].map(([key, views]) => ({
+        key,
+        count: views.length,
+        avgViews: _avg(views),
+        suppressed: views.length < cfg.minSampleSize,
+      }));
+    }
+
+    /**
+     * Recency-weighted bucketed averages. Videos within cfg.recencyWindowDays
+     * of `now` count cfg.recencyMultiplier× (weight applied to both the
+     * numerator and the effective sample count). Window is relative to `now`.
+     */
+    function weightedBucketAverages(videos, keyFn, cfg, now) {
+      const cutoff = now - cfg.recencyWindowDays * 86400 * 1000;
+      const buckets = new Map();
+      for (const v of _validTimed(videos)) {
+        const k = keyFn(v);
+        if (k === undefined || k === null) continue;
+        const recent = v.create_time * 1000 >= cutoff;
+        const w = recent ? cfg.recencyMultiplier : 1;
+        if (!buckets.has(k)) buckets.set(k, { wViews: 0, wN: 0, n: 0 });
+        const b = buckets.get(k);
+        b.wViews += v.view_count * w;
+        b.wN += w;
+        b.n += 1; // raw count drives the minSampleSize gate (not inflated by weight)
+      }
+      return [...buckets.entries()].map(([key, b]) => ({
+        key,
+        count: b.n,
+        avgViews: b.wViews / b.wN,
+        suppressed: b.n < cfg.minSampleSize,
+      }));
+    }
+
+    /** Top-N non-suppressed rows by weighted avg views, richest first. */
+    function topBuckets(rows, n) {
+      return rows.filter((r) => !r.suppressed).sort((a, b) => b.avgViews - a.avgViews).slice(0, n);
+    }
+
+    /* ── Best time to post: by hour of day (MT) ──────────────────── */
+    function analyzeHours(videos, cfg = CONFIG, now = Date.now()) {
+      const weighted = weightedBucketAverages(videos, (v) => mtHour(v.create_time), cfg, now);
+      const unweighted = bucketAverages(videos, (v) => mtHour(v.create_time), cfg);
+      // Fill the full 0–23 range so the chart shows every hour (gaps = no data).
+      const byHour = (rows) => {
+        const m = new Map(rows.map((r) => [r.key, r]));
+        return Array.from({ length: 24 }, (_, h) =>
+          m.get(h) || { key: h, count: 0, avgViews: 0, suppressed: true });
+      };
+      return {
+        weighted: byHour(weighted),
+        unweighted: byHour(unweighted),
+        top: topBuckets(weighted, cfg.topHours),
+      };
+    }
+
+    /* ── Best time to post: by day of week (MT) ──────────────────── */
+    function analyzeDays(videos, cfg = CONFIG, now = Date.now()) {
+      const weighted = weightedBucketAverages(videos, (v) => mtDay(v.create_time), cfg, now);
+      const unweighted = bucketAverages(videos, (v) => mtDay(v.create_time), cfg);
+      const byDay = (rows) => {
+        const m = new Map(rows.map((r) => [r.key, r]));
+        return Array.from({ length: 7 }, (_, d) =>
+          m.get(d) || { key: d, count: 0, avgViews: 0, suppressed: true });
+      };
+      return {
+        weighted: byDay(weighted),
+        unweighted: byDay(unweighted),
+        top: topBuckets(weighted, cfg.topDays),
+      };
+    }
+
+    /* ── Optimal video length: real duration buckets ─────────────── */
+    // duration is a real field (seconds). Videos missing a finite duration
+    // are skipped, not zero-bucketed. Buckets below minSampleSize suppress.
+    function analyzeDuration(videos, cfg = CONFIG, now = Date.now()) {
+      const cutoff = now - cfg.recencyWindowDays * 86400 * 1000;
+      const rows = cfg.durationBuckets.map((b) => {
+        const inBucket = videos.filter(
+          (v) => Number.isFinite(v.duration) && Number.isFinite(v.view_count) &&
+                 v.duration >= b.min && v.duration < b.max);
+        let wViews = 0, wN = 0;
+        for (const v of inBucket) {
+          const w = v.create_time * 1000 >= cutoff ? cfg.recencyMultiplier : 1;
+          wViews += v.view_count * w; wN += w;
+        }
+        return {
+          label: b.label,
+          count: inBucket.length,
+          avgViews: inBucket.length ? wViews / wN : 0,
+          suppressed: inBucket.length < cfg.minSampleSize,
+        };
+      });
+      const usable = rows.filter((r) => !r.suppressed);
+      return {
+        available: usable.length > 0,
+        rows,
+        best: usable.length ? usable.reduce((a, b) => (b.avgViews > a.avgViews ? b : a)) : null,
+      };
+    }
+
+    /* ── Posting frequency vs. performance ───────────────────────── */
+    // Group videos into ISO-ish week buckets (relative to `now`, in MT),
+    // classify each week as high/low volume vs her own average posts/week,
+    // then compare average views between the two groups.
+    function analyzeFrequency(videos, cfg = CONFIG, now = Date.now()) {
+      const timed = _validTimed(videos);
+      if (!timed.length) return { available: false };
+
+      // Week index = whole weeks before `now`. Relative, never absolute.
+      const weekOf = (sec) => Math.floor((now - sec * 1000) / (7 * 86400 * 1000));
+      const weeks = new Map(); // weekIdx -> { posts, views[] }
+      for (const v of timed) {
+        const wk = weekOf(v.create_time);
+        if (!weeks.has(wk)) weeks.set(wk, { posts: 0, views: [] });
+        const w = weeks.get(wk);
+        w.posts += 1; w.views.push(v.view_count);
+      }
+      const weekRows = [...weeks.values()];
+      const avgPostsPerWeek = _avg(weekRows.map((w) => w.posts));
+
+      const high = weekRows.filter((w) => w.posts > avgPostsPerWeek);
+      const low = weekRows.filter((w) => w.posts <= avgPostsPerWeek);
+      const groupAvgViews = (g) => {
+        const all = g.flatMap((w) => w.views);
+        return all.length ? _avg(all) : 0;
+      };
+      const highAvg = groupAvgViews(high);
+      const lowAvg = groupAvgViews(low);
+
+      // Need both groups non-trivially populated to draw a conclusion.
+      const enough = high.length >= 1 && low.length >= 1 &&
+                     (high.flatMap((w) => w.views).length >= cfg.minSampleSize) &&
+                     (low.flatMap((w) => w.views).length >= cfg.minSampleSize);
+
+      let verdict = 'inconclusive';
+      let delta = 0;
+      if (enough) {
+        delta = (highAvg - lowAvg) / lowAvg;
+        verdict = delta > cfg.frequencyDeadband ? 'more-is-better'
+                : delta < -cfg.frequencyDeadband ? 'less-is-better'
+                : 'no-clear-effect';
+      }
+      return {
+        available: enough,
+        avgPostsPerWeek,
+        weeksTracked: weekRows.length,
+        highVolume: { weeks: high.length, avgViews: highAvg },
+        lowVolume:  { weeks: low.length,  avgViews: lowAvg },
+        delta,
+        verdict,
+      };
+    }
+
+    /* ── One call that runs the whole engine ─────────────────────── */
+    function analyzeAll(videos, cfg = CONFIG, now = Date.now()) {
+      return {
+        hours: analyzeHours(videos, cfg, now),
+        days: analyzeDays(videos, cfg, now),
+        duration: analyzeDuration(videos, cfg, now),
+        frequency: analyzeFrequency(videos, cfg, now),
+      };
+    }
+
+    // Expose for the Node verification harness (no effect in the browser).
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = {
+        CONFIG, mtHour, mtDay, DAY_NAMES,
+        analyzeHours, analyzeDays, analyzeDuration, analyzeFrequency, analyzeAll,
+      };
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       TAB SWITCHING — pure JS, no reload.
+       ════════════════════════════════════════════════════════════ */
+    (function wireTabs() {
+      const nav = document.getElementById('tabs');
+      nav.addEventListener('click', (e) => {
+        const btn = e.target.closest('.tab');
+        if (!btn) return;
+        const name = btn.dataset.tab;
+
+        nav.querySelectorAll('.tab').forEach((t) => {
+          const on = t === btn;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', String(on));
+        });
+        document.querySelectorAll('.panel').forEach((p) => {
+          p.classList.toggle('active', p.id === 'panel-' + name);
+        });
+      });
+    })();
+
+    /* ════════════════════════════════════════════════════════════
+       DATA LAYER
+       ════════════════════════════════════════════════════════════ */
+    async function loadData() {
+      const res = await fetch(DATA_URL, { cache: 'no-store' });
+      if (!res.ok) {
+        throw new Error(
+          res.status === 404
+            ? 'No data yet — the analytics pipeline has not run. Please check back shortly.'
+            : `Could not load data (HTTP ${res.status}).`
+        );
+      }
+      return res.json();
+    }
+
+    function showError(msg) {
+      document.getElementById('loading').hidden = true;
+      const el = document.getElementById('error');
+      el.textContent = msg;
+      el.hidden = false;
+    }
+
+    // Graceful low-data state — shown when the snapshot has too few
+    // videos to say anything trustworthy (empty array or < minVideosRequired).
+    function renderNotEnoughData(count) {
+      document.getElementById('patterns').innerHTML = `
+        <div class="coming-soon">
+          <i class="fa-solid fa-seedling"></i>
+          <h2>Not enough data yet</h2>
+          <p>We need at least ${CONFIG.minVideosRequired} videos to find reliable
+             patterns — there ${count === 1 ? 'is' : 'are'} ${count} so far.
+             Check back as more posts roll in.</p>
+        </div>`;
+    }
+
+    /* Step 2 wiring: run the engine, log weighted-vs-unweighted to console.
+       Step 3 replaces the summary block with the recommendations card +
+       SVG charts. */
+    function renderPatterns(data) {
+      const videos = data.videos || [];
+      const now = Date.now();
+      const a = analyzeAll(videos, CONFIG, now);
+
+      /* ── Console: full engine output, weighted vs unweighted ── */
+      console.group('%cPatterns analysis', 'color:#6E8479;font-weight:600');
+      console.log('videos analysed:', videos.length, '| recency window:',
+        CONFIG.recencyWindowDays + 'd ×' + CONFIG.recencyMultiplier);
+
+      const hourLabel = (h) => `${((h + 11) % 12) + 1}${h < 12 ? 'am' : 'pm'}`;
+      console.log('Best hours (weighted):', a.hours.top.map((r) =>
+        `${hourLabel(r.key)} — ${Math.round(r.avgViews).toLocaleString()} avg (${r.count})`));
+      console.log('Best days (weighted):', a.days.top.map((r) =>
+        `${DAY_NAMES[r.key]} — ${Math.round(r.avgViews).toLocaleString()} avg (${r.count})`));
+
+      console.log('Duration:', a.duration.available
+        ? a.duration.rows.filter((r) => !r.suppressed).map((r) =>
+            `${r.label}: ${Math.round(r.avgViews).toLocaleString()} (${r.count})`)
+        : '(no bucket met minSampleSize)');
+      console.log('Best length:', a.duration.best ? a.duration.best.label : '—');
+
+      console.log('Frequency:', a.frequency.available ? {
+        avgPostsPerWeek: +a.frequency.avgPostsPerWeek.toFixed(1),
+        highVolumeAvgViews: Math.round(a.frequency.highVolume.avgViews),
+        lowVolumeAvgViews: Math.round(a.frequency.lowVolume.avgViews),
+        verdict: a.frequency.verdict,
+      } : '(inconclusive)');
+
+      // Side-by-side weighted vs unweighted top hours so the recency
+      // effect is visible (verification protocol requirement).
+      console.table(a.hours.weighted.map((w, i) => ({
+        hour: hourLabel(i),
+        weightedAvg: Math.round(w.avgViews),
+        unweightedAvg: Math.round(a.hours.unweighted[i].avgViews),
+        n: w.count,
+      })).filter((r) => r.n > 0));
+      console.groupEnd();
+
+      /* ── Build the page: hero card + charts ── */
+      document.getElementById('patterns').innerHTML =
+        recencyNoteHTML() +
+        recommendationsHTML(a) +
+        `<div class="charts">
+           ${chartBlock(
+             hourHeadline(a.hours),
+             'Performance by hour · MT',
+             hourChartSVG(a.hours))}
+           ${chartBlock(
+             dayHeadline(a.days),
+             'Performance by day of week · MT',
+             dayChartSVG(a.days))}
+           ${chartBlock(
+             durationHeadline(a.duration),
+             'Performance by video length',
+             durationChartSVG(a.duration))}
+           ${chartBlock(
+             frequencyHeadline(a.frequency),
+             'Posting volume vs. average views',
+             frequencyChartSVG(a.frequency))}
+         </div>`;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       PRESENTATION — formatting, headlines, SVG chart builders.
+       All headline strings are derived from computed data (no hardcoded
+       claims); all chart Y-scales come from the data's own max.
+       ════════════════════════════════════════════════════════════ */
+    const fmtViews = (n) => {
+      n = Math.round(n || 0);
+      if (n >= 1e6) return (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : 1) + 'M';
+      if (n >= 1e3) return (n / 1e3).toFixed(n % 1e3 === 0 ? 0 : 1) + 'K';
+      return String(n);
+    };
+    const hourLabel12 = (h) => `${((h + 11) % 12) + 1}${h < 12 ? 'am' : 'pm'}`;
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+    // Contiguous run of hours → "6–8pm"; single → "7pm".
+    function hourWindowLabel(hours) {
+      if (!hours.length) return '';
+      const sorted = [...hours].sort((a, b) => a - b);
+      let lo = sorted[0], hi = sorted[0];
+      for (let i = 1; i < sorted.length; i++) {
+        if (sorted[i] === hi + 1) hi = sorted[i]; else break;
+      }
+      return lo === hi ? `${hourLabel12(lo)} MT`
+        : `${((lo + 11) % 12) + 1}–${hourLabel12(hi)} MT`;
+    }
+
+    function recencyNoteHTML() {
+      return `<div class="recency-note">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        Recency-weighted — posts from the last ${CONFIG.recencyWindowDays} days
+        count ${CONFIG.recencyMultiplier}× toward these recommendations.
+      </div>`;
+    }
+
+    /* ── Hero recommendations card (4 concrete actions) ── */
+    function recommendationsHTML(a) {
+      const bestDay = a.days.top[0] ? DAY_NAMES[a.days.top[0].key] : '—';
+      const secondDay = a.days.top[1] ? DAY_NAMES[a.days.top[1].key] : null;
+      const timeWindow = hourWindowLabel(a.hours.top.map((r) => r.key));
+      const bestLen = a.duration.best ? a.duration.best.label : null;
+
+      let freqValue = 'No clear effect', freqSub = 'Volume doesn’t move your views much.';
+      if (a.frequency.available) {
+        const pct = Math.abs(Math.round(a.frequency.delta * 100));
+        if (a.frequency.verdict === 'more-is-better') {
+          freqValue = 'Post more often';
+          freqSub = `High-volume weeks average ${pct}% more views.`;
+        } else if (a.frequency.verdict === 'less-is-better') {
+          freqValue = 'Quality over volume';
+          freqSub = `Lighter weeks average ${pct}% more views.`;
+        }
+      } else {
+        freqSub = 'Not enough spread in your posting cadence yet.';
+      }
+
+      const item = (icon, label, value, sub) => `
+        <div class="reco-item">
+          <div class="reco-ico"><i class="fa-solid ${icon}"></i></div>
+          <div>
+            <div class="reco-label">${label}</div>
+            <div class="reco-value">${esc(value)}</div>
+            ${sub ? `<div class="reco-sub">${esc(sub)}</div>` : ''}
+          </div>
+        </div>`;
+
+      return `<div class="reco">
+        <div class="reco-eyebrow">This week’s recommendations</div>
+        <h2>Post like your best posts.</h2>
+        <div class="reco-grid">
+          ${item('fa-calendar-day', 'Best day to post', bestDay,
+                 secondDay ? `${secondDay} is your strong second.` : '')}
+          ${item('fa-clock', 'Best time window', timeWindow || '—',
+                 'When your top videos went live.')}
+          ${item('fa-ruler-horizontal', 'Optimal length',
+                 bestLen || 'Not enough data',
+                 bestLen ? 'Your strongest-performing length range.'
+                         : 'No length bucket has enough videos yet.')}
+          ${item('fa-layer-group', 'Posting cadence', freqValue, freqSub)}
+        </div>
+      </div>`;
+    }
+
+    /* ── Chart shell ── */
+    function chartBlock(headline, sub, svg) {
+      return `<div class="chart-block">
+        <div class="chart-headline">${esc(headline)}</div>
+        <div class="chart-sub">${esc(sub)}</div>
+        <div class="chart">${svg}</div>
+      </div>`;
+    }
+
+    /* ── Generic vertical bar chart. Y-scale derives from data max; bars
+         flagged suppressed (under minSampleSize) render dimmed. Peak bar
+         highlighted. viewBox makes it fluidly responsive. ── */
+    function barChartSVG(rows, { peakKey } = {}) {
+      const W = 1000, H = 300, padB = 46, padT = 16, padL = 8, padR = 8;
+      const innerW = W - padL - padR, innerH = H - padB - padT;
+      const max = Math.max(1, ...rows.map((r) => (r.suppressed ? 0 : r.avgViews)));
+      const n = rows.length;
+      const slot = innerW / n;
+      const bw = Math.min(slot * 0.62, 70);
+      const bars = rows.map((r, i) => {
+        const x = padL + slot * i + (slot - bw) / 2;
+        const h = r.suppressed ? 0 : (r.avgViews / max) * innerH;
+        const y = padT + innerH - h;
+        const cls = r.suppressed ? 'bar dim' : (r.key === peakKey || r.label === peakKey ? 'bar peak' : 'bar');
+        const valTxt = r.suppressed ? '' :
+          `<text class="bar-value" x="${x + bw/2}" y="${y - 7}" text-anchor="middle" font-size="17">${fmtViews(r.avgViews)}</text>`;
+        return `
+          <g>
+            <rect class="${cls}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,h).toFixed(1)}" rx="5"/>
+            ${valTxt}
+            <text class="bar-label" x="${x + bw/2}" y="${H - 24}" text-anchor="middle" font-size="16">${esc(r.shortLabel ?? r.label)}</text>
+            ${r.suppressed ? `<text class="bar-label" x="${x + bw/2}" y="${H - 6}" text-anchor="middle" font-size="12" opacity="0.7">—</text>` : ''}
+          </g>`;
+      }).join('');
+      return `<svg viewBox="0 0 ${W} ${H}" role="img" preserveAspectRatio="xMidYMid meet">${bars}</svg>`;
+    }
+
+    /* ── Hour chart: only hours that have any posts, to avoid 24 empty bars ── */
+    function hourChartSVG(hours) {
+      const peak = hours.top[0] ? hours.top[0].key : null;
+      const rows = hours.weighted
+        .filter((r) => r.count > 0)
+        .map((r) => ({ ...r, label: hourLabel12(r.key), shortLabel: hourLabel12(r.key) }));
+      if (!rows.length) return noticeSVG('No timestamped posts to chart yet.');
+      return barChartSVG(rows, { peakKey: peak });
+    }
+    function hourHeadline(hours) {
+      if (!hours.top.length) return 'Not enough timing data yet.';
+      const win = hourWindowLabel(hours.top.map((r) => r.key));
+      const best = hours.top[0], rest = hours.weighted.filter((r) => !r.suppressed && r.key !== best.key);
+      const restAvg = rest.length ? rest.reduce((s, r) => s + r.avgViews, 0) / rest.length : 0;
+      const lift = restAvg ? Math.round((best.avgViews / restAvg - 1) * 100) : 0;
+      return lift > 0
+        ? `Posting around ${win} outperforms your other hours by ${lift}%.`
+        : `${win} is when your strongest posts go live.`;
+    }
+
+    /* ── Day chart ── */
+    const DAY_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    function dayChartSVG(days) {
+      const peak = days.top[0] ? days.top[0].key : null;
+      const rows = days.weighted.map((r) => ({ ...r, label: DAY_SHORT[r.key], shortLabel: DAY_SHORT[r.key] }));
+      return barChartSVG(rows, { peakKey: peak });
+    }
+    function dayHeadline(days) {
+      if (!days.top.length) return 'Not enough data to rank your days yet.';
+      const best = days.top[0];
+      const others = days.weighted.filter((r) => !r.suppressed && r.key !== best.key);
+      const otherAvg = others.length ? others.reduce((s, r) => s + r.avgViews, 0) / others.length : 0;
+      const lift = otherAvg ? Math.round((best.avgViews / otherAvg - 1) * 100) : 0;
+      const second = days.top[1] ? ` and ${DAY_NAMES[days.top[1].key]}s` : '';
+      return lift > 0
+        ? `${DAY_NAMES[best.key]}s${second} outperform your average day by ${lift}%.`
+        : `${DAY_NAMES[best.key]} is your strongest day.`;
+    }
+
+    /* ── Duration chart ── */
+    function durationChartSVG(dur) {
+      if (!dur.available) return noticeSVG('No length bucket has enough videos to chart yet.');
+      const rows = dur.rows.map((r) => ({ ...r, shortLabel: r.label, key: r.label }));
+      return barChartSVG(rows, { peakKey: dur.best ? dur.best.label : null });
+    }
+    function durationHeadline(dur) {
+      if (!dur.available || !dur.best) return 'Length data will sharpen as more posts land in each range.';
+      const others = dur.rows.filter((r) => !r.suppressed && r.label !== dur.best.label);
+      const otherAvg = others.length ? others.reduce((s, r) => s + r.avgViews, 0) / others.length : 0;
+      const lift = otherAvg ? Math.round((dur.best.avgViews / otherAvg - 1) * 100) : 0;
+      return lift > 0
+        ? `Your ${dur.best.label} videos pull ${lift}% more views than your other lengths.`
+        : `${dur.best.label} is your strongest-performing length.`;
+    }
+
+    /* ── Frequency chart: two bars, high vs low volume weeks ── */
+    function frequencyChartSVG(freq) {
+      if (!freq.available) return noticeSVG('Not enough variation in your posting cadence to compare yet.');
+      const rows = [
+        { label: 'High-volume weeks', shortLabel: 'High-volume', avgViews: freq.highVolume.avgViews, count: CONFIG.minSampleSize, suppressed: false, key: 'high' },
+        { label: 'Low-volume weeks',  shortLabel: 'Low-volume',  avgViews: freq.lowVolume.avgViews,  count: CONFIG.minSampleSize, suppressed: false, key: 'low' },
+      ];
+      const peak = freq.highVolume.avgViews >= freq.lowVolume.avgViews ? 'high' : 'low';
+      return barChartSVG(rows, { peakKey: peak });
+    }
+    function frequencyHeadline(freq) {
+      if (!freq.available) return 'Post a bit more consistently and this comparison unlocks.';
+      const pct = Math.abs(Math.round(freq.delta * 100));
+      const ppw = freq.avgPostsPerWeek.toFixed(1);
+      if (freq.verdict === 'more-is-better')
+        return `Weeks where you post above your ${ppw}/week average earn ${pct}% more views.`;
+      if (freq.verdict === 'less-is-better')
+        return `Lighter weeks beat heavy ones by ${pct}% — quality is outpacing volume.`;
+      return `Posting volume barely moves your views — cadence isn’t your lever.`;
+    }
+
+    /* ── Inline SVG notice for empty/insufficient charts ── */
+    function noticeSVG(msg) {
+      return `<div class="notice">${esc(msg)}</div>`;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       BOOT
+       ════════════════════════════════════════════════════════════ */
+    (async function init() {
+      try {
+        const data = await loadData();
+        const videos = data.videos || [];
+
+        // Freshness stamp (shared header) — parsed from the snapshot.
+        const updated = new Date(data.generated_at).toLocaleString('en-US', {
+          timeZone: CONFIG.TIMEZONE,
+          month: 'long', day: 'numeric', year: 'numeric',
+          hour: 'numeric', minute: '2-digit',
+        });
+        document.getElementById('updated').textContent = 'Updated ' + updated + ' MT';
+
+        // Below the floor, bail to a graceful state instead of broken charts.
+        if (videos.length < CONFIG.minVideosRequired) {
+          renderNotEnoughData(videos.length);
+        } else {
+          renderPatterns(data);
+        }
+
+        document.getElementById('loading').hidden = true;
+        document.getElementById('patterns').hidden = false;
+      } catch (err) {
+        showError(err.message || 'Something went wrong loading your data.');
+      }
+    })();
+  </script>
+</body>
+</html>
