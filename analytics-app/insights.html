@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights | Lydia Hansen Creator Analytics</title>
+
+<meta property="og:title" content="Lydia Hansen | Creator Insights">
+<meta property="og:description" content="Posting-pattern intelligence — when to post, how long, what works.">
+<meta property="og:url" content="https://lydiaclarkhansen.com/analytics-app/insights.html">
+
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Palette + type matched exactly to dashboard.html so the two analytics
+     pages read as one product. */
+  :root {
+    --cream: #FAF5EF;
+    --stone: #D6CDC6;
+    --sage: #8DA399;
+    --sage-deep: #6E8479;
+    --ink: #1E1E1E;
+    --muted: #888;
+    --white: #FFFFFF;
+    --hairline: #F0EAE3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  .eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+  }
+
+  /* ── Top bar ──────────────────────────────────────────────── */
+  .topbar {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 40px 24px 0;
+    text-align: center;
+  }
+  .topbar h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.05;
+    margin-top: 8px;
+  }
+  .topbar .updated {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 10px;
+    opacity: 0.85;
+  }
+
+  /* ── Tab nav ──────────────────────────────────────────────── */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    margin: 28px auto 0;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--stone);
+  }
+  .tab {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 14px 18px;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s, opacity 0.2s;
+    opacity: 0.55; /* inactive tabs visible but dimmed */
+  }
+  .tab:hover { color: var(--ink); opacity: 0.85; }
+  .tab.active {
+    color: var(--sage-deep);
+    border-bottom-color: var(--sage);
+    opacity: 1;
+  }
+
+  /* ── Panels ───────────────────────────────────────────────── */
+  .panel { display: none; }
+  .panel.active { display: block; animation: fade 0.25s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── States ───────────────────────────────────────────────── */
+  .state { text-align: center; padding: 110px 24px; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.02em; }
+  .state.error { color: #B4554B; }
+  .state .spinner {
+    width: 28px; height: 28px; margin: 0 auto 20px;
+    border: 2px solid var(--stone); border-top-color: var(--sage);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Coming soon placeholder ──────────────────────────────── */
+  .coming-soon {
+    text-align: center;
+    padding: 100px 24px;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .coming-soon i { font-size: 1.6rem; color: var(--stone); margin-bottom: 20px; }
+  .coming-soon h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.8rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+  }
+  .coming-soon p { font-size: 0.85rem; color: var(--muted); max-width: 40ch; margin: 0 auto; }
+
+  /* ── Footer ───────────────────────────────────────────────── */
+  footer {
+    margin-top: 80px;
+    padding: 36px 24px;
+    text-align: center;
+    border-top: 1px solid var(--stone);
+  }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--stone); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+  footer a:hover { color: var(--sage); border-color: var(--sage); }
+  .footer-text { font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--muted); margin-top: 14px; }
+
+  /* ── Filter bar (range toggle + outlier toggle) ───────────── */
+  .filter-bar {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    gap: 12px; max-width: 880px; margin: 28px auto 0;
+  }
+  .range-toggle {
+    display: flex; justify-content: center; align-items: center;
+    flex-wrap: wrap; gap: 4px;
+    background: var(--white);
+    border: 1px solid var(--stone);
+    border-radius: 22px; padding: 5px;
+    width: fit-content;
+  }
+  .range-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem; letter-spacing: 0.06em; font-weight: 600;
+    color: var(--muted); background: none; border: none;
+    padding: 7px 14px; border-radius: 100px; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .range-btn:hover { color: var(--ink); }
+  .range-btn.active { background: var(--sage); color: #fff; }
+
+  /* ── Outlier toggle switch ────────────────────────────────── */
+  .outlier-toggle {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--white); border: 1px solid var(--stone);
+    border-radius: 22px; padding: 7px 16px 7px 12px; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.04em; color: var(--muted);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .outlier-toggle:hover { color: var(--ink); }
+  .outlier-toggle .switch {
+    position: relative; width: 32px; height: 18px; border-radius: 100px;
+    background: var(--stone); transition: background 0.2s; flex-shrink: 0;
+  }
+  .outlier-toggle .knob {
+    position: absolute; top: 2px; left: 2px; width: 14px; height: 14px;
+    border-radius: 50%; background: #fff; transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .outlier-toggle.active { color: var(--sage-deep); border-color: var(--sage); }
+  .outlier-toggle.active .switch { background: var(--sage); }
+  .outlier-toggle.active .knob { transform: translateX(14px); }
+
+  /* ── Outlier banner ───────────────────────────────────────── */
+  .outlier-banner {
+    display: flex; align-items: center; gap: 9px; justify-content: center;
+    max-width: 760px; margin: 16px auto 0;
+    background: rgba(141,163,153,0.10);
+    border: 1px solid rgba(141,163,153,0.30);
+    border-radius: 12px; padding: 10px 18px;
+    font-size: 0.72rem; color: var(--sage-deep); text-align: center;
+  }
+
+  /* ── Heat maps ────────────────────────────────────────────── */
+  .heatmaps { max-width: 1080px; margin: 56px auto 0; }
+  .heatmap-block { margin-top: 48px; }
+  .heatmap-block:first-child { margin-top: 0; }
+  .heatmap-scroll { overflow-x: auto; margin-top: 18px; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .heatmap {
+    --hm-label: 64px; --hm-cell-min: 46px;
+    display: grid; gap: 4px; min-width: min-content;
+  }
+  .hm-row { display: grid; grid-template-columns: var(--hm-cols); gap: 4px; }
+  .hm-col-head, .hm-row-head {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--muted); text-transform: uppercase;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hm-row-head { justify-content: flex-end; padding-right: 10px; white-space: nowrap; }
+  .hm-col-head { padding-bottom: 2px; }
+  .hm-abbr { display: none; }
+  .hm-cell {
+    aspect-ratio: 16 / 10; border-radius: 7px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--cream); cursor: default;
+    transition: transform 0.12s;
+  }
+  .hm-cell[data-tip]:hover { transform: scale(1.06); z-index: 3; }
+  .hm-cell.empty { background: transparent; border: 1px dashed var(--stone); }
+  .hm-dash { color: var(--stone); font-size: 0.8rem; }
+  .hm-n {
+    font-size: 0.56rem; font-weight: 600; letter-spacing: 0.02em;
+    opacity: 0.85; font-variant-numeric: tabular-nums;
+  }
+  /* tooltip */
+  .hm-cell[data-tip]::after {
+    content: attr(data-tip);
+    position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%);
+    background: var(--ink); color: #fff; font-size: 0.64rem; font-weight: 500;
+    letter-spacing: 0.02em; white-space: nowrap;
+    padding: 5px 9px; border-radius: 7px; pointer-events: none;
+    opacity: 0; transition: opacity 0.15s; z-index: 5;
+  }
+  .hm-cell[data-tip]:hover::after,
+  .hm-cell.show[data-tip]::after { opacity: 1; }
+  .hm-note { font-size: 0.66rem; color: var(--muted); margin-top: 14px; line-height: 1.5; }
+
+  /* ── Consistency warning banner ───────────────────────────── */
+  .consistency-banner {
+    display: flex; align-items: center; gap: 10px; justify-content: center;
+    max-width: 880px; margin: 0 auto 20px;
+    background: #FBF3D7; border: 1px solid #E4C84A;
+    border-radius: 12px; padding: 12px 20px;
+    font-size: 0.78rem; color: #7a5d10; text-align: center;
+  }
+  .consistency-banner a { color: #7a5d10; font-weight: 600; }
+
+  /* ── Data Audit panel (debug only) ────────────────────────── */
+  .audit-panel {
+    max-width: 1080px; margin: 64px auto 0;
+    background: #1E1E1E; color: #D6CDC6;
+    border-radius: 16px; padding: 4px 8px;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+  }
+  .audit-panel > summary {
+    cursor: pointer; padding: 14px 16px; font-weight: 600;
+    letter-spacing: 0.04em; color: #fff; list-style: none;
+  }
+  .audit-body { padding: 8px 18px 22px; }
+  .audit-body h4 {
+    color: var(--sage); font-family: 'Inter', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    margin: 26px 0 12px;
+  }
+  .audit-tbl { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  .audit-tbl td, .audit-tbl th {
+    border: 1px solid #3a3a3a; padding: 5px 9px; text-align: left;
+    vertical-align: top; word-break: break-word;
+  }
+  .audit-tbl th { color: var(--sage); font-weight: 600; }
+  .audit-ok { color: #7FB87F; margin: 8px 0; }
+  .audit-warn { color: #E4A04A; margin: 8px 0; }
+  .audit-note { color: #888; margin-top: 10px; font-style: italic; }
+  .audit-trace { margin: 6px 0; border: 1px solid #333; border-radius: 8px; }
+  .audit-trace > summary { cursor: pointer; padding: 9px 12px; color: #fff; }
+  .audit-bucket { padding: 8px 12px; border-top: 1px solid #2c2c2c; }
+  .audit-bucket-head { color: #fff; margin-bottom: 4px; }
+  .audit-vids { color: #9FB0A6; word-break: break-word; line-height: 1.6; }
+  .audit-math { color: #888; margin-top: 4px; word-break: break-word; }
+  .audit-panel .lc-chip { background: rgba(228,160,74,0.2); color: #E4A04A; }
+
+  /* ── Scope note (what the numbers mean) ───────────────────── */
+  .scope-note {
+    max-width: 760px; margin: 16px auto 0; text-align: center;
+    font-size: 0.74rem; color: var(--muted); line-height: 1.5;
+  }
+  .scope-note strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Recommendations card (the hero) ──────────────────────── */
+  .reco {
+    max-width: 760px;
+    margin: 28px auto 0;
+    background: var(--white);
+    border: 1px solid var(--stone);
+    border-radius: 24px;
+    padding: 36px 36px 32px;
+    box-shadow: 0 14px 50px rgba(141,163,153,0.16);
+    position: relative;
+    overflow: hidden;
+  }
+  .reco::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(141,163,153,0.07) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .reco-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--sage); font-weight: 700; margin-bottom: 6px;
+  }
+  .reco h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; font-size: 2rem; letter-spacing: 0.02em;
+    margin-bottom: 26px;
+  }
+  .reco-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 28px;
+  }
+  .reco-item { display: flex; gap: 14px; align-items: flex-start; }
+  .reco-ico {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 11px;
+    background: rgba(141,163,153,0.14); color: var(--sage-deep);
+    display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+  }
+  .reco-label {
+    font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 4px;
+  }
+  .reco-value {
+    font-size: 1.02rem; font-weight: 600; line-height: 1.3; color: var(--ink);
+  }
+  .reco-sub { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+  /* ── Charts ───────────────────────────────────────────────── */
+  .charts { max-width: 1080px; margin: 0 auto; }
+  .chart-block { margin-top: 56px; }
+  .chart-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; font-style: italic;
+    font-size: 1.4rem; line-height: 1.35; letter-spacing: 0.01em;
+    color: var(--ink); margin-bottom: 4px; max-width: 38ch;
+  }
+  .chart-sub {
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-bottom: 20px;
+  }
+  .chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .bar { fill: var(--sage); transition: fill 0.2s; }
+  .bar.peak { fill: var(--sage-deep); }
+  .bar.thin { fill: var(--sage); opacity: 0.38; }   /* low-confidence: shown, dimmed */
+  .bar.empty { fill: var(--stone); opacity: 0.25; }
+  .bar-label, .bar-value {
+    font-family: 'Inter', sans-serif; fill: var(--muted);
+  }
+  .bar-value { fill: var(--ink); font-weight: 600; }
+  .bar-value.faint { fill: var(--muted); font-weight: 500; }
+  .bar-n { fill: var(--muted); opacity: 0.85; font-family: 'Inter', sans-serif; }
+  .bar-thin-tag {
+    fill: #B08968; font-family: 'Inter', sans-serif; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* Small-sample confidence banner */
+  .confidence-banner {
+    display: flex; align-items: flex-start; gap: 10px;
+    max-width: 760px; margin: 20px auto 0;
+    background: rgba(176,137,104,0.08);
+    border: 1px solid rgba(176,137,104,0.28);
+    border-radius: 14px; padding: 13px 18px;
+    font-size: 0.74rem; line-height: 1.5; color: #8a6d52;
+  }
+  .confidence-banner i { margin-top: 2px; flex-shrink: 0; }
+  .lc-chip {
+    display: inline-block; background: rgba(176,137,104,0.18);
+    color: #8a6d52; font-weight: 600; font-size: 0.62rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 1px 7px; border-radius: 100px;
+  }
+
+  .notice {
+    background: var(--white); border: 1px dashed var(--stone);
+    border-radius: 16px; padding: 22px 24px; color: var(--muted);
+    font-size: 0.8rem; text-align: center;
+  }
+
+  /* ── Page nav link ── */
+  .page-nav {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .page-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    border: 1px solid var(--stone);
+    border-radius: 40px;
+    padding: 8px 18px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .page-nav a:hover {
+    background: var(--stone);
+    color: var(--ink);
+    border-color: var(--stone);
+  }
+
+  /* ── Responsive ───────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .reco { padding: 28px 22px; border-radius: 20px; }
+    .reco h2 { font-size: 1.7rem; }
+    .reco-grid { grid-template-columns: 1fr; gap: 20px; }
+    .chart-headline { font-size: 1.2rem; }
+
+    /* Heat maps: abbreviated labels, tighter cells. Horizontal scroll
+       (via .heatmap-scroll) kicks in if still too wide — by design we
+       never collapse the grid to another chart type. */
+    .heatmap { --hm-label: 40px; --hm-cell-min: 38px; }
+    .hm-full { display: none; }
+    .hm-abbr { display: inline; }
+    .hm-row-head { padding-right: 6px; }
+    .hm-n { font-size: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top bar: title + freshness -->
+  <div class="topbar">
+    <div class="eyebrow">Creator Insights</div>
+    <h1>Decision Hub</h1>
+    <div class="updated" id="updated"></div>
+    <div class="page-nav">
+      <a href="dashboard.html">&larr; Back to Dashboard</a>
+    </div>
+  </div>
+
+  <!-- Tab nav -->
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Insight sections">
+    <button class="tab active" data-tab="patterns"     role="tab" aria-selected="true">Patterns</button>
+    <button class="tab"        data-tab="velocity"     role="tab" aria-selected="false">Velocity</button>
+    <button class="tab"        data-tab="outliers"     role="tab" aria-selected="false">Outliers</button>
+    <button class="tab"        data-tab="partnerships" role="tab" aria-selected="false">Partnerships</button>
+  </nav>
+
+  <!-- ── PATTERNS (tab 1 — the only one built today) ── -->
+  <section class="panel active" id="panel-patterns" role="tabpanel">
+    <div id="loading" class="state"><div class="spinner"></div>Loading your data…</div>
+    <div id="error" class="state error" hidden></div>
+    <div id="patterns" class="wrap" hidden>
+      <!-- Step 2/3 inject recommendations + charts here -->
+    </div>
+  </section>
+
+  <!-- ── Placeholder tabs ── -->
+  <section class="panel" id="panel-velocity" role="tabpanel">
+    <div class="coming-soon">
+      <i class="fa-solid fa-gauge-high"></i>
+      <h2>Velocity</h2>
+      <p>How fast each post accelerates in its first hours — coming soon.</p>
+    </div>
+  </section>
+  <section class="panel" id="panel-outliers" role="tabpanel">
+    <div class="coming-soon">
+      <i class="fa-solid fa-arrow-trend-up"></i>
+      <h2>Outliers</h2>
+      <p>Your breakout posts and what set them apart — coming soon.</p>
+    </div>
+  </section>
+  <section class="panel" id="panel-partnerships" role="tabpanel">
+    <div class="coming-soon">
+      <i class="fa-solid fa-handshake"></i>
+      <h2>Partnerships</h2>
+      <p>Brand-ready performance benchmarks for your media kit — coming soon.</p>
+    </div>
+  </section>
+
+  <footer>
+    <a href="dashboard.html">Back to dashboard</a>
+    <p class="footer-text">&copy; 2026 Lydia Hansen</p>
+  </footer>
+
+  <script>
+    'use strict';
+
+    /* ════════════════════════════════════════════════════════════
+       CONFIG — the single source of every tunable number.
+       Nothing downstream hardcodes a threshold; the analysis engine
+       (Steps 2–3) reads exclusively from here so behaviour stays
+       correct as the dataset grows from 300 → 1000+ videos.
+       ════════════════════════════════════════════════════════════ */
+    const CONFIG = {
+      DATA_URL: 'https://api.lydiaclarkhansen.com/data',
+
+      // Display + grouping timezone. All create_time values are UTC;
+      // everything shown to Lydia is converted to this zone via Intl.
+      TIMEZONE: 'America/Denver',   // US Mountain Time (handles MST/MDT)
+
+      // We always render a bucket that has at least this many videos
+      // (1 = show whatever exists). Nothing is hidden above this.
+      minVideosToRender: 1,
+
+      // CONFIDENCE FLOOR. A bucket with this many videos or more is treated
+      // as trustworthy; below it the bar is still SHOWN but marked "thin"
+      // (dimmed + tagged) so sparse ranges surface every data point while
+      // staying honest about how few videos back each one. This does NOT
+      // shrink with the range — that's the whole point of the "thin" mark.
+      confidenceFloor: 3,
+
+      // A range is flagged "sparse" (shows the small-sample banner) when its
+      // in-range video count is below this. Derived as a multiple of the
+      // confidence floor so it scales if you change the floor — no separate
+      // magic number.
+      sparseRangeMultiple: 8,   // sparse when videosInRange < confidenceFloor × this
+
+      // Time-range toggle. Each is a plain average of the videos posted
+      // within `days` of now (days:null = all time, every video counted
+      // once). Shorter windows are sparser — read them alongside the n=
+      // sample size on each bar. `default` marks the initial selection.
+      ranges: [
+        { id: 'all', label: 'All time',      days: null },
+        { id: '6mo', label: '6 months',      days: 182 },
+        { id: '60d', label: '60 days',       days: 60, default: true },
+        { id: '30d', label: '30 days',       days: 30 },
+        { id: '14d', label: '14 days',       days: 14 },
+        { id: '7d',  label: '7 days',        days: 7 },
+      ],
+
+      // How many top hours / days the recommendations surface.
+      topHours: 3,
+      topDays: 2,
+
+      // Frequency verdict deadband: high- vs low-volume weeks must differ
+      // by more than this fraction before we claim more/less posting helps.
+      // Inside the band we report "no clear effect" rather than overclaim.
+      frequencyDeadband: 0.1,
+
+      // Duration buckets (seconds), [min, max) — upper bound exclusive.
+      // duration is a real field in the /data payload (sample: 576s).
+      durationBuckets: [
+        { label: 'Under 15s', short: '<15s',   min: 0,   max: 15 },
+        { label: '15–30s',    short: '15–30s', min: 15,  max: 30 },
+        { label: '30–60s',    short: '30–60s', min: 30,  max: 60 },
+        { label: '1–3 min',   short: '1–3m',   min: 60,  max: 180 },
+        { label: '3 min+',    short: '3m+',    min: 180, max: Infinity },
+      ],
+
+      // ── Heat maps (Feature 1) ──
+      // Cells below this many videos are suppressed (dash, no color). Reuses
+      // the same confidence floor the bar charts use, so "trustworthy" means
+      // one thing across the whole tab.
+      heatmapMinSample: 3,            // === confidenceFloor by intent
+      // Hour window shown as columns (24h clock). Hours within this range
+      // where she has never posted are skipped; hours outside are never shown.
+      heatmapHourStart: 6,            // 6am
+      heatmapHourEnd: 24,            // through midnight (exclusive upper = 24 → shows up to 11pm + 0)
+      // ── Colors (single registry for every JS-rendered color) ──
+      // CSS owns the static chrome via :root vars; this object owns every
+      // color the SCRIPT injects into rendered output (heat-cell fills + the
+      // text drawn on them). Endpoints stay in the cream→sage family so this
+      // page reads as one product with dashboard.html. Cell text is NOT a
+      // fixed value: it's chosen per cell by whichever of `cellTextDark` /
+      // `cellTextLight` has the higher WCAG contrast against that cell's fill
+      // (see bestTextOn), so contrast is correct at every point on the scale.
+      colors: {
+        heatLow:       '#F5F0E8',   // lightest cream — scale floor
+        heatHigh:      '#7C9A7E',   // full sage — scale ceiling
+        cellTextDark:  '#1E1E1E',   // === --ink; wins on the sage scale (≥4.5:1)
+        cellTextLight: '#FFFFFF',   // reserved for darker future scales
+      },
+
+      // ── Outlier toggle (Feature 2) ──
+      // A video is a HIGH outlier if its view_count exceeds
+      // mean + outlierStdDev × stdDev. Only high outliers are removed.
+      outlierStdDev: 2,
+
+      // ── Data integrity layer (Step 1–3) ──
+      // When true, the collapsible "Data Audit" panel renders at the bottom
+      // of the Patterns tab. NEVER ships true — it's a verification tool.
+      debugMode: false,
+      // Section B shows this many earliest videos for timezone spot-checking.
+      auditTimezoneSampleSize: 10,
+      // Consistency checker (Step 2): a rendered value and an independently
+      // recomputed value may differ by at most this fraction before it's
+      // flagged (covers rounding in the compact "K"/"M" display).
+      consistencyTolerance: 0.01,
+    };
+
+    const DATA_URL = CONFIG.DATA_URL; // back-compat alias used below
+
+    /* ════════════════════════════════════════════════════════════
+       ANALYSIS ENGINE
+       ──────────────────────────────────────────────────────────────
+       Pure functions: (videos, cfg, now) → results. No DOM, no globals,
+       no absolute dates — every window is relative to `now` (defaults to
+       Date.now()) and every threshold comes from `cfg` (defaults CONFIG).
+       This keeps the engine correct as the dataset grows and lets the
+       Node harness import + unit-test it directly.
+       ════════════════════════════════════════════════════════════ */
+
+    // Mountain-Time field extractor. create_time is UTC seconds; we read
+    // its hour (0–23) and weekday (0=Sun…6=Sat) AS OBSERVED IN MT via the
+    // Intl API, so MST/MDT is handled automatically — never manual offsets.
+    const _mtHourFmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: CONFIG.TIMEZONE, hour: 'numeric', hour12: false,
+    });
+    const _mtDayFmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: CONFIG.TIMEZONE, weekday: 'short',
+    });
+    const _DAY_INDEX = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    function mtHour(createTimeSec) {
+      // "24" can appear for midnight in some engines — normalise to 0.
+      const h = Number(_mtHourFmt.format(new Date(createTimeSec * 1000)));
+      return h === 24 ? 0 : h;
+    }
+    function mtDay(createTimeSec) {
+      return _DAY_INDEX[_mtDayFmt.format(new Date(createTimeSec * 1000))];
+    }
+
+    const _avg = (arr) => arr.reduce((s, n) => s + n, 0) / arr.length;
+    // Only videos usable for time analysis: finite create_time + view_count.
+    const _validTimed = (videos) =>
+      videos.filter((v) => Number.isFinite(v.create_time) && Number.isFinite(v.view_count));
+
+    /**
+     * Filter videos to a time range relative to `now`. days===null/undefined
+     * means "all time" (no filter). This is the single honest control: every
+     * surviving video then counts once in a plain average — no extra weighting.
+     */
+    function filterByRange(videos, days, now = Date.now()) {
+      if (!days) return videos;
+      const cutoff = now - days * 86400 * 1000;
+      return videos.filter((v) => Number.isFinite(v.create_time) && v.create_time * 1000 >= cutoff);
+    }
+
+    /**
+     * Generic bucketed-average builder. Plain mean — each video counts once.
+     * EVERY bucket with ≥1 video is returned (never hidden); `lowConfidence`
+     * flags buckets below the adaptive `floor` so the UI can dim/annotate
+     * them instead of refusing to draw. `count` is the sample size (n).
+     */
+    function bucketAverages(videos, keyFn, floor) {
+      const buckets = new Map();
+      for (const v of _validTimed(videos)) {
+        const k = keyFn(v);
+        if (k === undefined || k === null) continue;
+        if (!buckets.has(k)) buckets.set(k, []);
+        buckets.get(k).push(v.view_count);
+      }
+      return [...buckets.entries()].map(([key, views]) => ({
+        key,
+        count: views.length,
+        avgViews: _avg(views),
+        lowConfidence: views.length < floor,
+      }));
+    }
+
+    /** Top-N rows by avg views, richest first. Prefers confident buckets but
+        falls back to thin ones when that's all the range has (so short ranges
+        still yield a recommendation). */
+    function topBuckets(rows, n) {
+      const withData = rows.filter((r) => r.count > 0);
+      const confident = withData.filter((r) => !r.lowConfidence);
+      const pool = confident.length ? confident : withData; // graceful fallback
+      return pool.sort((a, b) => b.avgViews - a.avgViews).slice(0, n);
+    }
+
+    /* ── Best time to post: by hour of day (MT) ──────────────────── */
+    function analyzeHours(videos, floor, cfg = CONFIG) {
+      const rows = bucketAverages(videos, (v) => mtHour(v.create_time), floor);
+      // Fill the full 0–23 range so the chart shows every hour (gaps = no data).
+      const m = new Map(rows.map((r) => [r.key, r]));
+      const byHour = Array.from({ length: 24 }, (_, h) =>
+        m.get(h) || { key: h, count: 0, avgViews: 0, lowConfidence: true });
+      return { byHour, top: topBuckets(rows, cfg.topHours) };
+    }
+
+    /* ── Best time to post: by day of week (MT) ──────────────────── */
+    function analyzeDays(videos, floor, cfg = CONFIG) {
+      const rows = bucketAverages(videos, (v) => mtDay(v.create_time), floor);
+      const m = new Map(rows.map((r) => [r.key, r]));
+      const byDay = Array.from({ length: 7 }, (_, d) =>
+        m.get(d) || { key: d, count: 0, avgViews: 0, lowConfidence: true });
+      return { byDay, top: topBuckets(rows, cfg.topDays) };
+    }
+
+    /* ── Optimal video length: real duration buckets ─────────────── */
+    // duration is a real field (seconds). Videos missing a finite duration
+    // are skipped, not zero-bucketed. Every populated bucket is shown; thin
+    // ones are flagged low-confidence. Plain mean — each video counts once.
+    function analyzeDuration(videos, floor, cfg = CONFIG) {
+      const rows = cfg.durationBuckets.map((b) => {
+        const views = videos
+          .filter((v) => Number.isFinite(v.duration) && Number.isFinite(v.view_count) &&
+                         v.duration >= b.min && v.duration < b.max)
+          .map((v) => v.view_count);
+        return {
+          label: b.label,
+          count: views.length,
+          avgViews: views.length ? _avg(views) : 0,
+          lowConfidence: views.length < floor,
+        };
+      });
+      const populated = rows.filter((r) => r.count > 0);
+      const confident = populated.filter((r) => !r.lowConfidence);
+      const pool = confident.length ? confident : populated;
+      return {
+        available: populated.length > 0,
+        rows,
+        best: pool.length ? pool.reduce((a, b) => (b.avgViews > a.avgViews ? b : a)) : null,
+      };
+    }
+
+    /* ── Outlier detection (Feature 2) ───────────────────────────── */
+    // Flags HIGH outliers only: view_count > mean + cfg.outlierStdDev × stdDev.
+    // Computed over the videos passed in (caller passes the range-filtered
+    // set, so the threshold is always relative to the current view). Returns
+    // the stats + the kept/removed split so the UI can report exact counts.
+    function detectOutliers(videos, cfg = CONFIG) {
+      const timed = _validTimed(videos);
+      if (timed.length < 2) {
+        return { mean: 0, stdDev: 0, threshold: Infinity, outliers: [], kept: timed, removedCount: 0 };
+      }
+      const views = timed.map((v) => v.view_count);
+      const mean = _avg(views);
+      const variance = _avg(views.map((x) => (x - mean) ** 2));
+      const stdDev = Math.sqrt(variance);
+      const threshold = mean + cfg.outlierStdDev * stdDev;
+      const outliers = [], kept = [];
+      for (const v of timed) (v.view_count > threshold ? outliers : kept).push(v);
+      return { mean, stdDev, threshold, outliers, kept, removedCount: outliers.length };
+    }
+
+    /* ── Heat-map builder (Feature 1) ────────────────────────────── */
+    // Generic: rows = days of week (0–6), columns supplied by `colDefs`
+    // ({ key, label, short, match(video) }). Each cell = avg view_count of
+    // videos matching that (day, column). Cells below cfg.heatmapMinSample
+    // are suppressed (no avg surfaced for color). Returns the grid plus the
+    // global min/max over *shown* cells so the color scale spans the real
+    // data range (no hardcoded thresholds).
+    function buildHeatmap(videos, colDefs, cfg = CONFIG) {
+      const timed = _validTimed(videos);
+      // cell[d][c] = array of view counts
+      const cells = Array.from({ length: 7 }, () => colDefs.map(() => []));
+      for (const v of timed) {
+        const d = mtDay(v.create_time);
+        if (d === undefined || d === null) continue;
+        colDefs.forEach((col, ci) => { if (col.match(v)) cells[d][ci].push(v.view_count); });
+      }
+      let min = Infinity, max = -Infinity;
+      const grid = cells.map((row) => row.map((views) => {
+        const count = views.length;
+        const shown = count >= cfg.heatmapMinSample;
+        const avgViews = count ? _avg(views) : 0;
+        if (shown) { if (avgViews < min) min = avgViews; if (avgViews > max) max = avgViews; }
+        return { count, avgViews, shown };
+      }));
+      if (!Number.isFinite(min)) { min = 0; max = 0; }
+      // Which columns have at least one shown cell anywhere (so callers can
+      // skip never-posted columns, e.g. dead hours).
+      const colHasData = colDefs.map((_, ci) => grid.some((row) => row[ci].shown || row[ci].count > 0));
+      return { grid, min, max, colDefs, colHasData };
+    }
+
+    // Column defs for the two heat maps.
+    function hourColDefs(cfg = CONFIG) {
+      const defs = [];
+      for (let h = cfg.heatmapHourStart; h < cfg.heatmapHourEnd; h++) {
+        defs.push({ key: h, label: hourColLabel(h), short: hourColLabel(h),
+                    match: (v) => mtHour(v.create_time) === h });
+      }
+      return defs;
+    }
+    function lengthColDefs(cfg = CONFIG) {
+      return cfg.durationBuckets.map((b) => ({
+        key: b.label, label: b.label, short: b.short,
+        match: (v) => Number.isFinite(v.duration) && v.duration >= b.min && v.duration < b.max,
+      }));
+    }
+    // Compact hour label for heat-map columns: 6 → "6a", 13 → "1p", 0 → "12a".
+    function hourColLabel(h) {
+      const ampm = h < 12 ? 'a' : 'p';
+      const twelve = ((h + 11) % 12) + 1;
+      return `${twelve}${ampm}`;
+    }
+
+    /* ── Posting frequency vs. performance ───────────────────────── */
+    // Group videos into ISO-ish week buckets (relative to `now`, in MT),
+    // classify each week as high/low volume vs her own average posts/week,
+    // then compare average views between the two groups.
+    function analyzeFrequency(videos, floor, cfg = CONFIG, now = Date.now()) {
+      const timed = _validTimed(videos);
+      if (!timed.length) return { available: false };
+
+      // Week index = whole weeks before `now`. Relative, never absolute.
+      const weekOf = (sec) => Math.floor((now - sec * 1000) / (7 * 86400 * 1000));
+      const weeks = new Map(); // weekIdx -> { posts, views[] }
+      for (const v of timed) {
+        const wk = weekOf(v.create_time);
+        if (!weeks.has(wk)) weeks.set(wk, { posts: 0, views: [] });
+        const w = weeks.get(wk);
+        w.posts += 1; w.views.push(v.view_count);
+      }
+      const weekRows = [...weeks.values()];
+      const avgPostsPerWeek = _avg(weekRows.map((w) => w.posts));
+
+      const high = weekRows.filter((w) => w.posts > avgPostsPerWeek);
+      const low = weekRows.filter((w) => w.posts <= avgPostsPerWeek);
+      const groupAvgViews = (g) => {
+        const all = g.flatMap((w) => w.views);
+        return all.length ? _avg(all) : 0;
+      };
+      const highAvg = groupAvgViews(high);
+      const lowAvg = groupAvgViews(low);
+
+      // Need both groups non-trivially populated to draw a conclusion. The
+      // per-group video floor scales with the range (same adaptive floor as
+      // the buckets), so short ranges can still reach a verdict.
+      const enough = high.length >= 1 && low.length >= 1 &&
+                     (high.flatMap((w) => w.views).length >= floor) &&
+                     (low.flatMap((w) => w.views).length >= floor);
+
+      let verdict = 'inconclusive';
+      let delta = 0;
+      if (enough) {
+        delta = (highAvg - lowAvg) / lowAvg;
+        verdict = delta > cfg.frequencyDeadband ? 'more-is-better'
+                : delta < -cfg.frequencyDeadband ? 'less-is-better'
+                : 'no-clear-effect';
+      }
+      return {
+        available: enough,
+        avgPostsPerWeek,
+        weeksTracked: weekRows.length,
+        highVolume: { weeks: high.length, avgViews: highAvg },
+        lowVolume:  { weeks: low.length,  avgViews: lowAvg },
+        delta,
+        verdict,
+      };
+    }
+
+    /* ── One call that runs the whole engine for a given time range ──
+       `rangeDays` (null = all time) filters the dataset first. When
+       `opts.hideOutliers` is set, high outliers are removed from the
+       range-set BEFORE any analysis, so every chart + heat map sees the
+       same cleaned data. Outlier stats are always returned (over the
+       range-set) so the UI can show the count regardless of toggle state. */
+    function analyzeAll(videos, cfg = CONFIG, now = Date.now(), rangeDays = null, opts = {}) {
+      const inRange = filterByRange(videos, rangeDays, now);
+      // Outlier stats computed over the range-set (relative to current view).
+      const outlierInfo = detectOutliers(inRange, cfg);
+      // The dataset every analyzer/heatmap actually consumes.
+      const dataset = opts.hideOutliers ? outlierInfo.kept : _validTimed(inRange);
+
+      const videosInRange = dataset.length;
+      const floor = cfg.confidenceFloor;
+      return {
+        rangeDays,
+        hideOutliers: !!opts.hideOutliers,
+        outliers: {
+          mean: outlierInfo.mean,
+          stdDev: outlierInfo.stdDev,
+          threshold: outlierInfo.threshold,
+          removedCount: outlierInfo.removedCount,
+          list: outlierInfo.outliers,
+          rangeTotal: _validTimed(inRange).length,
+        },
+        videosInRange,
+        sampleFloor: floor,
+        sparse: videosInRange < cfg.confidenceFloor * cfg.sparseRangeMultiple,
+        hours: analyzeHours(dataset, floor, cfg),
+        days: analyzeDays(dataset, floor, cfg),
+        duration: analyzeDuration(dataset, floor, cfg),
+        frequency: analyzeFrequency(dataset, floor, cfg, now),
+        // Heat maps consume the same cleaned dataset.
+        heatHourly: buildHeatmap(dataset, hourColDefs(cfg), cfg),
+        heatLength: buildHeatmap(dataset, lengthColDefs(cfg), cfg),
+      };
+    }
+
+    // Expose for the Node verification harness (no effect in the browser).
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = {
+        CONFIG, mtHour, mtDay, DAY_NAMES, filterByRange, detectOutliers,
+        buildHeatmap, hourColDefs, lengthColDefs,
+        analyzeHours, analyzeDays, analyzeDuration, analyzeFrequency, analyzeAll,
+      };
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       TAB SWITCHING — pure JS, no reload.
+       ════════════════════════════════════════════════════════════ */
+    (function wireTabs() {
+      const nav = document.getElementById('tabs');
+      nav.addEventListener('click', (e) => {
+        const btn = e.target.closest('.tab');
+        if (!btn) return;
+        const name = btn.dataset.tab;
+
+        nav.querySelectorAll('.tab').forEach((t) => {
+          const on = t === btn;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', String(on));
+        });
+        document.querySelectorAll('.panel').forEach((p) => {
+          p.classList.toggle('active', p.id === 'panel-' + name);
+        });
+      });
+    })();
+
+    /* ════════════════════════════════════════════════════════════
+       DATA LAYER
+       ════════════════════════════════════════════════════════════ */
+    async function loadData() {
+      const res = await fetch(DATA_URL, { cache: 'no-store' });
+      if (!res.ok) {
+        throw new Error(
+          res.status === 404
+            ? 'No data yet — the analytics pipeline has not run. Please check back shortly.'
+            : `Could not load data (HTTP ${res.status}).`
+        );
+      }
+      return res.json();
+    }
+
+    function showError(msg) {
+      document.getElementById('loading').hidden = true;
+      const el = document.getElementById('error');
+      el.textContent = msg;
+      el.hidden = false;
+    }
+
+    // Module-scoped so the toggles can re-render without refetching.
+    let _allVideos = [];
+    let _now = Date.now();
+    let _activeRange = (CONFIG.ranges.find((r) => r.default) || CONFIG.ranges[0]).id;
+    let _hideOutliers = false; // Feature 2 toggle — persists across range changes.
+
+    function renderPatterns(data) {
+      _allVideos = data.videos || [];
+      _now = Date.now();
+      paintRange(); // initial paint at the default range
+    }
+
+    // Re-run the engine for the active range + toggle state and repaint.
+    function paintRange() {
+      const range = CONFIG.ranges.find((r) => r.id === _activeRange) || CONFIG.ranges[0];
+      const a = analyzeAll(_allVideos, CONFIG, _now, range.days, { hideOutliers: _hideOutliers });
+
+      logAnalysis(a, range);
+
+      const root = document.getElementById('patterns');
+      // Only bail when the range is genuinely empty (nothing to chart).
+      if (a.videosInRange < CONFIG.minVideosToRender) {
+        root.innerHTML = filterBarHTML(a) + scopeNoteHTML(a, range) +
+          `<div class="notice" style="margin-top:28px">
+             No videos in “${range.label}”${_hideOutliers ? ' after hiding outliers' : ''} yet.
+             ${_hideOutliers ? 'Turn off “Hide outliers” or pick' : 'Pick'} a wider range to see your patterns.</div>`;
+        wireControls();
+        return;
+      }
+
+      // Build the audit + run the consistency checker on every render.
+      const audit = buildAudit(_allVideos, CONFIG, _now, range.days, _hideOutliers);
+      const issues = runConsistencyCheck(_allVideos, a, audit, CONFIG);
+      if (issues.length) {
+        console.group('%cConsistency check — discrepancies', 'color:#b4554b;font-weight:700');
+        issues.forEach((i) => console.warn(i));
+        console.groupEnd();
+      }
+
+      root.innerHTML =
+        consistencyBannerHTML(issues) +
+        filterBarHTML(a) +
+        outlierBannerHTML(a) +
+        scopeNoteHTML(a, range) +
+        confidenceBannerHTML(a) +
+        recommendationsHTML(a) +
+        `<div class="charts">
+           ${chartBlock(hourHeadline(a.hours), 'Average views by hour · MT', hourChartSVG(a.hours))}
+           ${chartBlock(dayHeadline(a.days), 'Average views by day of week · MT', dayChartSVG(a.days))}
+           ${chartBlock(durationHeadline(a.duration), 'Average views by video length', durationChartSVG(a.duration))}
+           ${chartBlock(frequencyHeadline(a.frequency), 'Posting volume vs. average views', frequencyChartSVG(a.frequency))}
+         </div>` +
+        heatmapSection(a) +
+        auditPanelHTML(audit);
+      wireControls();
+    }
+
+    // Honest "small sample" banner for sparse ranges — shows instead of
+    // hiding data. Quietly absent when the range has plenty of videos.
+    function confidenceBannerHTML(a) {
+      if (!a.sparse) return '';
+      return `<div class="confidence-banner">
+        <i class="fa-solid fa-circle-info"></i>
+        Small sample — only ${a.videosInRange} video${a.videosInRange === 1 ? '' : 's'} in this range.
+        These are real numbers, but a few posts can swing them. Bars marked
+        <span class="lc-chip">thin</span> are based on very few videos; widen the range for steadier patterns.
+      </div>`;
+    }
+
+    function logAnalysis(a, range) {
+      console.group('%cPatterns · ' + range.label, 'color:#6E8479;font-weight:600');
+      console.log('videos in range:', a.videosInRange, '(of', _allVideos.length + ' total)');
+      const hl = (h) => `${((h + 11) % 12) + 1}${h < 12 ? 'am' : 'pm'}`;
+      console.log('Best hours:', a.hours.top.map((r) => `${hl(r.key)} — ${Math.round(r.avgViews).toLocaleString()} avg (n=${r.count})`));
+      console.log('Best days:', a.days.top.map((r) => `${DAY_NAMES[r.key]} — ${Math.round(r.avgViews).toLocaleString()} avg (n=${r.count})`));
+      console.log('Best length:', a.duration.best ? `${a.duration.best.label} (${Math.round(a.duration.best.avgViews).toLocaleString()} avg)` : '—');
+      console.log('Frequency:', a.frequency.available
+        ? { avgPostsPerWeek: +a.frequency.avgPostsPerWeek.toFixed(1), verdict: a.frequency.verdict }
+        : '(inconclusive)');
+      console.table(a.hours.byHour.filter((r) => r.count > 0).map((r) => ({
+        hour: hl(r.key), avgViews: Math.round(r.avgViews), n: r.count,
+      })));
+
+      // Outlier diagnostics (Feature 2).
+      console.log('%cOutliers', 'font-weight:600', {
+        mean: Math.round(a.outliers.mean),
+        stdDev: Math.round(a.outliers.stdDev),
+        threshold: Math.round(a.outliers.threshold),
+        stdDevMultiple: CONFIG.outlierStdDev,
+        flagged: a.outliers.removedCount,
+        hidden: a.hideOutliers,
+      });
+      if (a.outliers.list.length) {
+        console.table(a.outliers.list.map((v) => ({
+          views: v.view_count,
+          aboveThresholdBy: Math.round(v.view_count - a.outliers.threshold),
+          title: (v.title || '').slice(0, 40),
+        })));
+      }
+
+      // Heat-map cell dump (Feature 1) — every populated cell, both maps.
+      logHeatmap('Day × Hour', a.heatHourly);
+      logHeatmap('Day × Length', a.heatLength);
+      console.groupEnd();
+    }
+
+    function logHeatmap(name, hm) {
+      const rows = [];
+      hm.grid.forEach((row, d) => row.forEach((cell, ci) => {
+        if (cell.count > 0) rows.push({
+          day: DAY_NAMES[d], col: hm.colDefs[ci].label,
+          n: cell.count, avgViews: Math.round(cell.avgViews),
+          shown: cell.shown,
+        });
+      }));
+      console.groupCollapsed(`%c${name} heatmap — ${rows.length} populated cells (scale ${Math.round(hm.min).toLocaleString()}–${Math.round(hm.max).toLocaleString()})`, 'color:#6E8479');
+      console.table(rows);
+      console.groupEnd();
+    }
+
+    /* ── Filter bar: range buttons + outlier toggle ── */
+    function filterBarHTML(a) {
+      const removed = a.outliers.removedCount;
+      const outlierLabel = _hideOutliers && removed
+        ? `Hide outliers (${removed} removed)`
+        : 'Hide outliers';
+      return `<div class="filter-bar">
+        <div class="range-toggle" id="rangeToggle" role="group" aria-label="Time range">
+          ${CONFIG.ranges.map((r) =>
+            `<button class="range-btn${r.id === _activeRange ? ' active' : ''}" data-range="${r.id}">${esc(r.label)}</button>`
+          ).join('')}
+        </div>
+        <button class="outlier-toggle${_hideOutliers ? ' active' : ''}" id="outlierToggle"
+                role="switch" aria-checked="${_hideOutliers}" title="Exclude videos more than ${CONFIG.outlierStdDev} standard deviations above your average views">
+          <span class="switch"><span class="knob"></span></span>
+          <span class="outlier-label">${esc(outlierLabel)}</span>
+        </button>
+      </div>`;
+    }
+
+    // Slim banner shown when outliers are hidden.
+    function outlierBannerHTML(a) {
+      if (!_hideOutliers || !a.outliers.removedCount) return '';
+      const shown = a.videosInRange, removed = a.outliers.removedCount;
+      return `<div class="outlier-banner">
+        <i class="fa-solid fa-filter"></i>
+        Outliers hidden — showing typical performance across ${shown} video${shown === 1 ? '' : 's'}.
+        ${removed} video${removed === 1 ? '' : 's'} excluded.
+      </div>`;
+    }
+
+    function wireControls() {
+      const rt = document.getElementById('rangeToggle');
+      if (rt) rt.addEventListener('click', (e) => {
+        const btn = e.target.closest('.range-btn');
+        if (!btn || btn.dataset.range === _activeRange) return;
+        _activeRange = btn.dataset.range;
+        paintRange();
+      });
+      const ot = document.getElementById('outlierToggle');
+      if (ot) ot.addEventListener('click', () => { _hideOutliers = !_hideOutliers; paintRange(); });
+      wireHeatmapTooltips();
+    }
+
+    // Plain-English statement of exactly what the numbers are.
+    function scopeNoteHTML(a, range) {
+      const scope = range.days
+        ? `posted in the last ${range.days} days`
+        : 'you’ve ever posted';
+      return `<p class="scope-note">
+        Each bar is the <strong>average views per video</strong> across the
+        ${a.videosInRange} videos ${scope}. Every video counts once.
+      </p>`;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       PRESENTATION — formatting, headlines, SVG chart builders.
+       All headline strings are derived from computed data (no hardcoded
+       claims); all chart Y-scales come from the data's own max.
+       ════════════════════════════════════════════════════════════ */
+    const fmtViews = (n) => {
+      n = Math.round(n || 0);
+      if (n >= 1e6) return (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : 1) + 'M';
+      if (n >= 1e3) return (n / 1e3).toFixed(n % 1e3 === 0 ? 0 : 1) + 'K';
+      return String(n);
+    };
+    const hourLabel12 = (h) => `${((h + 11) % 12) + 1}${h < 12 ? 'am' : 'pm'}`;
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+
+    // Name the single best hour. (We deliberately don't synthesise a
+    // "6–8pm" window — the top hours are usually scattered, and a window
+    // label invites the exact mislabel bug we hit before. One clear hour.)
+    function bestTimeLabel(topHours) {
+      return topHours.length ? `${hourLabel12(topHours[0].key)} MT` : '—';
+    }
+
+    // Honest sub-line for a recommendation drawn from a single bucket:
+    // names the sample size and softens the language when it's thin, so the
+    // card never presents one video as firm advice.
+    function confidenceSub(bucket, confidentText) {
+      if (!bucket || !bucket.count) return confidentText;
+      if (bucket.lowConfidence) {
+        return `Based on just ${bucket.count} post${bucket.count === 1 ? '' : 's'} in this range — widen it to confirm.`;
+      }
+      return confidentText;
+    }
+
+    /* ── Hero recommendations card (4 concrete actions) ── */
+    function recommendationsHTML(a) {
+      const bestDayB = a.days.top[0];
+      const bestHourB = a.hours.top[0];
+      const bestDay = bestDayB ? DAY_NAMES[bestDayB.key] : '—';
+      const secondDay = a.days.top[1] ? DAY_NAMES[a.days.top[1].key] : null;
+      const timeWindow = bestTimeLabel(a.hours.top);
+      const bestLen = a.duration.best ? a.duration.best.label : null;
+
+      let freqValue = 'No clear effect', freqSub = 'Volume doesn’t move your views much.';
+      if (a.frequency.available) {
+        const pct = Math.abs(Math.round(a.frequency.delta * 100));
+        if (a.frequency.verdict === 'more-is-better') {
+          freqValue = 'Post more often';
+          freqSub = `High-volume weeks average ${pct}% more views.`;
+        } else if (a.frequency.verdict === 'less-is-better') {
+          freqValue = 'Quality over volume';
+          freqSub = `Lighter weeks average ${pct}% more views.`;
+        }
+      } else {
+        freqSub = 'Not enough spread in your posting cadence yet.';
+      }
+
+      const item = (icon, label, value, sub, thin) => `
+        <div class="reco-item">
+          <div class="reco-ico"><i class="fa-solid ${icon}"></i></div>
+          <div>
+            <div class="reco-label">${label}${thin ? ' <span class="lc-chip">thin</span>' : ''}</div>
+            <div class="reco-value">${esc(value)}</div>
+            ${sub ? `<div class="reco-sub">${esc(sub)}</div>` : ''}
+          </div>
+        </div>`;
+
+      return `<div class="reco">
+        <div class="reco-eyebrow">This week’s recommendations</div>
+        <h2>Post like your best posts.</h2>
+        <div class="reco-grid">
+          ${item('fa-calendar-day', 'Best day to post', bestDay,
+                 confidenceSub(bestDayB, secondDay ? `${secondDay} is your strong second.` : 'Your strongest day on average.'),
+                 bestDayB && bestDayB.lowConfidence)}
+          ${item('fa-clock', 'Best time window', timeWindow || '—',
+                 confidenceSub(bestHourB, 'When your top videos went live.'),
+                 bestHourB && bestHourB.lowConfidence)}
+          ${item('fa-ruler-horizontal', 'Optimal length',
+                 bestLen || 'Not enough data',
+                 bestLen ? confidenceSub(a.duration.best, 'Your strongest-performing length range.')
+                         : 'No length data in this range yet.',
+                 a.duration.best && a.duration.best.lowConfidence)}
+          ${item('fa-layer-group', 'Posting cadence', freqValue, freqSub, false)}
+        </div>
+      </div>`;
+    }
+
+    /* ── Chart shell ── */
+    function chartBlock(headline, sub, svg) {
+      return `<div class="chart-block">
+        <div class="chart-headline">${esc(headline)}</div>
+        <div class="chart-sub">${esc(sub)}</div>
+        <div class="chart">${svg}</div>
+      </div>`;
+    }
+
+    /* ── Generic vertical bar chart. EVERY bucket with data is drawn;
+         low-confidence bars render dimmed + tagged "thin" rather than hidden.
+         Peak bar highlighted. viewBox = fluidly responsive.
+
+         Y-scale derives from the CONFIDENT data max (buckets at/above the
+         confidence floor), falling back to all populated bars only when no
+         bucket is confident — the same pool `topBuckets` recommends from. This
+         guarantees the headline's named bucket (always a confident top[0] when
+         confident data exists) is the tallest FULL-height bar, so the headline
+         can never contradict the chart. A thin spike with a higher raw average
+         is still shown tall, but CLAMPED just below full height (thinCap) so it
+         stays honest about its size without out-towering the named peak. ── */
+    const THIN_BAR_CAP = 0.97;   // thin bars never exceed this fraction of innerH
+    function barChartSVG(rows, { peakKey } = {}) {
+      const W = 1000, H = 300, padB = 52, padT = 16, padL = 8, padR = 8;
+      const innerW = W - padL - padR, innerH = H - padB - padT;
+      // Confident max defines full height; fall back to all populated bars when
+      // the range is so sparse nothing clears the floor (graceful thin mode).
+      const populated = rows.filter((r) => r.count);
+      const confident = populated.filter((r) => !r.lowConfidence);
+      const scalePool = confident.length ? confident : populated;
+      const max = Math.max(1, ...scalePool.map((r) => r.avgViews));
+      const thinCap = innerH * THIN_BAR_CAP;
+      const n = rows.length;
+      const slot = innerW / n;
+      const bw = Math.min(slot * 0.62, 70);
+      const bars = rows.map((r, i) => {
+        const x = padL + slot * i + (slot - bw) / 2;
+        // Confident bars scale truthfully (peak reaches innerH). Thin bars use
+        // the same scale but are capped below full height so the named confident
+        // peak is always strictly tallest.
+        let h = r.count ? (r.avgViews / max) * innerH : 0;
+        if (r.count && r.lowConfidence) h = Math.min(h, thinCap);
+        const y = padT + innerH - h;
+        const isPeak = !r.lowConfidence && (r.key === peakKey || r.label === peakKey);
+        const cls = !r.count ? 'bar empty'
+                  : r.lowConfidence ? 'bar thin'
+                  : (isPeak ? 'bar peak' : 'bar');
+        const valTxt = r.count
+          ? `<text class="bar-value${r.lowConfidence ? ' faint' : ''}" x="${x + bw/2}" y="${y - 7}" text-anchor="middle" font-size="17">${fmtViews(r.avgViews)}</text>`
+          : '';
+        // n= under each bar so trustworthiness is always visible; thin bars
+        // get a small "thin" tag beneath that.
+        const nTxt = r.count
+          ? `<text class="bar-n" x="${x + bw/2}" y="${H - 22}" text-anchor="middle" font-size="12">n=${r.count}</text>` +
+            (r.lowConfidence ? `<text class="bar-thin-tag" x="${x + bw/2}" y="${H - 7}" text-anchor="middle" font-size="11">thin</text>` : '')
+          : '';
+        return `
+          <g>
+            <rect class="${cls}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,h).toFixed(1)}" rx="5"/>
+            ${valTxt}
+            <text class="bar-label" x="${x + bw/2}" y="${H - 36}" text-anchor="middle" font-size="16">${esc(r.shortLabel ?? r.label)}</text>
+            ${nTxt}
+          </g>`;
+      }).join('');
+      return `<svg viewBox="0 0 ${W} ${H}" role="img" preserveAspectRatio="xMidYMid meet">${bars}</svg>`;
+    }
+
+    /* ── Hour chart: only hours that have any posts, to avoid 24 empty bars ── */
+    function hourChartSVG(hours) {
+      const peak = hours.top[0] ? hours.top[0].key : null;
+      const rows = hours.byHour
+        .filter((r) => r.count > 0)
+        .map((r) => ({ ...r, label: hourLabel12(r.key), shortLabel: hourLabel12(r.key) }));
+      if (!rows.length) return noticeSVG('No timestamped posts to chart yet.');
+      return barChartSVG(rows, { peakKey: peak });
+    }
+    function hourHeadline(hours) {
+      if (!hours.top.length) return 'Not enough timing data yet.';
+      // Name the ACTUAL best hour (top[0]) — never a window-scan artifact.
+      const best = hours.top[0];
+      const bestName = hourLabel12(best.key) + ' MT';
+      const rest = hours.byHour.filter((r) => r.count > 0 && !r.lowConfidence && r.key !== best.key);
+      const restAvg = rest.length ? rest.reduce((s, r) => s + r.avgViews, 0) / rest.length : 0;
+      const lift = restAvg ? Math.round((best.avgViews / restAvg - 1) * 100) : 0;
+      return lift > 0
+        ? `${bestName} is your strongest hour — ${lift}% above your other posting hours.`
+        : `${bestName} is when your strongest posts go live.`;
+    }
+
+    /* ── Day chart ── */
+    const DAY_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    function dayChartSVG(days) {
+      const peak = days.top[0] ? days.top[0].key : null;
+      const rows = days.byDay.map((r) => ({ ...r, label: DAY_SHORT[r.key], shortLabel: DAY_SHORT[r.key] }));
+      return barChartSVG(rows, { peakKey: peak });
+    }
+    function dayHeadline(days) {
+      if (!days.top.length) return 'Not enough data to rank your days yet.';
+      const best = days.top[0];
+      const others = days.byDay.filter((r) => r.count > 0 && !r.lowConfidence && r.key !== best.key);
+      const otherAvg = others.length ? others.reduce((s, r) => s + r.avgViews, 0) / others.length : 0;
+      const lift = otherAvg ? Math.round((best.avgViews / otherAvg - 1) * 100) : 0;
+      const second = days.top[1] ? ` and ${DAY_NAMES[days.top[1].key]}s` : '';
+      return lift > 0
+        ? `${DAY_NAMES[best.key]}s${second} outperform your average day by ${lift}%.`
+        : `${DAY_NAMES[best.key]} is your strongest day.`;
+    }
+
+    /* ── Duration chart ── */
+    function durationChartSVG(dur) {
+      if (!dur.available) return noticeSVG('No length bucket has enough videos to chart yet.');
+      const rows = dur.rows.map((r) => ({ ...r, shortLabel: r.label, key: r.label }));
+      return barChartSVG(rows, { peakKey: dur.best ? dur.best.label : null });
+    }
+    function durationHeadline(dur) {
+      if (!dur.available || !dur.best) return 'Length data will sharpen as more posts land in each range.';
+      const others = dur.rows.filter((r) => r.count > 0 && !r.lowConfidence && r.label !== dur.best.label);
+      const otherAvg = others.length ? others.reduce((s, r) => s + r.avgViews, 0) / others.length : 0;
+      const lift = otherAvg ? Math.round((dur.best.avgViews / otherAvg - 1) * 100) : 0;
+      return lift > 0
+        ? `Your ${dur.best.label} videos pull ${lift}% more views than your other lengths.`
+        : `${dur.best.label} is your strongest-performing length.`;
+    }
+
+    /* ── Frequency chart: two bars, high vs low volume weeks ── */
+    function frequencyChartSVG(freq) {
+      if (!freq.available) return noticeSVG('Not enough variation in your posting cadence to compare yet.');
+      // Synthetic two-bar comparison. count reflects the group's week span so
+      // the n= label is meaningful; these are never low-confidence (the
+      // availability gate upstream already required enough weeks).
+      const rows = [
+        { label: 'High-volume weeks', shortLabel: 'High-volume', avgViews: freq.highVolume.avgViews, count: freq.highVolume.weeks, lowConfidence: false, key: 'high' },
+        { label: 'Low-volume weeks',  shortLabel: 'Low-volume',  avgViews: freq.lowVolume.avgViews,  count: freq.lowVolume.weeks,  lowConfidence: false, key: 'low' },
+      ];
+      const peak = freq.highVolume.avgViews >= freq.lowVolume.avgViews ? 'high' : 'low';
+      return barChartSVG(rows, { peakKey: peak });
+    }
+    function frequencyHeadline(freq) {
+      if (!freq.available) return 'Post a bit more consistently and this comparison unlocks.';
+      const pct = Math.abs(Math.round(freq.delta * 100));
+      const ppw = freq.avgPostsPerWeek.toFixed(1);
+      if (freq.verdict === 'more-is-better')
+        return `Weeks where you post above your ${ppw}/week average earn ${pct}% more views.`;
+      if (freq.verdict === 'less-is-better')
+        return `Lighter weeks beat heavy ones by ${pct}% — quality is outpacing volume.`;
+      return `Posting volume barely moves your views — cadence isn’t your lever.`;
+    }
+
+    /* ── Inline SVG notice for empty/insufficient charts ── */
+    function noticeSVG(msg) {
+      return `<div class="notice">${esc(msg)}</div>`;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       HEAT MAPS (Feature 1) — pure data, no recommendation language.
+       ════════════════════════════════════════════════════════════ */
+
+    // Parse "#RRGGBB" → [r,g,b].
+    function _hex(c) { return [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16)); }
+    // Linear interpolate between low and high color by t∈[0,1] over the
+    // actual [min,max] data range — no hardcoded thresholds. Endpoints come
+    // from the single color registry (CONFIG.colors).
+    function heatColor(value, min, max) {
+      const lo = _hex(CONFIG.colors.heatLow), hi = _hex(CONFIG.colors.heatHigh);
+      const t = max > min ? (value - min) / (max - min) : 1; // flat range → full color
+      const mix = lo.map((l, i) => Math.round(l + (hi[i] - l) * t));
+      return `rgb(${mix[0]},${mix[1]},${mix[2]})`;
+    }
+
+    // ── WCAG contrast utilities ──
+    // Relative luminance (WCAG 2.x) of an [r,g,b] triple.
+    function _luminance([r, g, b]) {
+      const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+      return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+    }
+    function _contrast(rgbA, rgbB) {
+      const L1 = _luminance(rgbA), L2 = _luminance(rgbB);
+      const hi = Math.max(L1, L2), lo = Math.min(L1, L2);
+      return (hi + 0.05) / (lo + 0.05);
+    }
+    // Pick the cell-text color (from the registry) with the HIGHER contrast
+    // against this cell's background. Replaces the old fixed t>0.62 flip, which
+    // could pick white where white failed AA (the sage scale never lets white
+    // reach 4.5:1). Choosing per cell keeps every cell at its best achievable
+    // contrast no matter where the scale lands. heatColor() returns "rgb(r,g,b)".
+    function bestTextOn(rgbString) {
+      const bg = rgbString.match(/\d+/g).map(Number);
+      const dark = _hex(CONFIG.colors.cellTextDark);
+      const light = _hex(CONFIG.colors.cellTextLight);
+      return _contrast(bg, dark) >= _contrast(bg, light)
+        ? CONFIG.colors.cellTextDark
+        : CONFIG.colors.cellTextLight;
+    }
+
+    // Build one heat-map block. `hm` is a buildHeatmap() result. `useShort`
+    // toggles abbreviated column labels (mobile handled via CSS, but the
+    // length map uses short labels by default to stay compact).
+    function heatmapHTML(title, hm, { skipEmptyCols } = {}) {
+      // Optionally drop columns with no data anywhere (dead hours).
+      const colIdx = hm.colDefs.map((_, i) => i).filter((i) => !skipEmptyCols || hm.colHasData[i]);
+      if (!colIdx.length) return noticeSVG('No data to map in this range yet.');
+
+      const headCells = colIdx.map((i) =>
+        `<div class="hm-col-head"><span class="hm-full">${esc(hm.colDefs[i].label)}</span><span class="hm-abbr">${esc(hm.colDefs[i].short)}</span></div>`
+      ).join('');
+
+      const rows = DAY_NAMES.map((dayName, d) => {
+        const cells = colIdx.map((ci) => {
+          const cell = hm.grid[d][ci];
+          if (!cell.shown) {
+            const title = cell.count
+              ? `n=${cell.count} · below ${CONFIG.heatmapMinSample}-video minimum`
+              : 'no posts';
+            return `<div class="hm-cell empty" data-tip="${esc(title)}"><span class="hm-dash">–</span></div>`;
+          }
+          const bg = heatColor(cell.avgViews, hm.min, hm.max);
+          // Per-cell text color: whichever registry text color has higher WCAG
+          // contrast against THIS cell's fill (never a fixed threshold).
+          const fg = bestTextOn(bg);
+          const tip = `n=${cell.count} · avg ${fmtViews(cell.avgViews)} views`;
+          return `<div class="hm-cell" style="background:${bg};color:${fg}" data-tip="${esc(tip)}">
+              <span class="hm-n">n=${cell.count}</span>
+            </div>`;
+        }).join('');
+        return `<div class="hm-row">
+            <div class="hm-row-head"><span class="hm-full">${esc(dayName)}</span><span class="hm-abbr">${esc(dayName.slice(0,3))}</span></div>
+            ${cells}
+          </div>`;
+      }).join('');
+
+      const gridCols = `var(--hm-label) repeat(${colIdx.length}, minmax(var(--hm-cell-min), 1fr))`;
+      return `<div class="heatmap-block">
+        <div class="chart-headline">${esc(title)}</div>
+        <div class="heatmap-scroll">
+          <div class="heatmap" style="--hm-cols:${gridCols}">
+            <div class="hm-row hm-head">
+              <div class="hm-corner"></div>
+              ${headCells}
+            </div>
+            ${rows}
+          </div>
+        </div>
+        <p class="hm-note">Color intensity reflects average views. Cells with fewer
+          than ${CONFIG.heatmapMinSample} videos are not shown.</p>
+      </div>`;
+    }
+
+    function heatmapSection(a) {
+      return `<div class="heatmaps">
+        ${heatmapHTML('Average views by day and time (MT)', a.heatHourly, { skipEmptyCols: true })}
+        ${heatmapHTML('Average views by day and video length', a.heatLength, { skipEmptyCols: false })}
+      </div>`;
+    }
+
+    // Tooltip: desktop hover via CSS; tap on mobile toggles a .show class.
+    function wireHeatmapTooltips() {
+      document.querySelectorAll('.hm-cell[data-tip]').forEach((cell) => {
+        cell.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const open = cell.classList.contains('show');
+          document.querySelectorAll('.hm-cell.show').forEach((c) => c.classList.remove('show'));
+          if (!open) cell.classList.add('show');
+        });
+      });
+      // tap elsewhere closes any open tooltip
+      document.addEventListener('click', () => {
+        document.querySelectorAll('.hm-cell.show').forEach((c) => c.classList.remove('show'));
+      }, { once: true });
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       DATA INTEGRITY LAYER (Steps 1–3)
+       ──────────────────────────────────────────────────────────────
+       Everything here is verification: a structured audit of every number,
+       an automated consistency checker, and a resilience harness. Pure
+       functions over the raw video array — no weighting (the engine uses
+       plain means; the range filter is the only scope control).
+       ════════════════════════════════════════════════════════════ */
+
+    // Fields each video needs, and which calculations require them.
+    const REQUIRED_FIELDS = {
+      create_time: 'hour chart, day chart, frequency, both heat maps, time filter',
+      view_count:  'every average (all charts + heat-map cells)',
+      duration:    'length chart, day×length heat map',
+    };
+
+    // Find videos missing/malformed required fields.
+    function fieldAudit(videos) {
+      const issues = [];
+      videos.forEach((v) => {
+        Object.keys(REQUIRED_FIELDS).forEach((field) => {
+          if (!Number.isFinite(v[field])) {
+            issues.push({ id: v.id ?? '(no id)', field, excludedFrom: REQUIRED_FIELDS[field] });
+          }
+        });
+      });
+      return issues;
+    }
+
+    /* ── Step 1: build the structured audit (also feeds Steps 2 & 3) ── */
+    function buildAudit(allVideos, cfg = CONFIG, now = Date.now(), rangeDays = null, hideOutliers = false) {
+      const apiTotal = allVideos.length;
+      const inRange = filterByRange(allVideos, rangeDays, now);
+      const valid = _validTimed(inRange);
+      const det = detectOutliers(inRange, cfg);
+      const used = hideOutliers ? det.kept : valid;
+
+      // Section A — inventory
+      const times = valid.map((v) => v.create_time);
+      const A = {
+        apiTotal,
+        passingFilter: valid.length,
+        excludedByOutlier: hideOutliers ? det.removedCount : 0,
+        usedInCalc: used.length,
+        earliest: times.length ? Math.min(...times) : null,
+        latest: times.length ? Math.max(...times) : null,
+        fieldIssues: fieldAudit(allVideos),
+      };
+
+      // Section B — timezone trace (earliest N)
+      const B = [...valid].sort((a, b) => a.create_time - b.create_time)
+        .slice(0, cfg.auditTimezoneSampleSize)
+        .map((v) => traceTimezone(v.create_time, cfg));
+
+      // Section C — calculation trace for every chart/heat map
+      const C = buildCalcTrace(used, cfg);
+
+      // Section E — outlier audit (over in-range set, pre-removal)
+      const E = {
+        mean: det.mean, stdDev: det.stdDev, threshold: det.threshold,
+        stdDevMultiple: cfg.outlierStdDev,
+        flagged: det.outliers.map((v) => ({ id: v.id ?? '(no id)', view_count: v.view_count })),
+        count: det.removedCount,
+      };
+
+      return { rangeDays, hideOutliers, A, B, C, E, datasetUsed: used };
+    }
+
+    function traceTimezone(createTimeSec, cfg = CONFIG) {
+      const dt = new Date(createTimeSec * 1000);
+      const mtFull = new Intl.DateTimeFormat('en-US', {
+        timeZone: cfg.TIMEZONE, weekday: 'short', year: 'numeric', month: 'short',
+        day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short',
+      }).format(dt);
+      return {
+        unix: createTimeSec,
+        utc: dt.toISOString(),
+        mt: mtFull,
+        mtDay: DAY_NAMES[mtDay(createTimeSec)],
+        mtHour: mtHour(createTimeSec),
+      };
+    }
+
+    // Build the per-bucket contributing-video trace for every chart.
+    function buildCalcTrace(videos, cfg = CONFIG) {
+      const floor = cfg.confidenceFloor;
+      const lite = (v) => ({ id: v.id ?? '(no id)', view_count: v.view_count });
+      const groupBy = (keyFn, label) => {
+        const map = new Map();
+        for (const v of videos) {
+          if (!Number.isFinite(v.view_count)) continue;
+          const k = keyFn(v);
+          if (k === undefined || k === null) continue;
+          if (!map.has(k)) map.set(k, []);
+          map.get(k).push(v);
+        }
+        return [...map.entries()].map(([key, vids]) => {
+          const views = vids.map((v) => v.view_count);
+          const n = views.length;
+          const avg = views.reduce((s, x) => s + x, 0) / n;
+          return {
+            bucket: label(key), n, avgViews: avg,
+            suppressed: n < floor,
+            reason: n < floor ? `n=${n} < confidenceFloor ${floor} → shown but flagged "thin"` : '',
+            videos: vids.map(lite),
+          };
+        });
+      };
+
+      const hour = groupBy((v) => mtHour(v.create_time), (h) => hourColLabel(h) + ' MT');
+      const day = groupBy((v) => mtDay(v.create_time), (d) => DAY_NAMES[d]);
+      const length = cfg.durationBuckets.map((b) => {
+        const vids = videos.filter((v) => Number.isFinite(v.duration) && Number.isFinite(v.view_count) &&
+                                          v.duration >= b.min && v.duration < b.max);
+        const n = vids.length;
+        const avg = n ? vids.reduce((s, v) => s + v.view_count, 0) / n : 0;
+        return { bucket: b.label, n, avgViews: avg, suppressed: n < floor,
+                 reason: n < floor ? `n=${n} < confidenceFloor ${floor}` : '', videos: vids.map(lite) };
+      });
+
+      // Heat-map cells (day × hour, day × length)
+      const cellTrace = (colDefs) => {
+        const out = [];
+        for (let d = 0; d < 7; d++) {
+          colDefs.forEach((col) => {
+            const vids = videos.filter((v) => mtDay(v.create_time) === d && col.match(v) && Number.isFinite(v.view_count));
+            if (!vids.length) return;
+            const n = vids.length;
+            const avg = vids.reduce((s, v) => s + v.view_count, 0) / n;
+            out.push({ bucket: `${DAY_NAMES[d]} × ${col.label}`, n, avgViews: avg,
+                       suppressed: n < cfg.heatmapMinSample,
+                       reason: n < cfg.heatmapMinSample ? `n=${n} < heatmapMinSample ${cfg.heatmapMinSample} → dash, no color` : '',
+                       videos: vids.map(lite) });
+          });
+        }
+        return out;
+      };
+
+      return {
+        hour, day, length,
+        heatHourly: cellTrace(hourColDefs(cfg)),
+        heatLength: cellTrace(lengthColDefs(cfg)),
+      };
+    }
+
+    /* ── Step 1: render the audit panel (debugMode only) ── */
+    function auditPanelHTML(audit) {
+      if (!CONFIG.debugMode) return '';
+      const fmtTs = (sec) => sec == null ? '—' : traceTimezone(sec).mt;
+      const A = audit.A;
+
+      const sectionA = `
+        <h4>Section A — Raw data inventory</h4>
+        <table class="audit-tbl">
+          <tr><td>Videos in API response</td><td>${A.apiTotal}</td></tr>
+          <tr><td>Passing active time filter</td><td>${A.passingFilter}</td></tr>
+          <tr><td>Excluded by outlier toggle</td><td>${A.excludedByOutlier}</td></tr>
+          <tr><td>Used in calculations</td><td>${A.usedInCalc}</td></tr>
+          <tr><td>Earliest post (MT)</td><td>${fmtTs(A.earliest)}</td></tr>
+          <tr><td>Latest post (MT)</td><td>${fmtTs(A.latest)}</td></tr>
+        </table>
+        ${A.fieldIssues.length
+          ? `<p class="audit-warn">${A.fieldIssues.length} field issue(s):</p>
+             <table class="audit-tbl"><tr><th>video_id</th><th>missing field</th><th>excluded from</th></tr>
+             ${A.fieldIssues.map((i) => `<tr><td>${esc(i.id)}</td><td>${esc(i.field)}</td><td>${esc(i.excludedFrom)}</td></tr>`).join('')}</table>`
+          : `<p class="audit-ok">No videos with missing/malformed required fields.</p>`}`;
+
+      const sectionB = `
+        <h4>Section B — Timezone verification (earliest ${audit.B.length})</h4>
+        <table class="audit-tbl"><tr><th>unix</th><th>UTC</th><th>MT</th><th>MT day</th><th>MT hour</th></tr>
+        ${audit.B.map((r) => `<tr><td>${r.unix}</td><td>${esc(r.utc)}</td><td>${esc(r.mt)}</td><td>${r.mtDay}</td><td>${r.mtHour}</td></tr>`).join('')}
+        </table>`;
+
+      const traceTable = (title, rows) => `
+        <details class="audit-trace"><summary>${esc(title)} — ${rows.length} buckets</summary>
+          ${rows.map((b) => `
+            <div class="audit-bucket">
+              <div class="audit-bucket-head">
+                <strong>${esc(b.bucket)}</strong> · n=${b.n} · avg ${Math.round(b.avgViews).toLocaleString()}
+                ${b.suppressed ? `<span class="lc-chip">${esc(b.reason)}</span>` : ''}
+              </div>
+              <div class="audit-vids">${b.videos.map((v) => `${esc(v.id)}: ${v.view_count.toLocaleString()}`).join(' · ')}</div>
+              <div class="audit-math">avg = (${b.videos.map((v) => v.view_count).join(' + ')}) / ${b.n} = ${Math.round(b.avgViews).toLocaleString()}</div>
+            </div>`).join('')}
+        </details>`;
+
+      const sectionC = `
+        <h4>Section C — Calculation trace (every chart)</h4>
+        ${traceTable('Hour bar chart', audit.C.hour)}
+        ${traceTable('Day bar chart', audit.C.day)}
+        ${traceTable('Length bar chart', audit.C.length)}
+        ${traceTable('Day × Hour heat map', audit.C.heatHourly)}
+        ${traceTable('Day × Length heat map', audit.C.heatLength)}`;
+
+      const E = audit.E;
+      const sectionE = `
+        <h4>Section E — Outlier audit</h4>
+        <table class="audit-tbl">
+          <tr><td>Mean views (in-range)</td><td>${Math.round(E.mean).toLocaleString()}</td></tr>
+          <tr><td>Standard deviation</td><td>${Math.round(E.stdDev).toLocaleString()}</td></tr>
+          <tr><td>Threshold (mean + ${E.stdDevMultiple}σ)</td><td>${Math.round(E.threshold).toLocaleString()}</td></tr>
+          <tr><td>Videos above threshold</td><td>${E.count}</td></tr>
+        </table>
+        ${E.flagged.length
+          ? `<table class="audit-tbl"><tr><th>video_id</th><th>view_count</th></tr>
+             ${E.flagged.map((v) => `<tr><td>${esc(v.id)}</td><td>${v.view_count.toLocaleString()}</td></tr>`).join('')}</table>`
+          : '<p class="audit-ok">No videos above the outlier threshold.</p>'}
+        <p class="audit-note">This count must match the “Hide outliers (X removed)” label when the toggle is on.</p>`;
+
+      return `<details class="audit-panel" id="auditPanel">
+        <summary>▾ Data Audit (debug)</summary>
+        <div class="audit-body">${sectionA}${sectionB}${sectionC}${sectionE}</div>
+      </details>`;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       STEP 2 — Live consistency checker.
+       Recomputes every rendered number straight from the raw dataset and
+       compares. Returns a list of discrepancies (empty = all good).
+       ════════════════════════════════════════════════════════════ */
+    function runConsistencyCheck(allVideos, a, audit, cfg = CONFIG) {
+      const issues = [];
+      const tol = cfg.consistencyTolerance;
+      const within = (a, b) => {
+        if (a === b) return true;
+        const denom = Math.max(Math.abs(a), Math.abs(b), 1);
+        return Math.abs(a - b) / denom <= tol;
+      };
+
+      // 1 + 2: bar charts — recompute each bucket from the audit's raw video
+      // lists and compare to the engine's rendered avg + n.
+      const checkBuckets = (engineRows, traceRows, name, keyOf) => {
+        traceRows.forEach((t) => {
+          const er = engineRows.find((r) => keyOf(r) === t.bucket);
+          if (!er) return;
+          // Empty bucket on both sides (no videos) → nothing to compare; the
+          // engine reports avg 0 / n 0 and so does the trace. Skip to avoid a
+          // 0-vs-NaN false positive.
+          if (t.n === 0 && er.count === 0) return;
+          const recomputed = t.videos.reduce((s, v) => s + v.view_count, 0) / t.n;
+          if (!within(recomputed, er.avgViews)) {
+            issues.push({ kind: 'value', where: `${name} · ${t.bucket}`, shown: Math.round(er.avgViews), recomputed: Math.round(recomputed) });
+          }
+          if (er.count !== t.n) {
+            issues.push({ kind: 'sample', where: `${name} · ${t.bucket}`, shown: er.count, recomputed: t.n });
+          }
+        });
+      };
+      checkBuckets(a.hours.byHour, audit.C.hour, 'Hour chart', (r) => hourColLabel(r.key) + ' MT');
+      checkBuckets(a.days.byDay, audit.C.day, 'Day chart', (r) => DAY_NAMES[r.key]);
+      checkBuckets(a.duration.rows, audit.C.length, 'Length chart', (r) => r.label);
+
+      // 3: filter consistency — every used video must pass the time filter.
+      const cutoff = a.rangeDays ? Date.now() - a.rangeDays * 86400 * 1000 : -Infinity;
+      audit.datasetUsed.forEach((v) => {
+        if (a.rangeDays && v.create_time * 1000 < cutoff) {
+          issues.push({ kind: 'filter', where: `video ${v.id}`, shown: 'in calc', recomputed: 'outside filter window' });
+        }
+      });
+
+      // 4: outlier consistency — if hiding, no flagged video may be in the set.
+      if (a.hideOutliers) {
+        const flaggedIds = new Set(audit.E.flagged.map((v) => v.id));
+        audit.datasetUsed.forEach((v) => {
+          if (flaggedIds.has(v.id ?? '(no id)')) {
+            issues.push({ kind: 'outlier', where: `video ${v.id}`, shown: 'in calc', recomputed: 'is a hidden outlier' });
+          }
+        });
+      }
+
+      // 5: hero card — recompute "best hour" independently, MIRRORING the
+      // engine's confidence preference (topBuckets): prefer confident buckets
+      // (n ≥ confidenceFloor); only fall back to thin ones if none qualify.
+      // A naive "highest average wins" recompute would wrongly flag the
+      // engine for correctly skipping a thin 2-video spike.
+      const recomputeBest = (rows) => {
+        const withData = rows.filter((r) => r.count > 0);
+        const confident = withData.filter((r) => r.count >= cfg.confidenceFloor);
+        const pool = confident.length ? confident : withData;
+        return pool.sort((x, y) => y.avgViews - x.avgViews)[0];
+      };
+      const indepHour = recomputeBest(a.hours.byHour);
+      const shownHour = a.hours.top[0];
+      if (indepHour && shownHour && indepHour.key !== shownHour.key) {
+        issues.push({ kind: 'hero', where: 'Best hour', shown: shownHour.key, recomputed: indepHour.key });
+      }
+
+      return issues;
+    }
+
+    function consistencyBannerHTML(issues) {
+      if (!issues.length) return '';
+      return `<div class="consistency-banner" role="alert">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Data inconsistency detected — ${issues.length} discrepanc${issues.length === 1 ? 'y' : 'ies'}.
+        ${CONFIG.debugMode ? '<a href="#auditPanel">Open the audit panel for details.</a>' : 'Enable debugMode and open the audit panel for details.'}
+      </div>`;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       STEP 3 — Future-data resilience harness. window.runResilienceTests()
+       Logs pass/fail per scenario. Never mutates _allVideos or the UI.
+       ════════════════════════════════════════════════════════════ */
+    function runResilienceTests(baseVideos) {
+      const src = baseVideos || _allVideos;
+      const now = Date.now();
+      const results = [];
+      const t = (name, fn) => {
+        try { const r = fn(); results.push({ name, pass: r.pass, reason: r.reason || '' }); }
+        catch (e) { results.push({ name, pass: false, reason: 'threw: ' + e.message }); }
+      };
+      const clone = () => src.map((v) => ({ ...v })); // never mutate originals
+      const meanViews = _avg(_validTimed(src).map((v) => v.view_count)) || 0;
+
+      t('New video added today', () => {
+        const vids = clone();
+        const mock = { id: 'MOCK_TODAY', create_time: Math.floor(now / 1000), view_count: 12345, duration: 22 };
+        vids.push(mock);
+        const a = analyzeAll(vids, CONFIG, now, 7, {});
+        const inHour = a.hours.byHour.some((r) => r.key === mtHour(mock.create_time) && r.count > 0);
+        const inHeat = a.heatHourly.grid[mtDay(mock.create_time)].some((c) => c.count > 0);
+        return { pass: inHour && inHeat, reason: inHour && inHeat ? '' : 'mock not found in 7d buckets' };
+      });
+
+      t('Viral video added', () => {
+        const vids = clone();
+        // "Viral" = unambiguously beyond the current top. Using 2× the existing
+        // max guarantees it clears the outlier threshold regardless of how
+        // wide the dataset's existing spread already is (a flat 10×-mean can
+        // sit *below* threshold when a few real outliers inflate the stdDev).
+        const curMax = Math.max(...src.map((v) => v.view_count).filter(Number.isFinite), 0);
+        const viral = { id: 'MOCK_VIRAL', create_time: Math.floor(now / 1000) - 86400, view_count: curMax * 2 + 1, duration: 30 };
+        vids.push(viral);
+        const det = detectOutliers(filterByRange(vids, null, now), CONFIG);
+        const caught = det.outliers.some((v) => v.id === 'MOCK_VIRAL');
+        const maxWith = analyzeAll(vids, CONFIG, now, null, { hideOutliers: false }).heatHourly.max;
+        const maxWithout = analyzeAll(vids, CONFIG, now, null, { hideOutliers: true }).heatHourly.max;
+        const scaleDrops = maxWithout <= maxWith;
+        return { pass: caught && scaleDrops, reason: caught ? (scaleDrops ? '' : 'scale did not drop') : 'viral not flagged' };
+      });
+
+      t('New posting-day pattern (5× Sun 9am)', () => {
+        const vids = clone();
+        // Build 5 timestamps that land on Sunday 9am MT.
+        let added = 0, probe = Math.floor(now / 1000);
+        while (added < 5 && probe > 0) {
+          if (mtDay(probe) === 0 && mtHour(probe) === 9) {
+            vids.push({ id: 'MOCK_SUN9_' + added, create_time: probe, view_count: 500000, duration: 30 });
+            added++; probe -= 7 * 86400; // jump a week to stay Sun 9am
+          } else { probe -= 3600; }
+        }
+        const a = analyzeAll(vids, CONFIG, now, null, {});
+        const cell = a.heatHourly.grid[0].find((c, i) => hourColDefs(CONFIG)[i].key === 9);
+        const ok = cell && cell.count >= 5 && cell.shown;
+        return { pass: !!ok, reason: ok ? '' : `Sun×9am cell n=${cell ? cell.count : 'none'}` };
+      });
+
+      t('Dataset doubles → averages stable', () => {
+        const vids = clone();
+        const doubled = [...vids, ...vids.map((v) => ({ ...v, id: (v.id || 'x') + '_dup' }))];
+        const a1 = analyzeAll(vids, CONFIG, now, null, {});
+        const a2 = analyzeAll(doubled, CONFIG, now, null, {});
+        let stable = true, worst = 0;
+        a1.hours.byHour.forEach((r, i) => {
+          if (!r.count) return;
+          const d = Math.abs(r.avgViews - a2.hours.byHour[i].avgViews) / Math.max(r.avgViews, 1);
+          if (d > worst) worst = d;
+          if (d > CONFIG.consistencyTolerance) stable = false;
+        });
+        return { pass: stable, reason: stable ? '' : `max drift ${(worst * 100).toFixed(2)}%` };
+      });
+
+      t('All videos in one duration bucket', () => {
+        const vids = clone().map((v) => ({ ...v, duration: 22 })); // 15–30s
+        const a = analyzeAll(vids, CONFIG, now, null, {});
+        const rows = a.duration.rows;
+        const only = rows.find((r) => r.label === '15–30s');
+        const others = rows.filter((r) => r.label !== '15–30s');
+        const ok = only.count > 0 && others.every((r) => r.count === 0);
+        return { pass: ok, reason: ok ? '' : 'duration not isolated to one bucket' };
+      });
+
+      t('Empty dataset', () => {
+        const a = analyzeAll([], CONFIG, now, null, {});
+        const ok = a.videosInRange === 0 && a.hours.top.length === 0 && a.duration.available === false;
+        return { pass: ok, reason: ok ? '' : 'empty dataset not handled cleanly' };
+      });
+
+      t('Missing fields excluded correctly', () => {
+        const vids = clone();
+        vids.push({ id: 'MOCK_NULLS', create_time: null, view_count: null, duration: null });
+        vids.push({ id: 'MOCK_NOTIME', create_time: null, view_count: 9999, duration: 30 });
+        const before = analyzeAll(src, CONFIG, now, null, {}).videosInRange;
+        const after = analyzeAll(vids, CONFIG, now, null, {}).videosInRange;
+        // null create_time/view_count videos must not count toward calculations.
+        return { pass: after === before, reason: after === before ? '' : `count changed ${before}→${after} (malformed leaked in)` };
+      });
+
+      // Log
+      console.group('%cResilience tests', 'color:#6E8479;font-weight:700');
+      let passed = 0;
+      results.forEach((r) => {
+        console.log(`%c${r.pass ? '✓ PASS' : '✗ FAIL'} %c${r.name}${r.reason ? ' — ' + r.reason : ''}`,
+          `color:${r.pass ? '#3a7' : '#c44'};font-weight:600`, 'color:inherit');
+        if (r.pass) passed++;
+      });
+      console.log(`${passed}/${results.length} passed`);
+      console.groupEnd();
+      return results;
+    }
+    // Expose for console use.
+    if (typeof window !== 'undefined') window.runResilienceTests = runResilienceTests;
+
+    // Expose integrity functions to the Node harness.
+    if (typeof module !== 'undefined' && module.exports) {
+      Object.assign(module.exports, {
+        buildAudit, fieldAudit, traceTimezone, buildCalcTrace,
+        runConsistencyCheck, runResilienceTests, REQUIRED_FIELDS,
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       BOOT
+       ════════════════════════════════════════════════════════════ */
+    (async function init() {
+      try {
+        const data = await loadData();
+        const videos = data.videos || [];
+
+        // Freshness stamp (shared header) — parsed from the snapshot.
+        const updated = new Date(data.generated_at).toLocaleString('en-US', {
+          timeZone: CONFIG.TIMEZONE,
+          month: 'long', day: 'numeric', year: 'numeric',
+          hour: 'numeric', minute: '2-digit',
+        });
+        document.getElementById('updated').textContent = 'Updated ' + updated + ' MT';
+
+        // renderPatterns + paintRange handle sparse/empty ranges gracefully
+        // (sparse ranges still render with a confidence banner). We only need
+        // a hard stop if the snapshot has literally no videos at all.
+        if (!videos.length) throw new Error('No videos in the latest snapshot yet.');
+        renderPatterns(data);
+
+        document.getElementById('loading').hidden = true;
+        document.getElementById('patterns').hidden = false;
+      } catch (err) {
+        showError(err.message || 'Something went wrong loading your data.');
+      }
+    })();
+  </script>
+</body>
+</html>
