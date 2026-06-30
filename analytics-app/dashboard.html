@@ -276,6 +276,32 @@
   @media (max-width: 880px) {
     .video-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
+  /* ── Page nav link ── */
+  .page-nav {
+    text-align: center;
+    padding: 28px 24px 0;
+  }
+  .page-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    border: 1px solid var(--stone);
+    border-radius: 40px;
+    padding: 8px 18px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .page-nav a:hover {
+    background: var(--stone);
+    color: var(--ink);
+    border-color: var(--stone);
+  }
+
   @media (max-width: 600px) {
     .hero { padding-top: 52px; }
     .hero-handle { letter-spacing: 0.18em; }
@@ -296,6 +322,11 @@
 
   <!-- Content -->
   <main id="content" hidden>
+
+    <!-- Nav to Insights -->
+    <div class="page-nav">
+      <a href="insights.html">View Insights &rarr;</a>
+    </div>
 
     <!-- Hero + stat block -->
     <header class="hero">

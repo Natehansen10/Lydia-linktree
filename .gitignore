@@ -8,3 +8,6 @@ worker/.wrangler/
 worker/dist/
 worker/.dev.vars
 *.log
+
+# Personal Claude Code settings — not shared with the team
+.claude/settings.local.json
