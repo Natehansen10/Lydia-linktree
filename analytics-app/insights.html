@@ -352,6 +352,115 @@
   }
   .reco-sub { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
 
+  /* ── Video card (Outliers / Partnerships proof points) — ported
+     verbatim from dashboard.html so the two analytics pages read as one
+     product. ─────────────────────────────────────────────────── */
+  .video-card {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.2s;
+  }
+  .video-card:hover { transform: translateY(-3px); }
+
+  .cover {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--stone);
+    border: 1px solid var(--hairline);
+  }
+  .cover img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .video-card:hover .cover img { transform: scale(1.04); }
+
+  .cover-tag {
+    position: absolute;
+    bottom: 8px; right: 8px;
+    background: rgba(30,30,30,0.72);
+    color: #fff;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 7px;
+    border-radius: 6px;
+    backdrop-filter: blur(2px);
+  }
+  .cover-badge {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: var(--sage-deep);
+    color: #fff;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    border-radius: 100px;
+  }
+
+  .video-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.35;
+    margin: 12px 2px 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.1em;
+  }
+  .video-date {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 2px 10px;
+  }
+
+  .video-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 12px;
+    padding: 0 2px;
+  }
+  .metric { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--ink); }
+  .metric .m-ico { color: var(--sage); width: 13px; text-align: center; font-size: 0.72rem; }
+  .metric .m-val { font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 24px 18px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* KPI tiles (Partnerships) — ported from dashboard.html's hero stats. */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 18px;
+    max-width: 760px;
+    margin: 28px auto 0;
+  }
+  .stat {
+    background: var(--white);
+    border: 1px solid var(--stone);
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .stat-num { font-size: 1.6rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-label {
+    font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-top: 6px;
+  }
+
   /* ── Charts ───────────────────────────────────────────────── */
   .charts { max-width: 1080px; margin: 0 auto; }
   .chart-block { margin-top: 56px; }
@@ -477,27 +586,17 @@
     </div>
   </section>
 
-  <!-- ── Placeholder tabs ── -->
+  <!-- ── Velocity ── -->
   <section class="panel" id="panel-velocity" role="tabpanel">
-    <div class="coming-soon">
-      <i class="fa-solid fa-gauge-high"></i>
-      <h2>Velocity</h2>
-      <p>How fast each post accelerates in its first hours — coming soon.</p>
-    </div>
+    <div id="velocity" class="wrap" hidden></div>
   </section>
+  <!-- ── Outliers ── -->
   <section class="panel" id="panel-outliers" role="tabpanel">
-    <div class="coming-soon">
-      <i class="fa-solid fa-arrow-trend-up"></i>
-      <h2>Outliers</h2>
-      <p>Your breakout posts and what set them apart — coming soon.</p>
-    </div>
+    <div id="outliers" class="wrap" hidden></div>
   </section>
+  <!-- ── Partnerships ── -->
   <section class="panel" id="panel-partnerships" role="tabpanel">
-    <div class="coming-soon">
-      <i class="fa-solid fa-handshake"></i>
-      <h2>Partnerships</h2>
-      <p>Brand-ready performance benchmarks for your media kit — coming soon.</p>
-    </div>
+    <div id="partnerships" class="wrap" hidden></div>
   </section>
 
   <footer>
@@ -598,6 +697,17 @@
       // A video is a HIGH outlier if its view_count exceeds
       // mean + outlierStdDev × stdDev. Only high outliers are removed.
       outlierStdDev: 2,
+
+      // ── Velocity tab ──
+      // Views/day is a snapshot-noisy proxy for very-new videos (the daily
+      // cron means "1 day old" can mean anywhere from 1–23 real hours), so
+      // videos younger than this are excluded rather than shown with an
+      // inflated rate.
+      velocityMinDays: 3,
+
+      // ── Partnerships tab ──
+      // How many top-performing videos to show as media-kit proof points.
+      proofPointsCount: 3,
 
       // ── Data integrity layer (Step 1–3) ──
       // When true, the collapsible "Data Audit" panel renders at the bottom
@@ -866,6 +976,42 @@
       };
     }
 
+    /* ── Engagement rate: (likes+comments+shares) / views ─────────── */
+    // Single null-safe implementation so every caller (Outliers,
+    // Partnerships) gets the same divide-by-zero guard.
+    function engagementRate(v) {
+      if (!Number.isFinite(v.view_count) || v.view_count <= 0) return null;
+      const engagements = (v.like_count || 0) + (v.comment_count || 0) + (v.share_count || 0);
+      return engagements / v.view_count;
+    }
+
+    /* ── Duration bucket label for a single video ────────────────── */
+    // Presentation-only lookup (Outliers/Velocity cards). Callers must
+    // special-case duration === 0 (photo posts) themselves — this does not.
+    function durationBucketLabel(duration, cfg = CONFIG) {
+      const b = cfg.durationBuckets.find((b) => duration >= b.min && duration < b.max);
+      return b ? b.label : null;
+    }
+
+    /* ── Velocity (proxy): view_count / days since posted ─────────── */
+    // NOT a real growth curve — the pipeline only snapshots once daily, so
+    // this is an average rate, not an acceleration measurement. Videos
+    // younger than cfg.velocityMinDays are excluded (their rate would be
+    // dominated by snapshot-timing noise rather than real signal). Sorted
+    // desc by viewsPerDay here so every caller sees a ranked list.
+    function analyzeVelocity(videos, cfg = CONFIG, now = Date.now()) {
+      const timed = _validTimed(videos);
+      const rows = [];
+      let excludedCount = 0;
+      for (const v of timed) {
+        const daysLive = (now - v.create_time * 1000) / 86400000;
+        if (!Number.isFinite(daysLive) || daysLive < cfg.velocityMinDays) { excludedCount++; continue; }
+        rows.push({ video: v, daysLive, viewsPerDay: v.view_count / daysLive });
+      }
+      rows.sort((a, b) => b.viewsPerDay - a.viewsPerDay);
+      return { available: rows.length > 0, rows, excludedCount };
+    }
+
     /* ── One call that runs the whole engine for a given time range ──
        `rangeDays` (null = all time) filters the dataset first. When
        `opts.hideOutliers` is set, high outliers are removed from the
@@ -911,6 +1057,7 @@
         CONFIG, mtHour, mtDay, DAY_NAMES, filterByRange, detectOutliers,
         buildHeatmap, hourColDefs, lengthColDefs,
         analyzeHours, analyzeDays, analyzeDuration, analyzeFrequency, analyzeAll,
+        engagementRate, durationBucketLabel, analyzeVelocity,
       };
     }
 
@@ -962,6 +1109,11 @@
     let _now = Date.now();
     let _activeRange = (CONFIG.ranges.find((r) => r.default) || CONFIG.ranges[0]).id;
     let _hideOutliers = false; // Feature 2 toggle — persists across range changes.
+
+    // Separate range state per tab — switching one tab's range must not
+    // affect another tab's last-painted output.
+    let _outliersRange = (CONFIG.ranges.find((r) => r.default) || CONFIG.ranges[0]).id;
+    let _velocityRange = (CONFIG.ranges.find((r) => r.default) || CONFIG.ranges[0]).id;
 
     function renderPatterns(data) {
       _allVideos = data.videos || [];
@@ -1145,6 +1297,15 @@
     };
     const hourLabel12 = (h) => `${((h + 11) % 12) + 1}${h < 12 ? 'am' : 'pm'}`;
     const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
+    // Seconds -> "m:ss" (e.g. 135 -> "2:15").
+    const fmtDuration = (sec) => {
+      const m = Math.floor(sec / 60);
+      const s = Math.round(sec % 60);
+      return `${m}:${String(s).padStart(2, '0')}`;
+    };
+    const fmtDate = (unixSec) =>
+      new Date(unixSec * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    const fmtFull = (n) => (n ?? 0).toLocaleString();
 
     // Name the single best hour. (We deliberately don't synthesise a
     // "6–8pm" window — the top hours are usually scattered, and a window
@@ -1909,6 +2070,217 @@
     }
 
     /* ════════════════════════════════════════════════════════════
+       VIDEO CARD — shared by Outliers + Partnerships.
+       Ported from dashboard.html's renderVideos card template so both
+       analytics pages read as one product.
+       ════════════════════════════════════════════════════════════ */
+    function videoCardHTML(v, opts = {}) {
+      const isPhoto = !v.duration;
+      const tag = isPhoto
+        ? '<span class="cover-tag">Photo</span>'
+        : `<span class="cover-tag">${fmtDuration(v.duration)}</span>`;
+      const badge = opts.badge ? `<span class="cover-badge">${esc(opts.badge)}</span>` : '';
+      const title = esc(v.title || v.video_description || '(untitled)');
+      return `
+        <a class="video-card" href="${esc(v.share_url || '#')}" target="_blank" rel="noopener noreferrer">
+          <div class="cover">
+            <img src="${esc(v.cover_image_url || '')}" alt="" loading="lazy" referrerpolicy="no-referrer">
+            ${badge}${tag}
+          </div>
+          <div class="video-title">${title}</div>
+          <div class="video-date">${fmtDate(v.create_time)}</div>
+          <div class="video-metrics">
+            <span class="metric" title="${fmtFull(v.view_count)} views"><i class="fa-solid fa-play m-ico"></i><span class="m-val">${fmtViews(v.view_count)}</span></span>
+            <span class="metric" title="${fmtFull(v.like_count)} likes"><i class="fa-solid fa-heart m-ico"></i><span class="m-val">${fmtViews(v.like_count)}</span></span>
+            <span class="metric" title="${fmtFull(v.comment_count)} comments"><i class="fa-solid fa-comment m-ico"></i><span class="m-val">${fmtViews(v.comment_count)}</span></span>
+            <span class="metric" title="${fmtFull(v.share_count)} shares"><i class="fa-solid fa-share m-ico"></i><span class="m-val">${fmtViews(v.share_count)}</span></span>
+          </div>
+          ${opts.sub ? `<div class="video-date" style="margin-top:6px;text-transform:none;letter-spacing:normal">${esc(opts.sub)}</div>` : ''}
+        </a>`;
+    }
+
+    /* ── Generic range selector, reused by Outliers + Velocity ──────
+       (Partnerships doesn't need one — it always shows the default range
+       alongside lifetime totals, matching a media kit's "at a glance" use.) */
+    function rangeBarHTML(activeId, groupId) {
+      return `<div class="range-toggle" id="${groupId}" role="group" aria-label="Time range">
+        ${CONFIG.ranges.map((r) =>
+          `<button class="range-btn${r.id === activeId ? ' active' : ''}" data-range="${r.id}">${esc(r.label)}</button>`
+        ).join('')}
+      </div>`;
+    }
+    function wireRangeBar(containerEl, onChange) {
+      if (!containerEl) return;
+      containerEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('.range-btn');
+        if (!btn) return;
+        onChange(btn.dataset.range);
+      });
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       OUTLIERS TAB — breakout posts and what set them apart.
+       ════════════════════════════════════════════════════════════ */
+    function paintOutliers() {
+      const root = document.getElementById('outliers');
+      const range = CONFIG.ranges.find((r) => r.id === _outliersRange) || CONFIG.ranges[0];
+      const inRange = filterByRange(_allVideos, range.days, _now);
+      const det = detectOutliers(inRange, CONFIG);
+      const rangeTotal = _validTimed(inRange).length;
+
+      let body;
+      if (rangeTotal < 2) {
+        // Distinct from "zero outliers found" — detectOutliers can't even
+        // compute a mean/stdDev below 2 videos.
+        body = `<div class="notice" style="margin-top:28px">Not enough videos in “${esc(range.label)}” to detect outliers — need at least 2. Try a wider range.</div>`;
+      } else if (!det.outliers.length) {
+        body = `<div class="notice" style="margin-top:28px">No breakout posts in “${esc(range.label)}” yet — try a wider range.</div>`;
+      } else {
+        // Compare each outlier against the non-outlier mean, not the full
+        // range average — a more honest "better than typical" framing.
+        const keptEngagements = det.kept.map(engagementRate).filter((r) => r !== null);
+        const baselineEngagement = keptEngagements.length ? _avg(keptEngagements) : null;
+
+        const cards = [...det.outliers]
+          .sort((a, b) => b.view_count - a.view_count)
+          .map((v) => {
+            const day = DAY_NAMES[mtDay(v.create_time)];
+            const hour = hourLabel12(mtHour(v.create_time));
+            const durLabel = v.duration ? durationBucketLabel(v.duration, CONFIG) : 'Photo';
+            const er = engagementRate(v);
+            const badge = (er !== null && baselineEngagement)
+              ? `${(er / baselineEngagement).toFixed(1)}x engagement`
+              : null;
+            return videoCardHTML(v, { badge, sub: `Posted ${day} ${hour} MT · ${durLabel}` });
+          }).join('');
+
+        body = `
+          <p class="scope-note">
+            ${det.outliers.length} breakout post${det.outliers.length === 1 ? '' : 's'} in “${esc(range.label)}” —
+            views more than ${CONFIG.outlierStdDev} standard deviations above the ${rangeTotal}-video average.
+          </p>
+          <div class="video-grid" style="margin-top:24px">${cards}</div>`;
+      }
+
+      root.innerHTML = `
+        <div class="filter-bar">${rangeBarHTML(_outliersRange, 'outliersRangeToggle')}</div>
+        ${body}`;
+      wireRangeBar(document.getElementById('outliersRangeToggle'), (id) => { _outliersRange = id; paintOutliers(); });
+    }
+
+    function renderOutliers() {
+      paintOutliers();
+      document.getElementById('outliers').hidden = false;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       VELOCITY TAB — proxy metric (views ÷ days live), NOT a real
+       first-hours growth curve. See CONFIG.velocityMinDays comment.
+       ════════════════════════════════════════════════════════════ */
+    function paintVelocity() {
+      const root = document.getElementById('velocity');
+      const range = CONFIG.ranges.find((r) => r.id === _velocityRange) || CONFIG.ranges[0];
+      const inRange = filterByRange(_allVideos, range.days, _now);
+      const vel = analyzeVelocity(inRange, CONFIG, _now);
+
+      const banner = `<div class="confidence-banner">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Estimated as total views ÷ days since posting — not a real-time growth curve.
+        The data pipeline snapshots once daily, so this is an average rate, not true
+        first-hours acceleration. Videos younger than ${CONFIG.velocityMinDays} days are
+        excluded to avoid snapshot-timing noise${vel.excludedCount ? ` (${vel.excludedCount} excluded here)` : ''}.</span>
+      </div>`;
+
+      let body;
+      if (!vel.available) {
+        body = `<div class="notice" style="margin-top:28px">No videos old enough to rank in “${esc(range.label)}” — try a wider range.</div>`;
+      } else {
+        const cards = vel.rows.slice(0, 20).map((r, i) => {
+          const durLabel = r.video.duration ? durationBucketLabel(r.video.duration, CONFIG) : 'Photo';
+          return videoCardHTML(r.video, {
+            badge: `#${i + 1}`,
+            sub: `${fmtViews(r.viewsPerDay)} views/day · ${Math.round(r.daysLive)}d live · ${durLabel}`,
+          });
+        }).join('');
+        body = `<div class="video-grid" style="margin-top:24px">${cards}</div>`;
+      }
+
+      root.innerHTML = `
+        <div class="filter-bar">${rangeBarHTML(_velocityRange, 'velocityRangeToggle')}</div>
+        ${banner}
+        ${body}`;
+      wireRangeBar(document.getElementById('velocityRangeToggle'), (id) => { _velocityRange = id; paintVelocity(); });
+    }
+
+    function renderVelocity() {
+      paintVelocity();
+      document.getElementById('velocity').hidden = false;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       PARTNERSHIPS TAB — brand-ready media-kit benchmarks.
+       ════════════════════════════════════════════════════════════ */
+    function renderPartnerships(account, videos, now) {
+      const root = document.getElementById('partnerships');
+      const range = CONFIG.ranges.find((r) => r.default) || CONFIG.ranges[0];
+      const rangeVideos = filterByRange(videos, range.days, now);
+      const a = analyzeAll(videos, CONFIG, now, range.days, {});
+
+      // Total videos/views computed from the videos array, not
+      // account.video_count — worker/README.md documents a known
+      // discrepancy between the two; the array is the verified source.
+      const totalViews = videos.reduce((s, v) => s + (v.view_count || 0), 0);
+      const kpis = [
+        ['Followers', account && account.follower_count],
+        ['Total Videos', videos.length],
+        ['Total Views', totalViews],
+        ['Total Likes', account && account.likes_count],
+      ];
+      const kpiHTML = kpis.map(([label, num]) => `
+        <div class="stat">
+          <div class="stat-num" title="${fmtFull(num)}">${fmtViews(num)}</div>
+          <div class="stat-label">${esc(label)}</div>
+        </div>`).join('');
+
+      const engagements = _validTimed(rangeVideos).map(engagementRate).filter((r) => r !== null);
+      const avgEngagement = engagements.length ? _avg(engagements) : null;
+      const bestDay = a.days.top[0] ? DAY_NAMES[a.days.top[0].key] : null;
+      const bestHour = a.hours.top[0] ? hourLabel12(a.hours.top[0].key) : null;
+
+      const perfItems = [
+        ['Avg views / post', a.videosInRange ? fmtViews(_avg(_validTimed(rangeVideos).map((v) => v.view_count))) : '—'],
+        ['Avg engagement rate', avgEngagement !== null ? `${(avgEngagement * 100).toFixed(1)}%` : '—'],
+        ['Posting consistency', a.frequency.available ? `${a.frequency.avgPostsPerWeek.toFixed(1)} posts/week` : 'Not enough data yet'],
+        ['Best time to post', (bestDay && bestHour) ? `${bestDay}s, ${bestHour} MT` : '—'],
+      ];
+      const perfHTML = perfItems.map(([label, val]) => `
+        <div class="reco-item">
+          <div>
+            <div class="reco-label">${esc(label)}</div>
+            <div class="reco-value">${esc(val)}</div>
+          </div>
+        </div>`).join('');
+
+      const proofPoints = [...videos]
+        .filter((v) => Number.isFinite(v.view_count))
+        .sort((a, b) => b.view_count - a.view_count)
+        .slice(0, CONFIG.proofPointsCount)
+        .map((v, i) => videoCardHTML(v, { badge: i === 0 ? 'Top performer' : `#${i + 1}` }))
+        .join('');
+
+      root.innerHTML = `
+        <p class="scope-note">Media-kit benchmarks — lifetime totals plus performance over the last ${range.days} days.</p>
+        <div class="kpi-grid">${kpiHTML}</div>
+        <div class="reco" style="margin-top:32px">
+          <div class="reco-eyebrow">Recent performance</div>
+          <h2>Last ${range.days} days</h2>
+          <div class="reco-grid">${perfHTML}</div>
+        </div>
+        ${proofPoints ? `<p class="scope-note" style="margin-top:40px">Top-performing posts</p><div class="video-grid" style="margin-top:16px">${proofPoints}</div>` : ''}`;
+      root.hidden = false;
+    }
+
+    /* ════════════════════════════════════════════════════════════
        BOOT
        ════════════════════════════════════════════════════════════ */
     (async function init() {
@@ -1932,6 +2304,12 @@
 
         document.getElementById('loading').hidden = true;
         document.getElementById('patterns').hidden = false;
+
+        // Each new tab renders independently — a bug in one must not blank
+        // out the already-working Patterns tab (or the other new tabs).
+        try { renderOutliers(); } catch (err) { console.error('[Outliers] render failed:', err); }
+        try { renderVelocity(); } catch (err) { console.error('[Velocity] render failed:', err); }
+        try { renderPartnerships(data.account, videos, Date.now()); } catch (err) { console.error('[Partnerships] render failed:', err); }
       } catch (err) {
         showError(err.message || 'Something went wrong loading your data.');
       }
